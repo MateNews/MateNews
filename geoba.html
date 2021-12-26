@@ -1,34 +1,79 @@
-<html>
+<!DOCTYPE html>
+<html class="no-touch" lang="es">
 <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Vinculaciones Ramsac-Geoba</title>
+
 <style>
-#mapdiv { height: 280px; }
+
+  #mapdiv { height: 280px; }
+
+  body, html {
+    background: #f7f7f7;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5em;
+    font-size: 98%;
+    line-height: 1.2;
+    text-align:center;
+  }
+
 </style>
-  <title>Openlayers Marker Array Multilayer Example</title>
+
 </head>
 <body>
 
-  <button onclick="getLocation()">Try It</button>
+<button onclick="getLocation()">Buscar estación permanente más cercana</button>
 
-  <p id="demo"></p>
+<p id="demo"></p>
 
-  <div id="mapdiv"></div>
+<div id="mapdiv"></div>
 
-  <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<p id="datos_estacion"></p>
+
+
+
+
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
+
+estaciones = [['3ARO','38','22','55.4762','S','60','16','27.2968','W','137.479','-','Tres-Arroyos','Est.-Permanente'],
+['AGGO','34','52','25.3491','S','58','8','23.4831','W','39.685','-','La-Plata','Est.-Permanente'],
+['AZUL','36','46','1.2800','S','59','52','52.6087','W','158.313','-','-','Est.-Permanente'],
+['BCAR','37','45','40.4408','S','58','18','3.9423','W','150.394','-','-','Est.-Permanente'],
+['DORE','36','18','54.3626','S','57','40','51.5848','W','34.065','-','Dolores','Est.-Permanente'],
+['GVIL','35','1','57.3609','S','63','0','49.1131','W','148.627','-','-','Est.-Permanente'],
+['IGM1','34','34','20.0773','S','58','26','21.5496','W','50.694','3557-7-3','Ciudad-de-Bs.-As.','Est.-Permanente'],
+['LPGS','34','54','24.2824','S','57','55','56.2783','W','29.875','3557-14-3','La-Plata','Est.-Permanente'],
+['MPL2','38','0','20.7624','S','57','34','16.6703','W','53.592','3957-2-2','Mar-del-Plata','Est.-Permanente'],
+['NESA','40','6','19.4151','S','64','27','14.4171','W','83.111','-','-','Est.-Permanente'],
+['PATA','40','47','48.1213','S','62','59','21.7822','W','61.155','-','Carmen-de-Patagones','Est.-Permanente'],
+['PEBA','33','56','44.9328','S','60','33','44.8923','W','94.414','-','Pergamino','Est.-Permanente'],
+['PEJO','35','48','22.7686','S','61','53','40.6991','W','110.152','-','-','Est.-Permanente'],
+['RUFI','34','15','46.4002','S','62','43','34.2015','W','148.693','-','Santa-Fe','Est.-Permanente'],
+['SRLP','36','37','17.3980','S','64','16','49.4568','W','223.848','-','-','Est.-Permanente'],
+['SUAR','37','27','30.5999','S','61','55','52.6512','W','264.038','-','-','Est.-Permanente'],
+['UNRO','32','57','33.6706','S','60','37','42.3308','W','66.872','-','-','Est.-Permanente'],
+['VBCA','38','42','2.7655','S','62','16','9.2176','W','59.479','-','Bahia-Blanca','Est.-Permanente'],
+['VCON','33','13','41.0261','S','60','19','47.7617','W','62.297','-','Villa-Constitucion-(Santa-Fe)-','Est.-Permanente']] ;
+
+var lat = 0 ;
+var lon = 0 ;
+
 var xx = document.getElementById("demo");
 
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
+  } else {
     xx.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
 function showPosition(position) {
 
-    // Put your point-definitions here
+    // Marcadores
     var markers = [
       [8.4, 49.0, 'Cities2'],
       [8.4, 49.0, 'Cities1'],
@@ -40,16 +85,88 @@ function showPosition(position) {
       [11.6, 48.1, 'Cities3']
     ];
 
-    markers.push([position.coords.longitude , position.coords.latitude, 'Cities3']);
-    xx.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
+    // Agrego marcador de la coordenada actual
+    markers.push([position.coords.longitude , position.coords.latitude, 'Cities2']);
+
+    // Print coordenada actual
+    // xx.innerHTML = "Latitude: " + position.coords.latitude +
+    // "<br>Longitude: " + position.coords.longitude;
+
+    lat =  position.coords.latitude;
+    lon =  position.coords.longitude;
+
+    const est_name = [];
+    const est_lat = [];
+    const est_lon = [];
+
+    for (var i = 0; i < estaciones.length-1; i++) {
+
+      var eslatgra = Number(estaciones[i][1]) + Number(estaciones[i][2])/60
+      + Number(estaciones[i][3])/3600;
+      var eslongra = Number(estaciones[i][5]) + Number(estaciones[i][6])/60
+      + Number(estaciones[i][7])/3600;
+
+      est_name.push(estaciones[i][0]);  //nota: reemplazar pushs por indexaciones para prevenir errores de shifteo
+      est_lat.push(eslatgra);
+      est_lon.push(eslongra);
+      markers.push([-eslongra, -eslatgra, 'Cities3']);
+    }
+
+    const dist_list = [];
+
+    for (var i = 0; i < estaciones.length-1; i++) {
+
+      var dlat = ( Math.abs(Number(est_lat[i]))-Math.abs(Number(lat)) ) * (2*Math.PI / 360) ;
+      var dlon = ( Math.abs(Number(est_lon[i]))-Math.abs(Number(lon)) ) * (2*Math.PI / 360) ;
+
+      var a = Math.sin(dlat/2)**2 + Math.cos(est_lat[i] * (2*Math.PI / 360)) * Math.cos(lat * (2*Math.PI / 360)) * Math.sin(dlon/2)**2 ;
+      var c = 2 * Math.asin(Math.sqrt(a)) ;
+      var distancia = 6371 * c ; // Radio Tierra 6371 km. Distancia en Km
+      dist_list.push(distancia);
+
+    }
+
+    var min_val = Math.min(...dist_list)
+    var min_index = dist_list.indexOf(min_val);
 
 
 
 
+    // Print datos de estacion y tiempos
+
+    var datos_estacion_str = '<br /><br />' + 'Coordenadas actuales de este dispositivo:   '+lat +' , '+lon+ " <br /><br />" +
+    'Estación permanente más cercana:  ' + estaciones[min_index][0] + "<br /><br />" +
+    'Distancia a ' + estaciones[min_index][0] + ':  ' + min_val.toFixed(2) + ' km.';
+
+    if (min_val < 30) {
+      datos_estacion_str += "<br /><br />" +'Tiempo de medición necesario para punto Base:  60 min.';
+    } else if (time < 20) {
+      greeting = "Good day";
+    } else {
+      greeting = "Good evening";
+    }
+
+    datos_estacion_str += "<br /><br />" + 'Tiempo de medición necesario para punto Azimuth:  30 min.'
+    if (min_val < 5) {
+      datos_estacion_str += "<br /><br />" +'Puede vincularse el punto Azimuth directamente a '+estaciones[min_index][0]+' por estar a menos de 5km.';
+    }
 
 
+    datos_estacion_str += "<br /><br />" +
+    'Verifique el estado de la estación '+estaciones[min_index][0]+' hacienco clic' +
+    '<a href="https://www.ign.gob.ar/NuestrasActividades/Ramsac/EstacionesPermanentes"> aqui. </a>'
+
+
+    document.getElementById("datos_estacion").innerHTML = datos_estacion_str;
+
+
+
+
+    // -------------------------------------------------------------------------
+    // Mapa
     // Adapted from: harrywood.co.uk
+    // -------------------------------------------------------------------------
+
     epsg4326 = new OpenLayers.Projection("EPSG:4326")
 
     map = new OpenLayers.Map({
@@ -76,22 +193,13 @@ function showPosition(position) {
     ]);
 
     projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
-    var lonLat = new OpenLayers.LonLat(-58.8569312 , -34.9110272).transform(epsg4326, projectTo);
-    var zoom = 6;
+    var lonLat = new OpenLayers.LonLat(-60.3569312 , -36.7110272).transform(epsg4326, projectTo);
+    var zoom = 5;
     if (!map.getCenter()) {
       map.setCenter(lonLat, zoom);
     }
 
-
-
-
-
-
-
-
-
-
-    var colorList = ["red", "blue", "yellow"];
+    var colorList = ["red", "blue", "black"];
     var layerName = [markers[0][2]];
     var styleArray = [new OpenLayers.StyleMap({ pointRadius: 6, fillColor: colorList[0], fillOpacity: 0.5 })];
     var vectorLayer = [new OpenLayers.Layer.Vector(layerName[0], { styleMap: styleArray[0] })];		// First element defines first Layer
@@ -123,10 +231,6 @@ function showPosition(position) {
     }
     }
   </script>
-
-
-
-
 
 
 </body>
