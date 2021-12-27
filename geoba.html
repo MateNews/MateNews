@@ -36,14 +36,14 @@
   .btn {
     display: "block";
     height: 150px;
-    width:100%;
+    width:90%;
     border: none;
     outline: none;
     padding: 17px 19px;
     background-color: #e6e6e6;
     cursor: pointer;
     margin: 0px 1px 2px 1px; /* top right bottom left */
-    font-size: 30px;;
+    font-size: 38px;;
     cursor: pointer;
     box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
   }
@@ -95,12 +95,16 @@
   <br>
   <br>
   <br>
+  <br>
+  <br>
   <button class='btn' onclick="getLocation()">Buscar estación permanente más cercana</button>
 </div>
 
 <p id="demo"></p>
 
 <p id="datos_estacion"></p>
+
+<br>
 
 <div id="map"></div>
 
@@ -223,30 +227,37 @@ function showPosition(position) {
 
 
 
-    // Print datos de estacion y tiempos
+    // Print datos de estacion y tiempos  #a7c16070 verde arba
 
 
-    var datos_estacion_str = '<br /><br />' + 'Coordenadas actuales de este dispositivo:   '+lat +' , '+lon+ " <br /><br />" +
-    'Estación permanente más cercana:  ' + estaciones[min_index][0] + "<br /><br />" +
-    'Distancia a ' + estaciones[min_index][0] + ':  ' + min_val.toFixed(2) + ' km.';
+    var datos_estacion_str =
+
+    '<br />' + '<b>Coordenadas actuales de este dispositivo:   </b><br />'+
+    lat +' , '+lon+ " <br /><br />" +
+
+    '<b>Estación permanente más cercana:  </b><br />' +
+     estaciones[min_index][0] + "<br /><br />" +
+
+    '<b>Distancia a ' + estaciones[min_index][0] + ':  </b><br />' +
+     min_val.toFixed(2) + ' km.';
 
 
     if (min_val < 30) {
-      datos_estacion_str += "<br /><br />" +'Tiempo de medición necesario para punto Base:  60 min.';
+      datos_estacion_str += "<br /><br />" +'<b>Tiempo de medición necesario para punto Base:</b>  60 min.';
     } else if (time < 20) {
       greeting = "Good day";
     } else {
       greeting = "Good evening";
     }
 
-    datos_estacion_str += "<br /><br />" + 'Tiempo de medición necesario para punto Azimuth:  30 min.'
+    datos_estacion_str += "<br /><br />" + '<b>Tiempo de medición necesario para punto Azimuth:</b>  30 min.'
     // if (min_val < 5) {
     //   datos_estacion_str += "<br /><br />" +'Puede vincularse el punto Azimuth directamente a '+estaciones[min_index][0]+' por estar a menos de 5km.';
     // }
 
     datos_estacion_str += "<br /><br />" +
-    'Verifique el estado de la estación '+estaciones[min_index][0]+' hacienco clic' +
-    '<a href="https://www.ign.gob.ar/NuestrasActividades/Ramsac/EstacionesPermanentes"> aqui. </a>'
+    '<b>Verifique el estado de la estación '+estaciones[min_index][0]+' hacienco clic </b>' +
+    '<a href="https://www.ign.gob.ar/NuestrasActividades/Ramsac/EstacionesPermanentes"> aquí. </a>'
 
 
 
