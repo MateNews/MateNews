@@ -4,6 +4,19 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Vinculaciones Ramsac-Geoba</title>
 
+
+
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans"
+  rel="stylesheet"
+/>
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+<link
+  href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
+  rel="stylesheet"
+/>
+
+
 <style>
 
   #mapdiv { height: 280px; }
@@ -13,28 +26,73 @@
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0.5em;
-    font-size: 98%;
+    font-size: 96%;
     line-height: 1.2;
     text-align:center;
   }
+
+
+  .btn {
+    border: none;
+    outline: none;
+    padding: 17px 19px;
+    background-color: #e6e6e6;
+    cursor: pointer;
+    margin: 0px 1px 2px 1px; /* top right bottom left */
+    font-size: 98%;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
+  }
+  .btn:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
+  .btn.active {
+    background-color: #161616;
+    color: white;
+  }
+
+
+  /* segundo mapa */
+
+  #map {
+    height: 280px;
+  }
+  .marker {
+    background-image: url('clip.jpg');
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
+  .mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+
 
 </style>
 
 </head>
 <body>
 
-<button onclick="getLocation()">Buscar estación permanente más cercana</button>
+<button class='btn' onclick="getLocation();">Buscar estación permanente más cercana</button>
 
 <p id="demo"></p>
 
+<div id="map"></div>
 
 <p id="datos_estacion"></p>
 
 <br>
 <br>
-  
-  
-<div id="mapdiv"></div>
+
+<!-- <div id="mapdiv"></div> -->
+
 
 
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
@@ -160,6 +218,7 @@ function showPosition(position) {
     '<a href="https://www.ign.gob.ar/NuestrasActividades/Ramsac/EstacionesPermanentes"> aqui. </a>'
 
 
+
     document.getElementById("datos_estacion").innerHTML = datos_estacion_str;
 
 
@@ -169,71 +228,137 @@ function showPosition(position) {
     // Mapa
     // Adapted from: harrywood.co.uk
     // -------------------------------------------------------------------------
+    //
+    // epsg4326 = new OpenLayers.Projection("EPSG:4326")
+    //
+    // map = new OpenLayers.Map({
+    //   div: "mapdiv",
+    //   displayProjection: epsg4326   // With this setting, lat and lon are displayed correctly in MousePosition and permanent anchor
+    // });
+    //
+    // //   map = new OpenLayers.Map("mapdiv");
+    // map.addLayer(new OpenLayers.Layer.OSM());
+    // map.addLayer(new OpenLayers.Layer.OSM("Wikimedia",
+    //   ["https://maps.wikimedia.org/osm-intl/${z}/${x}/${y}.png"],
+    //   {
+    //     attribution: "&copy; <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, under an <a href='http://www.openstreetmap.org/copyright' title='ODbL'>open license</a>. <a href='https://www.mediawiki.org/wiki/Maps'>Wikimedia's new style (beta)</a>",
+    //     "tileOptions": { "crossOriginKeyword": null }
+    //   })
+    // );
+    // // See https://wiki.openstreetmap.org/wiki/Tile_servers for other OSM-based layers
+    //
+    // map.addControls([
+    //   new OpenLayers.Control.MousePosition(),
+    //   new OpenLayers.Control.ScaleLine(),
+    //   new OpenLayers.Control.LayerSwitcher(),
+    //   new OpenLayers.Control.Permalink({ anchor: true })
+    // ]);
+    //
+    // projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
+    // var lonLat = new OpenLayers.LonLat(-60.3569312 , -36.7110272).transform(epsg4326, projectTo);
+    // var zoom = 5;
+    // if (!map.getCenter()) {
+    //   map.setCenter(lonLat, zoom);
+    // }
+    //
+    // var colorList = ["red", "blue", "black"];
+    // var layerName = [markers[0][2]];
+    // var styleArray = [new OpenLayers.StyleMap({ pointRadius: 6, fillColor: colorList[0], fillOpacity: 0.5 })];
+    // var vectorLayer = [new OpenLayers.Layer.Vector(layerName[0], { styleMap: styleArray[0] })];		// First element defines first Layer
+    //
+    // var j = 0;
+    // for (var i = 1; i < markers.length; i++) {
+    //   if (!layerName.includes(markers[i][2])) {
+    //     j++;
+    //     layerName.push(markers[i][2]);															// If new layer name found it is created
+    //     styleArray.push(new OpenLayers.StyleMap({ pointRadius: 6, fillColor: colorList[j % colorList.length], fillOpacity: 0.5 }));
+    //     vectorLayer.push(new OpenLayers.Layer.Vector(layerName[j], { styleMap: styleArray[j] }));
+    //   }
+    // }
+    //
+    // //Loop through the markers array
+    // for (var i = 0; i < markers.length; i++) {
+    //   var lon = markers[i][0];
+    //   var lat = markers[i][1];
+    //   var feature = new OpenLayers.Feature.Vector(
+    //     new OpenLayers.Geometry.Point(lon, lat).transform(epsg4326, projectTo),
+    //     { description: "marker number " + i }
+    //     // see http://dev.openlayers.org/docs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.Constants for more options
+    //   );
+    //   vectorLayer[layerName.indexOf(markers[i][2])].addFeatures(feature);
+    // }
+    //
+    // for (var i = 0; i < layerName.length; i++) {
+    //   map.addLayer(vectorLayer[i]);
+    // }
+    // }
 
-    epsg4326 = new OpenLayers.Projection("EPSG:4326")
 
-    map = new OpenLayers.Map({
-      div: "mapdiv",
-      displayProjection: epsg4326   // With this setting, lat and lon are displayed correctly in MousePosition and permanent anchor
+  // Segundo Mapa
+
+
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGFibG8xMjMzMjEiLCJhIjoiY2t4bnU2YnI5MGU3bjJ2cXV1YmhrbHA3cyJ9.-5XwO7zn-tEsWckebwkFgQ';
+
+    const geojson = {
+      'type': 'FeatureCollection',
+      'features': [
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [lon , lat]
+          },
+          'properties': {
+            'title': 'Ubicacion Actual',
+            'description': ' '
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [-est_lon[min_index] , -est_lat[min_index]]
+          },
+          'properties': {
+            'title': estaciones[min_index][0],
+            'description': 'Estacion Permanente'
+          }
+        }
+      ]
+    };
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [lon , lat],
+
+      zoom: 11-4*min_val/200
     });
 
-    //   map = new OpenLayers.Map("mapdiv");
-    map.addLayer(new OpenLayers.Layer.OSM());
-    map.addLayer(new OpenLayers.Layer.OSM("Wikimedia",
-      ["https://maps.wikimedia.org/osm-intl/${z}/${x}/${y}.png"],
-      {
-        attribution: "&copy; <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, under an <a href='http://www.openstreetmap.org/copyright' title='ODbL'>open license</a>. <a href='https://www.mediawiki.org/wiki/Maps'>Wikimedia's new style (beta)</a>",
-        "tileOptions": { "crossOriginKeyword": null }
-      })
-    );
-    // See https://wiki.openstreetmap.org/wiki/Tile_servers for other OSM-based layers
+    // add markers to map
+    for (const feature of geojson.features) {
+      // create a HTML element for each feature
+      const el = document.createElement('div');
+      el.className = 'marker';
 
-    map.addControls([
-      new OpenLayers.Control.MousePosition(),
-      new OpenLayers.Control.ScaleLine(),
-      new OpenLayers.Control.LayerSwitcher(),
-      new OpenLayers.Control.Permalink({ anchor: true })
-    ]);
-
-    projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
-    var lonLat = new OpenLayers.LonLat(-60.3569312 , -36.7110272).transform(epsg4326, projectTo);
-    var zoom = 5;
-    if (!map.getCenter()) {
-      map.setCenter(lonLat, zoom);
+      // make a marker for each feature and add it to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+            )
+        )
+        .addTo(map);
     }
+  }
 
-    var colorList = ["red", "blue", "black"];
-    var layerName = [markers[0][2]];
-    var styleArray = [new OpenLayers.StyleMap({ pointRadius: 6, fillColor: colorList[0], fillOpacity: 0.5 })];
-    var vectorLayer = [new OpenLayers.Layer.Vector(layerName[0], { styleMap: styleArray[0] })];		// First element defines first Layer
 
-    var j = 0;
-    for (var i = 1; i < markers.length; i++) {
-      if (!layerName.includes(markers[i][2])) {
-        j++;
-        layerName.push(markers[i][2]);															// If new layer name found it is created
-        styleArray.push(new OpenLayers.StyleMap({ pointRadius: 6, fillColor: colorList[j % colorList.length], fillOpacity: 0.5 }));
-        vectorLayer.push(new OpenLayers.Layer.Vector(layerName[j], { styleMap: styleArray[j] }));
-      }
-    }
-
-    //Loop through the markers array
-    for (var i = 0; i < markers.length; i++) {
-      var lon = markers[i][0];
-      var lat = markers[i][1];
-      var feature = new OpenLayers.Feature.Vector(
-        new OpenLayers.Geometry.Point(lon, lat).transform(epsg4326, projectTo),
-        { description: "marker number " + i }
-        // see http://dev.openlayers.org/docs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.Constants for more options
-      );
-      vectorLayer[layerName.indexOf(markers[i][2])].addFeatures(feature);
-    }
-
-    for (var i = 0; i < layerName.length; i++) {
-      map.addLayer(vectorLayer[i]);
-    }
-    }
   </script>
+
+
 
 
 </body>
