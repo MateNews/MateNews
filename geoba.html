@@ -22,7 +22,8 @@
   #mapdiv { height: 280px; }
 
   body, html {
-    background: #f7f7f7;
+    /* #f7f7f7 */
+    background: #ffffff;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0.5em;
@@ -33,15 +34,16 @@
 
 
   .btn {
+    display = "block";
     height: 150px;
-    width:60%;
+    width:100%;
     border: none;
     outline: none;
     padding: 17px 19px;
     background-color: #e6e6e6;
     cursor: pointer;
     margin: 0px 1px 2px 1px; /* top right bottom left */
-    font-size: 98%;
+    font-size: 30px;;
     cursor: pointer;
     box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
   }
@@ -58,13 +60,13 @@
   /* segundo mapa */
 
   #map {
-    height: 450px;
+    height: 680px;
   }
   .marker {
     background-image: url('clip.jpg');
     background-size: cover;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 100%;
     cursor: pointer;
   }
@@ -82,7 +84,19 @@
 </head>
 <body>
 
-<button class='btn' onclick="getLocation();">Buscar estación permanente más cercana</button>
+  <img src='index.png' width=100%>
+
+<div id='button'>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <button class='btn' onclick="getLocation()">Buscar estación permanente más cercana</button>
+</div>
 
 <p id="demo"></p>
 
@@ -95,6 +109,20 @@
 
 <!-- <div id="mapdiv"></div> -->
 
+
+
+
+<!-- <script>
+// Ocultar divs
+function hide() {
+  var d = document.getElementById("button");
+  if (d.style.display === "none") {
+    d.style.display = "block";
+  } else {
+    d.style.display = "none";
+  }
+}
+</script> -->
 
 
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
@@ -332,7 +360,7 @@ function showPosition(position) {
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
+      style: 'mapbox://styles/mapbox/streets-v11',   // streets-v11  navigation-day-v1 light-v10 outdoors-v11
       center: [lon , lat],
 
       zoom: 11-4*min_val/200
@@ -355,10 +383,18 @@ function showPosition(position) {
         )
         .addTo(map);
     }
+
+
+    // Ocultar boton
+    document.getElementById("button").style.display = "none";
+
   }
 
 
   </script>
+
+
+
 
 
 
