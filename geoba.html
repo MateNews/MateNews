@@ -34,7 +34,7 @@
 
 
   .btn {
-    display = "block";
+    display: "block";
     height: 150px;
     width:100%;
     border: none;
@@ -65,8 +65,8 @@
   .marker {
     background-image: url('clip.jpg');
     background-size: cover;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     cursor: pointer;
   }
@@ -100,9 +100,9 @@
 
 <p id="demo"></p>
 
-<div id="map"></div>
-
 <p id="datos_estacion"></p>
+
+<div id="map"></div>
 
 <br>
 <br>
@@ -225,9 +225,11 @@ function showPosition(position) {
 
     // Print datos de estacion y tiempos
 
+
     var datos_estacion_str = '<br /><br />' + 'Coordenadas actuales de este dispositivo:   '+lat +' , '+lon+ " <br /><br />" +
     'Estación permanente más cercana:  ' + estaciones[min_index][0] + "<br /><br />" +
     'Distancia a ' + estaciones[min_index][0] + ':  ' + min_val.toFixed(2) + ' km.';
+
 
     if (min_val < 30) {
       datos_estacion_str += "<br /><br />" +'Tiempo de medición necesario para punto Base:  60 min.';
@@ -238,10 +240,9 @@ function showPosition(position) {
     }
 
     datos_estacion_str += "<br /><br />" + 'Tiempo de medición necesario para punto Azimuth:  30 min.'
-    if (min_val < 5) {
-      datos_estacion_str += "<br /><br />" +'Puede vincularse el punto Azimuth directamente a '+estaciones[min_index][0]+' por estar a menos de 5km.';
-    }
-
+    // if (min_val < 5) {
+    //   datos_estacion_str += "<br /><br />" +'Puede vincularse el punto Azimuth directamente a '+estaciones[min_index][0]+' por estar a menos de 5km.';
+    // }
 
     datos_estacion_str += "<br /><br />" +
     'Verifique el estado de la estación '+estaciones[min_index][0]+' hacienco clic' +
