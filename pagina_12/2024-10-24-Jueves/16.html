@@ -4,14 +4,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Adrián Paenza: "Es increíble la vulgaridad, el desprecio y la inhumanidad del Presidente". El prestigioso matemático repudió a Javier Milei. </title>
+        <title>"Ante nuestra mirada horrorizada vemos crecer el huevo de la serpiente". Organismos de DDHH repudiaron la violencia verbal de Javier Milei. </title>
         <style>
             body {
                 max-width: 800px;
                 margin: auto;
                 padding: 5%;
             }
-            button {
+            .btnL {
                 background: #d1d1d1;
                 border-radius: 7px;
                 padding: 18px;
@@ -21,18 +21,64 @@
                 min-height: 70px;
             }
 
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
         </style>
     </head>
     <body>
-        <h1>Adrián Paenza: "Es increíble la vulgaridad, el desprecio y la inhumanidad del Presidente". El prestigioso matemático repudió a Javier Milei. </h1>
-        <p>El prestigioso matemático repudió a Javier Milei. El científico y periodista salió al cruce de Milei tras los ataques contra Ginés González García luego de su muerte y las amenazas a Cristina Kirchner este último fin de semana.. El matemático, divulgador y periodista Adrián Paenza cuestionó por la 750 al presidente Javier Milei después de sus últimas dos intervenciones, cuando en los últimos días atacó a Ginés González García tras su muerte y las amenazas a Cristina Kirchner durante el fin de semana.</p><p>“Es muy difícil sustraerse de todo lo que pasa. El pedido de juicio político es una cosa muy seria. Es repugnante lo sucedido. Estas son las dos últimas manifestaciones de las que uno tiene consciencia”, afirmó.</p><p>Y añadió: “Yo vivo un poco alejado del día a día, pero es increíble la vulgaridad, el desprecio, la inhumanidad. Cuando leí lo que dijo de Ginés González García me puso los pelos de punta pensar que este es el hombre que cunde el destino de Argentina”.</p><p>En concreto, Paenza repudió las críticas al exministro de Salud apenas horas después de que se conociera la noticia de su muerte y sin atender a todas las políticas públicas de relevancia que ejecutó a lo largo de su extensa trayectoria política.</p><p>González García murió el pasado 18 de octubre, a los 79 años, enfermo de cáncer. Entre algunos hitos, impulsó en 2002 la Ley de Medicamentos Genéricos, fue fundador y presidente de Fundación Isalud, gran impulsor de los derechos reproductivos y la Educación Sexual Integral (ESI) y del Plan Remediar.</p><p>Pero, el Presidente eligió recordarlo con insultos poco apropiados para un jefe de Estado. “Ayer dejó este mundo ese ser siniestro que fue el impresentable y repugnante ministro de salud que tuvimos”, dijo a la par que lo tildó de “hijo de puta”.</p><p>En tanto, las amenazas contra Cristina Kirchner ocurrieron este fin de semana cuando dijo que le da “morbo” ser quien le ponga el “último clavo” al “ataúd del kirchnerismo” con la expresidenta dentro.</p><p></p>
+        <div id="texto">
+            <h1>"Ante nuestra mirada horrorizada vemos crecer el huevo de la serpiente". Organismos de DDHH repudiaron la violencia verbal de Javier Milei. </h1>
+            <p>Organismos de DDHH repudiaron la violencia verbal de Javier Milei. . Los Organismos de Derechos Humanos repudiaron las palabras de Javier Milei referidas al "morbo" que le provoca "poner el último clavo en el cajón del kirchnerismo con Cristina adentro”. Para los organismos, esos dichos "constituyen una brutal acción de violencia verbal, psicológica y política, inaceptable en nuestro sistema democrático".</p><p>"Una vez más nos solidarizamos con la ex Presidenta Cristina Fernández de Kirchner, quien ha sido blanco de reiteradas y crueles agresiones por parte de sectores del poder hegemónico, quienes llegaron a alentar el increíble y no suficientemente investigado intento de magnicidio del 1 de setiembre de 2022", dice el comunicado que firman Madres de Plaza de Mayo Línea Fundadora, Familiares y Compañeros de los 12 de la Santa Cruz, la Asamblea Permanente por los Derechos Humanos, la Asamblea Permanente por los Derechos Humanos La Matanza, la Comisión Memoria Verdad y Justicia Zona Norte, la Fundación Memoria Histórica y Social Argentina, el Movimiento Ecuménico por los Derechos Humanos, la Liga Argentina por los Derechos Humanos y la Asociación Civil Buena Memoria</p><p>"Las expresiones de Milei, formuladas por quien inviste la Presidencia de la Nación, no son casuales. Sus palabras, cargadas de odio y misoginia, se convierten en una clara incitación a la violencia que degrada las instituciones políticas y alientan en la población el impulso hacia la intolerancia y la discriminación", denunciaron.</p><p>"Ante nuestra mirada horrorizada vemos crecer el huevo de la serpiente, aquella metáfora sobre el origen del nazismo y del fascismo, los cuales, en su ambición de poder, intentaron arrasar con todo aquello que les resultaba diferente, generando uno de los genocidios más trágicos del siglo XX", agregaron.</p><p>También sostuvieron que "es preciso demandar al Jefe de Estado, reclamando una retractación pública de sus palabras, pues el sentido figurado con el cual quiere encubrirlas, resulta insuficiente". "No podemos naturalizarla la violencia", concluyeron.</p><p></p>
+        </div>
         <br><br><br> 
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
         <br><br><br>        
-        <button onclick="compartir()">Compartir</button>
+        <button class="btnL" onclick="compartir()">Compartir</button>
         <br><br><br>
-        <button onclick="window.location.href='https://www.pagina12.com.ar/776898-adrian-paenza-es-increible-la-vulgaridad-el-desprecio-y-la-i'">Ver en web original</button>       
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/777067-un-morbo-peligroso'">Ver en web original</button>       
         <br><br><br>
-        <button onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
         <br><br><br>       
 
 
@@ -40,9 +86,9 @@
             function compartir() {
             if (navigator.share) {
                 navigator.share({
-                title: 'Adrián Paenza: "Es increíble la vulgaridad, el desprecio y la inhumanidad del Presidente". El prestigioso matemático repudió a Javier Milei. ', // Opcional, pero recomendado
-                text: 'Texto para compartir',  // Opcional
-                url: 'https://www.pagina12.com.ar/776898-adrian-paenza-es-increible-la-vulgaridad-el-desprecio-y-la-i' 
+                title: '"Ante nuestra mirada horrorizada vemos crecer el huevo de la serpiente". Organismos de DDHH repudiaron la violencia verbal de Javier Milei. ', // Opcional, pero recomendado
+                text: '"Ante nuestra mirada horrorizada vemos crecer el huevo de la serpiente". Organismos de DDHH repudiaron la violencia verbal de Javier Milei. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/777067-un-morbo-peligroso' 
                 })
                 .then(() => console.log('Contenido compartido exitosamente'))
                 .catch((error) => console.error('Error al compartir:', error));
@@ -53,6 +99,188 @@
             }
             }
         </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+                
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+                
+                
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+                
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+                
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+                
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+                
+                isPaused = false;
+                isReading = true;
+                
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+                
+                updateButtons(true);
+                updateProgress();
+                
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+
+        </script>
+
 
     </body>
     </html>
