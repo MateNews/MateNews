@@ -1,0 +1,285 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Los viajes de Josefina: empleada de estación de servicio de día, viuda negra de noche</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Los viajes de Josefina: empleada de estación de servicio de día, viuda negra de noche</h1>
+            <p>“Un día decidí hacerle caso a la brisa”, dijo Josefina S. en Instagram en el verano de este año. Así, posó feliz con el glaciar Perito Moreno a sus espaldas, en un viaje por la Patagonia, donde nadó en las lagunas Madre e Hija de Santa Cruz. Antes, había pasado por un resort con pileta. A fines del otoño último, se vistió de gala para una función en el Teatro Colón, mientras en la red Tellonym -que permite mensajes anónimos a usuarios- un habitué de su lugar de trabajo le declaraba su amor.</p><p>Josefina, de 21 años, con domicilio en Banfield, trabajaba en una estación de servicio en la avenida Coronel Roca de Villa Lugano, cerca del Autódromo Gálvez. Allí, atendía la tienda del lugar; su empleador, según sus registros, era la empresa que franquiciaba el lugar. Atendía la caja, hacía café, cosas de rutina, hasta el miércoles 16 de este mes, cuando la División Investigaciones de Organizaciones Criminales de la Policía de la Ciudad la arrestó por orden del juez Hugo Decaria.</p><p>El presunto delito: robo, un truco de viuda negra.</p><p>La víctima, un joven de su misma edad, aseguró que tuvo una cita con Josefina en mayo de este año. Bebió un trago, y luego ocurrió lo que suele ocurrir: se mareó, se durmió y despertó sin sus pertenencias; dinero en efectivo y, lo más doloroso de todo, un iPhone 15 Promax valuado en tres millones de pesos.</p><p>Así, el juez Decaria ordenó tareas a la Policía porteña. que identificó rápidamente a Josefina. Así, la siguieron de forma encubierta, mientras analizaban sus datos en redes sociales. Llegaron a su casa en Banfield y su lugar de trabajo, la estación de servicio. Ambos fueron allanados.</p><p>En su casa encontraron 70 mil pesos en efectivo, además de a Josefina misma, que fue detenida en el acto. Su celular Samsung fue secuestrado para posibles pericias. Su locker en la estación de servicio no tenía ningún elemento de interés.</p><p>Los delitos cometidos por presuntas viudas negras tuvieron un cierto auge en los últimos dos años en la Ciudad, con acusadas que provienen, en buena parte, de la villa Zavaleta de Barracas, casi siempre operando con cómplices masculinos que se encargan de pasarlas a buscar, a las ladronas y al botín. Las víctimas son, casi siempre, hombres mucho mayores que las acusadas. Josefina, dada la edad de su víctima, se corre de esta norma.</p><p>En junio pasado, el Departamento Inteligencia Contra el Crimen Organizado de la PFA entró a la Zavaleta tras una investigación a cargo del juez Alejandro Ferro y el fiscal Marcelo Retes. Se llevaron detenidas a Kiara G. de 18 años y a su amiga Eunice L., de 22, nacida en Paraguay, acusadas de robarle a un hombre en Belgrano R el 5 de diciembre pasado.</p><p>La víctima le aseguró a su hijo que había tenido una cita la noche anterior, con una chica jovencita que había conocido por Tinder. Pudo recordar su alias, “Nicole21″. Poco después, luego de una visita del SAME, cuando pudo ponerse de pie, descubrió todo lo que faltaba: tres notebooks, doce mil dólares, 300 mil pesos argentinos, un reloj y los guantes Harley Davidson para andar su moto.</p><p>También, todo su pequeño arsenal: ocho pistolas de diferentes calibres y 750 balas.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2024/10/28/los-viajes-de-josefina-empleada-de-estacion-de-servicio-de-dia-viuda-negra-de-noche/'">Ver en web original</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br>
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Los viajes de Josefina: empleada de estación de servicio de día, viuda negra de noche', // Opcional, pero recomendado
+                text: 'Los viajes de Josefina: empleada de estación de servicio de día, viuda negra de noche',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2024/10/28/los-viajes-de-josefina-empleada-de-estacion-de-servicio-de-dia-viuda-negra-de-noche/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
+    

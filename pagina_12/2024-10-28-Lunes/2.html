@@ -1,0 +1,285 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La respuesta de la UBA a los ataques de Milei. Auditorías, autonomía, presupuesto y una presentación ante la Justicia. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>La respuesta de la UBA a los ataques de Milei. Auditorías, autonomía, presupuesto y una presentación ante la Justicia. </h1>
+            <p>Auditorías, autonomía, presupuesto y una presentación ante la Justicia. El rector de la Universidad de Buenos Aires anunció que se objetó judicialmente la decisión del Gobierno de auditar a las casas de alto estudios a través de la SIGEN, cuando esa tarea corresponde legalmente a la AGN. También advirtió que si sigue el desfinanciamiento ”quizás en el futuro cercano no se pueda sostener” la actividad.. Las auditorías de Milei. El reclamo por el presupuesto. Las autoridades de la Universidad de Buenos Aires (UBA) advirtieron que debido a los embates presupuestarios del gobierno nacional contra las universidades, es probable que esa casa de estudios “no se pueda sostener” en “un futuro cercano”. Además, ratificaron que se objetó ante la Justicia la decisión de la administración de Javier Milei de auditar los gastos de las casas de altos estudios por afuera de las instituciones designadas a esos efectos, tal y como lo establece la legislación vigente que resguarda la autonomía universitaria.</p><p>La presentación de la UBA consistió en una acción declarativa de certeza para dejar claro que la Auditoría General de la Nación (AGN), los poderes Ejecutivo y Legislativo, y la propia Auditoría de la UBA son los encargados de realizar los controles sobre los que el Gobierno quiere avanzar.</p><p>“No nos oponemos a las auditorías. Todo lo contrario, nos presentamos ante la Justicia para que ella decida si todo está dentro del marco vigente y acataremos lo que ella decida”, puntualizó el rector de esa casa de estudios, Ricardo Gelpi.</p><p>Los anuncios y las consideraciones fueron una respuesta a los ataques del Jefe de Estado, quien volvió a arremeter contra esas instituciones al grito de “las universidades están sucias”.</p><p>Durante una conferencia de prensa realizada esta mañana, el rector, integrantes del Consejo Superior y los decanos de las distintas facultades advirtieron que no es la Sindicatura General de la Nación (SIGEN) la que debe auditar, tal como lo exige el Gobierno.</p><p>El secretario de Hacienda de esa casa de estudios, Matías Ruiz, reiteró que los controles ya existen. "Los informes le llegan mensualmente al Ministerio de Capital Humano al máximo nivel de detalle de gastos establecidos", señaló.</p><p>En este sentido, recalcó que "nunca la UBA se ha negado en hacer las auditorías, de hecho, queremos que sean más siempre dentro del marco de las leyes. Está Universidad ha decidido proponer una consulta externa".</p><p>Además, Ruiz sostuvo que "la SIGEN no aporta transparencia porque hay informes que la universidad presenta que no son publicados. La universidad informa todas las auditorías y está en la página web porque son públicas. No es nuestra palabra, sino que es algo que pueden ver todas y que tiene el Poder Ejecutivo. La UBA rinde el 100 por ciento de los fondos, está todo detallado".</p><p>Durante la conferencia, las autoridades dejaron claro que “las universidades nacionales no dependen en todas sus actividades del Poder Ejecutivo”, particularmente aquellas que son relativas a su actividad financiera.</p><p>No obstante, Gelpi advirtió que debido al bajo presupuesto que el gobierno de Javier Milei le quiere otorgar a las universidades nacionales ”quizás en el futuro cercano no se pueda sostener” la plena actividad del sector.</p><p></p><p>"Se ha desfinanciado y eso es obvio, la UBA está haciendo un esfuerzo enorme, como también pasa con el Conicet que es una institución con la que estamos íntimamente ligados", expresó el rector.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/778156-la-respuesta-de-la-uba-a-los-ataques-de-milei'">Ver en web original</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br>
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La respuesta de la UBA a los ataques de Milei. Auditorías, autonomía, presupuesto y una presentación ante la Justicia. ', // Opcional, pero recomendado
+                text: 'La respuesta de la UBA a los ataques de Milei. Auditorías, autonomía, presupuesto y una presentación ante la Justicia. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/778156-la-respuesta-de-la-uba-a-los-ataques-de-milei'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
+    
