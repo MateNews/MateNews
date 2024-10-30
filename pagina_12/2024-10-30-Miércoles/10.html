@@ -1,0 +1,285 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Con ollas populares y cortes, las organizaciones sociales se suman al paro de transporte. 500 protestas en todo el país. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Con ollas populares y cortes, las organizaciones sociales se suman al paro de transporte. 500 protestas en todo el país. </h1>
+            <p>500 protestas en todo el país. En Ciudad, la principal movilización será al mediodía en Plaza Constitución donde la UTEP, el Frente Piquetero y Territorios en Lucha confluirán con Camioneros, universitarios y docentes. "Salimos a denunciar la crítica situación de hambre, diciembre está a la vuelta de la esquina", dicen.. Las organizaciones sociales se sumarán al paro de transportes de este miércoles haciendo ollas populares y cortes. Anunciaron 500 protestas en todo el país: una jornada nacional de lucha contra el hambre. En la Ciudad de Buenos Aires, la principal estará en la plaza Constitución, al mediodía, donde la UTEP, el Frente de Lucha Piquetero y Territorios en Lucha -los tres agrupamientos de las organizaciones sociales- confluirán con el sindicato de Camioneros y con docentes y estudiantes universitarios. En la plaza harán una olla popular y clases públicas.</p><p>Las manifestaciones piqueteras, sin embargo,  van a arrancar más temprano. Comenzarán a las 9.30, en el Obelisco, sostenidas por el ala más de izquierda -el Frente de Lucha Piquetero, Territorios en Lucha- y una delegación, más chica, de la UTEP. A las 11, los manifestantes del Obelisco se trasladarán también a Constitución.</p><p>El AMBA, simultáneamente, estará salpicado de cortes y ollas en las plazas. Los habrá en Moreno, La Matanza, Tigre, José C. Paz, Berazategui, La Plata, Lanús, Presidente Perón, entre otros municipios.</p><p>La modalidad de las protestas, sobre todo en el AMBA y el interior del país, quedaron libradas a las posibilidades que tenga o que estime posible cada grupo, en su localidad. Los dirigentes hablan de hacer cortes de ruta, pero sobre todo ollas populares en las plazas.</p><p>“Salimos a la calle para denunciar la crítica situación de hambre. Los alimentos siguen sin llegar a los comedores comunitarios, la situación en los barrios está muy compleja, diciembre está a la vuelta de la esquina y es importante exigirle al gobierno que restablezca el envío de alimentos. Todos los días hay mujeres que se acercan a nuestros merenderos a pedir algo para poder alimentarse, abuelos, cada vez más personas en situación de calle”, señaló Dina Sánchez, referenta de la UTEP.</p><p>Para las organizaciones sociales, la jornada es un paso en el esfuerzo para actuar en un solo bloque y tender lazos con otros sectores, de la clase media, en la resistencia a las políticas del gobierno de Milei.</p><p>“Creemos que es muy importante confluir con los sindicatos, con los trabajadores del transporte, con gremios que están siendo muy agredidos como los docentes, con los estudiantes”, agregó Silvia Saravia. La coordinadora territorial del Libres del Sur es, además de dirigenta de la organización social,  docente.</p><p>"La eliminación del FONID por ejemplo, hizo que el salario docente se haya depreciado un 10 por ciento promedio”, indicó. “Los comedores comunitarios siguen sin recibir alimentos por parte de la ministra Pettovello al tiempo que la indigencia se ha duplicado; los despidos en el Estado y su desfinanciamiento buscan desarticular políticas fundamentales para nuestro desarrollo soberano, desde el sistema de salud hasta las universidades públicas".</p><p>De esta manera, los movimientos sociales aportarán mayor visibilidad al paro de transportes convocado por el ala no dialoguista de la CGT (Camioneros, La Fraternidad, la Asociación Argentina de Aeronavegantes y la Asociación de Pilotos de Líneas Aéreas), y al que se plegó ATE Nacional y gremios docentes.</p><p>El Frente de Lucha Piquetero, liderado por Eduardo Belliboni, trazó un itinerario de medidas de luchas de aquí a diciembre. Tras la protesta de este miércoles, tiene definidas otras cuatro hasta llegar a diciembre: el 20 de noviembre, una nueva jornada contra el hambre, el 25 de noviembre un acampe piquetero y el 20 de diciembre, cuando se cumpla un nuevo aniversario de las jornadas del 2001, una movilización.</p><p>A su vez, la CTA Autónoma junto a Territorios en Lucha inició reuniones para armar, también para el mes diciembre, una marcha federal.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/778547-con-ollas-populares-y-cortes-las-organizaciones-sociales-se-'">Ver en web original</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br>
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Con ollas populares y cortes, las organizaciones sociales se suman al paro de transporte. 500 protestas en todo el país. ', // Opcional, pero recomendado
+                text: 'Con ollas populares y cortes, las organizaciones sociales se suman al paro de transporte. 500 protestas en todo el país. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/778547-con-ollas-populares-y-cortes-las-organizaciones-sociales-se-'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
+    
