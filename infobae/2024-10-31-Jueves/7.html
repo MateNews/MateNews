@@ -1,0 +1,285 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tras la salida de Mondino, el Gobierno iniciará una auditoría del personal de la Cancillería</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Tras la salida de Mondino, el Gobierno iniciará una auditoría del personal de la Cancillería</h1>
+            <p>Lo esencial: el Gobierno anunció una auditoría en la Cancillería tras la salida de Diana Mondino como canciller. Su reemplazo, Gerardo Werthein, asumirá con la tarea de identificar dentro del ministerio a aquellos que impulsen “agendas enemigas de la libertad”. En un contexto de transformación en la política exterior, el Poder Ejecutivo busca reforzar los valores democráticos en su cuerpo diplomático y se posiciona abiertamente contra regímenes que violen los derechos humanos, como el cubano.</p><p>A través de un comunicado, el Gobierno oficializó la salida de Diana Mondino del Ministerio de Relaciones Exteriores y anunció que iniciará una auditoría sobre el personal de la Cancillería para identificar “impulsores de agendas enemigas de la libertad”.</p><p>La medida fue informada luego de que la funcionaria votara a favor de Cuba en una Asamblea de la ONU, donde se debatía levantar el embargo de Estados Unidos a la dictadura que conduce Miguel Díaz-Canel. La delegación argentina se sumó al apoyo casi unánime a la isla, en contraste con los votos en contra de EE.UU. e Israel y la abstención de Moldavia.</p><p>Ante este contexto, Javier Milei expulsó a Mondino de su gabinete y en un documento difundido en horas de la tarde advirtieron: “La República Argentina defenderá los mencionados principios en todos los foros internacionales en los que participa y el Poder Ejecutivo iniciará una auditoría del personal de carrera de la Cancillería, con el objetivo de identificar impulsores de agendas enemigas de la libertad”.</p><p>Sobre la salida de la ahora ex canciller, la Oficina del Presidente informó que su renuncia al cargo ya fue presentada y comunicó de manera oficial que en su lugar asumirá el actual embajador en los Estados Unidos, Gerardo Werthein, quien “liderará la continuidad de la transformación en la política exterior de nuestro país”, según remarcaron.</p><p>En el texto difundido, además, reiteraron la postura del Gobierno el área: “La Argentina atraviesa un período de cambios profundos, y esta nueva etapa exige que nuestro cuerpo diplomático refleje en cada decisión los valores de libertad, soberanía y derechos individuales que caracterizan a las democracias occidentales”.</p><p>Y añadieron en referencia al tema tratado este miércoles en la ONU: “En este sentido, nuestro país se opone categóricamente a la dictadura cubana y se mantendrá firme en la promoción de una política exterior que condene a todos los regímenes que perpetúan la violación de los derechos humanos y las libertades individuales”.</p><p>Con 187 votos a favor, 2 en contra (Estados Unidos e Israel) y 1 abstención (Moldavia), la resolución reitera la “necesidad de poner fin al embargo económico, comercial y financiero” que EE.UU. mantiene sobre la isla por más de seis décadas. Aunque esta resolución no es vinculante, su objetivo es subrayar el impacto de estas sanciones sobre la economía cubana. Lo llamativo fue que los únicos dos que votaron en contra fueron los principales aliados de Argentina desde la llegada de Javier Milei al Gobierno.</p><p>El canciller cubano, Bruno Rodríguez Parrilla, se dirigió a la Asamblea General antes de la votación, criticando duramente la postura de la administración de Joe Biden, quien, según él, “dejó intacto el régimen coercitivo de su predecesor”, Donald Trump, a pesar de las consecuencias humanitarias y económicas adversas para Cuba. Rodríguez Parrilla describió las sanciones como “medidas inhumanas” y “una guerra económica extrema”, y afirmó que buscan intimidar a otros países que defienden su soberanía.</p><p>Durante la sesión, el representante de Irán ante la ONU, Amir Saeid Iravani, manifestó su apoyo a Cuba, al calificar el embargo de “amenaza al multilateralismo” y acusó a EE.UU. de utilizar las sanciones como “un método para obtener objetivos nacionales mezquinos”.</p><p>El respaldo de la comunidad internacional a la causa cubana fue prácticamente el mismo que en la votación de 2023, aunque Ucrania, que se abstuvo entonces, optó por no participar esta vez. En respaldo de la resolución, la ONU presentó un informe exhaustivo que reúne objeciones al embargo de más de 180 países y 35 instituciones internacionales, entre ellas la OMS, Unicef y el Programa Mundial de Alimentos.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2024/10/30/tras-la-salida-de-mondino-el-gobierno-iniciara-una-auditoria-del-personal-de-la-cancilleria/'">Ver en web original</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br>
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Tras la salida de Mondino, el Gobierno iniciará una auditoría del personal de la Cancillería', // Opcional, pero recomendado
+                text: 'Tras la salida de Mondino, el Gobierno iniciará una auditoría del personal de la Cancillería',  // Opcional
+                url: 'https://www.infobae.com/politica/2024/10/30/tras-la-salida-de-mondino-el-gobierno-iniciara-una-auditoria-del-personal-de-la-cancilleria/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
+    

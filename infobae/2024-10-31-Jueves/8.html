@@ -1,0 +1,285 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Negocio multimillonario en Vaca Muerta: la argentina Pluspetrol compró los activos de ExxonMobil</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Negocio multimillonario en Vaca Muerta: la argentina Pluspetrol compró los activos de ExxonMobil</h1>
+            <p>La petrolera argentina Pluspetrol se aseguró la adquisición de activos estratégicos en Vaca Muerta, poniendo fin a la presencia de ExxonMobil en la industria argentina. Este acuerdo, valorado en más de 1.700 millones de dólares, según adelantaron fuentes del sector a Econojournal, incluye el 70% de las acciones de ExxonMobil Exploration Argentina, mientras que Qatar Energy retiene el 30% restante.</p><p>La transacción, que se inició hace un año, involucra siete áreas en Vaca Muerta, conocidas por sus reservas probadas de shale oil. Entre estas áreas destaca Bajo del Choique, reconocida por su alto potencial en el desarrollo de recursos no convencionales. Se estima que Pluspetrol, propiedad de las familias Rey y Poli, deberá invertir más de 500 millones de dólares en infraestructura para la evacuación de la producción, lo que subraya su compromiso financiero con el proyecto.</p><p>Cabe destacar que el área de Sierra Chata, operada por Mobil S.A., no forma parte de esta transacción y será negociada por separado.</p><p>ExxonMobil confirmó: " Se han acordado los términos y condiciones para la venta de ExxonMobil Exploration Argentina a favor de Pluspetrol. Continuamos trabajando junto con el comprador y el Gobierno de Neuquén para lograr la alineación de los resultados deseados”.</p><p>Además, aclararon que, como práctica corporativa, ExxonMobil no comenta sobre los detalles comerciales de las transacciones que realiza.</p><p>Por otro lado, fuentes allegadas a la compañía explicaron que se llegó a un acuerdo con Pluspetrol por ser la opción más competitiva y por ser empresa pública que cotiza en bolsa. “Exxon debe hacer una comunicación oficial en algún momento. Y también debe darse la natural aprobación del gobierno provincial por la cuestión del dominio minero, que le da derecho en la constitución. Son todos pasos naturales”, explicaron.</p><p>Entre las empresas que habían estado interesadas en el negocio estuvieron Vista junto a Tecpetrol, YPF y también PAE. Sin embargo, fue Pluspetrol quien finalmente concretó la adquisición.</p><p>Según estadísticas publicadas por la Secretaría de Energía de la Nación, durante los primeros nueve meses del año ExxonMobil produjo un total de 298.434 m3 de crudo en la cuenca Neuquina, más precisamente en Vaca Muerta. Se trata de un valor que representa el 1,5% del total de crudo producido en esa región.</p><p>Dentro de Vaca Muerta lideran YPF, con 10.957.463 m3 producidos en los primeros nueve meses del año, Vista Energy (2.444.886 m3) y Shell Argentina (1.451.583 m3).</p><p>Pluspetrol, por su parte, produjo 1.417.808 m3 en el período analizado. Por lo tanto, incorporando los activos de ExxonMobil, pasaría automáticamente a producir casi 300.000 m3 más, lo que implica de por sí un incremento cercano al 20%</p><p>En lo que respecta a la producción de gas, las estadísticas oficiales difundidas por el Gobierno señalan que ExxonMobil logró una producción de 207.029.000 m3 en los primeros nueve meses del año, lo que representó un 0,7% del total producido en la cuenca neuquina. Pluspetrol, en tanto, produjo 2.124.239.000 m3 de gas en esa zona entre enero y septiembre de este año. Sumando la producción de ExxonMobil, alcanzaría aproximadamente un valor de 2.330 millones.</p><p>Con esta adquisición, Pluspetrol no solo incrementa su capacidad productiva, sino que también fortalece su posición en el sector energético argentino y su influencia en la región de Vaca Muerta. La empresa se enfrenta ahora al desafío de optimizar la producción y maximizar el potencial de los activos adquiridos, un esfuerzo que requerirá inversiones adicionales en tecnología y sostenibilidad para asegurar una explotación eficiente y responsable de los recursos. Además, el acuerdo plantea un cambio en la dinámica del mercado, con la salida de ExxonMobil y el fortalecimiento de compañías locales.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/10/30/negocio-multimillonario-en-vaca-muerta-la-argentina-pluspetrol-compro-los-activos-de-exxonmobil/'">Ver en web original</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br>
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Negocio multimillonario en Vaca Muerta: la argentina Pluspetrol compró los activos de ExxonMobil', // Opcional, pero recomendado
+                text: 'Negocio multimillonario en Vaca Muerta: la argentina Pluspetrol compró los activos de ExxonMobil',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/10/30/negocio-multimillonario-en-vaca-muerta-la-argentina-pluspetrol-compro-los-activos-de-exxonmobil/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
+    

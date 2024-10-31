@@ -1,0 +1,285 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Indagaron a los detenidos y el abogado Fernando Burlando se sumó a la causa por la tragedia en el hotel de Villa Gesell</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Indagaron a los detenidos y el abogado Fernando Burlando se sumó a la causa por la tragedia en el hotel de Villa Gesell</h1>
+            <p>Lo esencial: el apart hotel Dubrovnik, ubicado en la Avenida 1 de Villa Gesell, colapsó la madrugada de este martes. Hay una mujer de 79 años que fue rescatada con vida y está internada en Mar del Plata. La fiscal indagó al capataz y a los tres albañiles. También se investiga al arquitecto responsable del proyecto y el accionar del Municipio. El operativo de rescate, con más de 350 efectivos y equipamiento avanzado, trabaja sin pausa para localizar a las víctimas.</p><p>La fiscal Verónica Zamboni indagó este miércoles por más de siete horas al capataz y a los tres albañiles del Apart Hotel Dubrovnik, que se derrumbó en la ciudad de Villa Gesell.</p><p>Tras el colapso, un vecino de 84 años falleció y su esposa, de 79, fue rescatada de los escombros y está hospitalizada en Mar del Plata. Mientras tanto, continúan las tareas para dar con los siete desaparecidos, quienes se alojaban en la planta baja y el primer piso de la propiedad que se desmoronó la madrugada del martes.</p><p>Según pudo saber Infobae, los imputados fueron identificados como Celso Paco Pérez, de 66 años, y Sergio Daniel Paco Laura (33), ambos de Villa Gesell; Miguel Andrés Choque Juchani, de 26 años y con domicilio en Ostende, y Diego Alberto González, de quien no se aportaron datos.</p><p>El capataz y los albañiles habían sido arrestados mientras huían del derrumbe. Todos quedaron imputados del delito de estrago culposo agravado por la muerte de Federico Ciocchini, un jubilado de 84 años oriundo de Balcarce, la única víctima fatal encontrada hasta el momento y que vivía en la propiedad lindera al hotel que sufrió daños estructurales tras el derrumbe.</p><p>Los cuatro imputados podrán enfrentar hasta cinco años de cárcel si son considerados culpables.</p><p>En paralelo, los dueños del hotel ya se presentaron en la fiscalía de Zamboni con un abogado. Fuentes del caso confirmaron a este medio que Fernando Burlando se constituyó en la causa como letrado de María Josefa Bonazza, la esposa de Ciocchini de 79 años y que está internada en Mar del Plata tras ser rescatada con vida de entre los escombros.</p><p>Mientras tanto, la Policía Bonaerense ingresó con una orden de presentación al estudio del arquitecto vinculado al lugar; su nombre fue encontrado en documentos de la Municipalidad de Villa Gesell. “Figura en los proyectos, al menos, hasta 2023″, asegura un investigador clave del caso.</p><p>Por lo pronto, las tareas de rescate continuaban este miércoles mientras se aguardaba la llegada de una grúa de mayor porte a la que trabaja en la zona cero. “La que hay es de 75 toneladas y esta noche arribaba una de 300 toneladas. Se ha llegado hasta el tercer piso, de la propiedad de 10 y dos subsuelos, que se desplomó. Se ha visto ambientes con muebles, posibles de ser habitados”, confiaron las fuentes del caso a este medio.</p><p>También dijeron que los perros que trabajan en binomios en el lugar han marcado dos zonas de interés, por lo que se refuerzan las tareas allí. Hay que destacar que la mayoría de los desaparecidos estaban alojados en la planta baja y el primer piso del hotel.</p><p>En el lugar son más de 350 los agentes de Bomberos y la Policía Bonaerense que colaboran para hallar a las víctimas entre los escombros: la fuerza provincial aportó un técnico geógrafo con un equipo similar a un radar, además del uso de canes y drones. Por las noches, se instalan 10 torres de iluminación con el objetivo de continuar las tareas las 24 horas.</p><p>La lista oficial de desaparecidos se amplió. Hasta este martes los identificados eran el plomero Mariano Troiano (47), Matías Chaspman, de 27 años y ayudante de plomería, y José Stefanic, de 25 y sobrino de la dueña, también era el encargado del edificio.</p><p>Sin embargo, se han sumado oficialmente los nombres de las otras cuatro personas desaparecidas:</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2024/10/30/derrumbe-en-villa-gesell-indagaron-a-los-detenidos-y-el-abogado-fernando-burlando-se-sumo-a-la-causa/'">Ver en web original</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br>
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Indagaron a los detenidos y el abogado Fernando Burlando se sumó a la causa por la tragedia en el hotel de Villa Gesell', // Opcional, pero recomendado
+                text: 'Indagaron a los detenidos y el abogado Fernando Burlando se sumó a la causa por la tragedia en el hotel de Villa Gesell',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2024/10/30/derrumbe-en-villa-gesell-indagaron-a-los-detenidos-y-el-abogado-fernando-burlando-se-sumo-a-la-causa/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
+    

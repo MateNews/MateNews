@@ -1,0 +1,285 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La historia de Gerardo Werthein, quien ya se prueba el traje de canciller. Reemplaza a Mondino tras la polémica por el voto a favor de Cuba. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>La historia de Gerardo Werthein, quien ya se prueba el traje de canciller. Reemplaza a Mondino tras la polémica por el voto a favor de Cuba. </h1>
+            <p>Reemplaza a Diana Mondino tras la polémica por el voto a favor de Cuba</p><p>Es miembro de una familia que en el último siglo expandió sus negocios hasta conformar uno de los conglomerados económicos más importantes e influyentes del país.</p><p></p><p>Una vida de negocios</p><p>Sus viajes con Milei</p><p>El embajador argentino en los Estados Unidos, Gerardo Werthein, será el nuevo ministro de Relaciones Exteriores. El Gobierno confirmó su designación tras el cese de Diana Mondino por el voto en favor de Cuba en la ONU.</p><p>La Argentina votó este miércoles en contra del embargo de Estados Unidos a Cuba en la Asamblea General de la ONU, donde se aprobó una resolución que pide poner fin al "bloqueo" a ese país. Tras esa toma de postura, Milei decidió desplazar a Mondino. El texto aprobado por la ONU pedía "poner fin al bloqueo económico comercial y financiero impuesto por los Estados Unidos de América contra Cuba" y fue presentado por el gobierno de la isla este miércoles en la ciudad de Nueva York. La votación tuvo luz verde con el respaldo de 187 países y solo dos en contra: Estados Unidos e Israel; mientras que Moldavia se abstuvo.</p><p></p><p>Es la primera vez desde la llegada de Milei a la Casa Rosada que Argentina no se alinea con el gobierno estadounidense ni con la administración israelí. De todos modos, la de este miércoles fue la 32° oportunidad en que la representación argentina en la ONU vota de esa manera.</p><p>Werthein tiene 68 años y fue presidente del Comité Olímpico Argentino entre 2009 y 2021 antes de sumarse al armado de Milei. Bajo su gestión, Buenos Aires fue sede de los Juegos Olímpicos de la Juventud en 2018. También integró el Comité Olímpico Internacional.</p><p>Forma parte de una de las familias más ricas de la Argentina, que llegó a ser propietaria de Telecom hasta su venta a Clarín en 2017. Se recibió de médico veterinario en la UBA y practica equitación. Asumió al frente de la embajada en Washington con el arribo de Milei a la presidencia.</p><p>El nuevo jefe del Palacio San Martín es bisnieto de León Werthein, un inmigrante que arribó desde Besarabia a la Argentina en 1904 junto a su mujer Ana, huyendo de los pogroms. El matrimonio se dedicó en un principio a la venta de ganado, frutas, semillas, agroquímicos y combustibles, pero las distintas generaciones que los sucedieron fueron expandiendo los negocios.</p><p>Hoy, con más de 90 años de historia, Grupo Werthein es uno de los holdings más grandes del país, y es propietario de empresas de distintas actividades, tanto en la Argentina, como en el Reino Unido y Estados Unidos. Gerardo Werthein dejó formar parte del grupo.</p><p></p><p>Como parte de la comitiva de Milei en su gira a Esatdos Unidos como presidente electo, lo acompañó a Nueva York y Washington. Allí estuvo con Milei en un almuerzo junto a Bill Clinton y el representante de Joe Biden para América Latina, Chris Dodd; y también en la reunión con el consejero de Seguridad Nacional de la Casa Blanca, Jack Sullivan, y el asesor especial de la Casa Blanca para cuestiones de América Latina, Juan González.</p><p>Además, acompañó a Milei en su visita al cementerio de Montefiore, más específicamente a “El Ohel”, sepulcro de Menachem Mendel Schneerson, también conocido como “el rebe de Lubavitch”, que fue el séptimo líder de la dinastía de Jabad Lubavitch y gran influencia para esa comunidad judía.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/778990-la-historia-de-gerardo-werthein-el-nuevo-canciller-argentino'">Ver en web original</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br>
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La historia de Gerardo Werthein, quien ya se prueba el traje de canciller. Reemplaza a Mondino tras la polémica por el voto a favor de Cuba. ', // Opcional, pero recomendado
+                text: 'La historia de Gerardo Werthein, quien ya se prueba el traje de canciller. Reemplaza a Mondino tras la polémica por el voto a favor de Cuba. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/778990-la-historia-de-gerardo-werthein-el-nuevo-canciller-argentino'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+          <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
+    
