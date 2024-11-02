@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tragedia en Carmen de Areco: al menos 4 policías murieron por el choque de un camión y una combi</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Tragedia en Carmen de Areco: al menos 4 policías murieron por el choque de un camión y una combi</h1>
+            <p>Esta mañana, alrededor de las 7, un camión cisterna que transportaba combustible y circulaba por la Ruta Nacional 7 fue impactada por una combi que circulaba por la Ruta Provincial 51 y trasladaba personal policial de la Dirección de Caballería de la Policía bonaerense.</p><p>Por la violencia del impacto, fallecieron cuatro efectivos oriundos de Bahía Blanca. El personal policial se dirigía a hacer un servicio de cancha en el partido de fútbol entre los equipos Brown de Adrogué y Atlético Rafaela, a disputarse hoy a las 16 horas en el Estadio Único de San Nicolás.</p><p>En el lugar del accidente, del cual varios de los vecinos se quejaron por la peligrosidad de este cruce de rutas y el estado vial del mismo, intervino personal del SIES (Sistema Integrado de Emergencias Sanitarias), Bomberos, agentes de tránsito y la Policía de Carmen de Areco, quienes realizaron las pericias y el relevamiento para investigar las causas del siniestro.</p><p>Hasta el momento se contabilizaron 16 heridos, tres de ellos de gravedad, que fueron trasladados por el SIES al Hospital Nuestra Señora del Carmen, que forma parte de la red de nosocomios de la provincia de Buenos Aires. Fuentes del Ministerio de Salud de la Provincia de Buenos Aires, quien está asistiendo y coordinando a atención de salud del siniestro, confirmaron a Infobae que uno de los heridos posee “traumatismo de cráneo grave” y que se encuentra siendo trasladado al Hospital San José de Pergamino a cargo del SIES provincial, con pronóstico reservado.</p><p>Otro de los policías sufrió un “traumatismo de abdomen” por lo cual fue intervenido quirúrgicamente y se recupera en forma estable en terapia intensiva del nosocomio de Carmen de Areco. El herido de gravedad restante poseía un cuadro de “traumatismo maxilofacial grave” que lo llevó a ser derivado hacia un centro de mayor complejidad mediante un helicóptero del SIES.</p><p>“El conductor del camión está bien”, informó más temprano Hugo Martínez, jefe de Bomberos de Carmen de Areco, al canal TN. Además, informó que parte de la ruta está cortada, debido al brutal siniestro vial. Y varios vehículos que circulaban por la zona fueron desviados por las banquinas.</p><p>A fines de marzo de 2019, otro trágico accidente sucedió también en la intersección de la Ruta Nacional 7 y Ruta Provincial 51, dejando un saldo de 9 muertos, cuatro de ellos, menores de edad.</p><p>Un camión Volvo FM380 con acoplado que circulaba desde Luján hacia Junín colisionó con una camioneta Chevrolet S-10 que circulaba desde Arrecifes hacia Chivilcoy con 16 ocupantes pertenecientes a la comunidad gitana. La mayoría de las víctimas viajaban en la caja de la camioneta sin ningún tipo de seguridad y terminaron esparcidas sobre el asfalto.</p><p>De las 16 personas que se trasladaban en la camioneta fallecieron nueve, cinco adultos y cuatro menores. Los siete ocupantes restantes fueron trasladados al hospital de Carmen de Areco.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/2024/11/02/tragedia-en-carmen-de-areco-murieron-4-policias-en-un-choque-entre-un-camion-cisterna-y-una-combi/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Tragedia en Carmen de Areco: al menos 4 policías murieron por el choque de un camión y una combi', // Opcional, pero recomendado     
+                text: 'Tragedia en Carmen de Areco: al menos 4 policías murieron por el choque de un camión y una combi',  // Opcional
+                url: 'https://www.infobae.com/sociedad/2024/11/02/tragedia-en-carmen-de-areco-murieron-4-policias-en-un-choque-entre-un-camion-cisterna-y-una-combi/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

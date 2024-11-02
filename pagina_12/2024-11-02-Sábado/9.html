@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Orgullo 2024: todo lo que tenés que saber sobre la marcha. Por qué marchamos, dónde, cuándo y qué pasa si llueve. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Orgullo 2024: todo lo que tenés que saber sobre la marcha. Por qué marchamos, dónde, cuándo y qué pasa si llueve. </h1>
+            <p>Por qué marchamos, dónde, cuándo y qué pasa si llueve</p><p>De los streamers a Valeria Lynch, la convocatoria de hoy reunirá a distintas generaciones que se unirán en un grito de lucha contra el gobierno de Javier Milei, sin perder el glamour ni el espíritu festivo.</p><p>“Bueno, nos vemos mañana“, le dice una clienta, de alrededor de ochenta años a Rocío, camarera de un restaurante de Recoleta, en sus veinte. “No, mañana no vengo“, le responde. “Ah, ¿por?”. ”Porque es la Marcha del Orgullo LGBT y voy a estar ahí todo el día”.</p><p>Por más que el gobierno de los hermanos Milei insista en volver a la época de las cavernas, la sociedad argentina dio pasos significativos en los últimos años. Si en las primeras marchas la visibilidad era un enigma a resolver, hoy es el punto de partida de un orgullo que se refleja en muchos aspectos más. Mañana se marchará por todo lo conseguido, por lo pendiente y por lo que nos quieren hacer retroceder.</p><p>La inclasificable Diana Mondino, recordada por haber comparado al matrimonio igualitario con tener piojos, ya no es la canciller de la Argentina. Sin embargo, el gobierno de los Milei sigue firme en su cruzada anti-derechos y prometen seguir levantando el tono. De hecho, se espera que hoy envíen a algunos de sus jóvenes seguidores a provocar a los manifestantes.</p><p>Será un largo día de lucha, reivindicación y fiesta.</p><p>La Ciudad de Buenos Aires será la sede de la 33° edición de la Marcha del Orgullo. Es el evento más importante de este tipo en Argentina, y como en años anteriores, el glitter y los brillos convivirán con reclamos de neto corte político. Eso, lejos de ser una contradicción, constituye el eje de la identidad LGBT. Las consignas de hoy serán: “No hay libertad sin derechos ni políticas públicas”, “No hay libertad con ajuste y represión”  y “¡Ley Integral Trans y Ley Antidiscriminatoria ya!”.</p><p>Por más que se esperen lluvias hasta pasado el mediodía, desde la comisión organizadora avisaron que la fiesta no se suspende. Se estima que el sol asome cerca de las dos de la tarde, justo antes del desfile por avenida de Mayo.</p><p>La concentración empezará a las 12 de la mañana en Plaza de Mayo, con ferias y stands, para empezar a marchar a las 16 de la tarde hacia el Congreso. Sobre el escenario habrá discursos de referentes comunitarios y la jornada cerrará con shows musicales. La estrella encargada del cierre será nada más y nada menos que Valeria Lynch.</p><p>A lo largo de la marcha, entre las carrozas y los desfiles, se transmitirá en vivo un programa de Luzu TV. La marcha del Orgullo como un puente intergeneracional.</p><p>Esta es la primera marcha que se da bajo el gobierno de Javier Milei, que decidió por primera vez no aportar fondos para la organización del evento, al tiempo que se promete combatir la “agenda de género” en el plano internacional y organiza foros de la extrema derecha como los que cubrió este diario. Por eso hay una sensación de urgencia, de inevitabilidad, en la comisión organizadora que espera convocar a una de las multitudes más grandes de los últimos años. El año pasado, sin ir más lejos, se congregaron cerca de un millón y trescientas mil personas.</p><p>La idea es mostrar de qué se trata la verdadera libertad: la de ser quienes queremos ser, la de amar a quienes queremos amar y la de ser como somos.</p><p>Ante los rumores de que los libertarios irán a provocar a los asistentes, desde la organización dieron a conocer medidas de prevención. La más importante tiene que ver con que si alguien advierte algo raro o peligroso se acerque a los voluntarios y voluntarias que van a estar asistiendo durante toda la jornada.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/779536-orgullo-2024-todo-lo-que-tenes-que-saber-sobre-la-marcha'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Orgullo 2024: todo lo que tenés que saber sobre la marcha. Por qué marchamos, dónde, cuándo y qué pasa si llueve. ', // Opcional, pero recomendado     
+                text: 'Orgullo 2024: todo lo que tenés que saber sobre la marcha. Por qué marchamos, dónde, cuándo y qué pasa si llueve. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/779536-orgullo-2024-todo-lo-que-tenes-que-saber-sobre-la-marcha'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
