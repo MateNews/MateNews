@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Colapinto quedó 12° en el Sprint: el problema que le hizo perder la pelea con Hamilton y el sobrepaso en el final.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Colapinto quedó 12° en el Sprint: el problema que le hizo perder la pelea con Hamilton y el sobrepaso en el final.</h1>
+            <p>Franco Colapinto volvió a redondear una buena actuación en la carrera Sprint del Gran Premio de Brasil en la Fórmula 1. El argentino se aprovechó de una mala largada de Lewis Hamilton, que perdió varias posiciones en el inicio del circuito de Interlagos, San Pablo, y bajó del 11° de la grilla de partida al 14°. El piloto argentino avanzó un puesto y se acomodó 13°, detrás de su compañero de equipo Alex Albon, que había arrancado noveno. Más tarde, el británico se reacomodó y terminó noveno.</p><p>Mientras buscaba adelantarse a su compañero de Williams, Colapinto aguantó todo lo que pudo a un agresivo Hamilton, quien lo atacó de forma permanente y lo superó tras 20 vueltas. Franco, que sufrió por los problemas en el auto del Haas que iba delante suyo, cayó en ese momento al 14° puesto. Como Nico Hülkenberg detuvo su vehículo, el argentino volvió a quedar 13°, pero con dos vueltas para el cierre.</p><p>El virtual safety parecía que iba a cerrar la carrera como estaba, pero la bandera verde habilitó un último giro. Fue allí que Frano aceleró en la recta principal del Autódromo José Carlos Pace y le ganó la colocación a Oliver Bearman (reemplazó a Magnussen en Haas) y cruzó 12° la línea de llegada, para redondear otra buena actuación.</p><p>“(A Hamilton) lo tuve atrás todas las vueltas que pude hasta que me pasó. Fue una carrera buena. No me puedo quejar. Avanzamos un par de puestos, que era lo que queríamos. Ahora a trabajar para intentar hacer una buena clasificación y una buena carrera mañana”, declaró Colapinto luego de la actividad en el circuito de Interlagos esta mañana.</p><p>En la previa, Colapinto y Hamilton habían tenido un divertido encuentro y cruce en las redes sociales. El argentino hizo un posteo en Instagram donde se mostró tomándose una selfie con el británico y luego mostró otra foto del año pasado, cuando todavía estaba en la Fórmula 3 y aparecía detrás del piloto de Mercedes, a lo lejos, fuera de foco. “Muchas cosas pueden pasar en un año...”, fue su mensaje. Hamilton compartió el posteo de Colapinto en sus historias de Instagram y además su escudería, Mercedes, le hizo un divertido pedido en X (ex Twitter). “No seas tímido, publica la selfie, Franco”. Además, en los comentarios del posteo del argentino, insistieron: “Necesitamos ver la selfie”.</p><p>En diálogo exclusivo con Infobae, Franco contó el detrás de escena de su posteo: “En la conferencia de prensa le decía a Hamilton que hace un año vine acá como invitado por el equipo Williams. Esa vez le sacaron una foto a él y yo estaba detrás con el teléfono, sacándole una foto a él y salió borrosa. Le conté la historia y se reía. Estar en una conferencia de prensa con él es una locura. Pensar en todo lo que me pasó en poco tiempo”.</p><p>Lando Norris ganó la carrera tras la orden de McLaren a Oscar Piastri de cederle la posición. Max Verstappen quedó tercero. No obstante, las autoridades de la Fórmula 1 indicaron que “los comisarios están investigando a Max Verstappen por una infracción del coche de seguridad virtual”. Vale mencionar que el neerlandés ya tiene una sanción de cinco posiciones para la carrera del domingo.</p><p>La Sprint es una carrera más corta, de 100 kilómetros, con una duración aproximada de media hora. Los corredores no tienen la obligación de realizar una parada en boxes, reparte 8 puntos para el ganador, 7 para el segundo, 6 para el tercero, 5 para el cuarto, 4 para el quinto, 3 para sexto, 2 para el séptimo y uno para el octavo.</p><p>La próxima actividad en San Pablo será la clasificación, a partir de las 15:30, de cara a la carrera estelar del domingo. Mañana, el Gran Premio de Brasil tiene horario de largada a partir de las 14 (hora local y también de Argentina).</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/deportes/2024/11/02/gran-largada-el-problema-que-le-hizo-perder-la-pelea-con-hamilton-y-el-sobrepaso-en-el-final-lo-mejor-de-colapinto-en-el-gp-de-brasil/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Colapinto quedó 12° en el Sprint: el problema que le hizo perder la pelea con Hamilton y el sobrepaso en el final.', // Opcional, pero recomendado     
+                text: 'Colapinto quedó 12° en el Sprint: el problema que le hizo perder la pelea con Hamilton y el sobrepaso en el final.',  // Opcional
+                url: 'https://www.infobae.com/deportes/2024/11/02/gran-largada-el-problema-que-le-hizo-perder-la-pelea-con-hamilton-y-el-sobrepaso-en-el-final-lo-mejor-de-colapinto-en-el-gp-de-brasil/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
