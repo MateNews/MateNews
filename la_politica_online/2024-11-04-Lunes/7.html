@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Un avión de Flybondi casi tiene un accidente por falta de controles y mantenimiento02/11/2024LPOEl piloto tuvo un caótico aterrizaje en Aeroparque  con 179 pasajeros a bordo y salió sin revisión a Mendoza.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Un avión de Flybondi casi tiene un accidente por falta de controles y mantenimiento02/11/2024LPOEl piloto tuvo un caótico aterrizaje en Aeroparque  con 179 pasajeros a bordo y salió sin revisión a Mendoza.</h1>
+            <p>Lo peligroso de la situación, ademas de la maniobra para no volcar, es que el avión siguió operativo para viajar a Mendoza sin ninguna revisión ni control poniendo en riesgo a todos los que estaban a bordo.</p><p>LPO DAILY</p><p>Fuentes entendidas en la materias explicaron a LPO si bien no es obligatorio la revisión cuando se pueda tratar de un error humano, Fly Bondi suele tener este tipo de decisiones que no garantizan la seguridad de sus aviones.</p><p>"Si una cosa así pasará con un avión de Aerolíneas, dentro de su política tiene una revisión técnica porque ellos tienen técnicos en las bases, en cada aeropuerto, que revisan, se fijan que todo esté bien y presentan plan de vuelo y vuelven a salir. Flybondi no suele tener en todas las bases técnicos, de hecho tienen muy pocos técnicos para todo el país y casi siempre esos técnicos están viajando porque casi siempre tienen problemas en todos los aeropuertos", agrega la fuente.</p><p>Esta empresa fue una de las grandes beneficiadas de la política de cielos abiertos que implementó Mauricio Macri en 2015 y que el gobierno libertario pretende implementar junto con la privatización de Aerolineas Argentinas.  En ese período de gobierno también presentó  irregularidades que llevó a los trabajadores vinculados al tránsito aéreo a no aceptar un plan de vuelo para quedar exento de lo que pueda hacer la empresa.</p><p>Otra fuente con experiencia en el sector afirmó LPO que "cuando compras un pasaje incluso ahí te dice que es bajo tu entera responsabilidad y es todo bajo la responsabilidad de Flybondi. A nosotros no nos perjudica porque la verdad es que con nuestra licencia nosotros como que pagamos ante la justicia. Si yo me equivoco en un plan de vuelo  o acepto uno que está mal y a ese avión le pasa algo, yo tengo que ir a la justicia a responder. Y en el caso que tenga que responder, respondo con mis bienes, no es que responda el Estado argentino por mí", comenta un trabajador del sector".</p><p>"Por eso,  la mayoría firmamos en disconformidad los planes de vuelo, porque no queremos quedar pegados a las millones de falencias que tiene esta empresa", agregó.</p><p>Según pudo saber LPO, al ser una responsabilidad absoluta de la empresa la decisión de revisión y cancelación de vuelos, la Administración Nacional de Aviación Civil (ANAC), la Empresa Argentina de Navegación Aérea (EANA) y la Junta de Transporte puede hacer algo si el piloto no lo declara como un accidente.</p><p>"Hay ahí un agujero medio negro pero funciona así porque es Flybondi, porque cualquier otra empresa lo que hace es detener la aeronave, revisarla, realizar y presentar un informe y después del informe realizar el plan de vuelo, lo cual siempre hace que los vuelos se demoren, pero ellos no lo hacen", detallan.</p><p>Esta fuente asegura que Flybondi "está exento de pagar un montón de cosas, impuestos, cargas y empleados. Tiene muy poca gente trabajando y la mayoría en pésimas condiciones laborales. Por eso tiene los pasajes más baratos. Si vos tenés un problema con Flybondi le tenes que reclamar a Dios, porque nadie te va a responder ni se va a hacer cargo".</p><p>En este contexto, y con la privatización de la aerolínea de bandera en la mesa de discusión, el ex presidente de Aerolineas Argentina opinó del tema y dijo "este avión de FlyBondi (LVKJD) que aterrizó de esta manera ayer en Aeroparque, con 179 pasajeros a bordo, ahora se encuentra operativo en Mendoza. Nunca fue retirado de servicio, nunca fue inspeccionado, nunca intervino la Junta de Seguridad en el Transporte".</p><p>"Una irresponsabilidad absoluta de todos los actores involucrados: la compañía aérea y los organismos públicos que regulan la actividad. Con la seguridad operacional no se jode. Esperemos que el Gobierno lo entienda a tiempo", continuó.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/politica/un-avion-de-flybondi-casi-tiene-un-accidente-fatal-por-falta-de-mantenimiento-y-controles/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Un avión de Flybondi casi tiene un accidente por falta de controles y mantenimiento02/11/2024LPOEl piloto tuvo un caótico aterrizaje en Aeroparque  con 179 pasajeros a bordo y salió sin revisión a Mendoza.', // Opcional, pero recomendado     
+                text: 'Un avión de Flybondi casi tiene un accidente por falta de controles y mantenimiento02/11/2024LPOEl piloto tuvo un caótico aterrizaje en Aeroparque  con 179 pasajeros a bordo y salió sin revisión a Mendoza.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/politica/un-avion-de-flybondi-casi-tiene-un-accidente-fatal-por-falta-de-mantenimiento-y-controles/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
