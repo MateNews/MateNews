@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El intendente de Bariloche compró una hormigonera usada y la maquillaron para que pareciera nuevaHace 1 horaLPOWalter Cortés pagó $192 millones por una máquina que costaba una tercera parte y estaba compuesta por restos de otros dispositivos. Quedo a tiro del juicio político.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>El intendente de Bariloche compró una hormigonera usada y la maquillaron para que pareciera nuevaHace 1 horaLPOWalter Cortés pagó $192 millones por una máquina que costaba una tercera parte y estaba compuesta por restos de otros dispositivos. Quedo a tiro del juicio político.</h1>
+            <p>El intendente de Bariloche compró una hormigonera usada al precio de una nueva y quedó a un paso del juicio político. Walter Cortés pagó $192 millones por una máquina que costaba una tercera parte y estaba compuesta por restos de otros dispositivos. Su futuro depende del tribunal de cuentas.</p><p>La novela de la homigonera fantasma puso a Cortés contra las cuerdas. Solo lo sostiene el apoyo del gobernador Alberto Weretilneck, pero en la provincia comienzan a preguntarse si conviene quedar pegados a un escándalo.</p><p>LPO DAILY</p><p>En Bariloche se refieren a la hormigonera como una Frankenstein, porque está hecha con partes de otras máquinas. Más que al clásico protagonizado por Boris Karloff, la historia de la hormigonera se parece a Snatch, de Guy Ritchie. La compra tiene todos los ingredientes para complicar al intendente.</p><p>El municipio debió emitir varias resoluciones para ajustar correctamente el modelo de la máquina que ya habían comprado. No lo lograron ni siquiera en tres intentos: en los papeles figuraba una Indumix 80 "Classic Plus", pero la hormigonera es una "Advanced Plus". Lo curioso es que Cortés pagó por la máquina antes de recibirla, otra cuestión ilegal. ¿Por qué lo hizo?</p><p>Una fuente de gobierno admitió que los vendedores intentaron rejuvenecer la hormigonera y eso explica que no apareciera. La máquina figuraba como recibida para que el municipio pudiera girarles el dinero a los intermediarios. "Necesitaban la plata para comprar las partes y que pareciera nueva", dijeron. Pero las capas de pintura no lograron ocultar las manchas de óxido.</p><p>El futuro de Cortés está en manos del tribunal de cuentas, que debe decidir si hubo irregularidades en la adquisición de la hormigonera. Su presidente Estanislao Cazaux pertenece al PRO, pero es muy cercano a la familia Soria. Esteban Romero es oficialista, pero está distanciado del intendente. El tercer voto es de Juntos Somos Río Negro, el partido de Weretilneck. Sin embargo, el referente de Damián Vila es el diputado Agustín Domingo, que tiene intereses en el gobierno de Cortés. Además, Vila pertenece al mismo estudio que Mike Domínguez, abogado del intendente.</p><p>Es una incógnita cómo votarán, pero semanas atrás dieron una pista: por unanimidad, el tribunal de cuentas decidió frenar la instalación de la planta de hormigón para poder profundizar la investigación sobre su origen. Los integrantes del tribunal también quieren mantenerse a salvo. Hay una investigación penal en curso, que también determinará cuál fue la cadena de responsabilidades. Parte de la culpa podría recaer en el tribunal.</p><p>Ese no sería el final de la historia. Para instalar la maquinaria, el municipio realizó una tala de árboles autóctonos sin la autorización requerida. Además, empezó a correr el rumor de que Cortés busca tercerizar la operación de la hormigonera. Lo curioso es que en la zona existen empresas que brindan el servicio, que, obviamente, incluye la hormigonera.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/politica/el-intendente-de-bariloche-compro-una-hormigonera-usada-y-la-maquillaron-para-que-pareciera-nueva/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El intendente de Bariloche compró una hormigonera usada y la maquillaron para que pareciera nuevaHace 1 horaLPOWalter Cortés pagó $192 millones por una máquina que costaba una tercera parte y estaba compuesta por restos de otros dispositivos. Quedo a tiro del juicio político.', // Opcional, pero recomendado     
+                text: 'El intendente de Bariloche compró una hormigonera usada y la maquillaron para que pareciera nuevaHace 1 horaLPOWalter Cortés pagó $192 millones por una máquina que costaba una tercera parte y estaba compuesta por restos de otros dispositivos. Quedo a tiro del juicio político.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/politica/el-intendente-de-bariloche-compro-una-hormigonera-usada-y-la-maquillaron-para-que-pareciera-nueva/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
