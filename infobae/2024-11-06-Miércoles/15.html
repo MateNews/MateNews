@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Florida rechazó las enmiendas para legalizar la marihuana recreativa y ampliar el derecho al aborto.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Florida rechazó las enmiendas para legalizar la marihuana recreativa y ampliar el derecho al aborto.</h1>
+            <p>Los votantes de Florida rechazaron este martes dos medidas electorales que buscaban proteger el derecho al aborto y legalizar la marihuana recreativa, entregando importantes victorias al gobernador republicano Ron DeSantis, quien realizó una intensa campaña para oponerse a ambas iniciativas. Las propuestas no alcanzaron el umbral del 60% de apoyo necesario para enmendar la constitución estatal</p><p>La medida sobre el aborto impedía que los legisladores aprobaran leyes que penalicen, prohíban, retrasen o restrinjan el aborto hasta la viabilidad fetal, un punto que los médicos sitúan después de las 21 semanas de gestación. Sin embargo, los votantes decidieron no aprobarla, lo que significa que seguirá vigente la ley estatal que prohíbe el aborto a partir de las seis semanas, una de las más estrictas del país.</p><p>Florida es uno de los primeros estados en rechazar una medida para proteger los derechos al aborto en una papeleta desde que la Corte Suprema anuló Roe v. Wade en 2022.</p><p>“Ahora que las urnas están cerradas en Florida, la Enmienda 3 ha fracasado. La Enmienda 4 ha fracasado”, publicó DeSantis en X.</p><p>El rechazo a la medida sobre el aborto es un duro golpe para los defensores de los derechos reproductivos, que esperaban que Florida se convirtiera nuevamente en un lugar seguro para las mujeres del sureste del país que buscan acceso a estos servicios.</p><p>Desde la histórica decisión de la Corte Suprema, más de veinte estados han implementado restricciones al aborto.</p><p>El fracaso de la enmienda fue celebrado por usuarios conservadores y pro-vida en redes sociales, quienes calificaron el resultado como una “gran victoria por la vida”. “Gracias al gobernador Ron DeSantis...los bebés con corazones que laten seguirán protegidos en el estado libre de Florida”, expresó Marjorie Dannenfelser, presidenta de SBA Pro-Life America, en declaraciones recogidas por la cadena Fox News.</p><p>“La caída de la Enmienda 4 pro-aborto es una victoria trascendental para la vida en Florida y para nuestro país”, agregó.</p><p>Dannenfelser destacó que la ley actual “salvaguarda más de 50,000 vidas al año” y describió a Florida como un “faro” para otras regiones que aún permiten abortos.</p><p>También elogió a DeSantis al exponer lo que denominó la agenda del “Gran Aborto” y aseguró que su ejemplo es clave para futuras luchas del movimiento pro-vida contra medidas que permitan la interrupción del embarazo.</p><p>Entretanto, la Enmienda 3, que proponía la legalización de la marihuana recreativa para mayores de 21 años, también fue rechazada con un 55% de apoyo, lejos del 60% necesario.</p><p>La propuesta permitía la posesión de hasta 85 gramos (aproximadamente 3 onzas) de marihuana y autorizaba a los negocios que ya venden marihuana medicinal a ofrecer productos recreativos. Este voto se produce en un contexto donde las autoridades federales están considerando reclasificar la marihuana como una droga menos peligrosa, pero Florida optó por no avanzar hacia la legalización recreativa.</p><p>DeSantis y otros líderes republicanos argumentaron en contra de la medida, diciendo que afectaría el turismo del estado debido a “un olor a marihuana en el aire”.</p><p>Sin embargo, la legalización de la marihuana contó con el apoyo de figuras destacadas dentro del Partido Republicano, como el ex presidente Donald Trump, residente de Florida, y el ex jefe del Partido Republicano estatal, el senador Joe Gruters, quienes favorecieron la iniciativa.</p><p>Ambas campañas generaron una intensa movilización política. Los demócratas, buscando atraer votantes a las urnas, se enfocaron en promover estas iniciativas, esperando que el respaldo a estas medidas impulsara la participación, similar a lo ocurrido en otros estados donde los derechos reproductivos ayudaron a retener escaños en el Senado en 2022.</p><p>Sin embargo, los republicanos en Florida tienen una ventaja de 1 millón de votantes registrados sobre los demócratas, lo que complicó los esfuerzos de los defensores de estas causas.</p><p>(Con información de AFP)</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/estados-unidos/2024/11/06/florida-rechazo-en-referendum-las-enmiendas-para-legalizar-la-marihuana-recreativa-y-ampliar-el-derecho-al-aborto/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Florida rechazó las enmiendas para legalizar la marihuana recreativa y ampliar el derecho al aborto.', // Opcional, pero recomendado     
+                text: 'Florida rechazó las enmiendas para legalizar la marihuana recreativa y ampliar el derecho al aborto.',  // Opcional
+                url: 'https://www.infobae.com/estados-unidos/2024/11/06/florida-rechazo-en-referendum-las-enmiendas-para-legalizar-la-marihuana-recreativa-y-ampliar-el-derecho-al-aborto/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

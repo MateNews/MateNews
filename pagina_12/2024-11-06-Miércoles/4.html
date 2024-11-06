@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Los mercados festejan el triunfo de Trump y se aprecia el dólar. La reacción tras las elecciones. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Los mercados festejan el triunfo de Trump y se aprecia el dólar. La reacción tras las elecciones. </h1>
+            <p>La reacción tras las elecciones</p><p></p><p>El dólar se dispara</p><p>Bitcoin a nivel récord</p><p>Las bolsas en alza</p><p>El rendimiento de la deuda de EE.UU.</p><p>Con el triunfo de Donald Trump confirmado en las elecciones presidenciales de Estados Unidos, Wall Street va camino a abrir en alza. Así lo anticipan las primeras reacciones positivas de los mercados y la fuerte suba del dólar tras la victoria del republicano sobre la demócrata Kamala Harris.</p><p>"Hasta ahora, la reacción del mercado va probablemente en línea con lo que se podía esperar dados los resultados", apuntó Jim Reid, economista de Deutsche Bank.</p><p>El dólar subió en Europa frente a la mayoría de las demás divisas. Un aumento frente al euro que no se registraba desde marzo de 2020, disparándose 1,72% hasta los 1,0745 USD por euro.</p><p>Por otro lado, "en México, la preocupación ante posibles aumentos de aranceles hunde al peso", comentan los analistas de Saxo Bank.</p><p>La divisa mexicana perdía 2,22%, a 20,57 pesos por un dólar.</p><p>El bitcoin registró una subida de 5,52%, a 72.984 dólares, después de haber superado poco antes y por primera vez la barrera de los 75.000 dólares, alentado por la perspectiva de una flexibilización regulatoria en caso de victoria definitiva de Donald Trump.</p><p>Wall Street se encamina a abrir al alza, según los contratos de futuros de los índices bursátiles, que dan una indicación de las tendencias antes del comienzo de la sesión.</p><p>Durante la madrugada argentina, el Dow Jones ganaba 2,24%, el índice ampliado S&P 500 avanzaba un 2,00%, y el Nasdaq, índice de los valores tecnológicos, un 1,65%, según estos contratos de futuros.</p><p>La acción de Tesla subía este miércoles un 13% en los intercambios previos a la sesión bursátil de Wall Street, aupada por el apoyo de su dueño Elon Mask a Donald Trump.</p><p>En los mercados de acciones europeas, los índices están en claro aumento desde la apertura. La bolsa de París ganaba 2,14%, Fráncfort 1,45%, Milán 1,12% y Londres 1,49%. Por el contrario, Madrid bajaba un 1,28% a media mañana.</p><p>"De manera un poco sorprendente", los mercados europeos "se mantienen bien, por ahora, frente a esta victoria indiscutible de Donald Trump", escribió Alexandre Baradez, responsable del análisis de mercados en IG France, poco antes de la apertura de las bolsas.</p><p>Eso se debe a que "con la llegada de Donald Trump a la Casa Blanca, los productos europeos podrían estar enfrentados a desafíos importantes, pues el presidente indicó claramente que impondría importantes aranceles, yendo potencialmente del 10% en todas las importaciones a niveles muchos más elevados en países como China", explica John Plassard, especialista de inversiones en Mirabaud.</p><p>En el mercado secundario de bonos, donde se intercambia la deuda ya emitida, los tipos de interés de la deuda pública estadounidense a 10 años subió en el comienzo de la mañana en Europa al 4,40%, frente al 4,27% en el cierre la víspera, y el tipo a dos años remontaba a 4,23%, frente a 4,18%.</p><p>Es la señal de que el mercado espera un "crecimiento más fuerte y quizás una inflación más elevada", una combinación que podría "ralentizar, incluso detener, las reducciones de tasas previstas por el banco central estadounidense [Fed]", comenta Stephen Dover, director del Franklin Templeton Institute.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/780734-los-mercados-festejan-el-triunfo-de-donald-trump-en-estados-'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Los mercados festejan el triunfo de Trump y se aprecia el dólar. La reacción tras las elecciones. ', // Opcional, pero recomendado     
+                text: 'Los mercados festejan el triunfo de Trump y se aprecia el dólar. La reacción tras las elecciones. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/780734-los-mercados-festejan-el-triunfo-de-donald-trump-en-estados-'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

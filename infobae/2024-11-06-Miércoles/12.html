@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>“Trumpland 2.0″: así reflejó la prensa internacional el resultado de los comicios.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>“Trumpland 2.0″: así reflejó la prensa internacional el resultado de los comicios.</h1>
+            <p>Los medios internacionales más importantes se hicieron eco este miércoles de los resultados de las elecciones presidenciales estadounidenses entre el republicano Donald Trump y la demócrata Kamala Harris, las cuales darían una pequeña ventaja al ex presidente.</p><p>Los principales diarios británicos como The Times, Daily Mail, The Guardian y The Telegraph, reflejaron en sus portadas la victoria del ex presidente republicano Donald Trump.</p><p>The Guardian lo tituló con “Donald Trump dice que ‘hicimos historia’ mientras se acerca a la victoria con triunfo en Pennsilvania”. Por su parte Daily Mail publicó, “Trump declara victoria en la “mayor remontada política en la historia de Estados Unidos” tras sorprendente arrasada en la noche electoral” acompañada de una foto del ex presidente junto a su familia en el bunker republicano.</p><p>The Times por su parte calificó la elección con el titular “Trump elogia una “magnífica victoria para el pueblo estadounidense””, mientras que al hablar de la derrota de Harris escribió “Lágrimas, ansiedad y sin Kamala: dentro de la fiesta de Harris en la noche electoral”.</p><p>The Telegraph tan solo reflejó los resultados con una imagen del Donald Trump acompañada del título, “Trump gana”.</p><p>Por su parte The Times of Israel publicó una serie de imágenes del candidato republicano acompañadas del título “Trump declara su victoria en las elecciones estadounidenses y promete que “detendrá las guerras” en lugar de iniciarlas”. Además el medio aseguró que “Netanyahu celebra “la mayor remontada de la historia” mientras la carrera presidencial está prácticamente ganada”.</p><p>Cabe recordar que Donald Trump ha adoptado una postura de apoyo a Israel en el conflicto que este último tiene con Hamas, calificando al grupo palestino como un “movimiento terrorista” y criticando fuertemente a quienes defienden una postura más neutral. Desde el inicio de las hostilidades, Trump ha instado a una respuesta contundente por parte de Israel, además de condenar cualquier intento de negociación con Hamas. Asimismo, ha utilizado el conflicto para atacar a la administración actual, acusándola de tener una política exterior “débil” y responsabilizándola de la escalada de violencia en la región.</p><p>En cuanto al medio brasileño O Globo, este mantiene su principal portada con una serie de notas sobre el ex presidente y candidato republicano. Entre ellas se destacan “Trump es virtualmente elegido: ‘Estados Unidos entrará en una edad de oro’; los periodistas analizan”, y una que habla de lo que habría llevado a Trump a volver a la presidencia, la economía.</p><p>La Repubblica de Italia por su parte reflejó los primeros resultados y la victoria virtual del ex presidente con el título, “Vive la autoproclamación de Trump: “Soy el 47º presidente de Estados Unidos. Detendré las guerras”. A Musk: “Es un supergenio””. El titular fue acompañado con una imagen del bunker presidencial en el cual se lo ve rodeado de su familia.</p><p>Uno de los principales medios franceses, Le Monde reflejó en su portada la imagen de Trump dando su discurso luego de conocerse los primeros resultados acompañado del título, “Donald Trump elegido presidente”, .”El republicano Donald Trump se convierte en el presidente número 47 de Estados Unidos tras su victoria en Wisconsin”.</p><p>Por su parte el medio de Australia, The Australian reflejó los primeros resultados con el título “Dios me salvó la vida por una razón: para salvar a nuestro país”. Estas declaraciones hechas por Trump fueron en referencia al intento de asesinato que sufrió hace unos meses.</p><p>Además el medio aseguro que el candidato republicano prometió hacer que Estados Unidos vuelva a ser “fuerte, próspero, poderoso y libre” y “ayudar a que Estados Unidos sane” mientras se espera que se convierta en el 47º presidente del país, ganando tanto el colegio electoral como el voto popular.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/estados-unidos/2024/11/06/trumpland-20-asi-reflejo-la-prensa-internacional-el-resultado-de-las-elecciones-en-estados-unidos/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: '“Trumpland 2.0″: así reflejó la prensa internacional el resultado de los comicios.', // Opcional, pero recomendado     
+                text: '“Trumpland 2.0″: así reflejó la prensa internacional el resultado de los comicios.',  // Opcional
+                url: 'https://www.infobae.com/estados-unidos/2024/11/06/trumpland-20-asi-reflejo-la-prensa-internacional-el-resultado-de-las-elecciones-en-estados-unidos/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

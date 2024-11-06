@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dólar, deuda y FMI: cómo impactará en la Argentina el resultado en EEUU.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Dólar, deuda y FMI: cómo impactará en la Argentina el resultado en EEUU.</h1>
+            <p>Aunque tal vez sea cierto que, dado el aislamiento financiero que todavía padece la Argentina, sin acceso a los mercados de capitales, el impacto del resultado electoral de Estados Unidos es hoy menos determinante para la economía local que en el pasado, ese argumento luce válido sólo para el corto plazo. En principio, porque el Gobierno aspira a recuperar el acceso al financiamiento internacional más pronto que tarde. En segundo lugar, porque el presidente Javier Milei y el ministro de Economía, Luis Caputo, tienen pendiente la resolución de un nuevo acuerdo con el FMI, en el que el rol del gobierno norteamericano es clave, a la espera del cambio de conducción en ese país y, en tercer lugar, porque la política cambiaria podría tener que resistir un contexto más o menos favorable de acuerdo a la política comercial que se adopte a partir del próximo año en Estados Unidos.</p><p>Pasado en limpio, el primer punto implica que el superávit financiero permite a la Argentina prescindir del mercado de deuda global, lo que la deja en una posición menos vulnerable frente al flujo de capitales externo, particularmente en plena vigencia del cepo. Sin embargo, la filosofía de “vivir con lo nuestro” no combina bien con la expectativa de recibir inversiones y el ingreso de dólares para financiar el crecimiento económico. Desde ese punto de vista, existen diferencias entre las políticas que representan Donald Trump y Kamala Harris. Según los analistas del mercado, una victoria de Trump implica un dólar más fuerte o, a la inversa, monedas emergentes más débiles y un temor a un aumento de los aranceles a la importación y caída de los precios de commodities. “Para la Argentina, una victoria de Trump produciría un deterioro sobre el ancla cambiaria”, anticiparon desde Max Capital, donde agregaron que un triunfo de Harris representa exactamente lo contrario.</p><p>Pero eso es a mediano plazo. En lo inmediato, la mayor sintonía e identificación con Trump podría, eventualmente, favorecer a la Argentina. “La posibilidad de un mayor apoyo del FMI podría contrarrestar los efectos (negativos de un triunfo de Trump). Una victoria de Harris, en cambio, generaría expectativas de continuidad, sin cambios en la relación de Argentina con el Tesoro estadounidense y el FMI”, aseguran en Max Capital. Esa relación hoy, vale decir, no presenta ninguna dificultad con la actual gestión demócrata de Joe Biden.</p><p>Incluso, en un foro organizado ayer por ABECEB, el vicepresidente para las Américas de la Cámara de Comercio norteamericana, Neil Harrington, anticipó que “gane quien gane, la relación entre Estados Unidos y la Argentina va a ser brillante”.</p><p>Sin embargo, la expectativa del Gobierno que quedó instalada en el mercado es que un triunfo de Trump contribuya a una postura más flexible del Fondo Monetario debido a la afinidad ideológica. Aunque lo cierto es que el FMI -agregan en Max Capital- ya parece dispuesto a apoyar a Argentina, aunque es el tamaño del próximo programa en lo que podría influir el gobierno de Estados Unidos pero no la firma en sí misma de un acuerdo.</p><p>Las dudas, en cambio, se posan en el impacto de las políticas económicas del republicano o la demócrata. Esencialmente, la política comercial y la relación con China, cuestión que ya supo generar un tembladeral mundial en la anterior presidencia de Trump, lo que junto con la suba de la tasa de la FED, afectó seriamente a la economía argentina en 2018.</p><p>“Cualquier administración va a tener una estrategia muy enfocada sobre China para mantener el comercio que existe entre los dos países. Pero no cabe duda de que va a haber en el Congreso y de parte de cualquier administración una campaña para imponer más aranceles, sobre todo en las áreas de seguridad nacional”, advirtió Harrington.</p><p>En rigor, desde la perspectiva de la Argentina, no es lineal cuál es el escenario más conveniente. El factor Trump-Milei, puede beneficiar en el corto plazo pero su política económica es poco favorable para los países emergentes. En contrapartida, la continuidad en el plano económico que se presume de Harris podría hacer la recuperación de la economía argentina algo más sencilla.</p><p>Es que el país “necesita crédito barato y materias primas que exportamos caras. Eso, dicen algunos, ocurrirá si el dólar baja de precio o si se reactiva un proceso inflacionario con mayor déficit fiscal por parte del Tesoro norteamericano”, comentó a Reuters el economista Mariano De Rosa. Acotó que “no sabemos el resultado, pero por declaraciones de ambos candidatos y por su pasado las cosas deberían ser muy distintas si gana el republicano o la demócrata”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/11/06/dolar-deuda-y-fmi-como-impactara-en-la-argentina-el-resultado-electoral-de-estados-unidos/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Dólar, deuda y FMI: cómo impactará en la Argentina el resultado en EEUU.', // Opcional, pero recomendado     
+                text: 'Dólar, deuda y FMI: cómo impactará en la Argentina el resultado en EEUU.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/11/06/dolar-deuda-y-fmi-como-impactara-en-la-argentina-el-resultado-electoral-de-estados-unidos/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

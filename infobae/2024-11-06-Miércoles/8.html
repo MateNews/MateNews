@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El Bitcoin alcanzó un nuevo récord histórico: tocó los 75.361 dólares.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>El Bitcoin alcanzó un nuevo récord histórico: tocó los 75.361 dólares.</h1>
+            <p>El bitcoin superó los USD 75.000 esta mañana, luego de que anoche se conoció la victoria de Donald Trump, que será nuevamente presidente de Estados Unidos por cuatro años.</p><p>En medio de un alza generalizada para los activos bursátiles, en EEUU y también en Europa, la criptomoneda más conocida tocó el récord histórico de USD 75.361,09 esta madrugada, según CoinMarketCap (a la 9 de Buenos Aires cotizaba en la zona de los USD 74.200).</p><p>El récord histórico de cotización anterior se había registrado el 14 de marzo de este año: USD 73.750,07, según la misma fuente. Los tokens más pequeños, como el ether, que ocupa el segundo lugar, y el dogecóin, también subieron.</p><p>El bitcoin era considerado hasta ayer por muchos como un Trump Trade, porque el candidato presidencial republicano Trump había apoyado a los activos digitales durante la campaña. Esto se da en un contexto en que el republicano si bien en un principio fue crítico, había respaldado públicamente al mercado cripto.</p><p>“Si Trump continúa apoyando las criptomonedas y la tecnología blockchain, como ha sugerido en varias declaraciones, esto podría llevar a políticas más favorables y un marco regulatorio de apoyo para la industria cripto”, señaló IOL invertironline en un informe.</p><p>El arrasante triunfo de Trump generó euforia en los mercados y la criptomoneda alcanzó un nuevo récord. En Argentina, la respuesta fue aún más notable. La cotización de Bitcoin ha escalado a $71.039.044,45 por BTC, un salto que refleja tanto el incremento global en el precio como las condiciones económicas locales.</p><p>La relación entre el valor de Bitcoin y los eventos políticos en Estados Unidos ha sido evidente en los últimos años. Este reciente récord histórico, sin embargo, se debe a una combinación de factores: el regreso de políticas monetarias expansivas, un renovado interés por parte de instituciones en activos digitales, y la búsqueda de los inversores de opciones fuera del sistema financiero convencional. Además, existe una expectativa creciente sobre posibles regulaciones favorables para el mercado de criptomonedas bajo la nueva administración estadounidense.</p><p>Desde Buenbit habían adelantado en un informe: “Su elección podría dar un gran empujón a la industria, ya que promete fomentar la minería de criptomonedas y establecer una Reserva Nacional de Bitcoin. En cambio, una victoria de Harris podría traer más regulación, generando incertidumbre en el mercado”, y agregaron que “actualmente Bitcoin está muy cerca de su último máximo histórico, por lo que un posible triunfo de Trump, podría hacer que impulse la criptomoneda a nuevos valores nunca antes vistos”.</p><p>No solo Bitcoin se disparó sino que también otras criptos. La segunda criptomoneda más popular del mercado, ethereum, ha mostrado un movimiento de 9,84% en las últimas 24 horas, por lo que su valor se ubica en 2.632,84 dólares. Sobre Tether US, cotiza en 1 dólares, por lo que en el último día tuvo un movimiento de 0,08%.</p><p>Por su parte, BNB tiene un valor de 582,52 dólares, con un cambio de 5,52%, en tanto que el litecoin hace lo propio con 70,14 dólares tras una variación de 7,1%. Finalmente, el dogecoin, una de las criptomonedas que ha impulsado el propio Elon Musk, tiene un valor de 0,2 dólares tras presentar un cambio de 27,93% en las últimas 24 horas.</p><p>En Estados Unidos, el mercado cripto adquiere cada vez más relevancia. Por caso, la organización Stand With Crypto reveló que el 53% de la población de Estados Unidos quiere realizar operaciones con las compañías cripto que estén basadas en su país; este organismo promueve una legislación que impulse la innovación y la creación de empleos en la industria cripto.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/11/06/bitcoin-alcanzo-un-nuevo-record-historico-luego-del-triunfo-de-trump-toco-los-75361-dolares/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El Bitcoin alcanzó un nuevo récord histórico: tocó los 75.361 dólares.', // Opcional, pero recomendado     
+                text: 'El Bitcoin alcanzó un nuevo récord histórico: tocó los 75.361 dólares.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/11/06/bitcoin-alcanzo-un-nuevo-record-historico-luego-del-triunfo-de-trump-toco-los-75361-dolares/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
