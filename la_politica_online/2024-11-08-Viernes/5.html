@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tras la nota de LPO, La Cámpora cambió de opinión y se cae la privatización del Catedral. Roxana Ferreyra había firmado un dictamen favorable, pero anunció su rechazo. El intendente dijo que los concejales eran unos "inútiles" y analiza retirar el proyecto para no sufrir una derrota.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Tras la nota de LPO, La Cámpora cambió de opinión y se cae la privatización del Catedral. Roxana Ferreyra había firmado un dictamen favorable, pero anunció su rechazo. El intendente dijo que los concejales eran unos "inútiles" y analiza retirar el proyecto para no sufrir una derrota.</h1>
+            <p>La Cámpora le quitó su voto a la privatización del Cerro Catedral y ahora el intendente de Bariloche evalúa retirar el proyecto para no exponerse a una derrota.</p><p>LPO DAILY</p><p>"Jamás avalaríamos la entrega y privatización de un recurso tan relevante como lo es el Cerro Catedral", se defendió Roxana Ferreyra para desmentir su voto favorable a la privatización del Cerro. Sin embargo, la concejala camporista no logró explicar por qué su asesora firmó dos dictámenes que daban luz verde a la venta de 80 hectáreas en el Catedral.</p><p>Cerca de Martín Doñate, mencionado en el artículo, aseguraron que el senador no tenía ninguna relación con el proyecto de privatización del cerro ni con la oscilante posición de  Ferreyra.</p><p>En en el oficialismo contaban con el voto de La Cámpora, pero ahora Walter Cortés analiza retirar el proyecto para no sufrir una derrota.</p><p>Ferreyra se defendió espalda con espalda con Samanta Echenique, del PRO, en la última sesión del concejo deliberante. Ambas comenzaron a los gritos mientras el concejal Leandro Costa Brutten intentaba leer los dictámenes favorables a la privatización firmados por el PRO y La Cámpora. Lograron que el titular del Concejo cortara la transmisión.</p><p>Tras la sesión, Echenique se ofuscó porque nadie la había consultado sobre su posición respecto de la privatización. "Convendría chequear la fuente", le respondió a un grupo de vecinos en las redes sociales. Cuando le pidieron que explicitara su postura, Echenique se llamó a silencio.</p><p>Algunos concejales quedaron preocupados luego de la última reunión del consejo consultivo. Debió suspenderse porque había mayoría de vecinos contra la iniciativa del oficialismo.</p><p>Para sortear el malhumor de parte de los barilochenses con el proyecto de privatización, Cortés propuso hacer las audiencias públicas sin público, una idea que ni siquiera pasó el filtro de sus colaboradores más estrechos.</p><p>Los cambios de postura frente al proyecto no cayeron bien en el Municipio. En una entrevista radial, el intendente estalló contra los concejales. Dijo que eran unos "sabios inútiles, inservibles que nunca supieron manejar ni siquiera su casa".</p><p>Los insultos llegan en el momento menos indicado para Cortés. El Concejo podría comenzar un juicio de destitución contra el intendente por la compra de una hormigonera que supuestamente era nueva, pero resultó ser usada. El municipio pagó el triple del valor de mercado de la máquina. El intendente quedó muy complicado con la maniobra y en pocos días se espera un fallo del tribunal de cuentas.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/politica/tras-la-nota-de-lpo-la-campora-cambio-de-opinion-y-se-cae-la-privatizacion-del-catedral/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Tras la nota de LPO, La Cámpora cambió de opinión y se cae la privatización del Catedral. Roxana Ferreyra había firmado un dictamen favorable, pero anunció su rechazo. El intendente dijo que los concejales eran unos "inútiles" y analiza retirar el proyecto para no sufrir una derrota.', // Opcional, pero recomendado     
+                text: 'Tras la nota de LPO, La Cámpora cambió de opinión y se cae la privatización del Catedral. Roxana Ferreyra había firmado un dictamen favorable, pero anunció su rechazo. El intendente dijo que los concejales eran unos "inútiles" y analiza retirar el proyecto para no sufrir una derrota.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/politica/tras-la-nota-de-lpo-la-campora-cambio-de-opinion-y-se-cae-la-privatizacion-del-catedral/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

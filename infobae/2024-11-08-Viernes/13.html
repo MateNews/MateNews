@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reglamentaron la medida para que la PSA libere las valijas cuando haya medidas gremiales.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Reglamentaron la medida para que la PSA libere las valijas cuando haya medidas gremiales.</h1>
+            <p>El Ministerio de Seguridad a cargo de Patricia Bullrich hizo oficial este viernes la medida que habilita a la Policía de Seguridad Aeroportuaria (PSA) a hacerse cargo de la bajada de valijas cuando haya medidas de fuerza por parte de los trabajadores de la empresa que estén a cargo de este servicio. Esto se da luego del paro salvaje llevado adelante por Intercargo que dejó a cientos de pasajeros varados en dentro de los aviones por horas, sin poder salir.</p><p>La resolución 1199/2024 fue publicada este viernes en el Boletín Oficial. En el primer artículo, se estableció que la PSA está a instruida a “efectuar las tareas de carga y descarga del equipaje de las aeronaves detenidas en el AEROPARQUE METROPOLITANO JORGE NEWBERY, por parte del personal debidamente habilitado y mientras dure la situación excepcional motivada por la huelga de OPERADORES DE PLATAFORMA o de SERVICIOS DE RAMPA de la empresa INTERCARGO S.A.”.</p><p>Entre las consideraciones, el Gobierno apuntó contra el personal de operadores de plataforma o servicios de rampa de la empresa que “declaró una medida de fuerza intempestiva y salvaje por fuera de los mecanismos admitidos por el derecho”. Allí detalló que este reclamo “consistió en dejar el equipaje de los pasajeros en las bodegas de los aviones, debido a que se negaron a descargarlo, como sus obligaciones se los imponen”.</p><p>Justamente, este viernes también se hizo oficial la medida que desregula los servicios de rampas de los aeropuertos. Con la firma del Secretario de Transporte de la Nación, Franco Mogetta, se publicó en el Boletín Oficial la Resolución 49/2024 donde se aprobó en el artículo uno el “Proceso de otorgamiento de las autorizaciones aerocomerciales de servicios aeroportuarios operacionales y de rampa en general”.</p><p>En el considerando, el Ejecutivo señaló que “la Ley 17.285 (Código Aeronáutico) establece que los servicios aeroportuarios estarán regulados y supervisados por la autoridad aeronáutica, bajo principios de garantía de seguridad, libre competencia y acceso a los mercados”.</p><p>Asimismo, se indicó que “el servicio aeroportuario, tanto en operaciones como en servicios de rampa, deberá cumplir con una presentación previa ante la autoridad competente, quien evaluará el cumplimiento de los requisitos y pautas establecidas”.</p><p>Según pudo saber Infobae, con esta modificación se busca que cada licitación “tendrá una vigencia de 15 (quince) años, y se renovará automáticamente siempre que se mantengan los estándares de seguridad operacional exigidos”. Además, se busca implementar una medida que ya viene funcionando en otras líneas aéreas y es que las empresas se “autopresten” el servicio de carga y descarga de valijas, con su propio personal.</p><p>El conflicto sindical que comenzó el miércoles derivó también en denuncias y despidos. El director de Enlace Judicial del Ministerio de Seguridad, Fernando Soto, y el presidente de Intercargo, Fernando Montes, presentaron denuncias contra miembros del sindicato Asociación del Personal Aeronáutico (APA) por presuntos delitos de privación ilegítima de la libertad, extorsión y entorpecimiento del transporte aéreo.</p><p>En tanto, el ministro de Economía, Luis Caputo, informó la desvinculación de 15 empleados de Intercargo involucrados en los hechos del miércoles. En su cuenta de X, Caputo expresó: “En la Argentina que estamos construyendo, no vamos a permitir estos mecanismos de extorsión”. Según la Secretaría de Transporte, los despidos alcanzaron a 12 conductores, 2 supervisores y 1 coordinador de buses, quienes incumplieron sus obligaciones laborales y provocaron la retención ilegítima de pasajeros en las aeronaves.</p><p>Más tarde llegó la confirmación formal de la Secretaría de Transporte: “Los despidos alcanzaron a 12 choferes, 2 supervisores y 1 coordinador de micros, que incumplieron con los deberes y obligaciones de su trabajo de traslado, obligando a que pasajeros de 10 vuelos de las empresas Flybondi, Jetsmart y Latam sean ilegítimamente privados de su libertad y retenidos dentro de las aeronaves. Fue gracias a la colaboración de la PSA que Intercargo logró asistir a los pasajeros, logrando que llegarán al aeropuerto transportados por la fuerza policial”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2024/11/08/el-gobierno-oficializo-la-medida-que-habilita-a-la-psa-a-liberar-las-valijas-cuando-haya-medidas-gremiales/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Reglamentaron la medida para que la PSA libere las valijas cuando haya medidas gremiales.', // Opcional, pero recomendado     
+                text: 'Reglamentaron la medida para que la PSA libere las valijas cuando haya medidas gremiales.',  // Opcional
+                url: 'https://www.infobae.com/politica/2024/11/08/el-gobierno-oficializo-la-medida-que-habilita-a-la-psa-a-liberar-las-valijas-cuando-haya-medidas-gremiales/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fin del cepo: facilitan la compra de dólares para las empresas que tengan que cancelar deudas.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Fin del cepo: facilitan la compra de dólares para las empresas que tengan que cancelar deudas.</h1>
+            <p>El desarme quirúrgico de las restricciones cambiarias que viene practicando el Banco Central sumó hoy otra nueva etapa. El directorio dispuso flexibilizar la compra de dólares en el mercado oficial para la cancelación de deudas en el extranjero, otorgando un plazo más amplio para los deudores.</p><p>Según informaron fuentes del BCRA, el directorio dispuso “flexibilizar el mecanismo de compra de moneda extranjera para el pago de vencimientos de deuda en el exterior permitiendo a los deudores comenzar a anticipar la compra de divisas 60 días calendario antes del vencimiento versus los 5 días hábiles establecidos previamente”.</p><p>La medida surge en un contexto en el que se registra una firme crecimiento del financiamiento en moneda extranjera, con la frecuente aparición de Obligaciones Negociables (ON) por parte de empresas de primera línea que en los últimos meses volvieron a encontrar tasas de interés favorables para la colocación de esos instrumentos.</p><p>Por otra parte, considerando el fuerte ingreso de depósitos en moneda extranjera que dejó el blanqueo de capitales, que se estima en USD 20.000 millones, también hay expectativas de que el financiamiento en esa moneda se siga expandiendo en los próximos meses.</p><p>Al mismo tiempo, y dentro de ese contexto descripto en el que hay un mayor acceso de empresas y bancos al financiamiento externo, “a efectos de evitar el uso de instrumentos de mercado de capitales para el ingreso de fondos que puedan resultar de carácter meramente especulativo y que puedan generar volatilidad y distorsiones en el sistema financiero, el directorio consideró conveniente como medida prudencial incorporar el plazo mínimo de un año desde la fecha de emisión como requisito adicional para el acceso al mercado de cambios para el pago del capital en el exterior de las nuevas emisiones de títulos de deuda”. Esta última medida no afecta los financiamientos en dólares en la plaza local.</p><p>En el Central consideraron que dentro del proceso “de estabilización y crecimiento en el que estamos encaminados, es importante mantener el foco en atraer al país inversores con visión de mediano y largo plazo, evitando la volatilidad e inestabilidad que pueden generar los flujos de capitales enfocados en retornos u oportunidades de corto plazo”.</p><p>Con bajas expectativas de que se unifique el tipo de cambio y se eliminen los controles cambiarios en el corto plazo, el BCRA sigue adelante con su criterio de “eliminar el cepo por capas”, según expresó el titular de la entidad, Santiago Bausili. En ese sendero, la semana pasada había sido el turno de una de las medidas más reclamadas por los exportadores: permitir el acceso al dólar oficial para pagar los servicios de fletes.</p><p>La medida implica eliminar un costo financiero importante para el exportador, en especial para el caso de pymes que consiguen vender al exterior. Hasta ahora, existía un plazo de 30 días desde el arribo de la mercadería para poder adquirir los dólares para pagarle al proveedor del servicio del flete. A partir de la decisión que el Directorio del Central tomó la semana pasada, la habilitación para comprar en el mercado oficial se da al momento del embarque.</p><p>La decisión determinó que el plazo para acceder al mercado cambiario oficial para cancelar el pago de los “Servicios de fletes por operaciones de exportaciones de bienes”, se considere de manera diferente, ya que forma parte “de la condición de venta pactada con el comprador de los bienes y se concreta una vez que la exportación cuenta con el cumplido de embarque” otorgado por la Aduana.</p><p>“Es un tema central, que veníamos conversando con distintas áreas del Gobierno. Es muy importante que se elimine este costo para los exportadores”, explicó a Infobae Fernando Landa, presidente de la Cámara de Exportadores de la República Argentina (CERA), quien explicó que la norma derogada hoy, vigente desde abril de 2023, “no existe en el mercado internacional”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/11/08/otro-paso-hacia-el-desarme-del-cepo-facilitan-la-compra-de-dolares-para-las-empresas-que-tengan-que-cancelar-deudas/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Fin del cepo: facilitan la compra de dólares para las empresas que tengan que cancelar deudas.', // Opcional, pero recomendado     
+                text: 'Fin del cepo: facilitan la compra de dólares para las empresas que tengan que cancelar deudas.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/11/08/otro-paso-hacia-el-desarme-del-cepo-facilitan-la-compra-de-dolares-para-las-empresas-que-tengan-que-cancelar-deudas/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
