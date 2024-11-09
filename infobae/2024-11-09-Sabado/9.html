@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La historia de la mujer que vivió hasta los 117 años comiendo lo mismo todos los días.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>La historia de la mujer que vivió hasta los 117 años comiendo lo mismo todos los días.</h1>
+            <p>Emma Morano, nacida en Italia en 1899, es recordada por haber alcanzado los 117 años de edad y por su sencillez al hablar de los hábitos que, según ella, contribuyeron a su longevidad. Atribuía su extensa vida a dos factores: su decisión de mantenerse sin pareja desde joven y, sorprendentemente, a un régimen alimenticio basado en el consumo diario de huevos. Esta italiana fue la última persona viva nacida en el siglo XIX y se convirtió en un símbolo de resiliencia y longevidad gracias a la disciplina con que enfrentó los obstáculos de su vida.</p><p>Emma Morano mantuvo una dieta peculiar y constante: consumía tres huevos al día, dos de ellos crudos y uno cocido en forma de tortilla. Este hábito alimenticio, iniciado en sus 20 años tras ser diagnosticada con anemia poco después de la Primera Guerra Mundial, fue una constante en su vida durante casi un siglo.</p><p>Según sus propias palabras en una entrevista con AFP, la ingesta diaria de huevos le proporcionaba la energía y los nutrientes necesarios para sobrellevar las exigencias físicas de su trabajo y mantener su salud estable.</p><p>La longeva italiana también complementaba su dieta con un toque especial de grappa—un licor italiano—preparado con hierbas como salvia y ruda, junto con algunas uvas. Este brebaje lo preparaba ella misma y lo tomaba a cucharadas, manteniendo así una tradición que le recordaba a los sabores locales de su tierra natal. Con el paso de los años, y ya en la recta final de su vida, Morano redujo su ingesta a dos huevos al día y algunas galletas, una versión simplificada que aún le permitía mantener un nivel mínimo de energía sin depender de medicamentos ni dietas complejas.</p><p>A pesar de una vida laboral activa y el desgaste natural de los años, Emma Morano sorprendía a su médico, el doctor Carlo Bava, quien la atendió durante casi tres décadas. Según explicó Bava a AFP, Emma rara vez consumía frutas o vegetales, alimentos que suelen recomendarse para una vida saludable.</p><p>Sin embargo, explico el médico, la longevidad podría haber estado también influida por factores genéticos. Su madre vivió hasta los 91 años y varias de sus hermanas alcanzaron o superaron los 100 años. Esta notable tendencia a la longevidad en su familia pudo haber complementado su peculiar régimen de alimentación.</p><p>Uno de los aspectos más notables de la vida de Emma Morano fue su firme decisión de vivir sin pareja durante la mayor parte de su existencia. Su único matrimonio, a los 20 años, no fue una unión feliz ni voluntaria. Obligada a casarse después de perder al hombre que amaba durante la Primera Guerra Mundial, Emma soportó una relación marcada por el abuso, hasta que finalmente se separó en 1938.</p><p>Tras la muerte de su único hijo, decidió que no quería someterse a la “dominación de nadie más” y optó por vivir sola, sin buscar otra relación. Emma creía firmemente que esta decisión influyó positivamente en su salud y longevidad, ya que evitó el estrés emocional que a menudo implica una relación de pareja.</p><p>Emma Morano vivió en un contexto histórico lleno de cambios y desafíos que marcaron profundamente su carácter. Durante sus 117 años, fue testigo de dos guerras mundiales y de más de 90 gobiernos italianos, así como de numerosos avances en la tecnología y la medicina. Desde su puesto como trabajadora en una fábrica, Emma observaba el ir y venir de los cambios sociales y políticos en Italia, manteniendo una actitud positiva y una gran capacidad de adaptación. Según quienes la conocían, uno de sus secretos era la habilidad para no dejarse llevar por las complicaciones, mantenerse constante y no desviarse de sus elecciones de vida.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/america/mundo/2024/11/09/la-mujer-que-vivio-hasta-los-117-anos-comiendo-todos-los-dias-la-misma-comida/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La historia de la mujer que vivió hasta los 117 años comiendo lo mismo todos los días.', // Opcional, pero recomendado     
+                text: 'La historia de la mujer que vivió hasta los 117 años comiendo lo mismo todos los días.',  // Opcional
+                url: 'https://www.infobae.com/america/mundo/2024/11/09/la-mujer-que-vivio-hasta-los-117-anos-comiendo-todos-los-dias-la-misma-comida/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

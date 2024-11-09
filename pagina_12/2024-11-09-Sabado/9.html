@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cristina  recorrió el conurbano en su primera aparición como presidenta del PJ. Visitó una planta de reciclado en Villa Fiorito. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Cristina  recorrió el conurbano en su primera aparición como presidenta del PJ. Visitó una planta de reciclado en Villa Fiorito. </h1>
+            <p>Visitó una planta de reciclado en Villa Fiorito</p><p>La exmandataria continúa con sus recorridas en el territorio bonaerense. A principios de la semana se reunió con representantes de pymes en Avellaneda y esta vez recorrió una cooperativa cartonera de la UTEP. La posibilidad de que realice un acto para oficializar su rol como conductora del Justicialismo.</p><p>Convocar a todos</p><p>Cristina Kirchner realizó su primera aparición pública después de ser proclamada presidenta del Partido Justicialista. La exvicepresidenta visitó este viernes por la mañana una planta de reciclado de Villa Fiorito, en Lomas de Zamora, continuando así con su recorrida por el territorio bonaerense en la previa del año electoral.  Además, se espera que encabece un acto la semana que viene para oficializar su rol como conductora del PJ.</p><p>Durante la recorrida de este viernes, la ex vicepresidenta conversó con los trabajadores, quienes le relataron las problemáticas que viven diariamente. El espacio que visitó la líder del peronismo es un Ecopunto de la Unión de Trabajadores y Trabajadoras de la Economía Popular (UTEP) que le da empleo a ceca de 240 familias. Allí, organizados como una cooperativa, los trabajadores fabrican bolsas a partir de un proceso de reciclaje.</p><p>Si bien el Intendente de Lomas de Zamora, Federico Otermín, no participó de la recorrida que realizó la expresidenta, es uno de los hombres que formó parte de la lista "Primero La Patria" en la puja por conducir el PJ y figuró entre los candidatos a consejeros titulares.</p><p>La planta de reciclado sufrió, en julio de 2023, un brutal incendio que afortunadamente no provocó muertos ni heridos. Sin embargo, el fuego generó una enorme nube de humo perjudicial para la salud de los vecinos, debido a la naturaleza de los materiales que se encontraban dentro, como el nylon, cartón y plástico. En aquel entonces, los trabajadores denunciaron que el incendio fue intencional.</p><p>Además de las recorridas de cara al 2025, el próximo paso de CFK será oficializar su nuevo rol institucional como conductora del peronismo con un acto: los dirigentes de confianza de la flamante presidenta están trabajando en la organización para la semana que viene y esperan poder convocar a "todos". Eso incluye a Ricardo Quintela, que se reunirá en los próximos días con su competidora, y a Axel Kicillof, que felicitó a CFK por la proclamación.</p><p>En el acto se espera que estén también los vicepresidentes de la lista de CFK - José Mayans, Lucía Corpacci, Germán Martínez, Mariel Fernández y Ricardo Pignanelli - y sus consejeros. La fecha estimada es el próximo martes 12, aunque los detalles se terminarán de definir en los próximos días.</p><p>Cristina se reunió con representantes pymes en Avellaneda</p><p>Horas antes de ser proclamada al frente del PJ, la expresidenta se encontró con representantes de pymes de la provincia de Buenos Aires en la fábrica Vetrano SACIFI, en Avellaneda. El encuentro fue organizado por el Movimiento Productivo 25 de Mayo.</p><p>Ante un centenar de empresarios, manifestó que "el verdadero problema que hoy tiene la Argentina es la deshumanización". En otro tramo de su charla estimó que "este modelo es como un yogur, todos sabemos que se vence", con relación al programa económico que implementa Javier Milei.</p><p>Anteriormente, el 17 de octubre, Día de la Lealtad Peronista, Kirchner había visitado la Universidad Nacional de Avellaneda. Allí protagonizó un acto con estudiantes en el marco del conflicto por el presupuesto universitario. La universidad estaba sin actividad debido a una medida de fuerza.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/781282-cristina-kirchner-visito-una-planta-de-reciclado-en-villa-fi'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Cristina  recorrió el conurbano en su primera aparición como presidenta del PJ. Visitó una planta de reciclado en Villa Fiorito. ', // Opcional, pero recomendado     
+                text: 'Cristina  recorrió el conurbano en su primera aparición como presidenta del PJ. Visitó una planta de reciclado en Villa Fiorito. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/781282-cristina-kirchner-visito-una-planta-de-reciclado-en-villa-fi'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Donald Trump y el fin de la recesión: qué dicen los nuevos pronósticos de Wall Street para la economía argentina.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Donald Trump y el fin de la recesión: qué dicen los nuevos pronósticos de Wall Street para la economía argentina.</h1>
+            <p>Los precios lo dicen todo: el triunfo de Donald Trump en las elecciones presidenciales de Estados Unidos potenció el buen clima en el mercado para los activos argentinos que se extiende desde mediados de agosto. Luego del resultado electoral, bonos y acciones retomaron las subas, bajó el dólar, se achicó la brecha cambiaria y cae de manera determinante el riesgo país.</p><p>A qué atribuir esas buenas noticias implica analizar un conjunto de variables –blanqueo, liquidación del agro, compra de dólares del Banco Central, primeras reacciones positivas desde la economía real, baja de la inflación–, pero sin duda la presunción de que el regreso al poder del republicano implicará un fuerte vínculo de apoyo con la Argentina por parte de los Estados Unidos parece tener en las últimas jornadas un peso determinante en el humor de los inversores.</p><p>No solo los operadores parecen convencidos de esto, a juzgar por la suba de los activos argentinos a contramano del resto de los emergentes de la región, sino que también los analistas de grandes bancos de Wall Street, usualmente con acceso a información relativamente sólida aunque no exenta de malas interpretaciones, se suben a la ola. Claro que los datos que llegan de la macroeconomía e, incluso, de actividad y consumo, los vuelve aún más optimistas.</p><p>“¿Positivo para Argentina?”, se preguntó en el último informe enviado a sus clientes el banco Jeffries y la respuesta fue categórica: “Sí. Podría decirse que el Gobierno argentino tiene la relación más estrecha con la administración Trump en América latina”, opinó la entidad.</p><p>Música para los oídos de Milei quien, para reconfirmar esa idea, viajará a reunirse con el presidente electo norteamericano la próxima semana. El banco recordó que durante la anterior presidencia de Trump, Argentina recibió “apoyo material” de Estados Unidos y del FMI, por lo que “creemos que la administración entrante de Estados Unidos podría brindarle a la Argentina nuevo apoyo para mejorar aún más su situación macroeconómica”.</p><p>La descripción del panorama que hace Jeffries encierra una clara mirada sobre la situación económica de la Argentina, a la que ya ven “mejorada”.</p><p>En ese sentido, otro de los grandes bancos de inversión de Wall Street, Goldman Sachs, puso el foco en la recuperación de la actividad, los salarios y el consumo. Aunque no fue la principal preocupación a principios de año, cuando la sorpresa por el superávit fiscal dominaba la escena, con el correr los meses, fue creciendo la inquietud por una economía que no terminaba de repuntar y que, eventualmente, haría mella en el nivel de apoyo popular a las políticas de ajuste, complicando los planes de Milei y el ministro de Economía, Luis Caputo.</p><p>Ese temor empieza a despejarse, a la luz de los avances que se advierten en las estadísticas oficiales que todos los meses publica el Indec.</p><p>“Los indicadores de alta frecuencia muestran que la actividad económica real comenzó a recuperarse en el 3Q (trimestre). La producción industrial creció un notable 8% intertrimestral en el tercer trimestre y la actividad de la construcción aumentó en un 10,9% intertrimestral aún mayor”, destacó Goldman Sachs que, en línea con el fuerte rebote que esperan otras entidades como JP Morgan, confirmó que “esperamos que la economía continúe expandiéndose en cuarto trimestre. Crecimiento positivo de los salarios reales, a medida que la inflación se modera y se expande el crédito al sector privado, debería apoyar el consumo y el crecimiento”.</p><p>Lo cierto es que, en septiembre, la industria encadenó tres meses seguidos de suba respecto del mes anterior, con un alza de 2,6% respecto de agosto. También la construcción mostró un avance en septiembre un avance de 2,4%, aunque su recuperación tiene más altibajos. En cualquier caso, esos datos anticipan un buen algo que podría presagiar que, tal como aseguró Milei en la celebración de los 100 años de la CAC, “es el fin de la recesión”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/11/09/donald-trump-y-fin-de-la-recesion-que-dicen-los-nuevos-pronosticos-de-wall-street-para-la-economia-argentina/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Donald Trump y el fin de la recesión: qué dicen los nuevos pronósticos de Wall Street para la economía argentina.', // Opcional, pero recomendado     
+                text: 'Donald Trump y el fin de la recesión: qué dicen los nuevos pronósticos de Wall Street para la economía argentina.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/11/09/donald-trump-y-fin-de-la-recesion-que-dicen-los-nuevos-pronosticos-de-wall-street-para-la-economia-argentina/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
