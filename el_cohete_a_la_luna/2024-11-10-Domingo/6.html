@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aterrorizados. El uso indiscriminado del término terrorismo genera miedos irracionales y facilita a gobiernos la demonización de la protesta legítima. Por Eduardo de la Serna.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Aterrorizados. El uso indiscriminado del término terrorismo genera miedos irracionales y facilita a gobiernos la demonización de la protesta legítima. Por Eduardo de la Serna.</h1>
+            <p></p><p>Desde hace años es frecuente escuchar el término terrorismo (y derivados) y, cada tanto, vuelve renovado. Se habla del terrorismo de actitudes, grupos o leyes “anti-terroristas”, etc. Y, seamos claros, al menos “a la letra”, ¿a quién no le gustaría evitar las cosas que le causan terror? Se trata de un miedo intenso, en ocasiones paralizante, con frecuencia utilizado por algunos grupos de modo sistemático, obviamente para causar ese efecto en la población, a la cual se ve como inerme, indefensa e injustamente atacada. ¿Quién podría estar en desacuerdo?</p><p>Ahora bien, y especialmente en sociedades manipuladas por poderosos medios de comunicación que informan lo que quieren, silencian lo que les place, deforman lo que les agrada, ¿no es fácil, para ellos, provocar “miedos intensos”? Todos sabemos —y hemos experimentado— los miedos atávicos, pero a su vez insensatos, de muchos niños a la oscuridad, a personajes mitológicos, a cosas insólitas, a las que podemos añadir las decenas de fobias contemporáneas en muchos sujetos a las cosas más variadas, agorafobia, aracnofobia, claustrofobia, por solo mencionar algunas. ¿No es sensato imaginar que quienes tienen el manejo de la “cosa pública” puedan generar miedos a problemas inexistentes, menores o fácilmente solucionables?</p><p>¿Quién sería, entonces, el que determina que algo, alguien, sea realmente, y no ficcionalmente, un terrorista? Porque, insisto, todos estaríamos de acuerdo con que se combata, se anule, se limiten las circunstancias o grupos que nos aterrorizan, pero, por ejemplo, vista la evidente diarrea verbal del actual gobierno argentino, ¿no es comprensible que aplique el término “terrorista” a cualquiera que, sencillamente, se manifiesta opositor o contrario a sus políticas? (“si acaso esto es un motivo, ¡preso voy también, sargento!”).</p><p>Pero, veamos esto en concreto, por ejemplo: un paro, una huelga, obviamente, ¡por definición!, pretende de algún modo “molestar”. No porque se quiera molestar, sino porque se pretende la consecución de un bien, como ser la reincorporación de un trabajador, un aumento salarial u otras cosas que se entienden como derechos (de derechos se trata); el objetivo no es molestar, por supuesto, y por eso es una acción “de última instancia”, ya que se preferiría que se consiguiera con diálogo, conversaciones o discusiones. Entonces, como suelen hacer los medios cómplices, preguntar a los “molestados” es casi una manipulación (o sin “casi”). Obviamente molesta, y obviamente a nadie le gusta ser molestado. Pero, por otro lado, a nadie le gusta ser echado del trabajo o que los salarios sean insuficientes… por eso de escuchar todas las campanas. Pero, y acá el tema, llamar a eso “terrorismo” es falso de toda falsedad, es manipulación del auditorio y es “carta blanca” para reaccionar —desde el mismo poder que “nombra” — como se pretende, desde la represión, a los cierres de empresas (o privatizaciones), etc.</p><p>¿Quién debería ser el que catalogue con sensatez, equilibrio y razonabilidad a algún grupo, por ejemplo, de terrorista? Para empezar, alguien sensato, equilibrado y razonable. Obvio (libertarios, abstenerse). Y alguien que no esté afectado por cierta subjetividad que permita sacar provecho de la declaración (salvo, por ejemplo, sacar el provecho de “la paz”, lo que, por cierto, es equilibrado, sensato y razonable).</p><p>Pero, y para terminar, basta con ver la encopresis habitual del vocero presidencial y su uso de términos cuyo significado desconoce (o manipula) para saber que no es “por ahí” que debe provenir la respuesta. Y, para peor (lo que parece ser un objetivo), si se busca que “las fuerzas armadas tengan participación en casos de terrorismo” y todo puede ser calificado de tal… pues, al decir popular y fácilmente comprensible, si por ahí va la cosa, “¡estamos en el horno!”.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elcohetealaluna.com/aterrorizados/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Aterrorizados. El uso indiscriminado del término terrorismo genera miedos irracionales y facilita a gobiernos la demonización de la protesta legítima. Por Eduardo de la Serna.', // Opcional, pero recomendado     
+                text: 'Aterrorizados. El uso indiscriminado del término terrorismo genera miedos irracionales y facilita a gobiernos la demonización de la protesta legítima. Por Eduardo de la Serna.',  // Opcional
+                url: 'https://www.elcohetealaluna.com/aterrorizados/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
