@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El cruce entre Rodolfo D’Onofrio y Pablo Toviggino por el arbitraje en River-Barracas.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>El cruce entre Rodolfo D’Onofrio y Pablo Toviggino por el arbitraje en River-Barracas.</h1>
+            <p>River Plate empataba 0-0 en el Monumental ante un Barracas Central cerrado, que en un par de oportunidades apeló al juego brusco para cortar. En ese contexto, Rodolfo D’Onofrio, ex presidente del Millonario, utilizó su cuenta en X (antes Twitter) para expresar su enojo con la conducción del partido del juez Fernando Echenique. “Estoy viendo a River, es una vergüenza el arbitraje. No se juega. Estamos matando al fútbol de Argentina”, subrayó. Ante la repercusión de su posteo en redes, le respondió Pablo Toviggino, tesorero de la AFA y mano derecha de Claudio Tapia en la entidad.</p><p>”¿Qué pasó? ¿Te dieron ganas de postear? ¡Septiembre la última vez! Bueno, amigo, vos también fuiste dirigente deportivo. Te bancamos en esta, ya que estás atrás de alguna designación del Gobierno Nacional. ¡Ojalá sirva para que lo hagan! Preferible vos al Motonauta traidor””, devolvió Toviggino, haciendo alusión a Daniel Scioli, Secretario de Turismo, Ambiente y Deportes.</p><p>Fentes de la Casa Rosada vinculaban a D’Onofrio como uno de los posibles candidatos a ocupar el cargo de embajador en Estados Unidos que dejó vacante Gerardo Werthein, flamante Canciller designado en lugar de Diana Mondino. A eso hizo referencia el tesorero de la Asociación del Fútbol Argentino en el cruce dialéctico.</p><p>El Millonario siguió buscando y logró romper la paridad en el segundo tiempo, gracias a los goles de Maxi Meza, Miguel Borja y Paulo Díaz. Así, el conjunto dirigido por Marcelo Gallardo enlazó su tercera victoria consecutiva y da batalla en la Liga Profesional: quedó a seis puntos de los líderes Vélez y Huracán, con cinco fechas por disputarse.</p><p>El técnico del equipo de Núñez también se refirió al arbitraje, resaltando el tiempo de juego perdido por la estrategia del conjunto rival. “Los árbitros tienen que ayudar a agilizar el juego, a hacer un espectáculo más ameno para la gente. Se requiere de mejores capacidades para desarrollar un buen espectáculo, de todos. Todos debemos colaborar para que esto no sea cada vez peor, para que el fútbol argentino no se convierta en algo que naturalices. Se repite: ‘Es así el fútbol argentino’. Y no interesan las formas, no interesa nada. Todos deberíamos ayudar”, dijo en la sala de conferencias tras el triunfo.</p><p>“Lo que me llamó la atención es que, si hay tantas interrupciones, lo que debería hacerse es agregar tiempo de adición y jugar más tiempo. Si tenés que dar diez minutos, 12 minutos, 14 minutos, hay que darlos, como se hacía en el Mundial. No podemos quedarnos solo en la interrupción, en el que no quiere jugar, y ya está. Y después te dan, tres, cuatro minutos, cinco... Cuando te dan seis minutos, parece una locura. Yo reniego de mi equipo cuando va ganando y hace tiempo Hoy lo terminó a los 45 minutos. ¿Por qué? Porque ganamos tranquilos, cómodos. Había que respetar el tiempo de adición y no se respetó“, continuó el DT con su reclamo.</p><p>“A mí me gusta que el fútbol argentino pueda estar en evolución. Ahora no hay descensos. Entonces, ¿cuál es el problema? ¿Por qué estamos todos sospechando de todos? Me gustaría un poco más de reglas claras. Simplemente eso”, concluyó el Muñeco.</p><p>* Las principales alternativas del duelo disputado en el Monumental</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/deportes/2024/11/10/el-cruce-entre-rodolfo-donofrio-y-pablo-toviggino-por-el-arbitraje-en-river-barracas/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El cruce entre Rodolfo D’Onofrio y Pablo Toviggino por el arbitraje en River-Barracas.', // Opcional, pero recomendado     
+                text: 'El cruce entre Rodolfo D’Onofrio y Pablo Toviggino por el arbitraje en River-Barracas.',  // Opcional
+                url: 'https://www.infobae.com/deportes/2024/11/10/el-cruce-entre-rodolfo-donofrio-y-pablo-toviggino-por-el-arbitraje-en-river-barracas/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

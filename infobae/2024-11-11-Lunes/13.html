@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La lupa sobre el gol anulado a Sarmiento de Junín ante Boca: qué dice el reglamento.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>La lupa sobre el gol anulado a Sarmiento de Junín ante Boca: qué dice el reglamento.</h1>
+            <p>* El gol anulado a Sarmiento</p><p>Fue la polémica que marcó el partido entre Sarmiento de Junín y Boca Juniors por la fecha 22 de la Liga Profesional en el Estadio Eva Perón. El tanto anulado por posición adelantada al Verde en el final del primer tiempo generó la bronca de los jugadores e hinchas locales. La jugada ameritó el análisis del VAR y, antes de irse al descanso, el capitán Nicolás Gaitán se lo reclamó al árbitro Leandro Rey Hilfer.</p><p>El fuera de juego se lo sancionaron a Elías López, quien se proyectó por la banda derecha, pero si bien buscó no participar de la secuencia, el juez determinó, al observar la pantalla, que distrajo a la marca de Marcelo Saracchi, quien si bien lo siguió a Gaitán (luego desbordó y mandó el centro), perdió un segundo clave en la persecución ante la presencia del lateral derecho.</p><p>Nicolás Lamolina, a cargo del VAR, le dejó la última palabra al referí, que decidió invalidar el tanto que había conseguido Joaquín Gho, luego de un enganche en el área y una buena definición.</p><p>La decisión de Rey Hilfer se dio porque el jugador de Sarmiento quedó en fuera de juego, pese a que inicialmente pareció no intervenir en la jugada de forma directa. Sin embargo, cuando Saracchi se acercó para marcar, López interfirió, ya que su presencia dificultó que Saracchi actuara de manera libre y sin obstáculos.</p><p>Este movimiento transforma el fuera de juego en una infracción activa. Según el reglamento, un jugador queda en fuera de juego cuando “interfiere con un adversario” al obstaculizar su visión, movimiento, o al “disputar el balón”. La acción de interferir en el movimiento de Saracchi le dio un beneficio indirecto al equipo en ataque, lo que hizo que el árbitro sancionara fuera de juego. Es decir, aunque no tocó la pelota, afectó el desarrollo de la jugada.</p><p>Al darse el episodio en el final de la primera mitad Gaitán, por ser el capitán de Sarmiento, encabezó los reclamos ante Rey Hilfer, quien el explicó el criterio empleado para tomar su decisión.</p><p>Respecto del juego, en los 45 minutos iniciales, el equipo Xeneize mantuvo el control y posesión en el comienzo, pero luego el Verde a cargo de Martín Funes tomó la iniciativa y fue superior al elenco dirigido por Fernando Gago. Generó varias chances, incluido el gol anulado. La ventaja era merecida.</p><p>En el complemento el trámite fue aburrido y a falta de 14 minutos llegó el tanto de Boca Juniors. Fue en una jugada disputada que ganó Edinson Cavani, la pelota le quedó a Miguel Merentiel, quien tras un amague definió preciso para poder romper el cero. En tiempo adicionado, Kevin Zenón amplió las diferencias y selló el resultado.</p><p>Boca Juniors rompió la racha negativa y volvió a sumar de a 3 puntos en condición de visitante, algo que hacía desde el 19 de mayo cuando venció 4-2 a Central Córdoba en Santiago del Estero.</p><p>Además, el conjunto azul y oro venía de lograr su primer triunfo de la era Gago al superar 4-1 a Godoy Cruz en el encuentro de la fecha anterior disputado en La Bombonera. Este domingo logró su segunda victoria, que le permitió quedar octavo en el campeonato con 31 puntos, a 11 de los dos líderes, Vélez y Huracán, aunque el Fortín jugará este lunes ante Riestra.</p><p>En la tabla anual Boca Juniors llegó a 56 puntos y quedó a 5 de Racing, quien se ubica tercero y es el último de los que estaría sacando su pasaje a la Copa Libertadores.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/deportes/2024/11/11/la-lupa-sobre-el-gol-anulado-a-sarmiento-de-junin-ante-boca-que-dice-el-reglamento/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La lupa sobre el gol anulado a Sarmiento de Junín ante Boca: qué dice el reglamento.', // Opcional, pero recomendado     
+                text: 'La lupa sobre el gol anulado a Sarmiento de Junín ante Boca: qué dice el reglamento.',  // Opcional
+                url: 'https://www.infobae.com/deportes/2024/11/11/la-lupa-sobre-el-gol-anulado-a-sarmiento-de-junin-ante-boca-que-dice-el-reglamento/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

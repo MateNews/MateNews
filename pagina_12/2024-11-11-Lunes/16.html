@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Brasil, decime qué se siente. Brutal apreciación del peso frente al real. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Brasil, decime qué se siente. Brutal apreciación del peso frente al real. </h1>
+            <p>Brutal apreciación del peso frente al real</p><p>Como referencia, en 1999 el tipo de cambio era casi idéntico al actual. Aquella historia terminó muy mal para Argentina.</p><p>Apreciación</p><p>El gobierno tuvo una semana a puro festejo. La victoria de Donald Trump en Estados Unidos generó una nueva ola de compra de los bonos y acciones de la Argentina. El mercado se entusiasma con la llegada de financiamiento e inversiones para la energía y la minería, al punto que algunos analistas piensan que en los próximos años a los argentinos le lloverán divisas. En la práctica, sin embargo, los dólares del mundo todavía no entraron y el país ya es más caro que Brasil, una situación que siempre terminó en estallido.</p><p>El equipo económico había asegurado a mitad de este año que las políticas de emisión cero y de ajuste fiscal iban a permitir que el dólar financiero vuelva a los 1100 pesos. Eso fue a finales de julio, cuando los inversores dudaban de las posibilidades del gobierno para ordenar las variables macro, recuperar reservas y sostener el superávit de las cuentas públicas. El blue, el dólar mep y el contado con liquidación cotizaban en torno de los 1400 pesos.</p><p>Las declaraciones del equipo económico se terminaron concretando tres meses después. El blanqueo, la crisis en el mercado interno y una apuesta renovada por el carry trade fueron claves para impulsar la apreciación nominal de los dólares financieros. En los últimos días, el blue coqueteó con bajar de los 1100 pesos, un valor impensado hace un año atrás. El nivel de la brecha cambiaria es menor al 14 por ciento contra el dólar oficial.</p><p>El gobierno se jacta de estos resultados y asegura que tiene el camino despejado para conseguir que la economía vuelva a crecer, que la inflación sea un problema del pasado y la inestabilidad cambiaria un recuerdo poco feliz del tiempo en que no había ancla fiscal. La victoria de Trump sería el reaseguro: una especie de prestamista de última instancia para la Argentina.</p><p>Sin embargo, los deseos del equipo económico no significan verdades absolutas e incluso pueden terminar siendo mentiras evidentes. La apreciación cambiaria de los últimos meses no fue resultado de una llegada masiva de inversiones para actividades productivas. Los dólares para la economía real no aparecieron y está en duda que lleguen en algún momento. La ganadora de los últimos meses fue la inversión especulativa que tiene una naturaleza de corto plazo.</p><p>El gobierno festeja la apreciación cambiaria como un síntoma de la confianza y un augurio de éxito del programa económico para los próximos años. Pero puede convertirse en su principal dolor de cabeza. Los precios en dólares del mercado interno son más altos que en otros países de la región e incluso que en algunas economías de Europa. En los últimos días empezaron a aparecer datos e informes que permiten entender la situación.</p><p>Uno de los indicadores más impactantes fue la relación entre el peso argentino y el real brasileño medida en términos reales. El tipo de cambio a 1100 pesos hace que sea el mejor momento desde finales de la convertibilidad para viajar a las costas de Brasil en las vacaciones de verano. Como referencia, en 1999 el tipo de cambio era casi idéntico al actual (calculando a precios de hoy).</p><p>Se trata de una situación que no solo impacta en el turismo sino en la industria. En la medida que Brasil empieza a ser cada vez más barato que la Argentina se esfuman las posibilidades de la industria local de mantenerse en pie. La contracara es el cierre de pequeñas y medianas empresas en el mercado interno, el aumento del desempleo y una peor distribución.</p><p>La Argentina empieza a entrar de esta forma en la encrucijada de siempre. Los dólares de las inversiones productivas son una fantasía, el financiamiento de los organismos internacionales y de fondos de inversión global se demora y los gastos en dólares van en aumento. La cuenta del turismo será megadeficitaria en los próximos meses, al mismo tiempo que las importaciones empezarán a aumentar. Principalmente si el crédito al consumo genera rebote de la economía y el dólar barato impulsa la compra de bienes de Brasil.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/781319-brasil-decime-que-se-siente'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Brasil, decime qué se siente. Brutal apreciación del peso frente al real. ', // Opcional, pero recomendado     
+                text: 'Brasil, decime qué se siente. Brutal apreciación del peso frente al real. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/781319-brasil-decime-que-se-siente'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
