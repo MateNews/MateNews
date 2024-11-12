@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Alejandro Oxenford será el nuevo embajador argentino en los EEUU.</h1>
             <p>La Cancillería informó que Alejandro Carlos Francisco Oxenford fue designado como nuevo embajador ante los Estados Unidos. El anuncio fue realizado a través de redes sociales mientras el presidente Javier Milei brindaba un discurso en el Meta Day, donde no se pronunció sobre la cuestión.</p><p>Oxenford reemplazará a Gerardo Werthein, quien quedó a cargo del Ministerio de Relaciones Exteriores luego de la salida de Diana Mondino, eyectada de la gestión luego de votar en contra del embargo a Cuba en Naciones Unidas. Con esta designación, el primer mandatario volvió a elegir como su representante en Washington DC a un referente del mundo empresario y no a un diplomático de carrera o una personalidad con experiencia política. El empresario estará a cargo de conducir las relaciones entre el gobierno argentino y el futuro gobierno de Donald Trump.</p><p>“El Gobierno de la República Argentina tiene el honor de anunciar que el Sr. Alejandro Carlos Francisco Oxenford será designado como Embajador Extraordinario y Plenipotenciario ante los Estados Unidos de América. Su experiencia y compromiso fortalecerán las relaciones bilaterales y promoverán una cooperación fructífera entre ambas naciones”, informó de manera oficial la Cancillería.</p><p>“Alec” Oxenford, como se lo suele denominar, es un emprendedor vinculado a las nuevas tecnologías. Fundó las compañías DeRemate.com, OLX -clasificados online- y letgo -una app de compra y venta de Estados Unidos-. También ha realizado importantes inversiones en tecnología como inversor de capital riesgo a través de Myelin VC y Alpha Capital. Oxenford fue reconocido por el Foro Económico Mundial y galardonado como Joven Líder Mundial.</p><p>Minutos después del anuncio oficial, Oxenford le agradeció públicamente la designación al Presidente. “Estoy emocionado por esta designación como Embajador en EEUU. Estoy convencido que con dedicación y foco, lograremos un impacto significativo, posicionando a Argentina cada vez mejor en USA y el mundo”, dijo.</p><p>Aseguró que será un honor trabajar bajo el liderazgo de Werthein, el equipo de gobierno y la inspiración y las ideas de la libertad como norte. Luego citó una frase de Nelson Mandela: “El servicio público no es solo un honor, es también una responsabilidad”.</p><p>Pierpaolo Barbieri, fundador de Ualá, la fintech que ayer visitó Milei, fue una de las primeras figuras públicas en felicitarlo.</p><p>Además de emprendedor tecnológico, Oxenford se define a sí mismo como amante del arte. Es miembro de arteBa desde 2008 y fundador latinoamericano del MoMA de Nueva York.</p><p>El nombre de Oxenford no figuraba en la grilla de candidatos a suceder a Gerardo Werthein. Se trata de una posición clave para las relaciones exteriores de la Argentina. El destino de Washington es, con el de Brasilia, Beijing, Londres y París, de los que tienen mayor importancia. Hasta esta mañana habían trascendido diversos nombres, tanto del ámbito político como del sector diplomático, pero finalmente Milei optó por una personalidad sin experiencia pública, pero con fuerte impronta en el mundo de los negocios del futuro.</p><p>El nuevo embajador asumirá en una coyuntura singular: con las relaciones exteriores en pleno proceso de reorganización y cambio, tras la salida tumultuosa de Diana Mondino del Palacio San Martín. Pero también en un tiempo que está signado por la llegada de un nuevo presidente a partir de enero próximo. En la gestión de Trump ya tiene un lugar estelar el empresario de la economía del futuro más importante del mundo, Elon Musk, quien no solo hizo campaña y financió el proyecto del líder republicano, sino que podría asumir responsabilidades en la gestión.</p><p>Con la designación de Alec Oxenford, el presidente Milei envió una clara señal al gobierno que está en plena construcción, después de la victoria arrolladora ante la demócrata Kamala Harris. Las relaciones entre la Casa Blanca y la Casa Rosada tendrán, además de una faceta geopolítica, una fuerte impronta en los vínculos económicos, principalmente en materia de las tecnologías de la información y desarrollos asentados en la inteligencia artificial. La nominación del futuro embajador en Estados Unidos -que tiene que pasar por la aprobación del Senado de la Nación- ocurrió a horas del viaje que emprenderá Javier Milei a Palm Beach, donde tendrá el jueves a la noche una cena y un encuentro personal con Trump en su residencia de Mar-a-Lago.</p><p>Temas Relacionados</p><p></p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

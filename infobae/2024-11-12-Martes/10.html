@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Avanza la negociación entre Aerolíneas y los sindicatos, pero aún están lejos de un acuerdo.</h1>
             <p>Tras el cuarto intermedio, Aerolíneas Argentinas y los 3 sindicatos aeronáuticos del ala dura reanudarán esta tarde las negociaciones para intentar alcanzar un acuerdo, ante la amenaza del Gobierno de tomar medidas drásticas en la empresa: hubo avances en las modificaciones de algunas cláusulas de los convenios colectivos de trabajo, pero están lejos de una solución al conflicto.</p><p>Las autoridades de la compañía estatal volverán a hablar con los gremios por separado: a las 14 recibirán a la Asociación del Personal Aeronáutico (APA); a las 15, a la Asociación de Pilotos de Líneas Aéreas (APLA) y a las 16, a la Asociación Argentina de Aeronavegantes (AAA).</p><p>En la noche del lunes, en una reunión de Aerolíneas y los 3 sindicatos, los puntos consensuados estuvieron a punto de volcarse en una minuta para que quedara un registro de las coincidencias, pero finalmente desistieron de hacerlo y los directivos de la empresa propusieron un cuarto intermedio.</p><p>“Todavía no se firmó nada”, le dijo a Infobae el líder de los aeronavegantes, Juan Pablo Brey, quien desmintió además las versiones sobre las modificaciones en los convenios colectivos que circulan en algunos medios periodísticos porque, destacó, no responden a lo que se conversó hasta ahora.</p><p>Entre los cambios en los convenios que se analizaron figuran, entre otros, la renuncia a los pasajes en clase ejecutiva para los pilotos y sus familias, el replanteo del servicio de remises para que pilotos y tripulantes de cabina se trasladen entre sus casas y los aeropuertos, y viceversa, y la hora de tiempo de servicio desde que se suben a los autos que los trasladan hasta que comienzan a trabajar en forma efectiva.</p><p>Las negociaciones están centradas justamente en lo que pidió Javier Milei: que los gremialistas “acepten discutir los convenios colectivos y eliminen los beneficios” que tienen los empleados de la compañía estatal. Sin embargo, fuentes sindicales advirtieron que todavía siguen estando lejos las posiciones en materia salarial. Los 3 gremios reclaman un 35% de aumento para destrabar el conflicto y seguir conversando más adelante una recomposición más profunda, mientras que la empresa no se aparta hasta ahora de una oferta del 14% de mejora para el período junio-agosto.</p><p>La nueva ronda de negociaciones será clave para determinar el futuro de la empresa estatal. Los sindicalistas del sector admitieron: “Nos dijeron que si no firmamos el acuerdo, se cierra Aerolíneas o presentan el PPC (Procedimiento Preventivo de Crisis)”, que, sobre la base de la presentación de los números que demostrarían su crisis económica, habilita a una empresa a negociar con los sindicatos las suspensiones del personal o las indemnizaciones por un monto menor al fijado por ley.</p><p>Más allá de la posición de la empresa sobre los cambios en los convenios, los 3 gremios llevaron sus propias propuestas en ese sentido para mejorar la productividad. En el Gobierno quieren exhibir las eventuales concesiones de los sindicalistas aeronáuticos como un triunfo político con efectos concretos en los números de la empresa: los remises que utilizan los pilotos y tripulantes de cabina, según el oficialismo, le cuestan $1.000 millones por mes al Estado, mientras que los pasajes en clase ejecutiva para los pilotos y sus familias representan alrededor de $20.000 millones al año.</p><p>Los dirigentes gremiales aseguran que desde el anterior gobierno venían presentando propuestas para mejorar la productividad sobre la base de aceptar modificaciones en los convenios colectivos, mientras advierten que algunos cambios que dejaron trascender en la empresa son “impracticables”. Por ejemplo, la renuncia a la zona de descanso en los aviones no se podría instrumentar porque “los aviones de largo alcance ya vienen configurados así y esas asientos-cama no se pueden vender”.</p><p>Antes de la reunión de este lunes, el secretario Gremial de APLA, Mateo Ferrería, admitió: “Lo que se pide es una propuesta integral, ellos (por la empresa) nos hicieron una y nosotros trajimos otra; hay una diferencia en algunas cuestiones que mientras estén las negociaciones preferimos no comentar”.</p><p>Desde el Gobierno se dejó entrever que la posición más intransigente es la del sindicato de pilotos, conducido por Pablo Biró, que se resistiría a aceptar “ceder algunos privilegios del convenio”.</p><p>En las negociaciones de estos últimos días, los secretarios generales de los 3 sindicatos (Biró, Brey y Edgardo Llano, de APA) fueron reemplazados por los responsables de Gremiales como una forma de facilitar que el diálogo se concentre más en los aspectos técnicos y evitar enfrentamientos políticos.</p><p>Temas Relacionados</p><p></p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Mark Zuckerberg grabó un mensaje para Milei: los planes del fundador de Facebook para la IA en la Argentina.</h1>
             <p>En el marco del Meta Day que se está desarrollando este martes, el creador de Facebook y actual presidente de Meta, Mark Zuckerberg, le envió un afectuoso mensaje al presidente Javier Milei, antes de que expusiera sobre el avance de la inteligencia artificial en la Argentina.</p><p>“Hola Argentina y presidente Milei. Gracias por acompañarnos hoy. Nos entusiasma poder llevar Llama 3 a más personas en Argentina. Al hacer que esta tecnología sea de código abierto, estamos eliminando barreras para que una comunidad más amplia de desarrolladores y organizaciones pueda acceder al poder de la inteligencia artificial, construir soluciones innovadoras y promover el progreso”, dijo el joven empresario tecnológico.</p><p>Luego de esta presentación, habló el jefe de Estado, quien encara la recta final de su agenda nacional antes de partir a los Estados Unidos para buscar un encuentro con el electo presidente Donald Trump en el marco de la Conferencia Política de Acción Conservadora (CPAC), que se desarrollará en la mansión del presidente electo, en Mar-a-Lago.</p><p>El evento organizado por Meta se está desarrollando, hasta el mediodía, en el Palacio Libertad, en el Centro Cultural Domingo Faustino Sarmiento, y busca fomentar en pymes y emprendedores la adquisición de habilidades digitales innovadoras para optimizar sus negocios “usando tecnologías de vanguardia como la Inteligencia Artificial Generativa (GenAI)”, que les permite “interactuar de manera más efectiva y creativa con la audiencia”.</p><p>Los participantes tendrán acceso a capacitaciones gratuitas pensadas especialmente para emprendedores y pymes argentinas y con la ayuda de expertos, las firmas podrán aprender sobre las herramientas de IA para el ecosistema emprendedor, cómo definir una propuesta de valor sólida para las redes sociales y buenas prácticas para aprovechar al máximo plataformas como WhatsApp Business, Instagram, Meta Business Suite y Meta AI, según informó la empresa.</p><p>Milei se había reunido con Zuckerberg en mayo de este año, tras una visita que el mandatario realizó a los Estados Unidos. El encuentro fue en Palo Alto, California, y el empresario le ofreció que la Argentina se posicione como un polo de innovación tecnológico, en un escenario mundial que ya plantea limitaciones a la inversión vinculada a la inteligencia artificial.</p><p>Cuando terminó su cónclave con Zuckerberg, el presidente posteó en su cuenta oficial de X una foto con el CEO de META y una frase en mayúscula que dice: “Fenómeno barrial con Mark Zuckerberg...!!! Viva la libertad carajo”.</p><p>“La reunión con Zuckerberg, el último de una serie de encuentros con líderes de empresas de tecnología sostenidos esta semana en el Valle de Silicio en Estados Unidos, reafirma la intención de Argentina de convertirse en un centro de innovación tecnológica. El presidente Milei y su equipo manifestaron su entusiasmo por las futuras oportunidades de cooperación con Meta, lo que podría traer importantes beneficios económicos y tecnológicos al país”, informó Presidencia en un comunicado, en ese momento.</p><p>Acompañaron al Presidente a la cita con el líder tecnológico Karina Milei -secretaria General de la Presidencia-; Luis Caputo -ministro de Economía-; Gerardo Werthein -entonces embajador en Estados Unidos-, Demian Reidel, consejero económico del Poder Ejecutivo y Mat Travizano, que es un experto en tecnología.</p><p>El encuentro con Zuckerberg fue el cierre de una gira que Milei realizó por San Francisco, adonde ofreció una clase abierta en la Universidad de Stanford y se encontró con los CEOs y directores ejecutivos de ChatGP, Google y Apple con el objetivo de presentar a la Argentina como una posible alternativa en el desarrollo de proyectos tecnológicos de última generación.</p><p>Durante su visita a California, Milei sorprendió con su discurso ideológico y su mirada económica en Silicon Valley, y abrió un escenario de eventuales inversiones que podrían llegar a la Argentina para evitar las regulaciones ya aprobadas en Europa y actualmente se estudian en Estados Unidos.</p><p>Temas Relacionados</p><p></p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

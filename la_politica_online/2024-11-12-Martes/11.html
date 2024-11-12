@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Los diputados de Jalil y el jujeño Snopek, en duda para el quórum por las tensiones del PJ . El bloque peronista podría sufrir cinco bajas sobre sus 99 legisladores en la sesión por la ley de DNU.</h1>
             <p>El bloque de Unión por la Patria podría llegar este martes al recinto con cinco bajas si los cuatro diputados catamarqueños Fernanda Ávila, Dante López Rodríguez, Sebastián Nóblega y Silvana Ginocchio, esposa del gobernador Raúl Jalil, más el jujeño Guillermo Snopek decidieran no dar quórum.</p><p>Fuentes parlamentarias dijeron a LPO que el cuarteto que responde a Jalil permanecía este lunes en la incógnita ante la inquietud de aquellos que desde la semana pasada los llamaban para saber si darían quórum. Todo un dolor de cabeza para el líder del bloque, Germán Martínez.</p><p>LPO DAILY</p><p>En la misma sintonía se encontraba Snopek, acaso fastidiado por el enchastre judicial que derivó de la demanda interpuesta en la interna del PJ en su provincia por parte de Diego Martín Palmieri, un hombre vinculado en otros tiempos al empresario y ex jefe partidario Rubén Rivarola.</p><p>La pelea del peronismo jujeño es tan complicada que Rivarola fue destituido de su cargo por la intervención que se resolvió después del jujeñazo, pueblada en respuesta a la reforma constitucional de Gerardo Morales. Y aunque siempre fue señalado como socio del ex mandatario radical, Rivarola esta vez integraba la lista que lleva de candidata a la diputada camporista Leila Chaher, así como su contrincante, la senadora Carolina Moisés, había sido compañera de fórmula del empresario y dirigente cuando peleó por la gobernación.</p><p>En ese contexto, Snopek aprovecharía el fastidio por la interna partidaria, que ahora lo encuentra apoyando a Cristina Kirchner, para justificar su faltazo. "En otro tiempo, se hubiera tomado un avión para estar en Buenos Aires un día antes pero hoy está evaluando si llega con el vuelo que sale desde San Salvador el martes al mediodía", comentaron a LPO.</p><p>Como sea, el peronismo podría ingresar al recinto con 94 de sus integrantes y, a partir de allí, habría que sumar a los 12 radicales liderados por Pablo Juliano, 12 del pichettismo, los seis lilitos y los cinco de la izquierda. En total, serían 129 de todos modos y habría quórum para sesionar, sin contar con apoyos de otros bloques para superar con holgura el número necesario para el arranque.</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

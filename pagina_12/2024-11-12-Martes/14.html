@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Mariano Recalde: "Llegó Milei y empezaron los problemas en Aerolíneas Argentinas". Del superávit al conflicto gremial. </h1>
             <p>Del superávit al conflicto gremial</p><p>El senador nacional afirmó por la 750 que la empresa no solo funcionaba bien, sino que había llegado a ser superavitaria. Apuntó contra el Gobierno por haber forzado un conflicto con los trabajadores bajo un constante manto de extorsión.</p><p>El senador nacional y expresidente de Aerolíneas Argentinas, Mariano Recalde, criticó al gobierno de Javier Milei por haber llevado a la línea aérea de bandera a una situación de conflicto constante a pesar de que la empresa estaba funcionando de manera óptima y en constante crecimiento, según indicó.</p><p>El expresidente de la aerolínea aseguró por la 750 que “desde que comenzó a gobernar Milei, lo único que recibió la empresa fueron ataques y provocaciones, desorganizando algo que funcionaba bien.”</p><p></p><p>“No había quejas, no había conflictos, los trabajadores tenían buenos sueldos, y la empresa sumaba cada vez más destinos y pasajeros. Incluso, como frutilla del postre, el año pasado obtuvo ganancias y no requirió un solo centavo del presupuesto nacional”, recordó Recalde.</p><p>Sin embargo, lamentó: “Llegó Milei y empezaron los problemas, por la devaluación brutal y el congelamiento de los salarios. Es lógico que hubiera un reclamo y un pedido de recomposición salarial que nunca fue escuchado, y la respuesta fue más provocación. Los tildaban de terroristas por el simple hecho de reclamar.”</p><p>Para el legislador, “los verdaderos extorsionadores son los del Gobierno, que terminaron sentando a los trabajadores en una mesa de negociación bajo la amenaza de aceptar unas migajas de aumento y entregar derechos.”</p><p>“Cuando vos les pedís que sean más productivos, tenés que darles algo a cambio. Acá el Gobierno está logrando —todavía no hay acuerdo— quitarles o cambiarles el convenio colectivo y ofrecer a cambio un aumento salarial que no cubre lo que perdieron por inflación”, repudió.</p><p>En tanto, sobre la nueva junta directiva, a cargo de Fabián Lombardo, dijo: “Saben de Aerolíneas. El presidente es una persona de mucha experiencia en el mundo. Pero los que están llevando la batuta e imponiendo la política son del Gobierno.”</p><p></p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

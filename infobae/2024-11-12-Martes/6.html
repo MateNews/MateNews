@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Allanaron una comisaría por el crimen del jefe de la barra brava de Rosario Central “Pillín” Bracamonte.</h1>
             <p>La comisaría 9ª de Rosario fue allanada en la mañana de este martes por la División de Asuntos Internos por pedido del fiscal Alejandro Ferlazzo, quien investiga el doble crimen del jefe de la barra brava de Rosario Central Andrés “Pillín” Bracamonte y su ladero Daniel Raúl “Rana” Attardo. Ambos fueron atacados a tiros el sábado pasado a la salida del partido disputado en el Gigante de Arroyito ante San Lorenzo.</p><p>De acuerdo a los primeros datos del procedimiento, los agentes tienen la orden de secuestrar celulares a los efectivos de la Policía de Santa Fe que prestan servicio en esa dependencia. El funcionario del Ministerio Público de la Acusación también encomendó incautar documentación que tenga algún vínculo con el hecho, indicaron fuentes del caso a Infobae, quienes aclararon que no se dispuso la detención de ningún oficial.</p><p>Se presume que el operativo tiene relación con testimonios de hinchas de Central y testigos que vía mensajes de voz de WhatsApp y a través de la red social X indicaron que tras la balacera habrían pasado por el lugar una ambulancia y un móvil policial, quienes no detuvieron la marcha y siguieron su paso.</p><p>La investigación de Ferlazzo por el doble homicidio sigue actualmente dos líneas investigativas de peso. En una, se intenta establecer si podría tratarse de un ataque de Los Monos tras el crimen de Samuel Medina, alias “Gordo Samu”, yerno de Ariel Máximo “Guille” Cantero; y en la otra, si fue la presunta banda conocida como “Los Menores” en la zona noroeste de Rosario.</p><p>La primera hipótesis está basada en la exhibición de poder que hicieron desde el entorno de Medina después del homicidio, cuando en el partido de local ante Banfield tiraron bombas de estruendo -lo que ocasionó una demora en la reanudación del partido- y mostraron banderas que decían “No respetamos a nadie”, “Siempre mono, nunca sapo” y “La mafia quiqueña”.</p><p>La segunda línea investigativa se desprende de la propia mención hecha por Bracamonte en una entrevista que brindó hace tres semanas al diario La Nación.</p><p>“Los Menores” comenzaron a aparecer en las crónicas policiales en septiembre del año pasado, cuando un soldadito de la organización se negó a seguir vendiendo en uno de los búnkeres, lo secuestraron y lo llevaron al lado del arroyo Ludueña, donde intentaron matarlo a tiros. La víctima logró escapar de los disparos luego de arrojarse al agua.</p><p>El cuerpo de Bracamonte fue trasladado en la noche de este lunes bajo un fuerte operativo policial, desde el Instituto Médico Legal hasta el cementerio El Prado de la vecina ciudad de Pérez. La familia había solicitado cremarlo, pero la Justicia provincial se negó ante la posibilidad de que en la investigación se requiera una segunda autopsia.</p><p>Attardo, por su parte, fue velado en una cochería de San Lorenzo y Riccheri, en el macrocentro de Rosario, y luego fue enterrado en el cementerio El Salvador, donde hubo un procedimiento entre la Tropa de Operaciones Especiales y Gendarmería con el apoyo de un drone.</p><p>El titular de la asociación de Empresas Fúnebres de Santa Fe, Luis Pinilla, aclaró en Radio 2 que ninguna cochería había recibido consultas por parte de la familia del jefe de la barra brava Canalla para el velorio y posterior cortejo fúnebre. “Nadie preguntó por el servicio”, aseguró.</p><p>“Esto se manejó de una forma reservada. Una empresa participó en el traslado y lo llevaron al cementerio El Prado (de Pérez) de una forma tapada para que no salga a conocimiento”, dijo Pinilla al tiempo que añadió: “Es peligroso velar el cuerpo de una persona relacionada con el delito, pero si hay presencia de seguridad, de policías y móviles, todo pasa a un segundo plano porque te garantizan una actividad tranquila”.</p><p>Temas Relacionados</p><p></p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>La cotización del dólar este martes. A cuánto opera para la compra y la venta. </h1>
             <p>La cotización del dólar para la compra y para la venta</p><p>El precio del dólar oficial y de los dólares financieros. En directo, todas modificaciones de la jornada cambiaria.</p><p>Qué hacer con la deuda</p><p>Alejandro "Alec" Oxenford, nuevo embajador argentino en Estados Unidos</p><p>La inflación de los trabajadores fue de 2,9% en octubre</p><p>La cotización de apertura del dólar</p><p>El mercado cambiario continúa en tensa calma</p><p>A cuánto cotiza el dólar hoy</p><p>Seguí en vivo las cotizaciones de todos los tipos de dólar para este martes.</p><p></p><p></p><p></p><p>Por Raúl Dellatorre</p><p>"Es urgente un cambio de estrategia en el tratamiento de la deuda externa (...). Hay que evitar un nuevo programa del FMI. Hay que revisar el otorgamiento de préstamos al país. Una vez auditados, para su pago se deberá establecer que su peso recaiga sobre aquellos que se beneficiaron con la misma, fugando capitales del mercado".</p><p>El Gobierno anunció que Alejandro Oxenford será el nuevo embajador argentino en Estados Unidos. El empresario tecnológico reemplazará en ese cargo al ahora canciller Gerardo Werthein. En las redes se muestra plenamente alineado con la agenda libertaria de Milei. “Muchísimas gracias por la confianza Presidente”, agradeció en su cuenta de Twitter.</p><p>La inflación de los trabajadores fue de 2,9 por ciento en octubre. Así lo registró el último informe de la UMET. Sin embargo, en el documento se mostró que la desaceleración de los precios de los últimos meses no implica mejoras distributivas. El documento indicó que los salarios representan cada vez menos en el PIB. El Indec difundirá este martes el índice de precios minoristas. El gobierno espera un dato menor al 3 por ciento.</p><p>El dólar abrió a $977,50 para la compra y $1017,50 para la venta.</p><p>El dólar blue cerró este lunes 1135 pesos y mantiene la brecha cambiaria en niveles menores al 14 por ciento. El Banco Central no consiguió comprar divisas en el mercado de cambios pero las reservas subieron 20 millones de dólares. De esta manera, finalizaron al borde de los 30 mil millones de dólares. Las acciones argentinas que cotizan en Wall Street registraron pérdidas con inversores que realizaron ganancias luego de las subas de las últimas jornadas. A nivel internacional, los activos de Wall Street siguieron de racha y el precio del bitcoin volvió a dispararse a nuevos picos.</p><p>El dólar oficial cotiza a $977,50 para la compra y $1017,50 para la venta.</p><p>El dólar blue está a $1115 para la compra y a $1135 para la venta.</p><p></p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

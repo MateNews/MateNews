@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Exclusivo Milei congela su viaje a China para no ofender a Trump, pero se le complica con Xi Jinping.  Augusto TaglioniEn Estados Unidos no cayó bien su giro pro China. Karina canceló se viaje a Beijing de la semana pasada y los chinos dicen que el encuentro de Milei con Xi Jinping de enero no se va a realizar.</h1>
             <p>La vuelta de Donald Trump a la Casa Blanca dejó a Milei en una situación incomoda con China. El libertario experimentó un giro pragmático con el gigante asiático que le hizo abandonar la narrativa de confrontación y los coqueteos con Taiwan para reconocer que se llevó una sorpresa y destacar que el régimen comunista ayuda "sin pedir nada".</p><p>Ahora, con el republicano sentado en la Casa Blanca, Milei ensaya un nuevo giro y vuelve a tomar distancia de China. Ordenó suspender la visita de su hermana a Beijing prevista para la semana pasada y hasta entró en dudas su anunciada bilateral con Xi Jinping.</p><p>LPO DAILY</p><p>Un funcionario importante confirmó a LPO que el pasado 15 de octubre, cuando ya empezaba a quedar claro el posible triunfo de Trump, desde el gobierno notificaron al gobierno chino que finalmente ni Karina Milei ni nadie del gobierno asistiría a la Exposición de Importaciones en Shangai.</p><p>La visita de la hermana presidencial iba a ser el primer gesto político contundente de acercamiento al régimen comunista y el paso previo al posterior encuentro de Milei con Xi Jinping, previsto para enero. Ahora, hasta ese viaje entró en duda. Fuentes del gobierno chino afirmaron a LPO que no creen que finalmente se concrete. Por estas horas, la molestia en el régimen comunista con Milei es indisimulable.</p><p>Milei pasó sin escalas de insultar a China a elogiar a la potencia asiática, hasta en una reunión con legisladores estadounidenses, que no se molestaron en ocultar su incomodidad. El giro del libertario se dio luego que China aceptara renovarle el swap. El gobierno, a cambio, empujó la salida de los dos funcionarios que defendieron al inicio de la gestión el derecho de autodeterminación de Taiwan, una línea roja para la potencia asiática.</p><p>"Nadie sabe porque la suspendieron, pero ahora la reunión con Xi Jinping es prácticamente imposible", afirmo a LPO un diplomático que sigue de cerca el tema.</p><p>El nuevo distanciamiento de China coincide con el extraño ghosteo que le hizo Donald Trump a Milei luego de su victoria en las elecciones en Estados Unidos. El republicano priorizó otros llamados con líderes mundiales en un ninguneo a Milei que en el universo libertario no creían posible.</p><p>"Tal vez le quiso mandar una advertencia por el acercamiento a China", evaluó un diplomático argentino. La confrontación geopolítica con China es uno de los pocos temas en los que coinciden demócratas y republicanos que compiten por ver quien es más duro con la potencia asiática.</p><p>Para Trump, no hay otro enemigo más importante que China. Por eso amenaza con imponer un arancel de 60 por ciento a sus productos y presiona a Mexico para que tome distancia del régimen comunista.</p><p>Milei quedó así atrapado en una situación difícil en donde mantener el vínculo con China puede generar una inesperada fricción con Trump, y alejarse traería complicaciones con el gigante asiático que pueden afectar la estabilidad macroeconómica si el gigante asiático decide cobrarse el swap y todos los créditos cruzados que tiene con la Argentina.</p><p>La opción de reemplazar ese financiamiento con una ayuda extraordinaria que el nuevo jefe de la Casa Blanca logre sacarle al FMI, implica un complejo juego de plazos y montos.</p><p>Milei que hasta ahora no pudo hablar con Trump, si tiene confirmada su presencia a la Conferencia Política de Acción Conservadora que se realizará en la mansión del magnate en Palm Beach, donde junto a decenas de referentes de la nueva derecha, seguramente conseguirá llevarse una foto con el presidente electo.</p><p>De ahí, probablemente, se defina la intención de Milei de reunirse con el líder chino en la cumbre del G20 en Río de Janeiro de la semana que viene.</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

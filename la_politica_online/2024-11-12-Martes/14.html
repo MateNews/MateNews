@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Exclusivo Funcionarios de Macri en Yacyretá gastaron 40 mil dólares para una auditoría que ya se hizo .  Luciana Glezer y Patricio PortaSe trata de una consultora externa acusada de corrupción en la década del 90. El caso fue investigado decenas de veces. Cuando Menem bautizó a la hidroeléctrica de "monumento a la corrupción".</h1>
             <p>Un nuevo escánadalo de magnitudes considerables salpica a la Entidad Binacional Yacyretá (EBY). El organismo argentino-paraguayo que administra la hidroeléctrica acarrea una extensa lista de conflictos no resueltos que se actualizan como oportunidades de negocios ante la renovación de autoridades. "Si aquí hay un monumento a la corrupción, es Yacyretá", dijo Carlos Menem en abril de 1990, pocos meses después de asumir como presidente.</p><p>Lo concreto es que los actuales funcionarios argentinos contraron un servicio de consultoría externa por USD 40.000 para llevar a cabo una auditoría sobre una de las varias deudas que tiene la hidroeléctrica, tal como consta en los documentos a los que LPO accedió en exclusiva. Lo escandaloso es que no es la primera vez que se contrata a una consultora para la misma auditoría.</p><p>LPO DAILY</p><p>Tal como consta en el texto enviado por el Estudio Jurídico Díaz Bobillo se le hace llegar a las autoridades de la empresa "la propuesta de honorarios por los servicios solicitados". Para seguir el tema Bobillo puso a Juan Manuel Carassale, que no por casualidad fue el segundo de Juan José Aranguren, cuando fue ministro de Energía.</p><p>Bobillo es además abogado de Central Puerto la generadora de Nicolás "Nicky" Caputo, el hermano del alma de Macri.</p><p>Lo cierto es que Yacyretá viene mal parida de origen. Fueron cuatro décadas de sobreprecios, obras, licitaciones, paralizaciones, nuevas obras, anuncios, cortes de cinta, retornos, reembolsos debidos e indebidos, adjudicaciones y más cortes de cinta. No por nada el expresidente argentino la calificó como "monumento a la corrupción".</p><p>A principios de los '70, la obra se presupuestó en USD 1.800 millones para tener la represa en funcionamiento para finales de esa misma década. Cuando en 2011 empezó a operar en plenitud se habían invertido entre USD 11 mil y USD 1000 millones de dólares.</p><p>En plena crisis del petróleo, el 3 de diciembre de 1973, se firmó el acuerdo con Paraguay que creó la EBY. La rúbrica fue de los cancilleres de ambos países, con la presencia del dictador Alfredo Stroessner y de María Estela Martínez de Perón, que había asistido en calidad de vicepresidenta porque Juan Domingo Perón tenía bronquitis.</p><p>Siete días antes de la asunción de Raúl Alfonsín, el general Reynaldo Bignone firmó la concesión de las obras, que empezaron al año siguiente y terminaron recién en 1998. Lo más grave es que la central había sido proyectada con una cota de 83 metros sobre el nivel del mar, pero tenía 76 metros, lo que provocaba una pérdida de 7345 GWh, casi lo que producen tres centrales de El Chocón, equivalente a unos USD 220 millones al año, además del deterioro precoz de las turbinas por operar de una manera distinta a la que fueron concebidas originalmente.</p><p>El historial de conflictos de Yacyretá es extenso. En este caso puntual, la contratacion de la consultoría externa es para laudar en un conflicto que tiene su origen a comienzos de la década del 90, cuando desde la Inspección General de Justicia, el contador Antonio Roque Casabona denunció que la UTE Empresas Reunidas, Impregilo, Dümez y Asociados para la Yacyretá (ERIDAY), a cargo de la construcción de la represa, cobró la friolera de USD 2 mil millones en concepto de reembolsos indebidos. Los acusados por las empresas fueron absueltos en diciembre del año pasado. Los camaristas Angela Ledesma, Guillermo Yacobucci y Carlos Mahiques confirmaron los sobreseimientos.</p><p>Pero en su momento, la denuncia desató un fuerte lobby exterior en el que jugó fuerte el exsecretario de Estado norteamericano Henry Kissinger y que derivó en acusaciones cruzadas y una demanda de ERIDAY contra la EBY en tribunales internacionales por pagos pendientes de obras por USD 795 millones más intereses. Actualmente, la deuda que demanda la constructora supera los USD 2000 millones. Esta es la causa que sigue abierta y por la cual la EBY contrató la auditoría.</p><p>El actual titular de la EBY del lado argentino es Alfonso Peña, estrechamente vinculado a Mauricio Macri. Peña fue compañero del expresidente en el Cardenal Newman y trabajó en Mirgor, la primera empresa de Nicolás Caputo. Además, el director de la EBY estuvo al frente de Decavial, firma que se asoció a Caputo SA para la compra del terreno del Hospital Ferroviario por la suma de USD 6 millones en 2008. Tras la adquisición, el gobierno porteño, entonces en manos de Macri, modificó la zonificación del predio, lo que permitió que estas dos empresas vendiesen el terreno en USD 23 millones.</p><p>La nota que envía Diaz Bobillo va dirigida a Nestor Lamboglia, director de asuntos jurídicosde de Yacyretá, también de cuna macrista. Lamboglia ocupó el mismo cargo que ostenta en la actualidad, en la Secretaría de Energía durante el gobierno de Cambiemos.</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

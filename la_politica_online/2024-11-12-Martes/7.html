@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Bronca en el campo con Caputo porque mandó a ver polo a un productor que le pidió que baje las retencionesHace 1 horaLPODiez entidades bonaerenses calificaron de insolente el comentario del ministro, que se burló de un productor rural.</h1>
             <p>El ministro de Economía se hizo el picante por Twitter y terminó enojando a diez entidades rurales bonaerenses que sacaron un inédito comunicado en su contra, calificando de insolente su comentario contra un productor al que mandó a ver polo.</p><p>LPO DAILY</p><p>"Yo soy productor agropecuario y no puedo zafar de que ustedes me roben vía retenciones. No son una empresa privada, son el estado. Cómo hago para que me dejen de robar de una vez?", le preguntó el usuario Attila a Caputo.</p><p>"Hay muchos impuestos que no tienen que estar. No solo las retenciones. Para tratar de solucionarlo, algunos vinimos al sector público. Claro que corregir décadas de despilfarro lleva algo más que 10 meses de gestión. Si en 4 años estás disconforme, vas a poder votar otra alternativa. Mientras tanto, no te queda otra que seguir viendo Chapaleufú y corriendo carreras!", le respondió el ministro en modo ironía ya que en su biografía Attila se declara hincha del equipo de polo Chapaleufú y de la marca de autos Toyota.</p><p>El mensaje del ministro recibió muchas críticas y también apoyo de parte de libertarios que ahora defienden las retenciones al campo, en un inesperado giro kirchnerista.</p><p>Pero lo más significativo fue un comunicado de delegaciones de la Sociedad Rural y asociaciones de productores de San Pedro, Rojas, Baradero, Pergamino, Arrecifes, Capitán Sarmiento, Salto, Colón, Lincoln y San Antonio de Areco.</p><p>"Lamentable comentario por parte del ministro de Economía de la Nación, una insolencia improcedente a quienes estoicamente sostienen con divisas genuinas el recupero de la nación", dice la nota. "Se equivoca si el justo reclamo nos convierte en enemigos del proyecto de su gobierno, todo lo contrario quienes producen son el mayor aliado que pueden tener", continúa.</p><p>"No merecemos semejante insulto y le recordamos palabras de nuestro presidente: las retenciones son un gran robo del Estado hacia los productores agropecuarios", remarcaron las asociaciones. "No podemos dejar pasar este agravio, y parece una constante, cuando en menos de una semana se puso en dudas la legitimidad de las reservas en silobolsas, propiedad de quienes arriesgan capital y trabajo cultivando sus campos", completaron las entidades, que le pidieron a Caputo que rectifique su "agravio".</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

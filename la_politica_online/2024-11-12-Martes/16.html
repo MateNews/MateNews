@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Ahora Voytenco denuncia a Lugones de vaciar la obra social de los peones rurales. Tras la intervención de Osprera, el líder de la Uatre denuncia que se suspendieron todos los pagos y comenzaron a interrumpirse las prestaciones para los afiliados.</h1>
             <p>Voytenco y la desplazada cúpula de Osprera publicaron este lunes una carta pública a Lugones en la que revelan que la intervención llevada adelante por la Superintendencia de Salud está poniendo en riesgo la continuidad de los servicios a los afiliados.</p><p>LPO DAILY</p><p>En la nota se enumeran una serie de hechos que darían cuenta de un intento de paralización total de la obra social, pese a que cuenta con los fondos que mes a mes aportan los afiliados. Es decir, que no se trata de un tema económico.</p><p>Entre esos hechos Voytenco acusa a la SSS de haber suspendido una reunión para aprobar la continuidad de diversos convenios, lo que provocó "cortes generalizados de servicios médicos". También se denuncia que bloquearon las cuentas de todas las delegaciones de Osprera, por lo que se cortó la cadena de pagos de las prestaciones.</p><p>"Se han dejado de autorizar las provisiones de Medicamentos de Alto Costo, impidiendo su trámite de adquisición y entrega a los pacientes beneficiarios, siendo muchos de ellos urgentes y poniendo en riesgo los tratamientos y hasta la vida misma de los beneficiarios", señala la carta.</p><p>Voytenco agrega que la suspensión generalizada de los pagos es una maniobra "intencional" del gobierno para perjudicar a Osprera, que pese a contar con los recursos deberá hacerse cargo de intereses, multas, punitorios y mayores costos por los actuales incumplimientos.</p><p>Como contó LPO, Voytenco había había logrado aliarse primero con Mario Lugones y luego con Lule Menem para frenar los embates de sus opositores en la Uatre y mantener el control del gremio y la obra social, pero en el gobierno enseguida vieron que era un mejor negocio desplazarlo y no compartir el control de esa caja.</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

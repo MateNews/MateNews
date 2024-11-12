@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Trump evalúa como Secretario de Estado a un senador que defiende el apoyo de EEUU a Milei con el FMI. LPOEl New York Times asegura que Marco Rubio será el jefe de las relaciones exteriores de Trump. En febrero estuvo en Buenos Aires y elogió a Milei.</h1>
             <p>Donald Trump empieza a armar su gabinete con el foco puesto en la futuro pelea con China. El líder republicano designó a Mike Waltz como principal asesor de Seguridad Nacional. Waltz es un furibundo anti-China y un ferviente defensor de la alianza con Israel en Medio Oriente, dos variables que junto a la guerra en Ucrania marcan el punto de principal interés del próximo gobierno.</p><p>Otra de las posible llegadas rutilantes es la de Marco Rubio como secretario de Estado, el cargo más importante después de la presidencia. Rubio es hijo de cubanos y uno de los representantes más fuertes de los halcones de Florida.</p><p>LPO DAILY</p><p>En México, ya comienza a instalarse la teoría de que el plan de deportaciones de Trump no es un horizonte lejano. Esta semana Sheinbaum pedirá que se refuerce toda la estrategia legal de defensa de migrantes en los consulados de EEUU y ha comenzado a interiorizarse en dos asuntos cruciales: hasta donde los planes de Trump golpearán la llegada de remesas (algo vital para la economía) y si el sistema productivo mexicano puede ser receptor en términos de empleo de los millones de personas que el republicano busca expulsar. Un primer número que considerar: en EEUU habría en este momento algo más de 4 millones de mexicanos de forma irregular.</p><p>Con Rubio en el Departamento de Estado como la punta de lanza de los republicnaos  contra las izquierdas de América Latina crecen las acciones de Jair Bolsonaro en su pelea por presionar para lograr la habilitación electoral y reeditar le pelea con Lula en 2026 y para Javier Milei, el único presidente sudamericano que expresa de manera total las ideas conservadores del trumpismo.</p><p>Rubio tiene otro condimento en favor de Milei. El senador por Florida lo visitó en febrero y se reunió en la Casa Rosada con el presidente y el ministro de Finanzas, Luis Caputo. Allí, dijo que Milei "es un fuerte aliado de Estados Unidos con un plan audaz para salvar a Argentina de un siglo de políticas socialistas desastrosas".</p><p>En esa línea, el posible Secretario de Estado dijo que "Biden debería utilizar la influencia de EEUU en el FMI para ayudar a Milei a reestructurar la deuda de la Argentina. Esto es un elemento crucial porque el problema más urgente que enfrenta el país (la creciente inflación que superó el 140 este otoño) está ligado a la aplastante crisis financiera considerando que la argentina le debe 44 mil millones al FMI".</p><p>Donald Trump aún no confirmó la designación y todavía hay otros nombres que suenan para el cargo como el ex director de Inteligencia y ex embajador en Alemania, Richard Allen Grenell.</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

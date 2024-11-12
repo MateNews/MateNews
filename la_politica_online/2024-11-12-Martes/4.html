@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Pedido desesperado de la Casa Rosada a Villarruel: "No abras el recinto, hay que evitar que caiga DNU del canje de deuda".  Pablo DipierriEl peronismo impulsa la anulación del decreto en el Senado, mientras Menem se prepara para la derrota en Diputados.</h1>
             <p>Victoria Villarruel recibió un mensaje claro de Casa Rosada, por pedido de Javier Milei: "Preferimos que el Congreso esté cerrado antes que caiga el DNU del canje de deuda". Esa orden obedece a que si el peronismo anula ese decreto en el Senado, el primer mandatario estaría obligado a sacar el presupuesto, que contiene en su articulado la misma propuesta, pero bajo un condicionamiento más fuerte por parte de los gobernadores.</p><p>Por eso, la definición de Milei fue categórica y evidencia la desesperación del gobierno ante el avance de la oposición en la Cámara de Diputados con la iniciativa para anular el DNU 846/24, que habilita a Luis Toto Caputo a realizar canje de deuda eludiendo la mejora en tasa, capital o plazo dispuesta por la Ley de Administración Financiera.</p><p>LPO DAILY</p><p>Los ánimos en el Senado ya están caldeados y la relación entre el Presidente y la Vice está deteriorada sin retorno. Tan frío es el vínculo entre ambos que un senador libertario desconfía de lo que pueda hacer Villarruel, frente a los planes esbozados por José Mayans en la última reunión del interbloque peronista, cuando anunció que impulsaría una sesión para este jueves con el objetivo de voltear el decreto de Caputo.</p><p>Fuentes parlamentarias indicaron a LPO que el nerviosismo es total. "Si Mayans junta 37 tipos, Villarruel no se va a poder hacer la boluda y va a tener que abrir el recinto", ilustraron.</p><p>Al cierre de esta nota, el temor en los despachos aliados era que Mayans y Juliana di Tullio consiguieran el acompañamiento de 4 senadores radicales y prevalecieran. Bajo esa perspectiva, los senadores Juan Carlos Romero y Carlos "Camau" Espínola le habrían dado otra recomendación a Villarruel, acaso tan tajante como la de Milei: "No podés abrir de ninguna manera el recinto si estamos en riesgo de que los peronistas junten el número y den de baja el DNU del canje".</p><p>Lo más inquietante es que la Vicepresidenta no dio una respuesta que calmara el nerviosismo de sus interlocutores. Por eso, el gobierno trató infructuosamente de meterles presión a los gobernadores para que instruyeran a sus diputados para que se ausenten y se cayera la sesión.</p><p>Desde el oficialismo, admitieron ante LPO que confían en sus chances de que la reforma a la ley 26122, la que regula la vigencia de los DNU, termine vetada por Milei si la Cámara Alta llega a tratarla antes que venza el período de sesiones ordinarias pero entran en pánico cuando analizan la posibilidad de que el Congreso barra el decreto redactado a pedido de Caputo. "Sin ese DNU, el gobierno está obligado a sacar el presupuesto y ahí se fortalece la posición de los gobernadores y la oposición", repetían este lunes en un despacho peronista.</p><p>La razón que obliga a Milei a buscar la sanción de la ley de leyes se debe a que en el articulado estaba previsto el canje de deuda que Caputo pidió por decreto, por la inestabilidad o los vaivenes de los libertarios en el trabajo político para sacar el presupuesto. De hecho, esa maniobra fue denunciada por Mayans y Germán Martínez, junto a sus colegas de bancada en las dos cámaras, a los dos días de publicado el DNU en Boletín Oficial.</p><p>Como sea, ni el macrismo ni Martín Menem creían este lunes que podían frenar la media sanción. Los diputados del PRO llegaban a su reunión de bloque con la directiva de la Mesa Ejecutiva del partido para que no den quórum pero voten en sintonía con LLA. El riojano, por su parte, había dispensado a las legisladoras Rocío Bonacci, quien se encuentra en Estados Unidos cursando estudios de formación política, y Marcela Pagano.</p><p>Pese a los intentos del gobierno por aplazar la sesión prevista para este martes, la oposición estima que supera la cantidad de legisladores necesarios para el quórum, tal como informó LPO. Y según fuentes parlamentarias, las bancadas de Miguel Pichetto, Facundo Manes y el peronismo podrían imponerse tanto en el expediente que modifica la vigencia de los DNU como en el rechazo al decreto del canje.</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>Quién es Alejandro Oxenford: empresario tecnológico que ama el arte y fue "enemigo íntimo" de Galperin.</h1>
             <p>“El Gobierno de la República Argentina tiene el honor de anunciar que el Sr. Alejandro Carlos Francisco Oxenford será designado como Embajador Extraordinario y Plenipotenciario ante los Estados Unidos de América”, anunció hoy la Cancillería.</p><p>“Con dedicación y foco, lograremos un impacto significativo, posicionando a Argentina cada vez mejor en USA y el mundo”, dijo, emocionado con la designación.</p><p>Empresario exitoso, emprendedor serial y fundador de empresas como DeRemate y de dos “unicornios” –empresas que llegan a tener valuaciones de USD 1.000 millones o más– como OLX y Letgo. Oxenford ama el arte –presidió ArteBA y es un gran coleccionista de obras contemporáneas latinoamericanas–, y fue “enemigo íntimo” de Marcos Galperin, el fundador de Mercado Libre, en los 90, cuando los dos eran jóvenes brillantes y competían con sus empresas en medio de la burbuja puntocom.</p><p>Radicado en Brasil desde hace varios años, estuvo al frente del fondo Alpha Capital, que luego se fusionó con la brasileña Semantix. Es managing partner en el fondo Myelin VC, junto a Martín Varsavsky y Matías Nisenson; miembro del directorio del marketplace OfferUp; y este año fue anunciado como integrante del Consejo de Asesores Económicos de Milei que encabeza Demian Reidel. Tiene dos hijos, fue cercano a Mauricio Macri –fiscalizó para Cambiemos y mucho antes fue el primer jefe de María Eugenia Vidal en el Grupo Sophia, por caso– y en los 90 había sido candidato suplente a legislador porteño por Acción por la República, el partido de Domingo Cavallo. Alec también estuvo muy cerca en la breve trayectoria política de Juan Carlos Blumberg.</p><p>Es descendiente de una familia patricia, estudió Administración de Empresas de la Universidad Católica Argentina y un MBA de la Universidad de Harvard.</p><p>En una reciente entrevista con Bloomberg aseguró que Argentina está entrando “en la mejor oportunidad en mucho tiempo de dar vuelta un siglo de decadencia. Se han confluido muchas cosas importantes para que esto sea posible, y ojalá no nos frustremos una vez más con un fracaso. La sociedad argentina entendió y se cansó de un sistema adolescente y autodestructivo, que funcionó desde 1930 en Argentina, se profundizó en 1945 y se volvió cada vez más perverso en las décadas siguientes. En las dictaduras militares tuvo otro escalón más de perversidad, y ya se volvió asfixiante en los últimos 25 años”.</p><p>Y agregó: “Nuevamente un Gobierno visionario busca cambiar el estatus quo y cambiar las reglas de juego, haciéndolas más liberales, integradas al mundo. Si se logra la estabilidad, que es el objetivo, y personalmente creo que se va a lograr, estamos en esa tendencia. Lo que nos falta es la aparición del cambio tecnológico al que subirnos. Podría ser inteligencia artificial (IA) o alguna versión de IA. Argentina se pasó 80 años expulsando al capital. Hay que ser duro para no darse cuenta. Bueno, por primera vez en 80 años, tenés un presidente y un gobierno que entienden que lo que necesita este país es capital, desesperadamente. Hace todo para atraerlo, y ya con mucho éxito, porque tenemos el RIGI, ya tenemos la inversión de Petronas y YPF, la más grande de la historia de Argentina, y parecería que van a haber más tanto en Vaca Muerta como en los minerales”.</p><p>Sobre Gaperin, su “enemigo íntimo”, aseguró hace semanas en La Nación que la relación fue muy tensa, pero que ahora se llevan muy bien. “Es un fenómeno y hasta auspiciaron un proyecto de arte mío en San Pablo. No hay mala onda”, afirmó y dijo que había aprendido mucho de Galperin.</p><p>Su búsqueda en el budismo lo hizo encontrar a Yasuhiko Genku Kimura, un filósofo del budismo zen que incluso llegó a ser suerte de gurú de Letgo, el último proyecto tech en el que Oxenford estuvo involucrado directamente. “Me costó entender que uno tiene más impacto cuando más se divierte”, dice ahora.</p><p>A continuación, algunos del capítulo “El emprendedor que es un Unicornio en sí mismo”, sobre Oxenford, que fue parte del libro “Los nuevos reyes argentinos”, que este periodista escribió en 2017, y que retrata las historias de los primeros cuatro unicornios argentinos: OLX, Marcado Libre, Despegar y Globant.</p><p>Oxenford asegura que nunca tuvo problemas para conseguir capital, una de las claves en cualquier startup. Una condición que hace que un proyecto sea viable o no, por muy buena que sea la idea, por fantásticos que sean los fundadores y el management. “Siempre fue fácil para mí, sé que para muchos no lo es”, dice. ¿Qué aprendió luego de tantos años de buscar dinero para sus proyectos? Sus tips:</p><p>Temas Relacionados</p><p></p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>

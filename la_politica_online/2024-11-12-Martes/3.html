@@ -42,9 +42,32 @@
             .controls {
                 margin: 10px 0;
             }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
         </style>
     </head>
     <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
         <div id="texto">
             <h1>UrgenteEl PRO vota con el gobierno y la oposición ahora busca garantizar el quórum para limitarle los DNU a Milei.  Pablo DipierriLa Mesa Ejecutiva del partido resolvió "no votar con el kirchnerismo". Si la oposición consigue sentar 129 legisladores, aprueba el proyecto.</h1>
             <p></p><p>En una reunión encabezada por el propio Macri se acordó este martes mantener el apoyo a la Casa Rosada. "No vamos a poner en riesgo la gobernabilidad y vamos a defender la institucionalidad. Por eso mañana no daremos quórum y, en el caso que se logre, no vamos a votar con el kirchnerismo", afirmó el PRO a través de un comunicado.</p><p>LPO DAILY</p><p>Un argumento extraño porque el PRO fue quien mas se opuso a esta ley que fue sancionada por impulso de Cristina Kirchner. De hecho, más de la mitad de los proyectos presentados para derogarla son de diputados macristas.</p><p>El ex presidente volvió a estirar así el plazo de negociación que le había impuesto a Milei la semana pasada, para acordar una alianza que implique la discusión de las listas del año que viene y cargos en el gobierno.</p><p>Además del ex presidente, del encuentro participaron el gobernador chubutense Nacho Torres, el jefe de gobierno porteño, Jorge Macri, los diputados Cristian Ritondo, Diego Santilli y María Eugenia Vidal, el intendente Guillermo Montenegro, Fernando De Andreis y Soledad Martínez.</p><p>Cerca de uno de los presentes comentaron a LPO que la ley de DNU y el decreto del canje "no movilizan a la opinión pública". "Macri  está jugando muy fuerte la carta de presión de los gobernadores contra Milei para que se apruebe el presupuesto cumpliendo lo que piden las provincias aliadas", argumentaron.</p><p>Un legislador que llegó a conectarse al Zoom de la reunión de bloque posterior a la tenida de la Mesa Ejecutiva le dijo a LPO que "el ultimátum llegará cuando Javier Milei tenga que blindar el veto" a la iniciativa parlamentaria de la oposición, una manera de descontar que finalmente mañana se aprobará, como cree el propio gobierno. Según sus cálculos, ese momento sería después del verano, en coincidencia con el frenesí por el calendario electoral.</p><p>En la reunión de bloque, el larretista Álvaro González habría comunicado que votaría con la oposición, algo que ya descontaba más de un colega suyo. Su queja radica en que el PRO acompañó a Milei todo el año pero el gobierno, en lugar de construir una mayoría, se dedicó a atacar a sus aliados y concentrarse en blindar los vetos. No está claro si Baldassi también votará con la oposición. El ex árbitro suele seguir los pasos de Álvaro González.</p><p>La bronca de Macri con Milei tiene varios ingredientes, pero uno no menor es que el Gobierno le prometió un lugar para Luciano Laspina en el Banco Nación y otro para Martín Maqueyra en YPF, "pero no pasó nada", explicó a LPO un diputado macrista.</p><p>La marcha atrás del macrismo en su decisión de abstenerse no cambia la ecuación de las voluntades, a priori. Pero un importante diputado aseguró a LPO que "Menem está prometiendo de todo a los bloques para bajar la sesión, están repartiendo contratos a los bestia".</p><p>Desde el bloque que conduce Miguel Pichetto creen que pese a la decisión del PRO, la ley se sancionará. "Tenemos 131 para el quórum y alrededor de 135 para votar la ley, habiendo quórum, lo más seguro es que se apruebe la ley de DNU y se rechace el decreto del canje de deuda", afirmó un diputado de ese bloque. Este último tema es el que más le preocupa al gobierno, que el año que viene enfrenta vencimientos por más de USD 25 mil millones.</p><p>Es una publicación de La Política Online S.A.</p>
@@ -274,6 +297,45 @@
                 updateProgress();
             }
 
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
         </script>
 
     </body>
