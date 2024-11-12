@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>"Con dedicación y foco lograremos impacto significativo": el primer mensaje del nuevo embajador en EEUU.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>"Con dedicación y foco lograremos impacto significativo": el primer mensaje del nuevo embajador en EEUU.</h1>
+            <p>Con un breve mensaje, publicado en sus redes sociales, el nuevo embajador argentino en Estados Unidos, Alejandro Oxenford, agradeció su designación al presidente Javier Milei, aseguró estar “emocionado” y afirmó: “Con dedicación y foco, lograremos un impacto significativo, posicionando a Argentina cada vez mejor en USA y el mundo”.</p><p>“Un honor contar con la guía Gerardo Werthein, el equipo de Gobierno, la inspiración de Javier Milei y las ideas de la libertad como Norte”, señaló, y completó su intervención con una cita del expresidente sudafricano Nelson Mandela: “El servicio público no es sólo un honor, es también una responsabilidad”.</p><p>Oxenford reemplazará a Werthein, a cargo del Ministerio de Relaciones Exteriores tras la salida de Diana Mondino. “El Gobierno de la República Argentina tiene el honor de anunciar que el Sr. Alejandro Carlos Francisco Oxenford será designado como Embajador Extraordinario y Plenipotenciario ante los Estados Unidos de América. Su experiencia y compromiso fortalecerán las relaciones bilaterales y promoverán una cooperación fructífera entre ambas naciones”, informó Cancillería a través de un comunicado oficial.</p><p>Minutos después de la oficialización, el propio Milei le dedicó un mensaje en sus redes: “¡Bienvenido! Viva la libertad carajo”. En la misma sintonía se expresaron otros funcionarios del gabinete, como el vocero presidencial Manuel Adorni o Ramiro Marra, entre otros. “Alec Oxenford (es) uno de los emprendedores más exitosos de Argentina, excelente persona y alguien que banco desde el primer día”, planteó el legislador liberal.</p><p>Por su lado, el viceministro de Economía, José Luis Daza, señaló: “Excelente nombramiento. Además de brillante, es extraordinaria persona. Simboliza la Argentina moderna que mira al futuro”.</p><p>El flamante embajador es un empresario tecnológico, fundador de las compañías DeRemate.com, OLX y Letgo. También ha realizado importantes inversiones en tecnología como inversor de capital riesgo a través de Myelin VC y Alpha Capital.</p><p>En una reciente entrevista con Bloomberg, Oxenford aseguró que Argentina está entrando “en la mejor oportunidad en mucho tiempo de dar vuelta un siglo de decadencia”. “Se han confluido muchas cosas importantes para que esto sea posible, y ojalá no nos frustremos una vez más con un fracaso. La sociedad argentina entendió y se cansó de un sistema adolescente y autodestructivo, que funcionó desde 1930 en Argentina, se profundizó en 1945 y se volvió cada vez más perverso en las décadas siguientes. En las dictaduras militares tuvo otro escalón más de perversidad, y ya se volvió asfixiante en los últimos 25 años”.</p><p>Y agregó: “Nuevamente, un Gobierno visionario busca cambiar el estatus quo y cambiar las reglas de juego, haciéndolas más liberales, integradas al mundo. Si se logra la estabilidad, que es el objetivo, y personalmente creo que se va a lograr, estamos en esa tendencia. Lo que nos falta es la aparición del cambio tecnológico al que subirnos. Podría ser inteligencia artificial (IA) o alguna versión de IA”.</p><p>“Argentina se pasó 80 años expulsando al capital. Hay que ser duro para no darse cuenta. Bueno, por primera vez en 80 años, tenés un presidente y un gobierno que entienden que lo que necesita este país es capital, desesperadamente. Hace todo para atraerlo, y ya con mucho éxito, porque tenemos el RIGI, ya tenemos la inversión de Petronas y YPF, la más grande de la historia de Argentina, y parecería que van a haber más tanto en Vaca Muerta como en los minerales”, completó.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2024/11/12/con-dedicacion-y-foco-lograremos-un-impacto-significativo-el-primer-mensaje-del-nuevo-embajador-en-estados-unidos/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: '"Con dedicación y foco lograremos impacto significativo": el primer mensaje del nuevo embajador en EEUU.', // Opcional, pero recomendado     
+                text: '"Con dedicación y foco lograremos impacto significativo": el primer mensaje del nuevo embajador en EEUU.',  // Opcional
+                url: 'https://www.infobae.com/politica/2024/11/12/con-dedicacion-y-foco-lograremos-un-impacto-significativo-el-primer-mensaje-del-nuevo-embajador-en-estados-unidos/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

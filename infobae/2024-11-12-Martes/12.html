@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El dramático rescate de una nena de 4 años que había quedado encerrada en el auto de sus padres.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>El dramático rescate de una nena de 4 años que había quedado encerrada en el auto de sus padres.</h1>
+            <p>Un dramático episodio se registró en el estacionamiento del shopping de Devoto, cuando una niña de cuatro años fue rescatada del auto de sus padres, en el que había quedado encerrada. La Policía de la Ciudad llegó a la escena, alertados por un llamado que indicaba que la menor estaba desmayada.</p><p>El incidente ocurrió el domingo por la noche, cuando el personal de la Comisaría Vecinal 11B recibió la alerta, según confirmaron fuentes policiales a Infobae.</p><p>Al llegar al lugar, los agentes intentaron inicialmente hacer que la menor reaccionara moviendo el vehículo, pero a pesar de los movimientos bruscos, no despertaba.</p><p>Al no obtener respuesta, decidieron romper una de las ventanillas para sacarla. Una vez fuera del auto, la niña despertó y fue asistida por el SAME, que la trasladó para realizar estudios médicos y descartar cualquier problema respiratorio. Tras ser evaluada en el Hospital Zubizarreta, fue entregada a sus padres con la aprobación del Consejo de Niños, Niñas y Adolescentes. Fueron imputados por abandono de persona.</p><p>De acuerdo con fuentes allegadas al caso, los padres de la menor alegaron que la secuencia fue de pocos minutos, ya que el padre habría dejado a la niña solo un momento para ir a buscar a la madre, empleada del centro comercial. Para las autoridades, en cambio, transcurrió más tiempo.</p><p>En marzo de este año, un niño de 3 años fue encontrado en el asiento trasero de un auto estacionado en la calle Chrestía al 550, en Neuquén. Había quedado encerrado allí durante seis horas tras ser olvidado por sus padres. Una semana después murió. A fines del mes pasado, el fiscal Andrés Azar decidió aplicar el concepto de “pena natural” para resolver la situación sin imponerle una condena penal al padre, quien aquel día debía dejar al menor en el jardín.</p><p>La “pena natural” se utiliza cuando el daño moral sufrido por el acusado es tan grave que torna innecesaria la imposición de un castigo. En este caso, este criterio se aplicó al determinar que la muerte del niño fue consecuencia de una negligencia y no de una acción intencional.</p><p>El MPF recolectó pruebas suficientes para aclarar las circunstancias del hecho, incluidas declaraciones de testigos presenciales y familiares cercanos del niño y del padre. “Nos hallamos ante una actitud negligente de parte del padre”, sostuvo el fiscal, quien también destacó que esta situación constituyó un castigo más allá de cualquier pena legal que pudiera imponerse. La pena natural, explicó Azar, se refiere a un mal grave “que se autoinflinge el autor con motivo del delito, o que sea impuesto por terceros por la misma razón”.</p><p>El hecho ocurrió cuando los padres del nene fallecido se dirigían a una oficina pública del Gobierno de la Ciudad de Neuquén. Estacionaron en la calle Chrestía, pero su padre se olvidó de dejarlo en el jardín maternal Luna Morena.</p><p>La fiscal que al principio se encontraba a cargo del caso, Valeria Panozzo, comprobó a través de las cámaras de seguridad de la zona que el hombre bajó del auto sin el nene, que quedó solo en su butaca especial y con las ventanillas cerradas desde las 9 de la mañana hasta las 15 horas. A esa hora, su madre lo encontró desvanecido en la parte trasera del coche y llamó a la Policía.</p><p>Los oficiales que se acercaron al sitio intentaron hacer una maniobra de reanimación y luego lo trasladaron, en principio, a la clínica privada San Agustín, y más tarde al San Lucas. Allí permaneció intubado en terapia intensiva; al principio su estado de salud era estable, aunque se le detectaron varios moretones. De acuerdo con el informe preliminar del Cuerpo Médico Forense del Poder Judicial, “la causa de la muerte fue asfixia por confinamiento”. Y el documento agregó: “No se observaron lesiones de reciente o antigua data compatibles con maltrato físico”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2024/11/12/el-dramatico-rescate-de-una-nena-de-4-anos-que-habia-quedado-encerrada-en-el-auto-de-sus-padres/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El dramático rescate de una nena de 4 años que había quedado encerrada en el auto de sus padres.', // Opcional, pero recomendado     
+                text: 'El dramático rescate de una nena de 4 años que había quedado encerrada en el auto de sus padres.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2024/11/12/el-dramatico-rescate-de-una-nena-de-4-anos-que-habia-quedado-encerrada-en-el-auto-de-sus-padres/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>

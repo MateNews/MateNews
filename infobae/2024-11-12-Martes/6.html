@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Allanaron una comisaría por el crimen del jefe de la barra brava de Rosario Central “Pillín” Bracamonte.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="texto">
+            <h1>Allanaron una comisaría por el crimen del jefe de la barra brava de Rosario Central “Pillín” Bracamonte.</h1>
+            <p>La comisaría 9ª de Rosario fue allanada en la mañana de este martes por la División de Asuntos Internos por pedido del fiscal Alejandro Ferlazzo, quien investiga el doble crimen del jefe de la barra brava de Rosario Central Andrés “Pillín” Bracamonte y su ladero Daniel Raúl “Rana” Attardo. Ambos fueron atacados a tiros el sábado pasado a la salida del partido disputado en el Gigante de Arroyito ante San Lorenzo.</p><p>De acuerdo a los primeros datos del procedimiento, los agentes tienen la orden de secuestrar celulares a los efectivos de la Policía de Santa Fe que prestan servicio en esa dependencia. El funcionario del Ministerio Público de la Acusación también encomendó incautar documentación que tenga algún vínculo con el hecho, indicaron fuentes del caso a Infobae, quienes aclararon que no se dispuso la detención de ningún oficial.</p><p>Se presume que el operativo tiene relación con testimonios de hinchas de Central y testigos que vía mensajes de voz de WhatsApp y a través de la red social X indicaron que tras la balacera habrían pasado por el lugar una ambulancia y un móvil policial, quienes no detuvieron la marcha y siguieron su paso.</p><p>La investigación de Ferlazzo por el doble homicidio sigue actualmente dos líneas investigativas de peso. En una, se intenta establecer si podría tratarse de un ataque de Los Monos tras el crimen de Samuel Medina, alias “Gordo Samu”, yerno de Ariel Máximo “Guille” Cantero; y en la otra, si fue la presunta banda conocida como “Los Menores” en la zona noroeste de Rosario.</p><p>La primera hipótesis está basada en la exhibición de poder que hicieron desde el entorno de Medina después del homicidio, cuando en el partido de local ante Banfield tiraron bombas de estruendo -lo que ocasionó una demora en la reanudación del partido- y mostraron banderas que decían “No respetamos a nadie”, “Siempre mono, nunca sapo” y “La mafia quiqueña”.</p><p>La segunda línea investigativa se desprende de la propia mención hecha por Bracamonte en una entrevista que brindó hace tres semanas al diario La Nación.</p><p>“Los Menores” comenzaron a aparecer en las crónicas policiales en septiembre del año pasado, cuando un soldadito de la organización se negó a seguir vendiendo en uno de los búnkeres, lo secuestraron y lo llevaron al lado del arroyo Ludueña, donde intentaron matarlo a tiros. La víctima logró escapar de los disparos luego de arrojarse al agua.</p><p>El cuerpo de Bracamonte fue trasladado en la noche de este lunes bajo un fuerte operativo policial, desde el Instituto Médico Legal hasta el cementerio El Prado de la vecina ciudad de Pérez. La familia había solicitado cremarlo, pero la Justicia provincial se negó ante la posibilidad de que en la investigación se requiera una segunda autopsia.</p><p>Attardo, por su parte, fue velado en una cochería de San Lorenzo y Riccheri, en el macrocentro de Rosario, y luego fue enterrado en el cementerio El Salvador, donde hubo un procedimiento entre la Tropa de Operaciones Especiales y Gendarmería con el apoyo de un drone.</p><p>El titular de la asociación de Empresas Fúnebres de Santa Fe, Luis Pinilla, aclaró en Radio 2 que ninguna cochería había recibido consultas por parte de la familia del jefe de la barra brava Canalla para el velorio y posterior cortejo fúnebre. “Nadie preguntó por el servicio”, aseguró.</p><p>“Esto se manejó de una forma reservada. Una empresa participó en el traslado y lo llevaron al cementerio El Prado (de Pérez) de una forma tapada para que no salga a conocimiento”, dijo Pinilla al tiempo que añadió: “Es peligroso velar el cuerpo de una persona relacionada con el delito, pero si hay presencia de seguridad, de policías y móviles, todo pasa a un segundo plano porque te garantizan una actividad tranquila”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2024/11/12/allanaron-una-comisaria-por-el-crimen-del-jefe-de-la-barra-brava-de-rosario-central-pillin-bracamonte/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Allanaron una comisaría por el crimen del jefe de la barra brava de Rosario Central “Pillín” Bracamonte.', // Opcional, pero recomendado     
+                text: 'Allanaron una comisaría por el crimen del jefe de la barra brava de Rosario Central “Pillín” Bracamonte.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2024/11/12/allanaron-una-comisaria-por-el-crimen-del-jefe-de-la-barra-brava-de-rosario-central-pillin-bracamonte/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>
+
+    </body>
+    </html>
