@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El diálogo entre Colapinto y su ingeniero tras el GP de Las Vegas de F1: elogios y los detalles a “aprender”.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El diálogo entre Colapinto y su ingeniero tras el GP de Las Vegas de F1: elogios y los detalles a “aprender”.</h1>
+            <p>La labor de Franco Colapinto en el Gran Premio de Las Vegas de Fórmula 1 fue reconocida por su ingeniero, Gaetan Jego, y el jefe del equipo Williams, James Vowles. Terminada la carrera y en la vuelta de honor, el piloto argentino mantuvo un diálogo con ambos por radio en el que hubo un ida y vuelta sobre su actuación en una competencia en la que largó último y pudo terminar en el 14.º puesto.</p><p>Estas charlas son habituales y una vez que el piloto argentino de 21 años cruzó la meta recibió el saludo de su ingeniero. “Okey, amigo. Es una pena que intentamos con Magnussen. Tal vez fue un poco agresivo y tuvimos que pagar el precio con Zhou. Usar ese segundo adelantamiento en la curva uno no era necesario y eso nos costó estar al fondo del pelotón y tener aire sucio en esa última vuelta. Pero estamos aprendiendo”, dijo el técnico.</p><p>“Estas cosas para aprender sobre la gestión de motor son importantes”, destacó Jego, quien le reconoció a Franco que hizo una “carrera sólida. Buena gestión de neumáticos. Buen trabajo en eso, definitivamente. Y cuando pusiste el auto en la ventana para protegerlo del graining (desgaste de las gomas) fue bueno en ese último stint (tramo de la carrera)”.</p><p>Por la mencionada vía se sumó Vowles, quien le dijo al bonaerense: “Franco, fue una buena recuperación desde donde estábamos. Hay mucho que aprender, sin duda, cómo usar esos neumáticos delanteros. Todavía nos quedan dos carreras más. Estoy deseando terminar la temporada”.</p><p>Colapinto sufrió en la clasificación un fuerte accidente, cuyos daños en su auto y en su salud pusieron en duda su presencia en la carrera. Franco resaltó el trabajo de sus mecánicos y subrayó que “gracias a los muchachos en el garaje por lo que han hecho. Sé cuán difíciles fueron estas carreras”. Cabe recordar que en Brasil también había chocado y su FW 46 debió ser reparado. En esa competencia y antes de dicho incidente, Colapinto tuvo un cruce por radio con Jego en el que discrepó por la estrategia empleada.</p><p>El pilarense pudo largar, pero no en la posición en la que se clasificó sino último, debido al reemplazo de los elementos en su coche. “Si hoy hubiésemos largado desde donde debíamos, hubiésemos estado en una mejor posición. Pero así son las carreras. Vamos a pelear más duro la próxima semana. Gracias, chicos”, indicó.</p><p>Jego, por su parte, destacó que finalmente Franco haya podido correr: “Gracias. Especialmente feliz de que hoy estuvieras bien, apto para correr después de semejante golpe. Manejaste muy bien hoy”.</p><p>Cabe destacar que, en las últimas cuatro fechas, Colapinto superó en resultados a su compañero de equipo Alex Albon: el argentino fue 11º, 10º, 12º, abandonó y terminó 14º; mientras que el tailandés abdicó en tres de las últimas, no pudo largar en Brasil porque fue imposible reparar su coche tras su accidente en clasificación y en México fue 16.º. Este domingo el asiático volvió a desertar y fue por fallas mecánicas en su monoplaza.</p><p>George Russell ganó en Las Vegas y lideró el 1-2 de Mercedes delante de Lewis Hamilton. Carlos Sainz terminó tercero con su Ferrari. En tanto que Max Verstappen culminó quinto y alcanzó su cuarto título mundial.</p><p>Sin descanso, el equipo Williams y el resto de la F1 seguirán su periplo para completar las últimas dos fechas de la temporada. El próximo fin de semana se correrá en Qatar y el siguiente en Abu Dhabi.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/deportes/2024/11/24/el-dialogo-entre-colapinto-y-su-ingeniero-tras-el-gp-de-las-vegas-de-formula-1-elogios-y-los-detalles-a-aprender/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El diálogo entre Colapinto y su ingeniero tras el GP de Las Vegas de F1: elogios y los detalles a “aprender”.', // Opcional, pero recomendado     
+                text: 'El diálogo entre Colapinto y su ingeniero tras el GP de Las Vegas de F1: elogios y los detalles a “aprender”.',  // Opcional
+                url: 'https://www.infobae.com/deportes/2024/11/24/el-dialogo-entre-colapinto-y-su-ingeniero-tras-el-gp-de-las-vegas-de-formula-1-elogios-y-los-detalles-a-aprender/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
