@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El domingo vuelven a aumentar la nafta y el gasoil: cuánto va a costar llenar el tanque.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El domingo vuelven a aumentar la nafta y el gasoil: cuánto va a costar llenar el tanque.</h1>
+            <p>El próximo domingo 1° de diciembre habrá un nuevo aumento de la nafta y el gasoil. La suba promedio en los combustibles que analizan por estas horas las petroleras ronda el 3%, aunque hay posibilidades de que la actualización quede por debajo de ese porcentaje, en línea con lo que sucedió este mes, según fuentes del mercado consultadas por Infobae.</p><p>El ajuste tendrá como piso el 2% de devaluación mensual del tipo de cambio oficial, más el leve incremento que marcó el precio del barril de petróleo en el mercado internacional y un 1% de incremento en el impuesto a los combustibles líquidos (ICL).</p><p>Será el segundo mes consecutivo de aumento después de que YPF aplicara en octubre una leve baja de los precios en surtidores por la dinámica que habían mostrado los valores del crudo. Los otros jugadores - Shell, Axion y Puma - del mercado seguirán a la petrolera estatal, que también es la que concentra cerca del 60% de las ventas.</p><p>Los precios promedio de YPF en la Ciudad Autónoma de Buenos Aires (CBA) actualmente son de $1.077 para el litro de nafta súper, de $1.332 para la Infinia, $1.092 para el diesel y de $1.343 para la Infinia diesel. El incremento respecto a diciembre es de casi el 100 por ciento.</p><p>Llevado al costo de tanques de nafta se puede tomar, por ejemplo, el del FIAT Cronos, el auto más vendido en la Argentina, que carga 45 litros. En este caso, llenar el tanque con nafta súper cuesta $48.465, y con nafta premium, $59.940 en total. A eso habrá que sumarle el incremento que finalmente se decida para el domingo, que puede estar en torno al 3% respecto a los valores de referencia en CABA.</p><p>La petrolera estatal informó recientemente que sus combustibles se encuentran en la zona de paridad de importación. Eso implica que los ajustes dependen de las variaciones del dólar oficial y de los movimientos que tenga el barril de petróleo en el mercado internacional, particularmente del que se conoce como “Brent”.</p><p>Las ventas de combustibles mostraron en octubre un fuerte repunte respecto a septiembre, según datos de la Secretaría de Energía, una tendencia que coincide con la sensación de repunte que tienen las petroleras del país. Las comparaciones contra el año pasado muestran una sensible caída en el despacho de nafta y gasoil, en parte por el efecto de comparación que dejó la disparada de consumo en medio de la crisis de abastecimiento que se vivió en el período electoral de 2023, y los recientes aumentos de precios.</p><p>La consultora Politikon Chaco detalló que las ventas de combustible al público en todo el país totalizaron 1.434.689 metros cúbicos. En la comparación interanual, exhibieron un retroceso del 10,4%, siendo el undécimo mes consecutivo con descensos. Sin embargo, muestra una recuperación respecto al mes previo (septiembre 2024) que fue del 9,2 por ciento.</p><p>“El 56% del total comercializado en octubre correspondió a naftas y el 44% al gasoil. En referencia a sus desempeños, la nafta exhibió una baja del 7,3% interanual (-1,6% la súper y -21,0% la premium) y el gasoil registró caída del 14,2% (-18,5% el común y -5,3% el premium). En este marco, se destaca que en la comparación mensual ambos tipos de combustibles mostraron recuperación: nafta +9,9% y gasoil +8,3%”, detalló la consultora.</p><p>En octubre todas las jurisdicciones subnacionales registraron caídas interanuales. En ese marco, los descensos más leves se vieron en Salta (1,5%), Jujuy (-2,5%) y Neuquén (-3,2%). Por el contrario, los desempeños más negativos del mes se vieron Corrientes (-22,7%), Misiones (-25,9%) y Formosa (-31,2%).</p><p>“Como contrapartida de ese escenario, en la comparación mensual todos los distritos exhiben recuperaciones, en diferente magnitud”, apuntó la consultora Politikon Chaco.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/11/28/el-domingo-vuelven-a-aumentar-la-nafta-y-el-gasoil-cuanto-va-a-costar-llenar-el-tanque/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El domingo vuelven a aumentar la nafta y el gasoil: cuánto va a costar llenar el tanque.', // Opcional, pero recomendado     
+                text: 'El domingo vuelven a aumentar la nafta y el gasoil: cuánto va a costar llenar el tanque.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/11/28/el-domingo-vuelven-a-aumentar-la-nafta-y-el-gasoil-cuanto-va-a-costar-llenar-el-tanque/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
