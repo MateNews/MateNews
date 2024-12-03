@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El Gobierno anunció que los hospitales y universidades públicas les cobrarán aranceles a los extranjeros.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El Gobierno anunció que los hospitales y universidades públicas les cobrarán aranceles a los extranjeros.</h1>
+            <p>El Gobierno Nacional anunció este martes 3 de diciembre una serie de cambios en el régimen migratorio en Argentina, que incluyen el arancelamiento de Universidades Nacionales y la atención en hospitales públicos para extranjeros no residentes. Lo comunicó el vocero presidencial Manuel Adorni, durante una conferencia en Casa Rosada.</p><p>“Hoy uno de cada 3 estudiantes de medicina es extranjero”, introdujo, a modo de ejemplo, el funcionario. “Esto va a representar una fuente de financiamiento para las casas de estudio”, añadió.</p><p>Luego anunció la misma política para el sistema de salud público. “Vamos a disponer el fin de la gratuidad de la atención médica para extranjeros tal como la conocemos hasta ahora. Los organismos nacionales, provinciales o municipales van a determinar las condiciones de acceso al sistema de salud, incluyendo la posibilidad de cobrar los servicios a quienes no residan en el país”, afirmó.</p><p>En ese punto, Adorni puso como ejemplo el antecedente de la provincia de Salta. “Allí bajó un 95% la atención a extranjeros y se generó un ahorro de 60 millones de pesos. Esto implica ahorro fiscal y mejor atención para el resto de los ciudadanos residentes en nuestro país. Nos despedimos de los tours sanitarios”, indicó el funcionario.</p><p>En el marco del mismo paquete de medidas, Adorni indicó que el gobierno ampliará la lista de delitos incluidos en el régimen migratorio que motivan la deportación de ciudadanos extranjeros. “Si a un delincuente se lo atrapa en flagrancia o si se lo detiene por violentar el sistema democrático atacando las instituciones será expulsado y se le prohibirá su reingreso al país”, detalló.</p><p>También se denegará el ingreso al país por irregularidades en la documentación que presenten las personas en Aduana. “Quienes intenten entrar con documentación apócrifa o que se sospeche que el motivo de su ingreso es diferente al que manifiestan durante el trámite migratorio, se quedará del otro lado de la frontera”, indicó el vocero.</p><p>Finalmente informó: “Se incorpora una pena de prisión en caso de que el extranjero viole la prohibición de reingreso al país”.</p><p>“El objetivo es avanzar hacia un país ordenado, que cuide sus fronteras y proteja a los ciudadanos argentinos. Es lo que busca esta reforma que vamos a impulsar”, argumentó Adorni.</p><p>Finalmente el portavoz presidencial amplió los motivos de la decisión del Ejecutivo que incluyó críticas al regimen migratorio vigente. “En los albores de la historia argentina el país ha recibido gente honrada y dispuesta a hacer grande una nación, con trabajo y lo que todos ya sabemos. Luego, la doctrina garantista en términos migratorios ha hecho desastres. Lo cierto es que los malandras, ocupas y oportunistas deben quedarse en sus casas lejos de las fronteras y no venir a la Argentina a hacer daño a los ciudadanos que residen en territorio nacional”.</p><p>Los gobiernos de dos provincias del norte argentino ya habían tomado medidas en el mismo sentido de los anuncios que realizó el vocero Adorni hoy. En Salta, el gobernador Gustavo Sáenz firmó un decreto con el que dispuso el arancelamiento de los servicios médicos en hospitales públicos para extranjeros no residentes.</p><p>La medida tuvo amplio consenso en la sociedad y terminó siendo aprobada por las cámaras de senadores y diputados salteños. La caída de la concurrencia de personas que cruzaban las fronteras en busca de atención gratuita fue notable en las primeras semanas de su implementación.</p><p>En Jujuy, en tanto, luego de una primera etapa en la que el gobierno local buscó suscribir acuerdos de reciprocidad con los funcionarios bolivianos, finalmente la gestión local avanzó unilateralmente en el impulso y aprobación de una ley que impone el arancelamiento para extranjeros no residentes. Los acuerdos celebrados, en este caso, fracasaron por la falta de cumplimiento de parte del sistema de salud boliviano, que es arancelado para todas las atenciones, sin distinguir la residencia de los pacientes.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2024/12/03/el-gobierno-anuncio-que-las-universidades-nacionales-y-los-hospitales-publicos-les-cobraran-aranceles-a-los-extranjeros/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El Gobierno anunció que los hospitales y universidades públicas les cobrarán aranceles a los extranjeros.', // Opcional, pero recomendado     
+                text: 'El Gobierno anunció que los hospitales y universidades públicas les cobrarán aranceles a los extranjeros.',  // Opcional
+                url: 'https://www.infobae.com/politica/2024/12/03/el-gobierno-anuncio-que-las-universidades-nacionales-y-los-hospitales-publicos-les-cobraran-aranceles-a-los-extranjeros/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kicillof anunció que en los hospitales de PBA la atención para extranjeros seguirá siendo gratuita.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Kicillof anunció que en los hospitales de PBA la atención para extranjeros seguirá siendo gratuita.</h1>
+            <p>El ministro de Salud bonaerense, Nicolás Kreplak, descartó que en los hospitales públicos de la provincia se vaya a cobrar la atención médica a extranjeros, tal como anunció este martes el Ejecutivo Nacional en el marco de las modificaciones que harán en el régimen migratorio.</p><p>“Las ‘medidas’ que anuncia el gobierno nacional carecen de conocimiento del funcionamiento del sistema y solo buscan provocar, generar odio y resentimiento”, denunció el funcionario de Axel Kicillof en un posteo de X, minutos después de la conferencia del vocero presidencial, Manuel Adorni, donde se conocieron los cambios.</p><p>El ministro le avisó al Gobierno que “no cuenten” con la provincia de Buenos Aires para arancelar la atención sanitaria, y se quejó de que el tema no se haya mencionado el lunes, cuando se reunió el Consejo Federal de Salud: “Ayer estuvimos con las y los ministros de salud de todo el país y nunca se planteó una situación ni similar a la anunciada”.</p><p>Además, Kreplak citó un posteo suyo que data de julio, en el que ya se había referido a la discusión sobre cobrarle a los extranjeros: “Las ideas vinculadas al cobro de prestaciones con la excusa de achicar el gasto público son en realidad un fuerte debate sobre la concepción sobre el derecho a la salud y el rol del Estado”, planteó.</p><p>Y completó: “Lo cierto es que los datos reflejan otra realidad. Demuestran que la atención de personas no residentes tiene un impacto mínimo en el sistema de salud. En la PBA, solo el 0.2% de las consultas y el 0.8% de las internaciones corresponden a extranjeros”.</p><p>En contraste con esos datos, Adorni citó el caso de Salta, que le cobra la atención médica a los nacidos en otro país desde febrero de este año. “Allí bajó un 95% la atención a extranjeros y se generó un ahorro de 60 millones de pesos. Esto implica ahorro fiscal y mejor atención para el resto de los ciudadanos residentes en nuestro país. Nos despedimos de los tours sanitarios, que son tan conocidos en la República Argentina por desgracia”, esgrimió el portavoz.</p><p>También está la experiencia de Jujuy, que avanzó unilateralmente en el impulso y aprobación de una ley que impone el arancelamiento para extranjeros no residentes. Antes habían firmado acuerdos de reciprocidad con Bolivia, pero fracasaron por la falta de cumplimiento de parte del sistema de salud del país vecino, que es pago para todas las atenciones, sin distinguir la residencia de los pacientes.</p><p>Y por último se sumaron Mendoza y Santa Cruz. En la provincia cuyana los costos deben ser cubiertos por los propios pacientes extranjeros o sus seguros, y aplica a aquellos categorizados como residentes transitorios o precarios. Según informó el ministro de Salud y Deportes de Mendoza, Rodolfo Montero, en el primer mes se ahorraron 5 millones de pesos.</p><p>En la jurisdicción patagónica las tarifas se ajustan según el tipo de atención y la duración de la internación, y busca disuadir el uso no contributivo del sistema de salud por parte de extranjeros.</p><p>“El objetivo es avanzar hacia un país ordenado, que cuide sus fronteras y proteja a los ciudadanos argentinos. Es lo que busca esta reforma que vamos a impulsar”, argumentó Adorni.</p><p>Para el funcionario “es poco justo” que el Ejecutivo ponga gratuitamente “la salud al servicio de un extranjero que viene en estos tours médicos, quitándole recursos a los argentinos, con todas las necesidades que tienen, que tal vez no tiene acceso a una prepaga y necesita atenderse en un hospital público”.</p><p>Además, advirtió que más adelante se conocerán los detalles precisos sobre cómo se aplicará la medida a lo largo del país, y con las especificaciones de cada especialidad y requerimiento médico.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2024/12/03/el-gobierno-de-kicillof-anuncio-que-en-los-hospitales-bonaerenses-la-atencion-para-extranjeros-seguira-siendo-gratuita/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Kicillof anunció que en los hospitales de PBA la atención para extranjeros seguirá siendo gratuita.', // Opcional, pero recomendado     
+                text: 'Kicillof anunció que en los hospitales de PBA la atención para extranjeros seguirá siendo gratuita.',  // Opcional
+                url: 'https://www.infobae.com/politica/2024/12/03/el-gobierno-de-kicillof-anuncio-que-en-los-hospitales-bonaerenses-la-atencion-para-extranjeros-seguira-siendo-gratuita/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
