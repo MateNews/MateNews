@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Wall Street Journal analizó el progreso de la Argentina de Milei: alianzas políticas y reformas económicas en juego.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>The Wall Street Journal analizó el progreso de la Argentina de Milei: alianzas políticas y reformas económicas en juego.</h1>
+            <p>Javier Milei enfrenta un desafío intenso en su segundo año al frente del gobierno argentino, según detalla Mary Anastasia O’Grady en una columna de opinión para The Wall Street Journal. A pesar de los esfuerzos significativos para reformar la economía argentina, advierte que “el tiempo se acaba”. La administración de Milei dispone de poderes legislativos especiales que expiran en junio, y la rapidez con la que actúan es crucial para evitar un retroceso en las reformas.</p><p>La economía argentina, heredada de su antecesor, Alberto Fernández, incluye un déficit fiscal considerable, deuda en aumento e inflación superior al doscientos por ciento en 2023. O’Grady destaca que Milei anticipó desde su investidura que la recuperación sería “dolorosa”. Entre las acciones que ha tomado se encuentra la eliminación del control de alquileres y la modificación de regulaciones económicas, buscando reducir el “cinturón regulatorio” que enfrenta el país.</p><p>Federico Sturzenegger, encargado de la desregulación del gobierno, es central en esta misión, señala O’Grady. Su tarea es “profundizar y ampliar” lo iniciado por Milei, enfocándose en un mapa regulatorio de más de cuatro mil leyes y setenta mil decretos que, según él, desincentivan la inversión y obstruyen la productividad. Sturzenegger apuesta por derribar esta estructura en un tiempo limitado antes de que el gobierno pierda su capacidad de actuar con autonomía.</p><p>La confianza pública es un tema en el que Milei ha logrado destacar, obteniendo una aprobación superior al cincuenta por ciento. Sin embargo, la columna de O’Grady recuerda que “los expertos tienen motivos para estar preocupados” debido a la dependencia del gobierno en la inflación para reducir el gasto social en lugar de implementar reformas estructurales. Hay un escepticismo creciente sobre si estas medidas pueden realmente sostenerse a largo plazo sin una base sólida de reformas.</p><p>El historial económico de Argentina no inspira confianza sin esfuerzos estructurados, así ha argumentado O’Grady. La presión sobre el peso sigue siendo alta, y el país es “muy caro en términos de dólares”. La decisión de Milei de no cerrar el banco central ni dolarizar, promesas clave de su campaña, podría ser un “cálculo fatal”, en especial considerando que los controles de cambio y capital todavía persisten.</p><p>A la par, los cambios a nivel micro son alentadores. Sturzenegger ha informado que la desregulación ya ha provocado descensos de precios en áreas específicas como textil y agrícola; no obstante, “solo se ha completado un 20% del trabajo”, lo que resalta la urgencia de alcances futuros. El esfuerzo por simplificar los registros de productos y la complejidad burocrática para iniciar negocios son pasos significativos que demuestran avances tangibles.</p><p>En cuanto a la política, la columna de O’Grady no olvida mencionar la complicada negociación con Cristina Kirchner, lideresa del partido peronista, quien impacta directamente la capacidad de Milei para legislar de manera independiente. Esto genera inquietud en los defensores de las instituciones legales y el estado de derecho en Argentina.</p><p>Entre tanto, el riesgo país se ha reducido drásticamente y se espera que la recesión haya terminado, con previsiones de crecimiento para el próximo año en el rango del cuatro al cinco por ciento. O’Grady considera que “el aterrizaje más suave de lo esperado” es una hazaña que nadie imaginaba factible un año atrás. Sin embargo, este alivio podría ser efímero si la oportunidad actual no se convierte en reformas duraderas y estructurales que aborden las causas fundamentales de las dificultades económicas de Argentina.</p><p>Mary Anastasia O’Grady, quien escribe para The Wall Street Journal, invita a observar las reformas del gobierno de Milei con atenta expectativa, señalando que aunque hay señales prometedoras, el futuro aún es incierto y el “reloj sigue corriendo”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/12/09/the-wall-street-journal-analizo-el-progreso-de-la-argentina-de-milei-alianzas-politicas-y-reformas-economicas-en-juego/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'The Wall Street Journal analizó el progreso de la Argentina de Milei: alianzas políticas y reformas económicas en juego.', // Opcional, pero recomendado     
+                text: 'The Wall Street Journal analizó el progreso de la Argentina de Milei: alianzas políticas y reformas económicas en juego.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/12/09/the-wall-street-journal-analizo-el-progreso-de-la-argentina-de-milei-alianzas-politicas-y-reformas-economicas-en-juego/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
