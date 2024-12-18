@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Caputo anticipó que el acuerdo con el FMI se alcanzará durante el primer cuatrimestre del 2025.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Caputo anticipó que el acuerdo con el FMI se alcanzará durante el primer cuatrimestre del 2025.</h1>
+            <p>El ministro de Economía Luis Caputo aseguró que el gobierno argentino prevé renovar su acuerdo con el Fondo Monetario Internacional (FMI) durante el primer cuatrimestre del año próximo.</p><p>“Estamos muy bien encaminados. Los tiempos del Fondo son lentos pero estamos muy bien encaminados, tenemos muy buen diálogo y estimo que para el primer cuatrimestre del año que viene vamos a llegar a un nuevo acuerdo”, dijo Caputo en Radio Mitre.</p><p>El funcionario recalcó que para salir del cepo “no hay fecha, sino metas para cumplir” y que el acuerdo podría aportar los dólares que faltan en las reservas del BCRA.</p><p>“Para salir del cepo se deben cumplir tres condiciones. La primera es que la inflación converja al nivel del crawl. La segunda es terminar de equilibrar el mercado de dinero, la demanda y la oferta de pesos. Esto es sumamente importante porque cuando nosotros llegamos el desbalance era total, quién quería pesos en diciembre del año pasado? Había cuatro bases monetarias en pasivos remunerados del Banco Central”, explicó Caputo.</p><p>“Nosotros equilibramos eso, porque aumentó la demanda de pesos por la baja de la inflación y porque bajamos fuertemente la oferta monetaria cuando tuvimos tasas reales negativas al comienzo. Eso fue una parte crucial del programa. Si no hubiéramos hecho eso, que algunos aconsejaban, y hubiésemos fijado tasas reales positivas, tendríamos que haber impreso una base monetaria más por mes”, agregó.</p><p>El funcionario explicó que la tercera condición para salir del cepo es tener más reservas en el balance del Banco central: “Un acuerdo con el Fondo debiera venir con una inyección de plata para recapitalizar el Banco Central. Si se cumplen esas tres metas, probablemente vamos a estar en condiciones de salir del cepo”.</p><p>También aseguró que si la inflación de diciembre se mantiene en los niveles de octubre y noviembre, “probablemente bajemos el crawling peg al 1% durante enero o febrero”.</p><p>Consultado acerca de qué están viendo sobre la fase actual de la economía argentina en el Fondo, según Caputo en el FMI hay “loas” para la Argentina y sus funcionarios “están maravillados” con el desempeño del plan económico, “igual que en todo el mundo”.</p><p>“Hoy, realmente, si se miran las redes sociales no se habla de otra cosa que del presidente Javier Milei. Siempre se habló de él por sus ideas, su contundencia y su personalidad. Ahora además lo avalan los resultados, con lo cual es realmente un boom. No quiero sonar fantasioso, pero el presidente está haciendo una revolución. La batalla cultural que dio a nivel local hoy la está dando a nivel global”, afirmó Caputo.</p><p>Al mismo tiempo, el ministro de Economía reafirmó que el gobierno trabaja para reducir la cantidad de impuestos que se pagan los argentinos, tal como había anunciado el presidente Javier Milei al cumplirse un año de su gestión.</p><p>“Estamos trabajando en una reforma tributaria, no la recaudación, sino la cantidad de impuestos. La Argentina tiene una cantidad de impuestos, ha habido una sobreimposición, nosotros queremos simplificar todo eso”, afirmó Caputo.</p><p>“Estamos apuntando a una reforma tributaria donde no haya más de 6 impuestos a nivel nacional y que haya competencia entre las diferencias provincias para que se genere una baja adicional a raíz de la competencia y que cada empresa decida dónde se instala por dónde le es más conveniente”, agregó el ministro de Economía.</p><p>Por otra parte, afirmó que avanza el plan para establecer la competencia de monedas. Reafirmó que las empresas pueden facturar en dólares e incluso pagar el IVA correspondiente a esa facturación al tipo de cambio del día publicado por el Banco Nación.</p><p>También dijo que en el primer trimestre del año próximo las tarjetas de crédito adaptarán sus sistemas para que se pueda pagar en dólares, incluso en cuotas.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/12/17/caputo-espera-alcanzar-el-acuerdo-con-el-fmi-durante-el-primer-cuatrimestre-del-2025/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Caputo anticipó que el acuerdo con el FMI se alcanzará durante el primer cuatrimestre del 2025.', // Opcional, pero recomendado     
+                text: 'Caputo anticipó que el acuerdo con el FMI se alcanzará durante el primer cuatrimestre del 2025.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/12/17/caputo-espera-alcanzar-el-acuerdo-con-el-fmi-durante-el-primer-cuatrimestre-del-2025/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
