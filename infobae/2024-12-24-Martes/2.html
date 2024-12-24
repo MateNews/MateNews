@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Verano en Brasil: cuánto más baratas serán en realidad las vacaciones en el país vecino.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Verano en Brasil: cuánto más baratas serán en realidad las vacaciones en el país vecino.</h1>
+            <p>La relación entre la Argentina y Brasil tiene sus vaivenes y también la relación entre sus monedas tiene fuertes sus particularidades. Sin embargo, ambas economías tienden a “un precio único”. Es lo identificó el economista Alberto Cavallo, hijo del exministro de Economía, Domingo Cavallo, al analizar la relación entre ambas.</p><p>La primera conclusión, o mejor dicho, la más actual, es que tras años en los que “Brasil era más caro” para los argentinos, ahora es claramente más barato. ¿Cuánto más barato? De acuerdo al creador de PriceStats, una plataforma que mide precios online, la Argentina está hoy 19% más cara que el país vecino. O sea, Brasil está un 19 por ciento más barato.</p><p>El dato relevante es que esa situación debería corregirse en pocos meses, si se repite el patrón histórico.</p><p>“Argentina es hoy un 19% más cara que Brasil en dólares para una canasta idéntica de alimentos, combustibles y electrónicos. Históricamente, la ley del precio único se cumple en promedio entre ambos países, y las desviaciones suelen corregirse en pocos meses”, apuntó el economista.</p><p>Mientras esa corrección no ocurra, tanto el abaratamiento del dólar a nivel local como la devaluación del real, que profundiza el atraso del tipo de cambio real bilateral, genera honda preocupación entre los industriales argentinos cuyo principal destino de exportación es, precisamente, la economía brasileña. También en la industria del turismo local, que teme el efecto de la alta demanda que, dado el beneficio cambiario, ofrece la costa de Brasil.</p><p>Es que, al mismo tiempo que –cepo mediante– el peso se mantuvo inmune a las presiones devaluatorias sobre las monedas de los países emergentes desatados tras el triunfo de Donald Trump en las elecciones de Estados Unidos el mes pasado, el real sufrió el impacto por partida doble. Esto porque crece la desconfianza entre los inversores por el alto déficit fiscal y la debilidad cada vez mayor de sus cuentas públicas. Así, pese a contar con gran stock de reservas en torno a los USD 300.000 millones y a haber anunciado un paquete de ajuste, la preocupación del mercado no cede. El Banco de Brasil ya destinó más de USD 15.000 millones para evitar una abrupta suba del dólar en ese país, lo cual logró a medias. El dólar subió el lunes un nuevo escalón y llegó hasta los 6,20 reales y en lo que va del año, el billete acumuló un alza cercana al 25% en ese país.</p><p>A continuación, el costo relativo entre Argentina y Brasil (con una canasta de productos comunes, con alimentos, combustible y electrónicos):</p><p>Con esa paridad, el real brasileño se ubica en el mínimo desde hace más de 20 años en relación al peso, es decir, desde la convertibilidad. Lo explicó hace ya varios días el analista de Romano Group, Salvador Vitelli. “Desde la convertibilidad que no teníamos este tipo de cambio real (TCR) contra el Real. Para ‘doña Rosa’, hace 22 años que no era tan ‘barato’ como hoy irse a Brasil”, explicó. Lo mismo que cuantificó Cavallo.</p><p>Esa realidad, previsiblemente, se percibirá en el aumento del turismo este verano hacia las playas brasileñas. Es lo que indica el nivel de reservas y venta de pasajes, según los agentes turísticos, que detectaron un fuerte incremento en los últimos meses y que, en diciembre, incluso se duplicó en comparación con diciembre del año pasado.</p><p>El dato podría ser un problema para las reservas del Banco Central, que podría ver escurrirse dólares a través de la cuenta servicios por turismo. Particularmente tras la desaparición del impuesto PAIS, que abarató el dólar para consumir en el exterior.</p><p>El “dólar turista”, o tarjeta, se ubica hoy en los $1.362, 18% debajo de lo que costaba hasta la semana pasada. Sin embargo, sigue siendo el más caro del mercado, ya que se ubica $162 por encima del dólar libre y $200 por encima del dólar MEP. Es decir, que, a la hora de pagar los consumos en dólares en el exterior, la opción más conveniente para los turistas es pagar tarjeta y luego cancelar el resumen con dólares financieros en cuenta.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2024/12/24/verano-en-brasil-cuanto-mas-baratas-seran-en-realidad-las-vacaciones-en-el-pais-vecino/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Verano en Brasil: cuánto más baratas serán en realidad las vacaciones en el país vecino.', // Opcional, pero recomendado     
+                text: 'Verano en Brasil: cuánto más baratas serán en realidad las vacaciones en el país vecino.',  // Opcional
+                url: 'https://www.infobae.com/economia/2024/12/24/verano-en-brasil-cuanto-mas-baratas-seran-en-realidad-las-vacaciones-en-el-pais-vecino/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

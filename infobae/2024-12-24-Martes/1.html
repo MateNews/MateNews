@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Las autoridades porteñas creen que la fuga de presos de Liniers fue un caso de “desidia policial”.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Las autoridades porteñas creen que la fuga de presos de Liniers fue un caso de “desidia policial”.</h1>
+            <p>Las fugas de presos han sido el punto débil de la Policía de la Ciudad en este 2024, sobre todo las tres últimas, ocurridas en menos de un mes. El ministro de Seguridad porteño, Waldo Wolff, que ya había desplazado de sus cargos a Sebastián Vela, responsable civil de la cartera, y a Martín Ochoa, director de Alcaidías; ahora echó al jefe y subjefe de la Fuerza tras reciente la evasión de 17 detenidos de una dependencia del barrio porteño de Liniers.</p><p>Mientras el Fiscal General de CABA, Juan Bautista Mahiques, ordenó investigar a toda la Policía porteña; fuentes oficiales de la Ciudad estimaron en diálogo con Infobae que, por lo pronto, no habría un hecho de corrupción vinculado a la fuga de Liniers ocurrida en la víspera de Nochebuena.</p><p>“Esto, por lo visto, es un caso de desidia policial y de falta de control de los internos“, aseguró una fuente clave en la problemática que le quita el sueño a Wolff.</p><p>¿Por qué la sospecha de desidia y no de corrupción? Porque no da el perfil de los detenidos: seis de ellos son oriundos de Chile y todos ya tienen causas en trámite o condenas en tribunales orales porteños por delitos como robo, encubrimiento y tentativa de homicidio. Uno está en situación de calle.</p><p>Los 17 detenidos escaparon de la Alcaidía 9 de la Policía de la Ciudad, ubicada en la calle Gana al 400, zona de Liniers, a través de un agujero de 30 centímetros de diámetro en una pared de ladrillo hueco de un patio interno. La fuga se dio en las últimas horas de este lunes.</p><p>Los prófugos fueron identificados como Roger Adaro Davies, Kevin Gastón Villalba, Nicolás Alejandro Serra, Brian Valdebenito, Gastón Riquelme Alana, Cristian Ignacio Zavala Ramírez, Rodrigo Molina Meléndez, Brian Leonardo Maidana, Jonatan Cristofer Espinoza Vilches, Axel Ezequiel Romero, Jorge Ángel Alet, Luis Leiva Galván, Agustín Esteban Franco, Matías Daniel Petrarca, José Gabriel Salina y Nicolás Alejandro Uribe Paves.</p><p>De los 17 evadidos, Axel Romero, de 21 años, fue el primero en ser recapturado. La Policía porteña lo encontró, nada más y nada menos que, en un domicilio que había registrado en la calle Falucho, en la zona de Ingeniero Budge.</p><p>El hecho tuvo enormes repercusiones políticas: Wolff decidió expulsar de sus cargos a los comisarios generales Pablo Kisch y Jorge Azzolina, jefe y subjefe de la Policía de la Ciudad. Sus sucesores son Diego Casaló y Carla Mangiamelii.</p><p>Fuentes del caso dijeron a este medio que a Kish le hicieron un favor porque se quería ir, porque estaba cansado.</p><p>Lo cierto es que Mahiques decidió ir a fondo y ordenó una profunda investigación sobre la Policía a la fiscal Lorena di Marco, a cargo de la FEVIIP, el área especializada en violencia institucional e integridad policial.</p><p>Según detallaron a Infobae fuentes judiciales, la lupa se pondrá sobre toda la fuerza porteña, desde su cúpula. En este sentido, se indagarán los roles, el funcionamiento y las responsabilidades de los agentes que integran la Policía de la Ciudad.</p><p>El operativo para recapturar a los prófugos está a cargo del fiscal contravencional porteño Blas Michenzi.</p><p>La fuga de Liniers es la tercera en menos de un mes que ocurre en una dependencia de la Policía de la Ciudad, luego de los 11 detenidos que escaparon de una comisaría en Barracas a fines de noviembre pasado y los otros dos que huyeron del Centro de Contraventores de Pompeya, donde una policía terminó detenida, sospechada de haber colaborado con los reos.</p><p></p><p></p><p></p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2024/12/24/las-autoridades-portenas-creen-que-la-fuga-de-presos-de-liniers-fue-un-caso-de-desidia-policial/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Las autoridades porteñas creen que la fuga de presos de Liniers fue un caso de “desidia policial”.', // Opcional, pero recomendado     
+                text: 'Las autoridades porteñas creen que la fuga de presos de Liniers fue un caso de “desidia policial”.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2024/12/24/las-autoridades-portenas-creen-que-la-fuga-de-presos-de-liniers-fue-un-caso-de-desidia-policial/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
