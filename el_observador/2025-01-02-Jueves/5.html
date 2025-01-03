@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Edmundo González Urrutia en Argentina: Javier Milei lo recibe antes del 10 de enero</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Edmundo González Urrutia en Argentina: Javier Milei lo recibe antes del 10 de enero</h1>
+            <p>
+Lo que importa sobre Javier Milei y Edmundo González  Edmundo González Urrutia, líder opositor venezolano, llega a Argentina como parte de una gira internacional para reforzar su reconocimiento como presidente electo. Javier Milei, presidente argentino, lo recibirá en la Casa Rosada el próximo sábado, marcando su respaldo contra el régimen de Nicolás Maduro. La tensión entre Argentina y Venezuela aumenta, con la detención del gendarme Nahuel Agustín Gallo en Caracas y la expulsión de diplomáticos argentinos. María Corina Machado y González llaman a movilizaciones en Venezuela para "cobrar la victoria" del 28 de julio, mientras Maduro cierra el espacio aéreo. Estados Unidos y otros actores internacionales reiteran su apoyo al opositor y piden la restauración democrática en Venezuela.  Contexto ¿Quién es Edmundo González Urrutia y por qué es relevante su visita a Argentina?: Edmundo González Urrutia es reconocido por varios países, incluida Argentina, como el legítimo ganador de las elecciones presidenciales de Venezuela el 28 de julio pasado. En un contexto de persecución por parte del régimen chavista, reside actualmente en España, donde obtuvo asilo. Su visita a Argentina forma parte de una gira que busca reforzar el respaldo internacional para asumir la presidencia de Venezuela el 10 de enero, desafiando la continuidad de Nicolás Maduro. ¿Qué se sabe sobre la reunión entre González Urrutia y Javier Milei?: Fuentes oficiales confirmaron que el encuentro tendrá lugar en la Casa Rosada el próximo sábado. Javier Milei fue uno de los primeros líderes en reconocer a González como presidente legítimo, lo que provocó la expulsión de diplomáticos argentinos de Caracas. Se espera que Milei reitere su apoyo a pocos días de la fecha prevista para el cambio de gobierno en Venezuela. ¿Cómo afecta la detención del gendarme Nahuel Agustín Gallo a la relación entre Argentina y Venezuela?: La detención de Gallo, ocurrida el 8 de diciembre cuando intentaba visitar a su familia en Venezuela, intensificó las tensiones bilaterales. Actualmente, se desconoce su paradero y no se le permite comunicarse con su familia, una situación que genera fuertes críticas hacia el régimen chavista desde el gobierno de Milei. ¿Cuál es el rol de María Corina Machado en este conflicto?: Machado, líder del movimiento opositor Vente Venezuela, fue la principal aliada de González durante la campaña electoral. Desde la clandestinidad, llamó a la movilización popular para presionar al régimen de Maduro. En un video reciente, instó a los venezolanos a "cobrar la victoria" y a prepararse para manifestaciones masivas el 10 de enero. ¿Qué dicen otros líderes internacionales sobre la situación en Venezuela?: El secretario de Estado de Estados Unidos, Antony Blinken, reafirmó el compromiso de su país con la democracia en Venezuela. En una conversación con González y Machado, destacó el apoyo estadounidense a las elecciones del 28 de julio y pidió la liberación de presos políticos. Otros líderes internacionales, como la primera ministra de Italia, Giorgia Meloni, también manifestaron su respaldo. ¿Qué significa el cierre del espacio aéreo venezolano?: Nicolás Maduro cerró el espacio aéreo de Venezuela en un intento por evitar el ingreso de González Urrutia, quien busca regresar para asumir el gobierno. Aunque el opositor indicó que tiene planes para volver, mantuvo en secreto los detalles de su retorno para evitar represalias. Cómo sigue Edmundo González Urrutia continuará su gira internacional, que incluye visitas a Paraguay y Chile, antes del 10 de enero. En Venezuela, se espera que las movilizaciones convocadas por él y María Corina Machado aumenten la presión sobre el régimen chavista. Mientras tanto, la reunión con Milei será clave para consolidar el respaldo argentino a la oposición venezolana y marcar la postura de Argentina frente a la crisis.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/argentina/politica/edmundo-gonzalez-urrutia-argentina-javier-milei-lo-recibe-antes-del-10-enero-n5977704'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Edmundo González Urrutia en Argentina: Javier Milei lo recibe antes del 10 de enero', // Opcional, pero recomendado     
+                text: ' Edmundo González Urrutia en Argentina: Javier Milei lo recibe antes del 10 de enero',  // Opcional
+                url: 'https://www.elobservador.com.uy/argentina/politica/edmundo-gonzalez-urrutia-argentina-javier-milei-lo-recibe-antes-del-10-enero-n5977704'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
