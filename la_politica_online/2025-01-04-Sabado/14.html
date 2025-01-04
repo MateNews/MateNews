@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Un diputado de Bullrich rompe con Pullaro y explora la fusión con La Libertad Avanza.  Fabricio Navone (Rosario)José Núñez tomó distancia de la coalición que gobierna Santa Fe: "la alianza con el socialismo nos desperfila", dijo a LPO el diputado.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Un diputado de Bullrich rompe con Pullaro y explora la fusión con La Libertad Avanza.  Fabricio Navone (Rosario)José Núñez tomó distancia de la coalición que gobierna Santa Fe: "la alianza con el socialismo nos desperfila", dijo a LPO el diputado.</h1>
+            <p>El desdoblamiento que decretó el gobernador Maximiliano Pullaro adelantando la elección de los constituyentes que reformarán la Carta Magna provincial alborotó por igual a opositores y aliados. Un diputado del PRO que responde a Bullrich y cercano a Ritondo anunció su ruptura con la coalición oficialista para acercarse a La Libertad Avanza.</p><p>"El frente Unidos fue una excelente estrategia para ganar una elección, pero a la hora de gobernar el PRO no tiene incidencia en las decisiones. Es un gobierno muy parecido al Frente Progresista", dijo el diputado a LPO evocando a los 12 años de administración provincial socialista en alianza con el radicalismo.</p><p>LPO DAILY</p><p>"Yo me voy de Unidos, pero sigo trabajando para el PRO y para que haya acuerdo con La Libertad Avanza en todos los niveles", agregó Núñez que espera un entendimiento de Milei con Macri para despúes replicar ese esquema en la provincia de Santa Fe y también en Rosario.</p><p>El problema es que para la decisión nacional Milei y Macri se pueden tomar hasta mayo, en cambio en Santa Fe el 2 de febrero se definen los frentes electorales y una semana después se deben presentar las listas. Para entonces, Nuñez espera tener cerrada la alianza y afirma estar conversando con la libertaria Romina Diez.</p><p>Núñez siempre se movió al lado de Federico Angelini, Subsecretario de Intervención Federal del Ministerio de Seguridad que entre otras tareas tiene que coordinar el trabajo de las fuerzas federales en Rosario. El funcionario responde a Bullrich y en el PRO no tienen dudas de que detrás de la movida está Patricia.</p><p>No por casualidad, Nuñez sale a romper con Pullaro después de una pelea dura que mantuvo por X con Horacio Rodríguez Larreta en la que se dijeron de todo y la ministra llamó "cadáver político" al ex alcalde porteño.</p><p>Lo cierto es que al frente del PRO Santa Fe quedó Gisela Scaglia que responde a Rodríguez Larreta luego de desbancar al sector de Angelini: "en la provincia el partido lo tiene Larreta y esto también lo hablé con Cristian (Ritondo)", agregó Núñez en referencia a la interna del PRO.</p><p>En ese sentido también se mueve Gabriel Chumpitaz y afirman que otros diputados como Alejandro Bongiovanni, Verónica Razzini y otros empujan una alianza con La Libertad Avanza: "en un frente con el Partido Socialista nos desperfila", agregó Núñez.</p><p>Además, el referente macrista no quiere quedar afuera de la discusión por la reforma constitucional y chicaneó a Pullaro: "no podemos privatizar ATC y que acá quede el canal de la provincia que se lleva 1.5 millones de dólares", dijo en relación a RTS, el canal provincial.</p><p>El otro eje al que apunta Núñez para la discusión constitucional es la de avanzar hacia la unicameralidad eliminando el Senado a pesar de saber que la ley de reforma que aprobó la Legislatura provincial lo impide: "tenemos una de las Legislaturas más caras del país donde los senadores se mueven en grandes camionetas por departamentos de 20 mil personas repartiendo millones y millones en cheques, eso se tiene que terminar", sostuvo el legislador.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/santa-fe/un-diputado-de-bullrich-rompe-con-pullaro-y-explora-la-fusion-con-la-libertad-avanza/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Un diputado de Bullrich rompe con Pullaro y explora la fusión con La Libertad Avanza.  Fabricio Navone (Rosario)José Núñez tomó distancia de la coalición que gobierna Santa Fe: "la alianza con el socialismo nos desperfila", dijo a LPO el diputado.', // Opcional, pero recomendado     
+                text: 'Un diputado de Bullrich rompe con Pullaro y explora la fusión con La Libertad Avanza.  Fabricio Navone (Rosario)José Núñez tomó distancia de la coalición que gobierna Santa Fe: "la alianza con el socialismo nos desperfila", dijo a LPO el diputado.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/santa-fe/un-diputado-de-bullrich-rompe-con-pullaro-y-explora-la-fusion-con-la-libertad-avanza/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
