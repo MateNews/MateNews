@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Un veraneante terminó a las trompadas con guardavidas que le pidieron que no entrara al mar en una zona peligrosa.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Un veraneante terminó a las trompadas con guardavidas que le pidieron que no entrara al mar en una zona peligrosa.</h1>
+            <p>Lo que comenzó como un tranquilo domingo de verano en Playa Unión, el principal balneario de la ciudad de Rawson, provincia de Chubut, terminó en un incidente inesperado y violento que captó la atención de todos los presentes. Una pelea entre un hombre y un grupo de guardavidas alteró la paz de una jornada que, hasta ese momento, transcurría en un ambiente familiar.</p><p>El hecho ocurrió entre las 17 y 18 horas, cuando un bañista ingresó a una zona destinada exclusivamente a deportes náuticos. Según el reporte policial, los guardavidas del sector alertaron al hombre mediante silbatos para que abandonara el área, argumentando que era un lugar inseguro para nadar debido a la actividad de surfistas.</p><p>A pesar de la advertencia, la situación escaló rápidamente. El bañista, quien más tarde presentó una denuncia formal, aseguró que los guardavidas lo trataron de manera irrespetuosa, lo insultaron y lo humillaron frente a otros veraneantes.</p><p>La discusión inicial dio paso a una pelea física en la que, según el denunciante, varios guardavidas lo agredieron, provocándole lesiones visibles en el rostro y los brazos.</p><p>El enfrentamiento sorprendió a las familias que disfrutaban del día soleado en esa playa, ubicada a a 6 km del centro urbano y cercano a puerto Rawson. Algunos testigos grabaron el incidente con sus celulares, y los videos rápidamente circularon en redes sociales, generando un intenso debate sobre el comportamiento de los involucrados.</p><p>El incidente, que comenzó con un guardavidas hablando pacíficamente con el hombre, rápidamente se desmadró cuando aparecieron en escena otros tres compañeros. “Tomátelas, pancho de mierda”, se le escucha decir a uno de los guardavidas. Lo que desató una violenta reacción del bañista y el enojo del resto de los cuidadores de la playa, que también lo increparon.</p><p>“Basta, córtenla, sepárenlos”, decía una mujer afligida por la situación. Eso hizo que un hombre de malla y gorrita negra interviniera para calamar -sin éxito- los ánimos.</p><p>Luis Torres, jefe del Cuerpo de Guardavidas de Playa Unión, confirmó lo sucedido en una entrevista con FM Tu Lugar. “El sector destinado a deportes náuticos siempre genera conflictos porque algunas personas no respetan las normas establecidas. Este caso no fue la excepción”, explicó.</p><p>Según Torres, la situación se tornó violenta cuando ambas partes comenzaron a hablarse de manera inapropiada. “El señor no quiso entender que estaba en un lugar peligroso. Las cosas se dijeron de mala manera y, lamentablemente, todo terminó en un cruce físico”, comentó.</p><p>El jefe del servicio aseguró que ya se tomaron medidas contra el personal involucrado. “Los guardavidas que participaron en la pelea serán sancionados. Este tipo de comportamientos no representan los valores de nuestro equipo ni lo que queremos transmitir como servicio público”, declaró.</p><p>Torres también enfatizó la importancia de que los veraneantes respeten las señalizaciones y las indicaciones de los guardavidas para evitar incidentes similares. “Entendemos que la gente viene a disfrutar de la playa, pero las normas están para proteger tanto a los bañistas como a los deportistas que utilizan estas áreas específicas”, concluyó.</p><p>Playa Unión, conocida por su belleza y su diversidad de actividades, se enfrenta ahora al desafío de recuperar la tranquilidad que caracteriza a este destino turístico, mientras las autoridades trabajan para resolver el caso y evitar que episodios similares se repitan.</p><p>Días atrás, ese balneario también había sido noticia; pero por la inauguración de una pasarela adaptada sustentable, en el sector del Monumento de Toninas. La infraestructura, de 20 metros de longitud y construida con madera plástica, permite que personas con discapacidad o movilidad reducida puedan disfrutar del mar y la arena de manera segura.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/2025/01/06/un-veraneante-termino-a-las-trompadas-con-los-guardavidas-de-una-playa-de-chubut-que-le-pidieron-que-no-se-metiera-al-mar-en-una-zona-peligrosa/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Un veraneante terminó a las trompadas con guardavidas que le pidieron que no entrara al mar en una zona peligrosa.', // Opcional, pero recomendado     
+                text: 'Un veraneante terminó a las trompadas con guardavidas que le pidieron que no entrara al mar en una zona peligrosa.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/2025/01/06/un-veraneante-termino-a-las-trompadas-con-los-guardavidas-de-una-playa-de-chubut-que-le-pidieron-que-no-se-metiera-al-mar-en-una-zona-peligrosa/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
