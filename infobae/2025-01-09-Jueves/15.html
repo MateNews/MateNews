@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El mercado espera una nueva baja en la tasa de interés de referencia del Banco Central.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El mercado espera una nueva baja en la tasa de interés de referencia del Banco Central.</h1>
+            <p>El Banco Central de la República Argentina (BCRA) podría reducir el ritmo de crawling peg del 2% al 1% mensual, si es que los datos de inflación de diciembre confirman la tendencia de desaceleración que espera el Gobierno. El paso siguiente de la entidad que preside Santiago Bausili será revisar el nivel de su tasa de interés de referencia para acomodarla a un escalón más bajo de nominalidad en la economía, algo que se observa, además, en la cuenta de los inversores y analistas del mercado.</p><p>En el equipo económico de Javier Milei consideran que el deslizamiento del tipo de cambio oficial dejó de ser un ancla y se convirtió en un elemento que suma inercia en los precios. Bajo esa lógica, un menor ritmo de depreciación, que llegaría entre la segunda quincena de enero y principios de febrero, se traduciría en variaciones más bajas del Índice de Precios al Consumidor (IPC) del Indec.</p><p>El desafío para el BCRA en ese contexto será mantener el equilibrio entre tasa de interés, movimiento del dólar e inflación para dar certidumbre a los inversores. La tasa de referencia de la autoridad monetaria bajó del 35% al 32% nominal anual, lo que se traduce en 2,6% efectivo mensual.</p><p>Al respecto, Nery Persichini, jefe de Estrategia de GMA Capital, dijo: “Tendría sentido un recorte en la tasa de referencia. El Banco Central no querría una tasa real ex-ante demasiado elevada para no ahogar la recuperación de la economía. Tampoco sería ideal ampliar el diferencial de tasa en pesos versus el ritmo de devaluación. Con el crawl del 2%, el spread contra Badlar es de 70 puntos básicos”.</p><p>“El martes se publica el IPC y si se confirma un diciembre en la zona de 2,5% el Gobierno adelantó que bajará el crawl a 1% mensual. ¿Cuándo? Podría ser a fin de mes, pero una posibilidad es que sea tan pronto como el miércoles, día en que el Tesoro buscará renovar vencimientos por $1,7 billones. Nosotros asumimos que cuando bajen el crawl también bajarán la tasa, aunque en una proporción considerablemente menor (la tasa del crawl bajará a la mitad y la tasa quizás baje 10% o 15%, es decir, entre 300 y 500 bps desde el 32% TNA actual)”, comentó la consultora 1816 en su último informe.</p><p>El IPC de noviembre marcó 2,4% y en diciembre se espera un porcentaje similar, o levemente superior debido a la estacionalidad propia del mes. De todos modos, la entidad mira el IPC núcleo -excluye regulados y estacionales- en donde se pasó del 3,3% en septiembre, al 2,9% en octubre y al 2,7% en noviembre.</p><p>En un informe reciente el JP Morgan proyectó que la inflación mensual promediará el 2% mensual en el primer trimestre, bajo el supuesto de desaceleración del crawling peg del 2% al 1% a partir de enero. Los rendimientos implícitos de los bonos locales se mueven en esa misma expectativa.</p><p>Milei reiteró esta semana que primero se avanzará en la reducción al 1% en el crawling peg y si consigue estabilizar la inflación más cerca de ese 1% durante un trimestre, el dólar oficial pasaría a tener un valor fijo. Acercar lo más que se pueda a cero las variaciones del IPC y, fundamentalmente, conseguir al menos USD 11.000 millones -del FMI o inversores privados- para reforzar las reservas del BCRA son el paso previo que espera el Gobierno antes de eliminar el cepo cambiario en algún momento de 2025.</p><p>“A pesar de las declaraciones de Milei, las tasas forwards de ROFEX no exhibieron grandes cambios. El mercado sigue descontando parcialmente una reducción del crawl del 2% a 1% mensual a partir de febrero (aunque podría bajarse el próximo martes con la publicación de la inflación de diciembre). La forward enero/febrero recortó de una TEM de 1,82% a 1,77%, aún lejos del ritmo devaluatorio que mencionó Milei, la de febrero/marzo de 1,48% a 1,4% y la de marzo/abril subió marginalmente de 1,83% a 1,88%”, resaltó Portfolio Personal Inversiones (PPI).</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2025/01/09/el-mercado-espera-una-nueva-baja-en-la-tasa-de-interes-de-referencia-del-banco-central/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El mercado espera una nueva baja en la tasa de interés de referencia del Banco Central.', // Opcional, pero recomendado     
+                text: 'El mercado espera una nueva baja en la tasa de interés de referencia del Banco Central.',  // Opcional
+                url: 'https://www.infobae.com/economia/2025/01/09/el-mercado-espera-una-nueva-baja-en-la-tasa-de-interes-de-referencia-del-banco-central/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
