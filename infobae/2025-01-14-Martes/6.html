@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El Gobierno celebró el dato de inflación de diciembre y aseguró que "refleja el éxito del plan de estabilización".</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El Gobierno celebró el dato de inflación de diciembre y aseguró que "refleja el éxito del plan de estabilización".</h1>
+            <p>El ministro de Economía, Luis Caputo celebró el dato de inflación de diciembre, que marcó un 2,7% mensual y que hizo terminar el 2024 con un índice de 117,8 por ciento. El funcionario aseguró que es el número más bajo para un mes de diciembre desde 2018 y que se da en el marco de una recuperación económica y salarial. “El dato refleja el éxito del plan de estabilización, basado en el ancla fiscal, el ancla monetaria y el ancla cambiaria, que se consolida mes a mes desde el inicio de gestión”, consideró el Poder Ejecutivo.</p><p>“El IPC Nacional registró una variación de 2,7% en diciembre, confirmando la continuidad del proceso de desinflación. Esto se da en un mes en el cual el índice presenta una estacionalidad positiva, vinculada a las fiestas y al inicio del período de vacaciones de verano, y en un contexto donde tanto la actividad económica como los ingresos reales de la población presentan una fuerte recuperación”, aseguró en un posteo en X el jefe del Palacio de Hacienda.</p><p>“La variación interanual del IPC Nacional fue de 117,8%, siendo el octavo mes consecutivo de desaceleración en la comparación contra igual mes del año anterior, y contrastando con el 211,4% de inflación registrado en 2023. Cabe destacar que la inflación anunciada hoy fue la menor para un mes de diciembre desde 2018″, analizó Caputo.</p><p>Por otra parte, concluyó: “La continuidad del proceso de desinflación puede apreciarse también en el análisis de medias móviles de la variación del IPC, dado que permite extraer tendencias más allá de la volatilidad de muy corto plazo. En esta línea, la media móvil de 3 meses fue de 2,6% mensual (-0,3 puntos porcentuales vs. noviembre de 2024), el menor registro desde septiembre de 2020″.</p><p>El Gobierno argumentó que la desinflación no estuvo determinada por una profundización de la recesión sino que se dio en el marco de un repunte de actividad y de ingresos. “El Estimador Mensual de Actividad Económica (EMAE) acumuló un crecimiento de 2,3% entre diciembre de 2023 y octubre de 2024, en tanto los salarios del sector privado registrado (SIPA), las jubilaciones y la Asignación Universal por Hijo (AUH) exhibieron una suba en términos reales de 15,4%, 12,8% y 107,4%, respectivamente, en los primeros once meses del año”, planteó.</p><p>Respecto a los datos del SIPA, que mide la Secretaría de Empleo, la comparación entre diiciembre y octubre es correcta, aunque ese número considerado para diciembre ya había tenido un primer gran impacto de la devaluación inicial del gobierno de Milei. En el informe oficial de la cartera laboral se muestra que, si se considera como punto de partida noviembre -antes del salto cambiario e inflacionario- el salario privado registrado mejoró unos 3 puntos porcentuales.</p><p>“A diferencia de otras oportunidades, el crecimiento en los ingresos reales de la población y el crédito al sector privado se da como consecuencia, y no en detrimento, del orden macroeconómico. La profundización en la desinflación y la devolución al sector privado de recursos que hasta 2023 se destinaban a financiar al sector público, permiten que esta expansión sea genuina y sostenible”, mencionó Economía, por otra parte.</p><p>Según el informe del Indec, la división de mayor aumento en el mes fue Vivienda, agua, electricidad, gas y otros combustibles (5,3%), por los incrementos en los alquileres y en las facturas de electricidad y gas. Le siguió la división Comunicación (5,0%), que reflejó los aumentos en servicios de telefonía y acceso a Internet.</p><p>“La división con mayor incidencia en el nivel general fue Alimentos y bebidas no alcohólicas (2,2%) en cinco regiones, por los aumentos en Carnes y derivados, Pan y cereales y Leche, productos lácteos y huevos; mientras que en GBA, la incidencia más alta se registró en Restaurantes y hoteles (4,6%)”, agregó el Indec. En el otro extremo, las dos divisiones con menores aumentos fueron Prendas de vestir y calzado (1,6%) y Equipamiento y mantenimiento del hogar (0,9 por ciento).</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2025/01/14/el-gobierno-celebro-el-dato-de-inflacion-de-diciembre-y-aseguro-que-refleja-el-exito-del-plan-de-estabilizacion/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El Gobierno celebró el dato de inflación de diciembre y aseguró que "refleja el éxito del plan de estabilización".', // Opcional, pero recomendado     
+                text: 'El Gobierno celebró el dato de inflación de diciembre y aseguró que "refleja el éxito del plan de estabilización".',  // Opcional
+                url: 'https://www.infobae.com/economia/2025/01/14/el-gobierno-celebro-el-dato-de-inflacion-de-diciembre-y-aseguro-que-refleja-el-exito-del-plan-de-estabilizacion/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

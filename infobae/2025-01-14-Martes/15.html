@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Javier Milei obtuvo el “Premio Nobel Judío” por su apoyo a Israel y a las víctimas del terrorismo.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Javier Milei obtuvo el “Premio Nobel Judío” por su apoyo a Israel y a las víctimas del terrorismo.</h1>
+            <p>(Desde Washington, Estados Unidos) La prestigiosa fundación Genesis Price otorgó por unanimidad el denominado “Premio Nobel Judío” a Javier Milei, un distinción internacional que ya fue recibida por Michael Bloomberg, Barbara Streisand, Ruth Bader Ginsburg, Steven Spielberg y Natalie Portman. Es la primera vez que este galardón se concede a un jefe de Estado.</p><p>“Desde el 7 de octubre, ha sido sin duda uno de los amigos más incondicionales de Israel. Cuando la mayoría de los aliados de Israel callaban o condenaban, presionaban y, en algunos casos, sancionaban a Israel, el presidente Milei se mantuvo firme con los judíos y fue su defensor más visible, vocal e inequívoco”, destacó Stan Polovets, co-fundador y director de la fundación que entrega la distinción.</p><p>Y añadió: “En contraste con la postura antiisraelí de muchos de sus predecesores y jefes de otros países de la región, el presidente Milei declaró que era un imperativo moral apoyar al único Estado judío y pidió a otros líderes mundiales que hicieran lo mismo. Por eso es alguien tan querido por el pueblo de Israel”.</p><p>Desde que inició su carrera presidencial, Milei exhibió su cercanía al pueblo judío y a Israel. Pocos meses después del ataque terrorista de Hamas, el presidente viajó a Tel Aviv y Jerusalén, y visitó Nir Oz, un kibbutz atacado el 7 de octubre de 2023. En ese escenario, Milei exigió la libertad de los rehenes y comparó el terrorismo de estado con el terrorismo religioso.</p><p>“Tengo una profunda admiración por Israel, su historia y su pueblo. El pueblo judío ha demostrado, a lo largo de su historia, que la resiliencia y la defensa de la libertad son esenciales para superar cualquier desafío. Este espíritu es un pilar de la relación entre Argentina e Israel, y trabajaré para fortalecer aún más nuestros lazos”, señaló Milei cuando conoció que había sido galardonado.</p><p>La fundación Genesis Prize concede un millón de dólares al ganador, y al respecto Milei adelantó: “Por supuesto, no me quedaré con el premio económico; lo donaré a las causas de la libertad y la lucha contra el antisemitismo, tanto en la Argentina como en el mundo”.</p><p>Milei no solo tiene empatía personal con el pueblo judío, sino que además alineó su agenda de política exterior con la estrategia internacional de Israel y Estados Unidos, que son aliados históricos en Medio Oriente. Desde esta perspectiva, Argentina vota al lado de Jerusalén y Washington durante la Asamblea General de la ONU, cuando se debaten proyectos vinculados a Palestina, Irán y el terrorismo global.</p><p>Asimismo, el presidente argentino ordenó liberar archivos secretos vinculados al asesinato de Alberto Nisman, el fiscal de la AMIA que fue asesinado tras denunciar el acuerdo diplomático entre Cristina Fernández de Kirchner y el regimen iraní. Esa información estaba clasifica, y Milei decidió que fuera de acceso público.</p><p>Además de la sintonía con los valores judíos y la posición internacional de Israel, el comité del Premio Genesis destacó el compromiso del presidente con “los valores occidentales, la democracia y la libertad en el mundo, particularmente en su apoyo al presidente (Volodimir) Zelensky y el pueblo de Ucrania en su resistencia al ataque ruso”.</p><p>Milei invitó a Zelensky a su ceremonia de asunción y participó de una cumbre de la paz que organizó el líder ucraniano en Suiza. “Quiero expresar en nombre del pueblo argentino nuestro máximo apoyo al pueblo de Ucrania y a nuestro amigo el presidente Zelenski, ya que como defensores de la libertad repudiamos cualquier forma de violencia”, dijo el presidente argentino durante su presentación en la cumbre de la paz.</p><p>La ceremonia del “Premio Nobel Judío” esta convocada para mediados de marzo. Si no tiene problemas en su agenda internacional, Milei viajará a Israel para recibir la distinción internacional.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2025/01/14/javier-milei-obtuvo-el-premio-nobel-judio-por-su-apoyo-a-israel-y-a-las-victimas-del-terrorismo/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Javier Milei obtuvo el “Premio Nobel Judío” por su apoyo a Israel y a las víctimas del terrorismo.', // Opcional, pero recomendado     
+                text: 'Javier Milei obtuvo el “Premio Nobel Judío” por su apoyo a Israel y a las víctimas del terrorismo.',  // Opcional
+                url: 'https://www.infobae.com/politica/2025/01/14/javier-milei-obtuvo-el-premio-nobel-judio-por-su-apoyo-a-israel-y-a-las-victimas-del-terrorismo/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
