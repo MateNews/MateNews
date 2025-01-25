@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pacto: El gobierno analiza agregar una cláusula a Ficha Limpia para que Cristina pueda ser candidata. Por Pablo DipierriEl Presidente le encargó el proyecto a Petri y Fargosi pero se guarda una carta para negociar con el peronismo.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Pacto: El gobierno analiza agregar una cláusula a Ficha Limpia para que Cristina pueda ser candidata. Por Pablo DipierriEl Presidente le encargó el proyecto a Petri y Fargosi pero se guarda una carta para negociar con el peronismo.</h1>
+            <p>La Casa Rosada se habría guardado una carta de negociación con el proyecto de Ficha Limpia que redactaron Luis Petri y Alejandro Fargosi, después de la sesión frustrada por el acuerdo entre los libertarios y el kirchnerismo para que el expediente que impulsaba originalmente Silvia Lospennato no se aprobara. Pese al nerviosismo de UP y el entusiasmo del PRO y las bases libertarias, fuentes del Congreso dijeron a LPO que "se va a incluir una cláusula de aplicación limitada" para evitar la proscripción de Cristina Kirchner.</p><p>Un legislador de la UCR comentó a LPO este viernes que "el gobierno no quiere, y lo dijo, una prohibición por ley", en referencia a la figura de la ex Presidenta. "Milei le dio el proyecto a Petri para ver cómo logran evitar una limitación de Cristina o que, por lo menos, no termine siendo un herramienta para evitar su candidatura", explicó.</p><p>LPO DAILY</p><p>En un despacho libertario confirmaron la búsqueda de ese acuerdo. "Eso es lo que están negociando", afirmaron a LPO, y deslizaron que la aplicación consistiría en una especie de adenda "para que no curse este año".</p><p>Desde otra oficina de la Cámara Baja argumentaron que "la idea es que no se aplique retroactivamente".</p><p>El proyecto, contemplado en el temario de las sesiones extraordinarias, establece que ninguna persona con ratificación de condena en segunda instancia hasta el año anterior al de las elecciones puede ser candidata. La redacción de esa modificación fue festejada por los macristas y los radicales pero su tratamiento podría empujar al fracaso la convocatoria de verano.</p><p>LPO ya informó que José Mayans mandó a decir que no pisará el Senado hasta la sesión preparatoria de la cámara, prevista para el 24 de febrero, tres días después del vencimiento del plazo de las extraordinarias. Sin el interbloque peronista, el oficialismo no podría juntar dos tercios para los pliegos de sus candidatos a la Corte Suprema, Ariel Lijo y Manuel García Mansilla.</p><p>Pero, además, con el peronismo en contra en Diputados podría quedarse sin quórum. En los pasillos del Poder Legislativo no descartan que el reclamo para debatir el Presupuesto termine juntando a los pichettistas, los radicales de Facundo Manes, la izquierda y los provinciales con UP.</p><p>La jugada de la Casa Rosada podría volver a desilusionar a un sector del electorado libertario, que manifestó su bronca contra el gobierno cuando 10 diputados de LLA pegaron el faltazo, se cayó la sesión por Ficha Limpia por segunda vez en noviembre y se confirmaron las sospechas de un acuerdo entre Milei y el kirchnerismo. "Si se vota Ficha Limpia, el próximo presidente de la Cámara es Pichetto", le había dicho 48 horas antes Germán Martínez, líder de los diputados peronistas, al riojano Martín Menem.</p><p>Más allá de la furia tuitera de sus seguidores, Milei fue al programa del Gordo Dan antes de la frustrada sesión por Ficha Limpia y cargó contra el PRO y Marcos Peña, por su estrategia de polarización con Cristina. Si bien consideró que la ex Presidenta "debería estar presa", criticó a sus aliados por "exceso de gorilismo".</p><p>En la misma sintonía, LPO publicó la visión de un legislador macrista acerca de la persecución contra la titular del PJ. "A Cristina hay que ganarle con los votos, no con las causas judiciales", sostuvo.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/congreso/pacto-entre-milei-y-el-kirchnerismo-el-gobierno-evalua-una-clausula-en-ficha-limpia-para-evitar-la-proscripcion-de-cristina/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Pacto: El gobierno analiza agregar una cláusula a Ficha Limpia para que Cristina pueda ser candidata. Por Pablo DipierriEl Presidente le encargó el proyecto a Petri y Fargosi pero se guarda una carta para negociar con el peronismo.', // Opcional, pero recomendado     
+                text: 'Pacto: El gobierno analiza agregar una cláusula a Ficha Limpia para que Cristina pueda ser candidata. Por Pablo DipierriEl Presidente le encargó el proyecto a Petri y Fargosi pero se guarda una carta para negociar con el peronismo.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/congreso/pacto-entre-milei-y-el-kirchnerismo-el-gobierno-evalua-una-clausula-en-ficha-limpia-para-evitar-la-proscripcion-de-cristina/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
