@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La Patagonia en su laberinto. Río Negro evidencia sumisión a intereses extranjeros con concesiones territoriales y falta de control estatal, poniendo en juego los recursos estratégicos y la soberanía nacional. Por Marcos Rebasa.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>La Patagonia en su laberinto. Río Negro evidencia sumisión a intereses extranjeros con concesiones territoriales y falta de control estatal, poniendo en juego los recursos estratégicos y la soberanía nacional. Por Marcos Rebasa.</h1>
+            <p></p><p>El mundo se asoma a nuevos experimentos de conquista y sumisión, sin atender las vigentes situaciones de guerra sin salida, que por su magnitud y crueldad nos desacreditan como civilización.</p><p>Sin embargo, en medio de esos conflictos, una ola de ambiciones recorre a algunos países, que asumen el carácter retrógrado de esa nueva actitud de dominación, que pone en duda los supuestos avances de la humanidad.</p><p>Latinoamérica está especialmente en la mira de los eventuales ocupantes, aunque esta vez por la vía sutil, pero no menos cruel, de la invasión económica. Aunque no impida las otras.</p><p>Y la Argentina es un bocado muy apreciado por sus particulares condiciones de abundancia de recursos y de oferta incondicional de renuncia a sus derechos soberanos y a su dignidad nacional con exceso de liberalidad en ello.</p><p>En ese camino que expresa nuestro gobierno nacional, deseo detenerme en las particularidades que manifiesta, entre otras, una provincia argentina por su práctica de sumisión a los intereses extranjeros.</p><p>Al caso anterior se suma la incipiente y eventualmente suspendida oferta de la firma australiana-inglesa Fortescue de invertir en la producción de hidrógeno verde, que le ha permitido la concesión por parte del Legislativo de alrededor de 600.000 hectáreas de territorio provincial de manera confusa respecto del objetivo planteado.</p><p>A ello se suma la facilidad otorgada a empresas o intereses inmobiliarios extranjeros para la adquisición de tierras, transgrediendo a menudo limitaciones constitucionales y/o legales, ya sea por estar ubicadas en zonas de frontera, como por derechos planteados sobre ellas por comunidades originarias. Todas en las mejores zonas provinciales por sus calidades turísticas y por la disposición de acceso rápido y abundante al recurso del agua.</p><p>Tampoco se ha visto reacción oficial provincial ante el anuncio y/o decisión de privatizar el INVAP, de titularidad accionaria mayoritaria de Río Negro, dado el asentamiento territorial de su sede, empresa central en el desarrollo nacional del conocimiento, técnica y producción de los más importantes instrumentos del avance tecnológico mundial: partes estratégicas de centrales nucleares, producción de satélites y su puesta en funcionamiento, prototipos de generación nuclear de vanguardia, construcción y venta mundial de reactores nucleares científicos y con fines medicinales, prototipos de avanzada en generación eólica y otra serie de actividades tecnológicas de relevancia mundial con modalidades de la actividad privada en su producción y venta.</p><p>Río Negro basa su riqueza en la industria frutícola y en menor medida en la pesquera, en la de hidrocarburos, en el turismo y en la ganadería. La relación entre su producto bruto y su población es razonable. No es una provincia pobre, aunque tiene las desigualdades que en general se dan en todo el país. Por lo tanto, no requiere una exagerada propensión al estímulo para que ingresen capitales de cualquier origen y sin un especial control. Sí merece un desarrollo lógico para su crecimiento, aunque adecuado y respetuoso de las leyes y la Constitución de la que es su Patria.</p><p>Algunos funcionarios y ex legisladores provinciales han advertido  contra aquella enumeración de resignación de facultades provinciales. Sin éxito. Por el contrario, la inclinación que aquí destacamos sigue creciendo.</p><p>La descripción de actitudes de la provincia ante los intereses foráneos, que no es única ni privativa de ella en el conjunto nacional, tampoco es total ni definitiva, pero indica una intencionalidad y predisposición clara en esta subordinación ante lo extranjero a la que es proclive.</p><p>La cuestión es que Río Negro es parte de la Argentina, de la Patagonia, y la mirada actual de aquellos aprestos conquistadores mencionados al comienzo tienen ya una historia de menciones a esta zona del mundo, a veces con tono amenazante, que la realidad actual torna preocupante.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elcohetealaluna.com/la-patagonia-en-su-laberinto/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La Patagonia en su laberinto. Río Negro evidencia sumisión a intereses extranjeros con concesiones territoriales y falta de control estatal, poniendo en juego los recursos estratégicos y la soberanía nacional. Por Marcos Rebasa.', // Opcional, pero recomendado     
+                text: 'La Patagonia en su laberinto. Río Negro evidencia sumisión a intereses extranjeros con concesiones territoriales y falta de control estatal, poniendo en juego los recursos estratégicos y la soberanía nacional. Por Marcos Rebasa.',  // Opcional
+                url: 'https://www.elcohetealaluna.com/la-patagonia-en-su-laberinto/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

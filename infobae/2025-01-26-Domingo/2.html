@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trump impuso sanciones a Colombia tras la decisión de Petro de rechazar vuelos con migrantes deportados.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Trump impuso sanciones a Colombia tras la decisión de Petro de rechazar vuelos con migrantes deportados.</h1>
+            <p>En un giro inesperado en las relaciones diplomáticas entre Estados Unidos y Colombia, la administración de Donald Trump, presidente de Estados Unidos, anunció sanciones severas contra el país que lidera Gustavo Petro luego de que dos vuelos de repatriación con migrantes indocumentados fueran rechazados en territorio colombiano. El anuncio, acompañado de medidas económicas y migratorias de gran alcance, fue difundido por el mandatario estadounidense a través de su red social Truth, en un mensaje cargado de críticas hacia el Gobierno colombiano.</p><p>Trump afirmó que “la negación de estos vuelos por parte de Petro ha puesto en peligro la Seguridad Nacional y la Seguridad Pública de los Estados Unidos”. Como respuesta, anunció la implementación inmediata de varias medidas de represalia, entre las que se destacan:</p><p>Ahora puede seguirnos en Facebook y en nuestro WhatsApp Channel.</p><p>El mensaje de Trump destacó que estas acciones “son solo el comienzo” de una respuesta más amplia que busca presionar al Gobierno colombiano para cumplir con las normativas internacionales relacionadas con la aceptación de migrantes deportados.</p><p>Una de las medidas de mayor impacto anunciadas hasta ahora es el cierre de la sección de visas en la embajada de Estados Unidos en Bogotá, efectivo a partir del 27 de enero de 2025. Esta decisión afecta directamente a miles de ciudadanos colombianos que planeaban solicitar visas de turismo, negocios o estudios, lo que provocó incertidumbre en sectores educativos y empresariales.</p><p>Además, la imposición de aranceles a los productos colombianos amenaza con desestabilizar sectores clave de la economía del país. Productos como flores, café y textiles, que son fundamentales en las exportaciones hacia Estados Unidos, enfrentarían un aumento en sus costos, disminuyendo su competitividad en el mercado norteamericano.</p><p>Por otro lado, las restricciones migratorias y el cierre de la sección de visas es lo que más preocupación provocó entre familias colombianas y estudiantes que dependen de la movilidad entre ambos países.</p><p>“¡No permitiremos que el Gobierno colombiano viole sus obligaciones legales con respecto a la aceptación y devolución de los criminales que forzaron a ingresar a los Estados Unidos!”, señaló Trump en su propia red social.</p><p>Como se menciona previamente, las crecientes tensiones diplomáticas entre Estados Unidos y Colombia, el presidente estadounidense Donald Trump anunció nuevas sanciones que incluyen la revocación de visas a los familiares, aliados políticos y simpatizantes del Gobierno de Gustavo Petro.</p><p>Trump afirmó de manera contundente: “Sanciones de visa a todos los miembros del partido, familiares y simpatizantes del gobierno colombiano”. Este mensaje deja claro que las restricciones no solo afectarán a funcionarios del Gobierno, sino a figuras públicas cercanas al partido del presidente Petro y al Pacto Histórico, su coalición política.</p><p>Entre los afectados directamente por la medida estarían los familiares más cercanos del mandatario colombiano, incluida su esposa, Verónica Alcocer, y sus hijos Nicolás, Sofía, Andrea, Antonella y Gustavo, este último residente en Canadá.</p><p>Además de la familia presidencial, las sanciones también alcanzarían a líderes y funcionarios de la coalición del Pacto Histórico, incluidos senadores, congresistas y otros altos cargos del Gobierno. Esta decisión provocó alarma en los círculos políticos de Colombia, ya que representa un golpe a la representación internacional y a la capacidad de liderazgo del gobierno en escenarios globales.</p><p>Figuras públicas que han manifestado su simpatía hacia la administración de Petro, como la reconocida actriz y activista Margarita Rosa de Francisco, podrían también verse afectadas por esta política restrictiva. Aunque no se ha confirmado una lista específica de personas sancionadas, la ambigüedad del anuncio incrementó la incertidumbre entre funcionarios y aliados del mandatario colombiano.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/colombia/2025/01/26/donald-trump-impuso-sanciones-a-colombia-tras-la-decision-de-gustavo-petro-restricciones-economicas-y-de-turismo/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Trump impuso sanciones a Colombia tras la decisión de Petro de rechazar vuelos con migrantes deportados.', // Opcional, pero recomendado     
+                text: 'Trump impuso sanciones a Colombia tras la decisión de Petro de rechazar vuelos con migrantes deportados.',  // Opcional
+                url: 'https://www.infobae.com/colombia/2025/01/26/donald-trump-impuso-sanciones-a-colombia-tras-la-decision-de-gustavo-petro-restricciones-economicas-y-de-turismo/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
