@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Se desplomó el consumo en la costa bonaerense y las operaciones con Cuenta DNI cayeron un 28%.  (La Plata)Desde el gobierno de Kicillof cuestionan al gobierno nacional, especialmente a Daniel Scioli. Los turistas van los viernes a la playa y se vuelven los martes.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Se desplomó el consumo en la costa bonaerense y las operaciones con Cuenta DNI cayeron un 28%.  (La Plata)Desde el gobierno de Kicillof cuestionan al gobierno nacional, especialmente a Daniel Scioli. Los turistas van los viernes a la playa y se vuelven los martes.</h1>
+            <p>El gobierno de Axel Kicillof difundió las estadísticas de la temporada turística del mes de enero en la provincia de Buenos Aires. "Vemos una temporada en donde se desplomó el consumo", dijo el ministro de Producción, Augusto Costa.</p><p>Según los datos, la cantidad de turistas se mantuvo respecto de la temporada anterior pero el gasto es notoriamente menor.</p><p>LPO DAILY</p><p>El consumo a través de Cuenta DNI cayó un 28%. En tanto, el monto promedio de las transacciones fue 12% menos que la temporada anterior. Mientras que el consumo con tarjetas de crédito y débito (de distintos bancos y marcas) fue 14% abajo.</p><p>El gobierno bonaerense evalúa la temporada turística en la provincia a partir de cuatro indicadores: el flujo turístico, el gasto de los turistas, la duración de las estadías y la ocupación hotelera.</p><p>En el flujo turístico no hubo demasiadas variaciones. 1.900.000 turistas visitaron distintos puntos de la provincia durante la segunda quincena de enero. Eso supone un 0,6% más que la temporada anterior, pero 1,7% menos que la temporada 22/23.</p><p>Respecto al consumo, hubo una caída de 8,1% del monto promedio de las transacciones. En tanto, el consumo con tarjetas de crédito y débito de distintos bancos cayó 5,2%. "Tenemos la misma cantidad de turistas que el año pasado, pero con un consumo notoriamente menor", dijo Costa.</p><p>En cuanto a la ocupación hotelera, el promedio durante la segunda quincena de enero fue de 82,7%, esto supone 1,6% por encima del año pasado. En ese punto, el gobierno remarcó mucha disparidad entre municipios. "En algunos subió 19%, mientras que en otros bajó 17%", dijo el funcionario.</p><p>En tanto, la estadía promedio se mantiene en niveles cortos de unos cuatro días. Los turistas suelen llegar los viernes y se van los martes.</p><p>Los datos acumulados de toda la temporada arrojan números más negativos: unos 6 millones de turistas visitaron distintos puntos de la provincia, un 6,3% menos que la temporada anterior.</p><p>En tanto, el consumo con Cuenta DNI cayó un 28% y el monto promedio de transacción fue 12% menor que la temporada anterior. Mientras tanto, el consumo con tarjetas de crédito y débito estuvo 14 puntos abajo.</p><p>Costa remarcó que el impacto en los municipios es preocupante y aseguró que toda la cadena vinculada al turismo percibió el 25% menos de ingresos respecto del año pasado.</p><p>Como contracara, el ministro destacó que la cantidad de turistas que viajan al exterior muestran niveles récord. "Los últimos datos que tengo son de diciembre donde hubo 50% más de turistas que viajaron a otros países", dijo.</p><p>"Vemos una deserción absoluta del gobierno nacional en términos de política turística", afirmó Costa y apuntó hacia Daniel Scioli.</p><p>"El secretario de Turismo es un comentarista de situaciones que solo él ve. No se hace cargo de nada de esto que está pasando", dijo Costa y cuestionó un hilo de Twitter donde el ex gobernador ponderaba que el Estado no tenga ningún tipo de injerencia en la promoción del turismo.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/provincia/se-desplomo-el-consumo-en-la-costa-bonaerense-y-las-operaciones-con-cuenta-dni-cayeron-un-28/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Se desplomó el consumo en la costa bonaerense y las operaciones con Cuenta DNI cayeron un 28%.  (La Plata)Desde el gobierno de Kicillof cuestionan al gobierno nacional, especialmente a Daniel Scioli. Los turistas van los viernes a la playa y se vuelven los martes.', // Opcional, pero recomendado     
+                text: 'Se desplomó el consumo en la costa bonaerense y las operaciones con Cuenta DNI cayeron un 28%.  (La Plata)Desde el gobierno de Kicillof cuestionan al gobierno nacional, especialmente a Daniel Scioli. Los turistas van los viernes a la playa y se vuelven los martes.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/provincia/se-desplomo-el-consumo-en-la-costa-bonaerense-y-las-operaciones-con-cuenta-dni-cayeron-un-28/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
