@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Claudia Sheinbaum anunció que dialogó con Donald Trump y acordaron pausar los aranceles por un mes.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Claudia Sheinbaum anunció que dialogó con Donald Trump y acordaron pausar los aranceles por un mes.</h1>
+            <p>La presidenta de México Claudia Sheinbaum Pardo anunció que Estados Unidos pondrá en “pausa” por un mes los aranceles de 25 por ciento a productos mexicanos anunciados por su homólogo Donald Trump. Lo anterior como resultado de una llamada telefónica que sostuvieron la mañana de este lunes.</p><p>A través de un breve mensaje publicado en sus redes sociales, la mandataria federal dijo que se comprometió a reforzar la frontera con Estados Unidos con 10 mil elementos de la Guardia Nacional, quienes se encargarán de evitar el tráfico de drogas, en particular fentanilo.</p><p>En la conferencia de prensa de este lunes, aseguró que ordenó al secretario de la Defensa Nacional (Sedena), Ricardo Trevilla Trejo, atender la solicitud de reforzar la seguridad en el espacio fronterizo.</p><p>Mientras que por el lado del gobierno estadounidense, se comprometió a trabajar para evitar el tráfico de armas de alto poder a México, mismas que son utilizadas por las organizaciones del crimen organizado.</p><p>Minutos después de esta publicación, la mandataria federal salió a ofrecer una declaración en conferencia de prensa. Entre los detalles de la llamada, negó la posibilidad de que exista un déficit comercial, sino que es por el tratado de libre comercio en que ambas naciones se han beneficiado, incluso mostrándose fuertes frente a competidores como China y otras regiones del mundo.</p><p>“(Donald Trump) insistió el tema del déficit comercial que tiene, de acuerdo con su perspectiva, Estados Unidos frente a México, ahí le comenté que en realidad no era déficit que teníamos un acuerdo comercial y que este era el resultado de ser socios comerciales y que es la mejor forma de seguir compitiendo contra China y otras regiones del mundo”, dijo en la conferencia de prensa.</p><p>Más tarde, Donald Trump confirmó que las sanciones arancelarias sobre todos los productos mexicanos importados a los Estados Unidos serán pausados de inmediato por un periodo de un mes, mientras se realizan negociaciones de alto nivel.</p><p>Adelantó que en la mesa de trabajo entre los funcionarios de ambos gobiernos estará, Marco Rubio, secretario de Estado; Scott Bessent, secretario del Tesoro; y el secretario de Comercio Howard Lutnick. Mientras que del lado mexicano, la mandataria federal contempla a Rogelio Rodríguez de la O, secretario de Hacienda y Crédito Público; Marcelo Ebrard, secretario de Economía.</p><p>“Fue una conversación muy amistosa en la que ella (Claudia Sheinbaum) aceptó enviar de inmediato 10 mil soldados mexicanos a la frontera que separa a México de los Estados Unidos. Estos soldados estarán específicamente designados para detener el flujo de fentanilo y de inmigrantes ilegales a nuestro país (...). Espero participar en esas negociaciones, con la presidenta Sheinbaum mientras intentamos lograr un “acuerdo” entre nuestros países”, se lee en la publicación hecha a través de Truth Social.</p><p>Respecto al mencionado Plan B, que sería la respuesta del gobierno mexicano ante la imposición de una tarifa a los productos nacionales, la presidenta de México dijo que este lo “guardarán” y no ofreció detalles sobre cuál era la estrategia con la que responderían al gobierno de los Estados Unidos.</p><p>“Nosotros ya habíamos venido trabajando, había que tomar decisiones de qué hacíamos en el momento. Ya tenemos guardado el Plan B, lo guardamos por lo pronto”, comentó.</p><p>Aunque el sábado 1 de febrero, la mandataria adelantó que este incluye medidas arancelarias y no arancelarias en defensa de los intereses de México. Recordar que la Orden Ejecutiva firmada por Donald Trump abría la posibilidad para que en caso de que se tomara alguna represalia en contra de Estados Unidos los aranceles podría incrementar.</p><p>Por último, agradeció el apoyo que demostraron las cámaras empresariales tanto mexicanas como estadounidenses, quienes alertaban que esta medida podría afectar a la población de ambas naciones, quienes sufrirían los estragos por el encarecimiento de bienes y servicios.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/mexico/2025/02/03/claudia-sheinbaum-anuncia-pausa-de-aranceles-tras-llamada-con-donald-trump/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Claudia Sheinbaum anunció que dialogó con Donald Trump y acordaron pausar los aranceles por un mes.', // Opcional, pero recomendado     
+                text: 'Claudia Sheinbaum anunció que dialogó con Donald Trump y acordaron pausar los aranceles por un mes.',  // Opcional
+                url: 'https://www.infobae.com/mexico/2025/02/03/claudia-sheinbaum-anuncia-pausa-de-aranceles-tras-llamada-con-donald-trump/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
