@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jubilaciones: cuándo vence la moratoria y qué pasará con quienes no puedan cumplir los años de aportes.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Jubilaciones: cuándo vence la moratoria y qué pasará con quienes no puedan cumplir los años de aportes.</h1>
+            <p>A partir del 23 de marzo, los trabajadores que no puedan cumplir con 30 años de aportes al sistema previsional no podrán jubilarse. Así lo determinó el gobierno de Javier Milei meses atrás, y no hubo cambios al respecto. Ese día vence la actual moratoria, dispuesta en marzo de 2023 por dos años mediante la Ley 27.705, y ya no habrá nuevas normas que habiliten planes de pagos para acceder a los años de aportes requeridos. ¿Qué pasará entonces con aquellas personas que hoy se están jubilando con esa ayuda?</p><p>Aquellas personas que demuestren vulnerabilidad, mediante la presentación de declaraciones juradas, podrán iniciar el trámite para cobrar la Pensión Universal para el Adulto Mayor (PUAM), una pensión no contributiva a la que pueden acceder las personas a partir de los 65 años que se encuentren en esa situación. Actualmente, cobran mensualmente esa pensión unos 200.000 hombres y mujeres.</p><p>Pero no podrán hacerlo los que se encuentren en una mejor situación económica, en función de varios parámetros establecidos por el Gobierno. De todos modos, tampoco a la moratoria previsional puede acceder cualquier persona, ya que también impone esos requisitos socioeconómicos, explicaron expertos previsionales.</p><p>La PUAM equivale al 80% de la jubilación mínima, que en diciembre era de $212.725,61. A ese valor hay que sumarle el bono de $70.000, por lo que el total cobrado por esos beneficiarios fue de $282.725,61. El último mes del año, cobraron la pensión 194.000 personas, según datos de la Anses. A su vez, el valor de la prestación a cobrar en febrero será de $288.469,20 ($218.469,20 más los $70.000 del refuerzo, que se mantendrá durante todo el año).</p><p>“La moratoria es injusta porque carga al sistema previsional de beneficiarios que aportaron muy poco: se compran servicios a precio vil más de 20 años de servicios, afectando la sustentabilidad del sistema y perjudicando a quienes aportaron 30 o 35 años. Esto es injusto porque no todos los que se acogen a la moratoria lo necesitan. En cambio la PUAM va a la población que efectivamente lo necesita”, dijo una fuente del organismo, que trabaja conjuntamente con otras áreas en la futura reforma previsional que promete contemplar un premio a quienes aportaron durante 30 años.</p><p>A partir del fin de la moratoria, el Gobierno no cree que se dispare demasiado el número de beneficiarios de la PUAM “porque para esta pensión hay que declarar que se encuentra en un estado de vulnerabilidad que no se requiere de igual modo en la moratoria. En ese aspecto, es mucho más preciso porque atiende a la población vulnerable que realmente lo necesita”, dijo la fuente consultada.</p><p>Consultada al respecto, Andrea Falcone, abogada previsional, anticipó que el fin de la moratoria tendrá un alto impacto, ya que hoy la usan “8 de cada 10 nuevos jubilados”. “Después del 23 de marzo, va a ser muy difícil jubilarse y las mujeres que no junten los 30 años de aportes a los 60 años van a tener que esperar a los 65, cumplir con los requisitos de vulnerabilidad económica y pedir una PUAM”, explicó la experta a Infobae.</p><p>Además, agregó que hasta esa fecha “es posible regularizar aportes aunque le falten a la persona 10 años para jubilarse. Es una opción para los que quieran aprovechar y dejar cerrados sus aportes”.</p><p>A su turno, Adrián Troccoli, consideró que “una política de 20 años de moratorias no resolvieron el problema de fondo que es el trabajo sin aportes. La jubilación es el derecho de los que trabajaron por una cantidad mínima de años, ese concepto se desvirtúa por completo y ahora se entiende erróneamente que la jubilación es un derecho de quienes llegan a cierta edad”.</p><p>“Lograr un sistema justo debería premiar a los trabajadores, hoy las jubilaciones son insuficientes y es por la imposibilidad de financiarlas sin más trabajadores”, agregó el abogado.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2025/02/06/jubilaciones-cuando-vence-la-moratoria-y-que-pasara-con-quienes-no-puedan-cumplir-los-30-anos-de-aportes/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Jubilaciones: cuándo vence la moratoria y qué pasará con quienes no puedan cumplir los años de aportes.', // Opcional, pero recomendado     
+                text: 'Jubilaciones: cuándo vence la moratoria y qué pasará con quienes no puedan cumplir los años de aportes.',  // Opcional
+                url: 'https://www.infobae.com/economia/2025/02/06/jubilaciones-cuando-vence-la-moratoria-y-que-pasara-con-quienes-no-puedan-cumplir-los-30-anos-de-aportes/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

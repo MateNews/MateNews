@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Milei prepara una denuncia contra el jefe de la OMS por delitos de lesa humanidad cometidos durante la pandemia.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Milei prepara una denuncia contra el jefe de la OMS por delitos de lesa humanidad cometidos durante la pandemia.</h1>
+            <p>El presidente Javier Milei evalúa denunciar ante la Corte Penal Internacional (CPI) al director general de la Organización Mundial de la Salud, el etíope Tedros Adhanom Ghebreyesus, por delitos de lesa humanidad cometidos durante su gestión al frente de la pandemia, principalmente por la aplicación de medidas que, según su mirada, derivaron en esclavitud y actos inhumanos contra poblaciones civiles alrededor del mundo.</p><p>El gobierno argentino ayer confirmó que dejará de participar de la OMS -una medida similar a la que tomó el estadounidense Donald Trump- por argumentos similares a los que fundamentan la denuncia que Milei está dispuesto a presentar en las próximas semanas. En concreto, el líder libertario considera que el titular de la organización sanitaria violó los incisos c y k del artículo 7 del Estatuto de Roma, que tipifica los crímenes de lesa humanidad.</p><p>“A los efectos del presente Estatuto, se entenderá por ‘crimen de lesa humanidad’ cualquiera de los actos siguientes cuando se cometa como parte de un ataque generalizado o sistemático contra una población civil y con conocimiento de dicho ataque”, establece el Estatuto. El inciso c penaliza el delito de esclavitud: “Se entenderá el ejercicio de los atributos del derecho de propiedad sobre una persona, o de algunos de ellos, incluido el ejercicio de esos atributos en el tráfico de personas, en particular mujeres y niños”. Y el inciso k condena “otros actos inhumanos de carácter similar que causen intencionalmente grandes sufrimientos o atenten gravemente contra la integridad física o la salud mental o física”.</p><p>Milei tiene una posición personal muy crítica respecto de Tedros Adhanom y su actuación para enfrentar la pandemia de COVID, por las consecuencias que tuvieron las medidas aplicadas en todo el mundo, tanto en materia de fallecimientos, como en el bienestar de la gente y el impacto negativo en la economía de los países, sobre todo en los de desarrollo medio y bajo. Esa mirada la expresó antes y después de su llegada a la presidencia argentina.</p><p>La denuncia de Milei contra el director de la OMS -que anticipó la periodista Cristina Pérez en LN+ y confirmó el presidente mediante reposteos en redes sociales- no es la única medida. También está previsto que se ponga en marcha en los próximos días una serie de decisiones respecto de la gestión de la pandemia en Argentina, que involucrará desde auditorías a denuncias ante tribunales locales.</p><p>El presidente quiere que sean investigados los contratos de las vacunas, los decretos y resoluciones firmados por Alberto Fernández y los ministros Ginés González García -que falleció el año pasado- y Carla Vizzotti, como así también sobre la actuación del comité de expertos que asesoraron a los funcionarios. Para Milei, durante el tiempo que duró la pandemia -y sobre todo la cuarentena- se violaron garantías constitucionales y derechos humanos fundamentales.</p><p>La denuncia de Milei contra el director general de la OMS promete generar un fuerte impacto internacional. Sería la primera vez que un gobierno nacional lleve a la Corte Penal Internacional al jefe de un organismo del rango de la Organización Mundial de la Salud.</p><p>“Es una organización criminal. Y elijo mis palabras con cuidado. La OMS fue responsable de crímenes de lesa humanidad a gran escala durante la pandemia de Covid, según lo definido en el artículo 7 del Estatuto de Roma de la Corte Penal Internacional”, expresó el propio Milei en una entrevista que publicó ayer la revista francesa Le Point. Ese reportaje se realizó a principios de esta semana, cuando todavía no se había informado que Argentina iba a irse del organismo ni que se iba a motorizar una acusación ante la CPI.</p><p>Según pudo saber Infobae, además de la confirmación de que se va a impulsar la denuncia ante tribunales internacionales, Adhanom intentó un acercamiento con el presidente argentino en la última reunión del G20 en Brasil: hubo solicitudes formales e informales para tener un encuentro que fue rechazado por el líder libertario.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2025/02/06/javier-milei-prepara-una-denuncia-contra-el-jefe-de-la-oms-por-delitos-de-lesa-humanidad-cometidos-durante-la-pandemia/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Milei prepara una denuncia contra el jefe de la OMS por delitos de lesa humanidad cometidos durante la pandemia.', // Opcional, pero recomendado     
+                text: 'Milei prepara una denuncia contra el jefe de la OMS por delitos de lesa humanidad cometidos durante la pandemia.',  // Opcional
+                url: 'https://www.infobae.com/politica/2025/02/06/javier-milei-prepara-una-denuncia-contra-el-jefe-de-la-oms-por-delitos-de-lesa-humanidad-cometidos-durante-la-pandemia/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
