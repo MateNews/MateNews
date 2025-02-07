@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> La informalidad laboral en Uruguay: ¿qué dicen los datos por departamento, sexo y tipo de empleo?</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> La informalidad laboral en Uruguay: ¿qué dicen los datos por departamento, sexo y tipo de empleo?</h1>
+            <p>
+La informalidad laboral en Uruguay fue del 22,7% en 2024, según una nueva medición del Instituto Nacional de Estadística (INE), presentada ayer. La informalidad fue mayor en los hombres (23,6%) que en las mujeres (21,6%) y a nivel del país, los tres departamentos con mayor tasa de ocupación informal fueron Artigas, Cerro Largo y Rivera. Al evaluar los registros de los últimos tres años, se constató que 2024 fue el que tuvo una mayor tasa de informalidad laboral (22,7%) frente al registro de 2023 (22,4%) y de 2022 (21,9%).  evolucion informalidad laboral ultimos tres años.jpg     Informalidad laboral  A la tradicional medición sobre informalidad laboral —que hasta el momento comprendía únicamente a las personas ocupadas que no estaban registradas en el sistema de seguridad social—, ahora el INE incluyó también la situación de los asalariados privados que sí realizan aportes al sistema, pero no por la totalidad de sus ingresos y a todos los familiares no remunerados del hogar. Por tanto, con la nueva medición ampliada, los trabajadores informales son: los trabajadores por cuenta propia o empleadores, dueños de una unidad económica informal (es decir, que no está registrada ante la seguridad social); todos los familiares no remunerados del hogar; los asalariados y contratistas dependientes que no aportan a la seguridad social; y los asalariados privados que si bien aportan al sistema previsional, no lo hacen por la totalidad de su salario. Desde el INE explicaron que si bien la medición tradicional “es una buena aproximación” para evaluar el empleo informal en Uruguay, este cálculo ampliado —realizado en base a los datos de la Encuesta Continua de Hogares (ECH) de 2021— permite “enriquecer” el registro al incorporar nuevas dimensiones. En ese sentido, con la medición ampliada, la tasa de ocupación informal fue un punto porcentual superior al registro tradicional ya que según esa nueva definición, en 2024 el 22,7% de los ocupados fueron informales a nivel del total del país, mientras que con la medida clásica de informalidad laboral, la tasa fue de 21,7%. Al desglosar los datos por sexo, la informalidad laboral fue de 23,6% en los hombres y de 21,6% en las mujeres.  Si se miran las cifras por departamentos, Artigas, Cerro Largo y Rivera fueron los tres con mayores niveles de informalidad laboral registrados, con 48,8%, 45,5% y 39%, respectivamente.  informalidad laboral por departamento.jpg       De forma contraria, Montevideo, Flores y Colonia fueron los que presentaron la tasa más baja, con 14,4%, 16,9% y 21,5%, respectivamente. La informalidad fue más alta entre los trabajadores por cuenta propia Cuando se analizan los datos del INE en función de la situación en la ocupación, la informalidad fue más alta entre los trabajadores por cuenta propia, ya que el 60,9% de estos son dueños de una unidad económica informal. Desde el organismo indicaron que ese es “un comportamiento esperado” dado que “acceden a puestos de trabajo más inestables temporal y contractualmente”. La informalidad es alta también entre los contratistas dependientes dado que un 46,5% de los trabajadores en esa situación son considerados informales.  tasa de ocupacion informal segun situacion en la ocupacion.jpg       De forma contraria, las tasas más bajas de ocupación informal se observaron entre los empleados (10,4%) y los empleadores (5,9%). Oficiales, operarios y artesanos, las ocupaciones con mayor informalidad El informe del INE desglosó los datos de la informalidad laboral según los grandes grupos de ocupación y constató que el grado de informalidad desciende a medida que el nivel de cualificación del trabajo disminuye.  ocupación informal por grupo ocupacional.jpg       En ese sentido, constató que las ocupaciones con mayor informalidad fueron los oficiales, operarios y artesanos de artes mecánicas y de otros oficios, con un 43,4%; seguido por los agricultores y trabajadores calificados agropecuarios, forestales y pesqueros con una tasa de informalidad del 37,9%; y en tercer lugar, las ocupaciones elementales con 34,1%.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/economia-y-empresas/la-informalidad-laboral-uruguay-que-dicen-los-datos-departamento-sexo-y-tipo-empleo-n5983820'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' La informalidad laboral en Uruguay: ¿qué dicen los datos por departamento, sexo y tipo de empleo?', // Opcional, pero recomendado     
+                text: ' La informalidad laboral en Uruguay: ¿qué dicen los datos por departamento, sexo y tipo de empleo?',  // Opcional
+                url: 'https://www.elobservador.com.uy/economia-y-empresas/la-informalidad-laboral-uruguay-que-dicen-los-datos-departamento-sexo-y-tipo-empleo-n5983820'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

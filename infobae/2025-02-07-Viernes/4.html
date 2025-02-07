@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La Justicia de EEUU embargó USD 210 millones a la Argentina en un caso por bonos en default.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>La Justicia de EEUU embargó USD 210 millones a la Argentina en un caso por bonos en default.</h1>
+            <p>Tras la decisión que había tomado en enero la Corte Suprema de los Estados Unidos de habilitar a que se embarguen activos que tiene el Estado argentino por reclamos de deuda impaga por parte de holdouts, la jueza norteamericana Loretta Preska aprobó finalmente el embargo de USD 210 millones, que serán ejecutados mediante una orden en la mesa de entrada en la Reserva Federal de Nueva York y entregados al fondo Attestor Master. Además, la jueza congeló otros USD 100 millones hasta que otros dos grupos de acreedores culminen con la disputa.</p><p>“La jueza Loretta Preska aprueba el embargo de USD 210 millones correspondientes al colateral de los Bonos Brady. En la misma orden, congela otros USD 100 millones hasta que dos grupos de acreedores de deuda en default (Attestor Master y Bainbridge Fund), culminen la disputa por estos USD 100 millones. Este embargo ocurre a pocos días de la ejecución de la garantía por USD 325 millones en el caso Cupón PBI Londres”, anticipó Sebastián Maril, consultor de Latam Advisors y especialista en los juicios que la Argentina enfrenta en el exterior, en su cuenta de X.</p><p>Según explicó Maril a Infobae, antiguos acreedores, famosos holdouts, tienen fallos a favor para embargar activos argentinos porque nunca cobraron de la Argentina tras el default del 2001. Un grupo, por USD 460 millones (Attestor Master), y Bainbridge Fund, por USD 100 millones. “Encontraron activos argentinos que son de la parte del colateral de los bonos Brady, consiguieron embargo en 2022; Argentina apeló, perdió esa apelación y fue finalmente a la Corte Suprema, que en enero de este año rechazó el pedido argentino, motivo por el cual sólo quedaba una orden de Preska”, explicó el especialista.</p><p>A su vez, Maril remarcó que Bainbridge Fund, que no participó del embargo, “pidió subirse al tren para también tomar posesión de parte de los colaterales de los bonos Brady, pero la jueza rechazó congelar todos los fondos y sólo lo permitió por USD 100 millones. Luego, tanto este fondo con Attestor deberán discutir en esa corte por qué deben tomar posesión de estos bonos”.</p><p>Se trata de reclamos de tenedores de bonos que quedaron en default hace 23 años. La victoria obtenida ahora, luego del aval otorgado por la Corte Suprema norteamericana en enero, que rechazó la apelación argentina, se suma a otras que habían tenido los holdouts en instancias previas, en la que el país había sido obligado a entregar títulos que se usaron como garantía de pago de los bonos Brady, emitidos a principios de 1990. Como en 2023 el país terminó de pagar sus obligaciones, los títulos entregados como garantía quedaron liberados. Ahora, nuevos fondos quedaron embargados.</p><p>Los fondos Attestor Master Value, Trinity Investments, White Hawthorne, Bison Bee LLC y Bybrook Capital Master compraron deuda argentina en default desde 2001 a tenedores que nunca ingresaron a ninguno de los tres canjes que emitió el país, en 2005 (bajo la gestión de Néstor Kirchner), 2010 (Cristina Kirchner) y 2016 (Mauricio Macri). Y la estimación es que son menos del 3% del total de los tenedores originales que mantuvieron la deuda en default e iniciaron juicio al Estado argentino, llamados coloquialmente holdouts o fondos buitre.</p><p>Los títulos embargados están en manos del Tesoro de Estados Unidos. La Argentina los había entregado como garantía de pago de los bonos Brady emitidos a comienzos de los ´90, cuando refinanció la deuda acumulada de la década anterior, gracias a una política de beneficios lanzada por el entonces secretario del Tesoro norteamericano, Nicholas Brady. Si la Argentina no pagaba los intereses de los bonos Brady, los acreedores podían cobrar los bonos del Tesoro estadounidense que estaban en una cuenta especial en la Reserva Federal de Nueva York.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2025/02/07/la-justicia-de-eeuu-embargo-usd-210-millones-a-la-argentina-en-un-caso-por-bonos-que-entraron-en-default/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La Justicia de EEUU embargó USD 210 millones a la Argentina en un caso por bonos en default.', // Opcional, pero recomendado     
+                text: 'La Justicia de EEUU embargó USD 210 millones a la Argentina en un caso por bonos en default.',  // Opcional
+                url: 'https://www.infobae.com/economia/2025/02/07/la-justicia-de-eeuu-embargo-usd-210-millones-a-la-argentina-en-un-caso-por-bonos-que-entraron-en-default/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
