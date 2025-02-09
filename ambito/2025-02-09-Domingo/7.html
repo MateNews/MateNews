@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cambió el pronóstico: alerta amarilla por tormentas en siete provincias y altas temperaturas en todo el país.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Cambió el pronóstico: alerta amarilla por tormentas en siete provincias y altas temperaturas en todo el país.</h1>
+            <p>Se espera la presencia de tormentas aisladas, algunas de ellas localmente fuertes, acompañadas por intensas precipitaciones en cortos períodos, fuerte actividad eléctrica, ráfagas intensas y posible caída de granizo.</p><p>De acuerdo con el organismo dependiente del Ministerio de Defensa, se prevén tormentas en La Rioja, Mendoza, San Juan, San Luis y en sectores del centro y oeste de la provincia de Buenos Aires. Este fenómeno podría generar capacidad de daño y riesgo de interrupción temporal de actividades cotidianas. Se espera la presencia de tormentas aisladas, algunas de ellas localmente fuertes, acompañadas por intensas precipitaciones en cortos períodos, fuerte actividad eléctrica, ráfagas intensas y posible caída de granizo.</p><p>Además, el SMN emitió avisos a muy corto plazo por tormentas fuertes con lluvias intensas en Berazategui, Brandsen, Ensenada, Florencio Varela, La Plata, Presidente Perón y Quilmes. Otro aviso advierte sobre tormentas fuertes con ráfagas en las localidades de 9 de Julio, Alberti, Arrecifes, Bragado, Capitán Sarmiento, Carlos Casares, Carlos Tejedor, Carmen de Areco, Chacabuco, Chivilcoy, General Viamonte, Junín, L. N. Alem, Lincoln, Pehuajó, Pergamino, Rojas y Salto.</p><p>Asimismo, el SMN emitió alertas de nivel rojo por temperaturas extremas en diversas zonas de San Juan, Mendoza, La Rioja, Tucumán, Corrientes y Formosa, donde se prevén valores que oscilarán entre los 31°C y 35°C.</p><p>Además, rige una alerta de nivel naranja para distintos sectores de Córdoba, San Luis, Catamarca y Santiago del Estero. Estas temperaturas pueden representar un riesgo significativo, especialmente para los grupos vulnerables, como niños, adultos mayores de 65 años y personas con enfermedades crónicas.</p><p>Una semana que arrancó con lluvias y que tendrá algo de alivio en relación al calor se espera en Capital Federal y sus alrededores, según informó el Servicio Meteorológico Nacional (SMN).</p><p>En ese sentido, las precipitaciones se repetirán algunos días, mientras que las temperaturas, a excepción del lunes -se esperan marcas muy elevadas-, no superarán los 30 grados.</p><p>Por lo tanto, se espera más un clima vinculado con la primavera que con el verano, más que en ciertas ocasiones podría registrarse algo de calor sofocante. De toda maneras no está previsto para los próximos siete días una ola de calor como la que se vivió tanto la semana pasada como las anteriores.</p><p>Para este domingo se esperan tormentas aisladas, luego mejorando con cielo parcialmente nublado y vientos del este, mientras que la temperatura mínima será de 21 grados y la máxima de 29.</p><p>El lunes, el único día de calor sofocante, se prevé cielo parcial a mayormente nublado, vientos del norte rotando al noroeste y luego al sudeste y las marcas térmicas irán de los 24 a los 37 grados, por lo que será el día más agobiante de toda la semana.</p><p>Para el martes se anuncian tormentas aisladas durante toda la jornada, vientos del sudeste cambiando al este y los termómetros se ubicarán entre los 23 y los 26 grados.</p><p>Ya el miércoles se espera cielo mayormente nublado y vientos del este, con una temperatura mínima de 21 grados y una máxima de 26, por lo que será el día más "fresco" de toda la semana.</p><p>En tanto, el jueves se prevé cielo parcialmente nublado, vientos del noreste y las marcas térmicas irán de los 21 a los 28 grados.</p><p>Para el viernes se anuncia cielo parcialmente nublado, vientos del norte y los termómetros se ubicarán entre los 22 y los 28 grados.</p><p>Ya el sábado se espera cielo nublado por la mañana y tormentas aisladas entre la tarde y la noche, además de vientos del noreste rotando al este, mientras que la temperatura mínima será de 22 grados y la máxima de 27.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.ambito.com/informacion-general/cambio-el-pronostico-alerta-amarilla-tormentas-siete-provincias-y-altas-temperaturas-todo-el-pais-n6111702'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Cambió el pronóstico: alerta amarilla por tormentas en siete provincias y altas temperaturas en todo el país.', // Opcional, pero recomendado     
+                text: 'Cambió el pronóstico: alerta amarilla por tormentas en siete provincias y altas temperaturas en todo el país.',  // Opcional
+                url: 'https://www.ambito.com/informacion-general/cambio-el-pronostico-alerta-amarilla-tormentas-siete-provincias-y-altas-temperaturas-todo-el-pais-n6111702'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
