@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El Gobierno apuntó contra los mapuches por los incendios en Chubut y Río Negro: “Son golpistas del fuego”.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El Gobierno apuntó contra los mapuches por los incendios en Chubut y Río Negro: “Son golpistas del fuego”.</h1>
+            <p>Cristian Larsen, presidente de Parques Nacionales, señaló a los mapuches como los culpables de los grandes incendios que afectan a las provincias de Chubut y Río Negro: “Nosotros lo que decimos que son golpistas del fuego”.</p><p>“Básicamente, son los que están en contra del progreso de la Argentina”, argumentó Larsen en comunicación con Radio Mitre. Además, indicó que son “grupos marginales” y “delincuentes”, que reaccionan ante el orden del gobierno que quiere instaurar en todo el país; que están “perdiendo sus privilegios” y accionan de esta manera “para que a un gobierno le vaya mal”.</p><p>En este sentido, remarcó que desde Parques Nacionales apoyan las declaraciones de los gobernadores, Ignacio ‘Nacho’ Torres (Chubut) y Alberto Weretilneck (Río Negro); y estableció que creen que los incendios fueron intencionales.</p><p>Asimismo, relacionó estos hechos con las medidas implementadas por el Ministerio de Seguridad Nacional, sobre la recuperación de terrenos “que habían sido usurpados por falsas comunidades mapuches, o incluso cortar con subsidios que le daban a estas”.</p><p>A comienzos de año, la ministra de Seguridad, Patricia Bullrich, mostró cómo fue el operativo de desalojo para que la agrupación mapuche Lof Paillako abandone el predio del Parque Nacional Los Alerces. El jueves 9 de enero de 2025 expiró la fecha límite que había establecido el juez federal de Esquel, Guido Otranto, para que los líderes mapuches, Ernesto Cruz Cárdenas y su pareja, María Belén Salinas, abandonaran el territorio junto con el resto de la comunidad. Por este motivo, la titular de la cartera de Seguridad, el gobernador chubutense, Ignacio Torres, y el presidente de la Administración de Parques Nacionales, Cristian Larsen, se sumaron al procedimiento para desalojar a la población.</p><p>A su vez, rechazó las críticas hacia la administración nacional y puntualizó que lograron apagar muchos fuegos e intentos en su etapa inicial; y declaró que en el Parque Nacional Lanin existieron varios intentos de incendios. “Qué otro nombre puede tener esto de personas que no intentan hacer un daño a la Argentina, ellos piensan que es un daño contra el gobierno, pero en realidad es un daño con todos los argentinos”, sentenció.</p><p>También recordó que Facundo Huala, líder de la Resistencia Ancestral Mapuche (RAM), había reivindicado estos incendios. “Yo reivindico los sabotajes y los atentados incendiarios a la infraestructura del sistema capitalista, de las trasnacionales, de los terratenientes. Pero nosotros jamás hemos atacado nuestro entorno ni a las personas. Dicen que andamos prendiendo fuego los bosques donde vive nuestra gente. Todas mentiras. Jamás lo hemos hecho ni lo haríamos”, había declarado Jones Huala, en un video y durante la presentación de su último libro. Estas declaraciones desembocaron en la denuncia del gobierno nacional por intimidación pública, incitación a la violencia colectiva, apología del crimen y asociación criminal.</p><p>Luego, Larsen brindó un panorama de la situación actual e informó que, en El Bolsón, hay más de 120 viviendas destruidas y cerca de 700 familias con pedido de evacuación. Mientras que en el Parque Nacional Lanin, ya lleva 15 mil hectáreas consumidas. Y en el Parque Nacional Nahuel Huapi son 10 mil las hectáreas afectadas por el fuego.</p><p>Por último, el presidente de Parques Nacionales informó el funcionamiento del Servicio Nacional de Manejo del Fuego, que funciona cuando una provincia solicita ayuda. Y concluyó: “Desde el gobierno nacional le estamos aportando distintos recursos, entre ellos 9 aviones, 10 helicópteros, más de 100 brigadas, más los recursos de parques nacionales que tienen que ver con los camiones hidrantes y con más de 200 brigadistas”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/2025/02/10/el-gobierno-apunto-contra-los-mapuches-por-los-incendios-en-chubut-y-rio-negro-son-golpistas-del-fuego/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El Gobierno apuntó contra los mapuches por los incendios en Chubut y Río Negro: “Son golpistas del fuego”.', // Opcional, pero recomendado     
+                text: 'El Gobierno apuntó contra los mapuches por los incendios en Chubut y Río Negro: “Son golpistas del fuego”.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/2025/02/10/el-gobierno-apunto-contra-los-mapuches-por-los-incendios-en-chubut-y-rio-negro-son-golpistas-del-fuego/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
