@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Familia de Gustavo Penadés critica que su caso se volvió un ejemplo paradigmático de las fallas estructurales del sistema judicial</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Familia de Gustavo Penadés critica que su caso se volvió un ejemplo paradigmático de las fallas estructurales del sistema judicial</h1>
+            <p>
+La familia del exsenador Gustavo Penadés, imputado por más de 20 delitos sexuales contra menores de edad, publicó una carta en la que criticó que su caso  se volvió "un ejemplo paradigmático de las fallas estructurales del sistema judicial" y apuntó contra distintos protagonistas de la investigación. La misiva, publicada por Búsqueda este jueves, critica la decisión del Tribunal de Apelaciones de revocar la prisión domiciliaria de Penadés y Sebastián Mauvezín, decisión que para la familia "ha reavivado las dudas sobre la imparcialidad del proceso judicial en el caso".  Para los cercanos al exsenador blanco este ha sido "un proceso judicial sin precedentes", con "elementos inéditos en la historia judicial del país". Marcaron que "uno de los aspectos más polémicos" ha sido "la decisión de mantener en total anonimato a los denunciantes". "Este nivel de confidencialidad ha sido objeto de debate, ya que, según la defensa del acusado, limita severamente su derecho a una defensa efectiva e incluso lo coloca en una situación de indefensión", continuaron. "Las múltiples denuncias, filtraciones y cambios en la Fiscalía han convertido el caso Penadés en un ejemplo paradigmático de las fallas estructurales del sistema judicial", criticaron desde la familia, que entienden que este caso "pone a prueba la credibilidad del sistema judicial". Los familiares postularon que "mientras la defensa del acusado argumenta una persecución mediática y política, las irregularidades en la actuación de la Fiscalía y el Consultorio Jurídico refuerzan las dudas sobre la transparencia e imparcialidad del proceso". "Queda en evidencia la necesidad de una revisión profunda de los procedimientos judiciales para garantizar que la justicia no solo se haga, sino que también se perciba como tal", sentenciaron. Los apuntados por la familia de Penadés Los familiares apuntaron contra la fiscal del caso, Alicia Ghione: primero, indicaron que los equipos iniciales que tuvo en el caso se disolvieron por "tensiones internas", y recordaron su "presunta cercanía" con la víctima Jonathan Mastropierro. "En el programa Santo y seña se filtraron mensajes en los que la fiscal Ghione le ofrece lavar su ropa, le proporciona información confidencial sobre el caso y hasta le sugiere que destruya su teléfono celular. Además, se ha señalado una posible relación de amistad entre el hijo de la fiscal —quien enfrenta una causa por violencia de género y delitos sexuales— y el propio Mastropierro", se lee en la carta. Los familiares del imputado también recordaron que su defensa denunció ante la Suprema Corte de Justicia que Ghione "omitió tomar medidas frente a la existencia de material pedófilo en el celular de Jonathan Mastropierro, hallado por la propia defensa de Penadés", y remarcaron que "una amiga del exsenador recibió un mensaje" desde su celular incautado, por lo que pudo existir una "manipulación" del móvil. También hubo críticas para los representantes del Consultorio Jurídico de la Universidad de la República (Udelar), encabezado por los abogados Juan Raúl Williman y Soledad Suárez, que representan a varias de las víctimas: "Tras descubrirse que ciertos denunciantes presentaron conversaciones falsas, abogados del consultorio admitieron que 'siempre tuvieron dudas' sobre la veracidad de los testimonios de estos denunciantes". En específico, indicaron que Williman "ha sido cuestionado por el manejo de una indemnización derivada de la llamada 'trama'", ya que el dinero "fue depositado en su cuenta personal antes de ser distribuido según su propio criterio". "Una de las beneficiarias de estos fondos fue Romina Celeste, quien para ese momento ya no era defendida por el consultorio, pues su representación legal había sido retirada tras su condena por denuncia falsa contra el actual presidente Yamandú Orsi", agregaron.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/familia-gustavo-penades-critica-que-su-caso-se-volvio-un-ejemplo-paradigmatico-las-fallas-estructurales-del-sistema-judicial-n5984876'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Familia de Gustavo Penadés critica que su caso se volvió un ejemplo paradigmático de las fallas estructurales del sistema judicial', // Opcional, pero recomendado     
+                text: ' Familia de Gustavo Penadés critica que su caso se volvió un ejemplo paradigmático de las fallas estructurales del sistema judicial',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/familia-gustavo-penades-critica-que-su-caso-se-volvio-un-ejemplo-paradigmatico-las-fallas-estructurales-del-sistema-judicial-n5984876'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

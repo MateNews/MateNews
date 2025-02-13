@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> La ciencia del mate: surgen nuevas investigaciones en Uruguay sobre sus efectos en la salud</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> La ciencia del mate: surgen nuevas investigaciones en Uruguay sobre sus efectos en la salud</h1>
+            <p>
+En Uruguay, científicos investigan los efectos de la yerba mate en la salud humana, explorando su potencial antioxidante, antiinflamatorio y modulador genético. Estudios recientes sugieren que su consumo podría influir en procesos celulares clave, lo que abre nuevas perspectivas sobre su impacto en el organismo. Nelson Bracesco, integrante del Laboratorio de Radiobiología del Departamento de Biofísica de la Facultad de Medicina e investigador de yerba mate, dijo a El Observador que los estudios en el país avanzan de manera "lenta, pero mantenida". Recientemente, una docente de la Facultad de Odontología analizó la relación entre el consumo de mate y la disminución de patologías dentarias, aunque los resultados aún no son concluyentes. Bracesco destacó que este tipo de investigaciones tienen "gran relevancia", ya que podrían revelar nuevos beneficios de la yerba mate en la salud bucal y general. Efectos antioxidantes y reducción del estrés oxidativo Uno de los proyectos que están próximos a iniciar estudiará cómo la yerba mate puede influir en la reducción del estrés oxidativo en la mucosa bucal. La hipótesis plantea que el mate podría actuar como un protector celular, especialmente en fumadores, cuya exposición al humo del tabaco genera una mayor oxidación y daño celular. Bracesco explicó que "el estrés oxidativo es el daño generado por algún componente, en este caso del humo de tabaco", provocando inflamación y deterioro del ADN. El equipo investiga si los compuestos antioxidantes presentes en la yerba mate pueden disminuir este daño, funcionando como una defensa natural contra los efectos nocivos del tabaco. "Nosotros hipotetizamos que debería disminuir el estrés oxidativo en fumadores", aseguró Bracesco. Si se confirman estos resultados, la protección celular observada en la mucosa bucal podría extrapolarse a otras áreas del sistema respiratorio, lo que ampliaría el impacto potencial del consumo de mate. Modulación genética e impacto en la inflamación Otra línea de investigación en desarrollo explora cómo la yerba mate puede afectar la expresión genética en procesos inflamatorios. Estudios previos revelaron que algunos componentes del mate podrían regular genes involucrados en la inflamación. Bracesco destacó que los resultados iniciales mostraron que "la yerba actúa sobre varios genes involucrados en el proceso de inflamación apagándolos", lo que sugiere un potencial efecto antiinflamatorio. Para profundizar en estos hallazgos, el equipo de investigación colabora con la Facultad de Medicina, donde se planea realizar un mapeo genético completo para identificar qué genes específicos interactúan con los componentes de la yerba mate. Un equipo multidisciplinario en busca de respuestas El laboratorio de Bracesco está conformado actualmente por cinco investigadores, aunque el equipo se amplía mediante colaboraciones con expertos de distintas disciplinas. El investigador explicó que, en un principio, el grupo trabajaba de manera más aislada, pero con el tiempo entendieron la importancia de la colaboración: "Hace muchos años empezamos a darnos cuenta de que el trabajo en solitario no va para ningún lado". Actualmente, el equipo se vincula con la Facultad de Química, especialmente con el Departamento de Farmacognosia y Productos Naturales, donde se estudian las propiedades químicas de la yerba mate. Además, la Facultad de Medicina ha incorporado nuevas disciplinas académicas, lo que abre la posibilidad de expandir aún más las líneas de investigación en el futuro. Otros estudios en torno a la yerba mate Más allá de Uruguay, la yerba mate ha despertado un creciente interés en la comunidad científica. En Argentina, investigadores de la Universidad Nacional de Misiones analizan cómo los residuos de yerba mate pueden utilizarse para el cultivo de hongos comestibles, muy valorados en el mercado japonés. En Brasil, científicos exploran su potencial como antiinflamatorio en cápsulas, mientras que en Uruguay, una investigadora del Instituto Clemente Estable trabaja en la fabricación de electrodos de carbón activado a partir de residuos de yerba mate. Bracesco destacó que el uso de la yerba mate se está diversificando, no solo en el campo de la salud, sino también en el sector industrial. "El mundo se diversifica cada vez más", señaló.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/ciencia-y-tecnologia/la-ciencia-del-mate-surgen-nuevas-investigaciones-uruguay-sus-efectos-la-salud-n5984764'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' La ciencia del mate: surgen nuevas investigaciones en Uruguay sobre sus efectos en la salud', // Opcional, pero recomendado     
+                text: ' La ciencia del mate: surgen nuevas investigaciones en Uruguay sobre sus efectos en la salud',  // Opcional
+                url: 'https://www.elobservador.com.uy/ciencia-y-tecnologia/la-ciencia-del-mate-surgen-nuevas-investigaciones-uruguay-sus-efectos-la-salud-n5984764'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
