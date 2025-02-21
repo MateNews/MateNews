@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Preocupa el efecto "Doble Nelson" en la carne: se desploman exportaciones por volumen y precio.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Preocupa el efecto "Doble Nelson" en la carne: se desploman exportaciones por volumen y precio.</h1>
+            <p>La diversificación hacia mercados como México, Europa y Estados Unidos ofrece un respiro ante la incertidumbre de los grandes destinos tradicionales. Sin embargo, el futuro de la industria dependerá de cómo se adapten los exportadores a las fluctuaciones de la demanda global.</p><p>Las exportaciones de carne bovina de Argentina experimentaron un golpe significativo en enero de 2025.</p><p>Según un informe del Consorcio de Exportadores de Carnes Argentinas (ABC), el volumen total exportado alcanzó las 46.200 toneladas, lo que representó una disminución del 25,4% en relación con enero de 2024, y una caída del 20,1% respecto al mes anterior. A su vez, los ingresos generados por estas exportaciones cayeron un 4,4% en comparación con el mismo periodo del año anterior.</p><p>El principal factor que influyó en este retroceso fue la reducción de las exportaciones hacia China, el principal destino de la carne argentina. Las razones de esta caída incluyen una combinación de precios más bajos en el mercado chino, altos precios en el mercado local argentino, y una escasez de ganado disponible para la exportación. Además, la llegada de las festividades del Año Nuevo Lunar afectó la demanda desde el gigante asiático, lo que contribuyó a la disminución del volumen exportado.</p><p>Sin embargo, el panorama general no es completamente negativo. El acumulado anual, desde febrero de 2024 hasta enero de 2025, mostró un desempeño algo más favorable. Durante este periodo, las exportaciones de carne bovina alcanzaron un volumen cercano a las 753.000 toneladas, por un valor total de u$s3.010,9 millones. Esto representó un incremento del 8,6% en volumen y un 7,3% en valor en comparación con el mismo periodo del año anterior, lo que sugiere una recuperación parcial de los niveles de exportación tras la caída de enero.</p><p>China, aunque afectada por la baja en los volúmenes exportados, sigue siendo el principal destino para la carne argentina. En enero de 2025, el país asiático absorbió el 65% de las exportaciones argentinas de carne bovina, con envíos de carne deshuesada y con hueso por un valor cercano a los u$s100 millones. Sin embargo, el precio promedio de la carne bovina sin hueso exportada a China fue de u$s4.300 por tonelada, lo que refleja una caída considerable en comparación con los u$s5.900 alcanzados en mayo de 2022.</p><p>Las exportaciones de carne bovina refrigerada también enfrentaron una caída importante en enero, con un descenso del 27,4% en volumen respecto al mes anterior. No obstante, los destinos como Europa, Chile e Israel continuaron siendo mercados clave para este tipo de carne, con una cifra total exportada que alcanzó las 7.800 toneladas, por un valor de u$s72,3 millones.</p><p>Las exportaciones de carne bovina de Argentina experimentaron un golpe significativo en enero de 2025.</p><p>El segmento de carne congelada, por su parte, experimentó una reducción en los despachos hacia China, aunque las ventas a otros mercados como Israel y Estados Unidos mantuvieron su estabilidad. En total, se exportaron 26.400 toneladas de carne congelada sin hueso, generando ingresos por u$s133,4 millones.</p><p>A pesar de los desafíos de enero, las perspectivas para los próximos meses no son del todo pesimistas. El mercado mexicano, que fue abierto en el segundo trimestre de 2023, ha mostrado un crecimiento sostenido, con exportaciones de carne enfriada y congelada que continuaron su expansión, alcanzando un volumen total de 842 toneladas en enero, con precios promedio cercanos a los u$s5.200 por tonelada.</p><p>El panorama para la industria argentina de carne bovina parece estar marcado por la volatilidad de los mercados internacionales, en especial el chino, pero también por un incipiente aumento de las exportaciones hacia mercados emergentes. La adaptación de los productores y exportadores a las fluctuaciones del mercado, sumada a la apertura de nuevos destinos comerciales, podría ser clave para la recuperación en el mediano y largo plazo.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.ambito.com/economia/preocupa-el-efecto-doble-nelson-la-carne-se-desploman-exportaciones-volumen-y-precio-n6115965'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Preocupa el efecto "Doble Nelson" en la carne: se desploman exportaciones por volumen y precio.', // Opcional, pero recomendado     
+                text: 'Preocupa el efecto "Doble Nelson" en la carne: se desploman exportaciones por volumen y precio.',  // Opcional
+                url: 'https://www.ambito.com/economia/preocupa-el-efecto-doble-nelson-la-carne-se-desploman-exportaciones-volumen-y-precio-n6115965'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
