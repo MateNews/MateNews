@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interpol activó la búsqueda internacional del nene desaparecido.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Interpol activó la búsqueda internacional del nene desaparecido.</h1>
+            <p>Los investigadores que participan de la búsqueda de Lian Gael Flores Soraide, en Córdoba, trabajan bajo estricto secreto de sumario. En las últimas horas, pidieron a Interpol que active una notificación amarilla para encontrar al nene de 3 años que desapareció el sábado pasado, en un asentamiento compuesto por alrededor de 20 personas, cercano a Ballesteros Sud, un pueblo de unos 700 habitantes y ubicado a 200 kilómetros de la capital provincial.</p><p>¿Qué es una notificación amarilla? Tal como lo explica la agencia internacional, es “una alerta policial mundial sobre una persona desaparecida. Se publica para localizar a víctimas de rapto por uno de los progenitores, retenciones (secuestros) o desapariciones inexplicadas".</p><p>En el caso de Lian, la circular específica su fecha de nacimiento, el día que desapareció, el lugar (Córdoba), el nombre de sus padres y da una breve descripción física (altura, color de cabello y de ojos). La información es acompañada por la foto del menor.</p><p>Fuentes del caso indicaron a Infobae que la convocatoria a Interpol fue pedida por Isabel Reyna y Nicolás Gambini, los fiscales a cargo del expediente, a raíz de una medida solicitada por el SIFEBU.</p><p>El ente, que depende del Ministerio de Seguridad Nacional, había emitido el domingo pasado el Alerta Sofía, el sistema destinado a la búsqueda urgente de niños y niñas en peligro.</p><p>En tanto, los rastrillajes continuaban bajo la lluvia en la zona cero: participan en total 340 efectivos de diversas fuerzas de seguridad como la Policía de Córdoba, sus bomberos y su brigada canina, así como 30 hombres y mujeres de la Policía Federal con la División Unidad Operativa Federal Córdoba, el área de Investigaciones Especiales de la Provincia y las DUOF de Bell Ville, General Deheza y Villa María.</p><p>En el lugar, además, trabaja personal del Ejército Argentino. La PFA, por su parte, aportó y operó un drone con cámaras infrarrojas que fue empleado ayer por la noche.</p><p>En las últimas 48 horas, se hicieron allanamientos, en los que se incautaron tres camionetas -entre ellas una camioneta Volkswagen Amarok blanca- y once celulares, según reveló el fiscal general provincial Juan Manuel Delgado.</p><p>Las identidades de los dueños de los vehículos y los dispositivos son mantenidas en reserva. Tampoco trascendieron los motivos de los allanamientos que llevaron a los secuestros.</p><p>Infobae pudo saber de fuentes del caso que la apertura y análisis de los celulares comenzó ayer lunes en un laboratorio de la Policía Judicial del Ministerio Público Fiscal cordobés.</p><p>Por el momento, no se descarta ninguna hipótesis.</p><p>Marina Romano, la abogada de la familia de Lian, renunció tras plantear una serie de cuestionamientos contra la fiscalía de Bell Ville, a cargo del caso.</p><p>La decisión fue informada este martes por la letrada, quien alegó que dejó su lugar luego de un pedido de la fiscalía que no cayó bien en el entorno del menor. Según contó en medios radiales, los padres de Lian declararon durante 10 horas y tras salir señalaron que les pidieron que no dieran más declaraciones a la prensa.</p><p>“Cuando salió de declarar el papá, me dijo que le habían pedido que no haga más declaraciones sobre el hecho”, manifestó Romano, quien además sumó que a casi 72 horas de la desaparición, la fiscalía “no nos trasladó ninguna hipótesis”.</p><p>“Pienso que alguien lo tiene. Me duele mucho”, sostuvo el padre de Lian en diálogo con medios locales. Y agregó: “Nunca me había pasado esto, cuatro años que vivo ahí, todos los días hago el mismo trabajo, el mismo horario, esta vez no sé qué pasó, que de una desapareció”.</p><p>“No sé si será alguna venganza o qué sé yo, pero que aparezca mi niño, porque es un niño tranquilo”, cerró el hombre.</p><p>Según relataron sus padres, Lian fue visto por última vez el sábado cerca de las 15, cuando ellos se acostaron a dormir la siesta. Al levantarse, el menor ya no estaba.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2025/02/25/caso-lian-interpol-activo-la-busqueda-internacional-del-nene-de-3-anos-desaparecido-en-cordoba/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Interpol activó la búsqueda internacional del nene desaparecido.', // Opcional, pero recomendado     
+                text: 'Interpol activó la búsqueda internacional del nene desaparecido.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2025/02/25/caso-lian-interpol-activo-la-busqueda-internacional-del-nene-de-3-anos-desaparecido-en-cordoba/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
