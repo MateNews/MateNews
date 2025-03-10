@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Son uruguayos, posicionan su solución en San Francisco y aspiran a convertir su startup en unicornio</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Son uruguayos, posicionan su solución en San Francisco y aspiran a convertir su startup en unicornio</h1>
+            <p>
+La tecnología está yendo mucho más rápido de lo que están acostumbradas las empresas y hoy los gerentes y ejecutivos llegan a experimentar distintas revoluciones tecnológicas a través de su carrera laboral. Nicolás Scopesi, Miguel Langone y Nicolás López, los jóvenes detrás de la startup Horizon, lo tienen claro y están convencidos de que la tecnología es un medio para generar una ventaja competitiva para los negocios. “Lo que Horizon viene a hacer es ayudar a las empresas a poder adaptarse a la velocidad a la que va el mundo hoy. Ahora más que nunca las empresas tienen una presión de implementar tecnología e inteligencia artificial, pero como tienen una oferta tan grande de productos y servicios es difícil entender dónde poner los recursos, dónde están los problemas más grandes y dónde están esas empresas que los pueden ayudar”, dijeron los fundadores. Para responder a estas preguntas la solución que ofrece Horizon se aleja de los servicios tradicionales y manuales de consulta y se apoya en la inteligencia artificial. “Tenemos un modelo que lo que hace es hablar con todos los empleados de una sola vez mediante una interfaz de chat, se les pregunta qué hacen en su día a día, qué procesos recorren, qué tareas, qué herramientas usan, y en base a eso le damos una hoja de ruta de transformación”, explicaron. Además de optimizar este proceso de consultoría a dos o tres semanas de trabajo, un tiempo que según los emprendedores es 90 veces menor que las soluciones tradicionales, uno de los pilares de Horizon es que toda persona de la organización sabe algo sobre cómo mejorar el negocio. “Las consultoras toman una muestra o hablan con los cargos más altos, pero a partir de esto les permitimos a todos ayudar y aportar sobre cómo debería mejorar la empresa”, contaron. El camino, los planes y el "unicornio" en la mira Los fundadores de Horizon hicieron la primera parte de su camino con capitales propios (estrategia conocida en el ecosistema como bootstrapped). En octubre del 2024, la startup fue una de las 12 startups latinoamericanas seleccionadas de un total de más de 1500 para participar de un programa de aceleración por parte del fondo de inversión Platanus, en Estados Unidos. Su sed de conquistar mercados y escalar con su solución los llevó a mudarse en setiembre del 2024 a San Francisco, un lugar en el que destacan las conexiones que se pueden lograr y la mentalidad y ambición que tiene el ecosistema. “En Uruguay la ambición de lo que estábamos queriendo hacer era a veces recibida con un poco de escepticismo, no se acostumbra a hacer algo así. Acá están todos igual de locos, todos quieren hacer el ´unicornio´, y están convencidos de que su idea va a ser la que va a ser exitosa. Eso no pasa tanto en Uruguay, entonces te abre la mente”, sostuvieron. Recientemente, Eduardo Mangarelli, socio de IC Ventures, presidente de Endeavor Uruguay y decano de la Facultad de Ingeniería de la Universidad ORT Uruguay aseguró en diálogo con Forbes que Horizon es una de las cinco startups uruguayas con mejores perspectivas de crecimiento para este año. “Somos los primeros que estamos haciendo esto y lo estamos haciendo desde Latam. Si nosotros logramos demostrar que podemos transformar un servicio que se viene haciendo hace muchos años de una forma totalmente tradicional y manual, creo que lo que sea que nos estamos imaginando nos queda chico. Los tres salimos de la nada y estamos empezando a demostrarle al mundo que tenemos algo interesante”, sostuvieron. En este sentido, los fundadores dijeron que el unicornio es algo a lo que aspiran.  “Es una consecuencia de construir una empresa con un impacto enorme”, dijeron al ser consultados al respecto. Con un segmento de clientes repartido entre 75% empresas y 25% consultoras, y luego de generar una importante inercia en Latinoamérica, la startup apunta ahora al posicionamiento en Estados Unidos. Horizon espera cerrar el 2025 con entre 35 a 60 clientes, en un mercado en el que el interés de las consultoras por incorporar a sus negocios la solución empieza también a crecer.  </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cafe-y-negocios/posicionan-su-solucion-san-francisco-y-aspiran-convertir-su-startup-unicornio-salimos-la-nada-y-le-estamos-demostrando-al-mundo-que-tenemos-algo-interesante-n5988620'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Son uruguayos, posicionan su solución en San Francisco y aspiran a convertir su startup en unicornio', // Opcional, pero recomendado     
+                text: ' Son uruguayos, posicionan su solución en San Francisco y aspiran a convertir su startup en unicornio',  // Opcional
+                url: 'https://www.elobservador.com.uy/cafe-y-negocios/posicionan-su-solucion-san-francisco-y-aspiran-convertir-su-startup-unicornio-salimos-la-nada-y-le-estamos-demostrando-al-mundo-que-tenemos-algo-interesante-n5988620'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

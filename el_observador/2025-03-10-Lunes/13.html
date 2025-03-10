@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Homenaje a Tabaré Vázquez en celebración por los 90 años de CASMU: su hijo, Álvaro Vázquez, llevó de regalo el estetoscopio que utilizó su padre durante su carrera</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Homenaje a Tabaré Vázquez en celebración por los 90 años de CASMU: su hijo, Álvaro Vázquez, llevó de regalo el estetoscopio que utilizó su padre durante su carrera</h1>
+            <p>
+El presidente de CASMU, Dr. Raúl Germán Rodríguez, se mostró emocionado al recordar al expresidente Dr. Tabaré Vázquez en el marco de las conmemoraciones por los 90 años de la institución. El expresidente de la República fue reconocido no solo por su trayectoria como médico, sino también por los avances logrados en temas de salud durante sus gobiernos, destacando la lucha contra el tabaquismo y la promoción de las leyes que permitieron la creación del Fondo Nacional de Recursos y del fondo de garantía para mutualistas. Sin esto último, aseguró Rodríguez, CASMU habría desaparecido. Por su parte, el Dr. Alfredo Toledo, máster en gestión de servicios de salud e integrante de CASMU, también recordó los logros de Vázquez. “En 2005 empieza a liderar el país y a reformar la salud. Él decía que no había reforma en la salud si no estaba CASMU. En ese momento, la situación de las mutualistas en general no era nada buena, ya que en el período anterior a 2005, ocho instituciones habían sido intervenidas”, recordó Toledo.  Alberto Grille - Dr. Raúl Germán Rodriguez - Dr. Alfredo Toledo - Dra. Andrea Zumar - Dr. Juan José Areosa - Daniel Olesker - Dra. Julia Galzerano - Jorge Bermúdez - Dr. Álvaro Vázquez.jpeg     Alberto Grille, Dr. Raúl Germán Rodríguez, Dr. Alfredo Toledo, Dra. Andrea Zumar, Dr. Juan José Areosa, Daniel Olesker, Dra. Julia Galzerano, Jorge Bermúdez, Dr. Álvaro Vázquez.  Dijo que la reforma que emprendió Vázquez fue “pesada y dura”, pero que hoy está dando sus frutos. Álvaro Vázquez, hijo de Tabaré Vázquez, también estuvo presente en el homenaje a su padre y agradeció la iniciativa. “Sin duda, es muy emocionante volver aquí y recordar, sobre todo, el último período de la vida de mi padre, con su enfermedad, su internación”, expresó Vázquez, quien llevó como presente por los 90 años de CASMU un estetoscopio que usó su padre durante su carrera.  Dr. Álvaro Vázquez - Dr. Raúl Germán Rodriguez.jpeg     Dr. Álvaro Vázquez, Dr. Raúl Germán Rodríguez.  El exlegislador Daniel Olesker rememoró el papel que cumplió Tabaré Vázquez en la construcción del Sistema Integrado de Salud y cómo su trabajo permitió que los uruguayos pudieran acceder a mejores niveles de salud. Jorge Bermúdez, representante de los trabajadores en la Junta Nacional de Salud, también destacó esa iniciativa de Vázquez y la consideró una propuesta “única”. “En otros países del mundo, si vos tenés plata, te salvás, pero si vos no tenés plata y te agarra una enfermedad muy complicada, te morís. En cambio, en Uruguay, más allá de los avances en la medicina, podemos ver que la asistencia en salud está al alcance de todos los uruguayos”, sostuvo Bermúdez.  Oradores. Dr. Alfredo Toledo - Daniel Olesker - Dr. Raúl Germán Rodriguez - Jorge Bermúdez.jpeg     Dr. Alfredo Toledo, Daniel Olesker, Dr. Raúl Germán Rodriguez, Jorge Bermúdez.  Aseguró que es necesario continuar por ese camino iniciado por Vázquez y profundizar el SNIS de una forma democrática, lo que, para Bermúdez, se traduce en “más inclusión”.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/homenaje-tabare-vazquez-celebracion-los-90-anos-casmu-su-hijo-alvaro-vazquez-llevo-regalo-el-estetoscopio-que-utilizo-su-padre-su-carrera-n5988554'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Homenaje a Tabaré Vázquez en celebración por los 90 años de CASMU: su hijo, Álvaro Vázquez, llevó de regalo el estetoscopio que utilizó su padre durante su carrera', // Opcional, pero recomendado     
+                text: ' Homenaje a Tabaré Vázquez en celebración por los 90 años de CASMU: su hijo, Álvaro Vázquez, llevó de regalo el estetoscopio que utilizó su padre durante su carrera',  // Opcional
+                url: 'https://www.elobservador.com.uy/homenaje-tabare-vazquez-celebracion-los-90-anos-casmu-su-hijo-alvaro-vazquez-llevo-regalo-el-estetoscopio-que-utilizo-su-padre-su-carrera-n5988554'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
