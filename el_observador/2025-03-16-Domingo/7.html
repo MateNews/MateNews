@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Mapa de desempleo e informalidad en el comienzo del año: cuáles departamentos tienen los peores registros</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Mapa de desempleo e informalidad en el comienzo del año: cuáles departamentos tienen los peores registros</h1>
+            <p>
+El mercado de trabajo comenzó el año con alguna desmejora respecto al cierre de 2024. En el trimestre móvil cerrado a enero se verificaron aumentos del desempleo y de la tasa de informalidad laboral en varios departamentos.  El desempleo terminó enero en 8,1% con suba de 0,7 puntos porcentuales respecto a diciembre del año pasado, a la vez que la tasa de empleo se mantuvo estable. La informalidad (no registro a la seguridad social) se ubicó en 22,4%, más de un punto porcentual por encima del registro de diciembre. Luego de informados esos datos puntuales, el Instituto Nacional de Estadística (INE) desagregó información del mercado de trabajo por área geográfica correspondiente al trimestre comprendido entre noviembre de 2024 y enero de este año.  Embed           El dato de desempleo más alto se verificó en Río Negro con 15,9% y un aumento de 1,5 puntos porcentuales respecto al trimestre anterior. En el período hubo 4.700 desempleados. Treinta y Tres también estuvo bastante alejado de la media nacional con una tasa de 14,4% (3.300 desocupados) y por encima del registro anterior de 12,8%. Artigas quedó con el tercer peor registro: 11,5%, con suba de 2,3 puntos porcentuales y 4.700 personas sin trabajo.   Completaron el listado de departamentos con tasa por encima de los dos dígitos Paysandú (10,6%), Salto (10,3%), Tacuarembó (10,2%) y Soriano (10,1%). Salto había dejado atrás ese umbral durante buena parte del año pasado luego de haber sufrido el impacto de la brecha de precios con Argentina que disminuyó la actividad comercial y afectó el empleo. El peor momento fue entre enero y abril de 2023 cuando el desempleo llegó a 14,7%. Entre abril y junio de 2024 la tasa descendió a 9% y se mantuvo por debajo de los dos dígitos hasta el trimestre comprendido entre octubre y diciembre, según los datos oficiales. Montevideo tuvo 48.700 desocupados en ese período, mientras que en Canelones se verificaron 25.500.  Informalidad laboral El INE también actualizó datos trimestrales de no registro a la seguridad social. La informalidad más alta se observó en Cerro Largo con 49,6%. El dato marca que uno de cada dos trabajadores está en el informalismo. El registro aumentó en 2,3 puntos porcentuales desde la anterior medición de fines del año pasado. En segundo lugar se ubicó Artigas con una tasa de 41,1%. En este caso, el departamento mejoró en 2,7 puntos porcentuales en comparación con el anterior trimestre (octubre y diciembre de 2024).   Embed          Rivera fue el que tuvo el tercer peor resultado con 40,9% con mínima variación desde el 41,2% anterior. Tacuarembó terminó el trimestre con una informalidad laboral de 37,1% y Rocha con 31,2%. Montevideo tuvo un no registro a la seguridad social de 14,2% y Canelones de 20%.  La visión del Ministerio de Trabajo En la asunción como ministro de Trabajo, Juan Castillo se refirió al desempleo y la informalidad laboral. El jerarca mencionó que la cartera elabora una batería de medidas con el foco puesto en los trabajadores que tienen salarios sumergidos y en la formación de empleos de calidad. “A nadie le gusta ser despedido. Nadie vive dignamente desempleado ni está orgulloso por el seguro de paro. Nadie nace para dormir en la calle ni para comer en los contenedores”, proclamó ante un auditorio lleno. “Venimos a trabajar para cambiar la desigualdad existente en nuestro país”, expresó. Castillo planteó que uno de los objetivos de esta administración será continuar fortaleciendo el Salario Mínimo Nacional (SMN), como se hizo en anteriores gobiernos del Frente Amplio. El ministro mencionó al empleo informal y aseguró que el Ministerio de Trabajo (MTSS) buscará adoptar medidas que mejoren la formalización del trabajo. “No prometemos milagros, no tenemos fórmulas mágicas, pero no seremos indiferentes a los problemas y las demandas que nos planteen los distintos sectores de nuestro pueblo”, afirmó.  </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/economia-y-empresas/mapa-desempleo-e-informalidad-el-comienzo-del-ano-cuales-departamentos-tienen-los-peores-registros-n5989758'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Mapa de desempleo e informalidad en el comienzo del año: cuáles departamentos tienen los peores registros', // Opcional, pero recomendado     
+                text: ' Mapa de desempleo e informalidad en el comienzo del año: cuáles departamentos tienen los peores registros',  // Opcional
+                url: 'https://www.elobservador.com.uy/economia-y-empresas/mapa-desempleo-e-informalidad-el-comienzo-del-ano-cuales-departamentos-tienen-los-peores-registros-n5989758'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
