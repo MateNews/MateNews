@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> César Di Candia fue declarado ciudadano ilustre de Montevideo en 2023 pero el homenaje público nunca se hizo</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> César Di Candia fue declarado ciudadano ilustre de Montevideo en 2023 pero el homenaje público nunca se hizo</h1>
+            <p>
+A pesar de que la Junta Departamental decidió por unanimidad declarar “Ciudadano ilustre” de Montevideo al periodista y escritor César Di Candia, el homenaje público respectivo nunca se llevó a cabo. La propuesta de declarar “Ciudadano ilustre” a Di Candia, que falleció el lunes17 de marzo, partió del edil Leonel Aguirre, del Partido Colorado. Aguirre presentó su moción el 21 de setiembre de 2023. La propuesta fue aprobada por la Comisión de Cultura de la Junta Departamental y pasó a consideración del plenario. El 9 de noviembre de 2023, la Junta Departamental, con el voto unánime de todos los ediles aprobó la moción y remitió a la Intendencia de Montevideo una minuta de aspiración “para hacerle saber que es voluntad del Cuerpo se declare Ciudadano Ilustre de Montevideo al periodista y escritor uruguayo Sr. César Di Candia”. El 4 de diciembre de 2023 la intendenta Carolina Cosse declaró “Ciudadano ilustre” a Di Candia. Sin embargo, allí se cortó el trámite natural de la iniciativa. La ceremonia donde la decisión se efectiviza y el homenajeado finalmente recibe la distinción, nunca logró llevarse a cabo. “La burocracia volvió a primar, por encima del sentido común y la razón...después de votar por unanimidad en la Junta en 2023, la distinción de ciudadano ilustre a una persona de 93 años, no se puede dejar pasar tanto tiempo para hacerlo efectivo”, dijo Aguirre. El edil colorado dijo que la iniciativa se dejó dormir en la burocracia municipal durante meses y recién en diciembre de 2024 la familia fue contactada para programar el homenaje. Pero en esos 13 meses de postergación, Di Candia había enfermado y ya no estaba en condiciones de asistir a un acto público. Otro de los ediles que estuvo movilizándose para que Di Candia fuera reconocido como “Ciudadano ilustre” fue el frenteamplista Jorge Solari, quien coincidió con Aguirre. “Tristemente, la burocracia impidió que se concretara el homenaje. Yo leí a Di Candia durante años semanalmente en Búsqueda. Cuando me enteré de la situación, le pedí a uno, le pedí a otro para que se moviera, porque estaba resuelto, pero estaba trancado y Di Candia tenía 93 años. Nos movimos mucho con Aguirre. Pero cuando al fin el asunto se movió, Di Candia ya estaba en silla de ruedas”. Aguirre, que también es músico, también mocionó para que el músico y lutier de tambores Fernando “Lobo” Núñez sea declarado “Ciudadano ilustre”. La moción fue votada por la Junta en marzo de 2023 y, al igual que lo ocurrido con el reconocido periodista, el homenaje todavía no se ha concretado. Di Candia, que falleció a los 95 años de edad, fue uno de los grandes entrevistadores de la historia del periodismo uruguayo. Durante once años publicó una entrevista en cada edición del semanario Búsqueda, marcando una época. En una de ellas, el general Hugo Medina, último comandante en jefe del Ejército durante la dictadura y hombre clave en la negociación para la salida democrática, admitió con solo dos letras (“Di”) haber dado la orden para que prisioneros fueran torturados. Di Candia también trabajó en Marcha, Hechos, La Mañana y El País, donde estuvo a cargo de una separata que se publicaba junto al desaparecido suplemento Qué Pasa. Supo cultivar un fino humor y fue parte de las redacciones más recordadas de ese género, como Lunes, El Dedo y Guambia. Incursionó en la crónica, el ensayo, los cuentos y la novela, dejando una obra de decenas de libros. Uno de ellos, “Oficio de Periodista” recibió el premio Bartolomé Hidalgo en 2012, un premio que volvió a recibir en 2019 en reconocimiento a su trayectoria.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/cesar-di-candia-fue-declarado-ciudadano-ilustre-montevideo-2023-pero-el-homenaje-publico-nunca-se-hizo-n5990459'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' César Di Candia fue declarado ciudadano ilustre de Montevideo en 2023 pero el homenaje público nunca se hizo', // Opcional, pero recomendado     
+                text: ' César Di Candia fue declarado ciudadano ilustre de Montevideo en 2023 pero el homenaje público nunca se hizo',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/cesar-di-candia-fue-declarado-ciudadano-ilustre-montevideo-2023-pero-el-homenaje-publico-nunca-se-hizo-n5990459'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
