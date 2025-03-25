@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> El empresario argentino Manuel Antelo se reunió con Yamandú Orsi: Voy a seguir invirtiendo en Uruguay</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> El empresario argentino Manuel Antelo se reunió con Yamandú Orsi: Voy a seguir invirtiendo en Uruguay</h1>
+            <p>
+El empresario argentino Manuel Antelo, que reside en Uruguay desde 2014, se reunió este lunes en la Torre Ejecutiva con el presidente  Yamandú Orsi, a quien le aseguró que seguirá invirtiendo en el país, donde tiene varios proyectos en marcha.  Antelo es propietario de emprendimientos como la automotriz Nordex, Car One, Decathlon, Kiabi y más recientemente Jysk, una empresa de muebles que compite con Ikea y que abrió su primera tienda en Uruguay la semana pasada.   En la reunión con Orsi, según aseguró el empresario en rueda de prensa, le transmitió su voluntad de seguir invirtiendo en Uruguay.   Al presidente, contó, lo conoce desde su época en la Intendencia de Canelones, ya que por entonces le trasladó el interés de construir Car One, que se inauguró en el departamento en 2020 y ahora proyecta su segundo local en el país en Punta del Este a mediados del año que viene.  "Uruguay es un país que respeta las instituciones, la propiedad privada, es un país estable, lo que hizo el presidente anterior no lo cambian... Voy a seguir invirtiendo acá", subrayó Antelo.  Consultado sobre los costos de instalarse en Uruguay y la carestía, el empresario reconoció que el país "no es barato", pero descartó que eso suponga un impedimento para invertir.  "Eso es una realidad, Uruguay es un país relativamente caro, pero nosotros de alguna manera nos la hemos ingeniado para invertir y para operar", afirmó y resaltó que no constituye una "imposibilidad" para los empresarios.  Antelo insistió en que no trasladó ningún pedido concreto a Orsi, sino que le detalló sus planes de expansión en Uruguay. "Yo sé que Uruguay respeta, es un país que tiene estabilidad. Cuando llegué el presidente era Mujica. Yo voy a seguir invirtiendo en Uruguay, me alegra muchísimo que esté Orsi hoy como el número 1 del país. Me parece un tipo pro mercado, pro compañía, así que es una excelente noticia. Pero yo voy a seguir invirtiendo con el que venga después también". Car One en Punta del Este, nuevo Decathlon, el danés Jysk y otro modelo para Nordex   1622732980136.webp    Car One fue pensado como un proyecto integral que pretende contribuir con el crecimiento de la actividad en una zona en pleno desarrollo.   Antelo enumeró los planes de expansión que tiene para su operativa en Uruguay en el corto plazo. Respecto a la automotriz Nordex, señaló que incorporará un nuevo modelo a su elaboración, aunque prefirió no darlo a conocer todavía.  Sobre Car One, anunció que abrirá su nueva sucursal en Punta del Este para "mitad del año que viene" debido a algunos atrasos en la obra. "Estas obras grandes a veces se demoran un poco, queríamos abrir en noviembre para estar en la temporada. Siempre pasa en las grandes obras, alguna demora hubo", detalló.  Sobre Decathlon anunció que abrirá un nuevo local en Tres Cruces, que se sumará a los ya operativos en Car One y en Punta Carretas.  El más reciente emprendimiento de Antelo en Uruguay es Jysk, que se inauguró la semana pasada en el predio de Car One.  La apuesta es abrir 10 locales de esta cadena de muebles danesa en Uruguay en los próximos años. Cada tienda, sin contar la obra civil, supone una inversión de US$ 2 millones, afirmó Antelo.  "Es danesa y es todo lo que necesitás para tu casa. Hay desde lo que puedas necesitar para el baño completo, el comedor, el dormitorio, con estilo danés", explicó el empresario argentino.  Y aseguró que Jysk es la competidora a nivel mundial de Ikea, que no está presente en Uruguay.  "Es un formato más de proximidad. Tiene 3.500 locales hoy y es el primer país, después de Canadá, en toda América que abre", sostuvo sobre Uruguay. </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cafe-y-negocios/el-empresario-argentino-manuel-antelo-se-reunio-yamandu-orsi-voy-seguir-invirtiendo-uruguay-n5991221'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' El empresario argentino Manuel Antelo se reunió con Yamandú Orsi: Voy a seguir invirtiendo en Uruguay', // Opcional, pero recomendado     
+                text: ' El empresario argentino Manuel Antelo se reunió con Yamandú Orsi: Voy a seguir invirtiendo en Uruguay',  // Opcional
+                url: 'https://www.elobservador.com.uy/cafe-y-negocios/el-empresario-argentino-manuel-antelo-se-reunio-yamandu-orsi-voy-seguir-invirtiendo-uruguay-n5991221'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
