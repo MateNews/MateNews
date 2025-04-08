@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Efecto Temu: comerciantes se reúnen con Oddone y reclaman que está afectando seriamente al comercio nacional</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Efecto Temu: comerciantes se reúnen con Oddone y reclaman que está afectando seriamente al comercio nacional</h1>
+            <p>
+El presidente de la Cámara de Comercio, Julio César Lestido, se refirió el efecto que ha tenido la llegada de Temu a Uruguay y reveló desde la entrada de la tienda online al país en 2024 el número de "bultos" -productos- que entran al país pasaron de los 65 mil en diciembre de 2023 a 167 mil en diciembre del año pasado. "El tema del régimen de compras a través de encomiendas internacionales comienza ya por el 2011, 2012. Desde ahí nosotros, como Cámara venimos siguiendo el tema, no es una cosa nueva. El tema es, ¿cuál es el fenómeno que prendieron ciertas alarmas? Si bien era algo que se venía manejando, con el aterrizaje de Temu en el país por allá de abril, mayo del año pasado, las cifras se escapan de manera muy importante", comenzó contando en diálogo con el programa Doble Click (Del Sol FM). "Veníamos con un promedio de operaciones en el orden de los 45 a 50 mil, lo cual ya era un número bastante importante, pero venía casi igual durante todo ese tiempo. Tuvimos en diciembre del 2023 algo así como 65 mil movimientos. A partir de abril del año pasado empieza a crecer hasta llegar 167 mil bultos que se movieron en el mes de diciembre", continuó. Según explicó, pensaron inicialmente que la cifra tan elevada podría deberse al "efecto" de las fiestas, como algo "puntual". En enero, cayó a 100 mil, sin embargo, en febrero volvió a subir la cifra hasta los 160 mil, y aunque no están aún los datos de marzo, la cifra está "cerca" de las de febrero. "Entonces lo que vemos es que hay un despegue enorme, muy rápido, con cifras muy altas y la verdad es que no sabemos el techo", dijo y añadió que "esto está afectando seriamente al comercio nacional". En cuanto a cifras de la cantidad de dinero que se ha invertido en la compra de productos a nivel internacional, Lestido reveló que se movieron en febrero de 2025 "alrededor de 15 millones de dólares". "Estamos hablando de compra, de valor compra, no valor mercado, si eso lo lleváramos al valor de lo que un comerciante tiene que pagar, todos sus impuestos para poder vender esa mercadería, es el doble o más", puntualizó. Según Lestido ellos no buscan "prohibir" las compras internacionales, sino generar "reglas de juego" donde el comerciante "también pueda competir en condiciones similares". "Si no, de lo contrario, se produce un desbalance muy grande", dijo. Producto de la situación generada a partir de la entrada de Temu a Uruguay, el presidente de la Cámara de Comercio contó que se reunirán el próximo 8 de mayo con el ministro de Economía, Gabriel Oddone, para plantear este tema. "Evidentemente, tenemos que buscar algo en un régimen que sea parejo para todos. Busquen el camino que quieran, para arriba o para abajo, pero tiene que ser parejo para todos. Si no, esto va a afectar, y afectará seriamente la economía, porque en definitiva está impactando fuerte no solamente al pequeño comerciante, también al grande", dijo. Tras esto, contó que mantuvo contacto con un "grande comerciante" que le dijo que la situación le está "afectando en el 30% de las ventas", por lo que si no cambian las reglas del juego tendría que tomar "medidas". "¿Estamos en contra de Temu? No. ¿Estamos en contra de las compras a través de plataformas digitales? Para nada. Es una herramienta excelente que funciona muy bien. Lo que nos está pasando es que tenemos condiciones desiguales en un mercado tan pequeño como es el nuestro, donde cualquier cosa incide", explicó. En cuanto a los rubros donde están ingresando más producto mediante la compra online, mencionó que en primer lugar la vestimenta (21, 22%), en segundo lugar los juguetes (12, 13%), luego vienen los productos del hogar (10%) y en cuarto lugar está los zapatos (9, 10%). "De toda la ropa que se importa y se comercializa, el 10% es a través de este sistema. Y de todos los juguetes que se importan al Uruguay, casi el 20% es a través de este sistema", añadió.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/tenemos-condiciones-desiguales-presidente-la-camara-comercio-se-reunira-oddone-el-efecto-temu-n5993423'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Efecto Temu: comerciantes se reúnen con Oddone y reclaman que está afectando seriamente al comercio nacional', // Opcional, pero recomendado     
+                text: ' Efecto Temu: comerciantes se reúnen con Oddone y reclaman que está afectando seriamente al comercio nacional',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/tenemos-condiciones-desiguales-presidente-la-camara-comercio-se-reunira-oddone-el-efecto-temu-n5993423'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
