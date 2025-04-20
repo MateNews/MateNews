@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Un avión que iba a Miami se declaró en emergencia por olor a humo en la cabina y regresó a Ezeiza.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Un avión que iba a Miami se declaró en emergencia por olor a humo en la cabina y regresó a Ezeiza.</h1>
+            <p>Un avión de American Airlines con 214 personas a bordo que se volaba con destino a la ciudad de Miami, Estados Unidos, se declaró en emergencia tras detectar olor a humo en la cabina y debió regresar al Aeropuerto Internacional de Ezeiza para recibir auxilio inmediato. “Fue solo un susto”, aclararon a Infobae fuentes oficiales luego de la intervención realizada en pista.</p><p>El vuelo fue el AA908 y el avión, un Boeing 787-8 matrícula N815AA que había despegado después de las 11 de la mañana de este sábado. El viaje había sido reprogramado, originalmente estaba programado para salir a las 22.15 del viernes.</p><p>Según reconstruyó Infobae, el avión ya se encontraba en territorio paraguayo, a la altura de la ciudad argentina de Formosa, cuando los pasajeros alertaron a la tripulación de la presencia de olor a humo. El avión llevaba alrededor de una hora de vuelo y los pilotos avisaron a la torre de control para chequear la posibilidad de regresar a Ezeiza. Al momento del incidente, había alcanzado una altura de 11.300 metros y ya estaba fuera del espacio aéreo argentino.</p><p>En ese contexto, el piloto declaró “pan pan por olor a humo en cabina”, contaron fuentes oficiales a este medio. Es una señal de urgencia que indica que se requiere asistencia inmediata en la aeronave, pero que no hay una situación de peligro inmediato para las personas a bordo. Por este motivo, tuvo margen de regresar a Ezeiza y no fue necesario que hiciera una parada antes.</p><p>“En el marco de la declaración de emergencia del vuelo AAL908, operado por American Airlines, la Administración Nacional de Aviación Civil (ANAC) activó, conforme a los protocolos establecidos, el Plan de Emergencias (PEA) del Aeropuerto Internacional Ministro Pistarini de Ezeiza“, comunicó oficialmente la ANAC.</p><p>Según detalló a este medio Marcelo Belelli, personal terrestre de la Administración Nacional de Aviación Civil (ANAC) y delegado de ATE en el aeropuerto de Ezeiza, en el avión había 214 personas: 204 pasajeros y 10 tripulantes.</p><p>Belelli detalló que “a la altura de Asunción los pasajeros empiezan a denunciar humo en la cabina, olor que les generó preocupación. La emergencia no fue caótica porque estando en Asunción pudo volver. Podría haber usado Paraná o Rosario, pero volvió a Ezeiza porque acá la aerolínea tiene sus propios mecánicos”.</p><p>“El olor a humo existió pero nunca puso en riesgo el vuelo, son conclusiones que saqué por hablar con tripulación y mecánicos”, comentó Belelli.</p><p>Una hipótesis no confirmada oficialmente y que será concluyente una vez que los mecánicos trabajen en la aeronave es que pudo haber existido algún inconveniente con los dispositivos de circulación internos de aire en alguna de sus fases y eso generó que se quemara algún elemento interno que provocó el olor.</p><p>En total, el avión estuvo en el aire dos horas y 50 minutos. Su regreso comenzó a la hora y 20. Finalmente, cerca de las 14 regresó a la terminal aeroportuaria de Ezeiza y aterrizó. Inmediatamente, la nave recibió el auxilio Bomberos, personal de Sanidad y de control terrestre de la ANAC.</p><p>En el marco del protocolo, se colocó una manga en la salida del avión y se evacuó a todos los pasajeros y tripulantes a bordo.</p><p>“Fue solo un susto”, indicaron desde el Aeropuerto Internacional de Ezeiza una vez que terminó el procedimiento y todos fueron puestos a salvo.</p><p>“A las 13:40, el Boeing 787-8 aterrizó en Ezeiza, siendo acompañado en todo momento por los servicios SEI y CONTER, los cuales actuaron con prontitud y de manera coordinada para lograr un operativo eficaz. No se registraron novedades en el aterrizaje de la aeronave. Los pasajeros descendieron de la misma sin inconvenientes, y el operativo se desarrolló en condiciones óptimas”, agregó el comunicado oficial de ANAC.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/2025/04/19/un-avion-que-iba-a-miami-se-declaro-en-emergencia-por-humo-en-la-cabina-y-regreso-a-ezeiza/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Un avión que iba a Miami se declaró en emergencia por olor a humo en la cabina y regresó a Ezeiza.', // Opcional, pero recomendado     
+                text: 'Un avión que iba a Miami se declaró en emergencia por olor a humo en la cabina y regresó a Ezeiza.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/2025/04/19/un-avion-que-iba-a-miami-se-declaro-en-emergencia-por-humo-en-la-cabina-y-regreso-a-ezeiza/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

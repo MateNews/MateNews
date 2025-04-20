@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El campo acelera la exportación: buenos datos de cosecha y hasta 5.500 camiones diarios en puertos cerealeros.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El campo acelera la exportación: buenos datos de cosecha y hasta 5.500 camiones diarios en puertos cerealeros.</h1>
+            <p>Pese a algunas dificultades logísticas por las recientes lluvias, y a la vez acicateado por la decisión del gobierno de intentar llevar el dólar a $1.000 para recién entonces intervenir, comprando dólares, en el mercado cambiario, en las últimas jornadas el campo aceleró la cosecha y el envío de producción a los puertos.</p><p>De resultas, aumentó notablemente el ingreso de camiones a las terminales portuarias del Gran Rosario: con un aumento cercano al 20% y hasta 5.500 camiones diarios moviéndose hacia y desde los puertos cerealeros.</p><p>Las señales apuntan así a una importante liquidación de divisas en los próximos días y semanas, a favor de la urgencia tanto del campo como del gobierno. Del campo, porque la reducción temporal de retenciones que decidió el gobierno en enero pasado expira el 30 de junio. Y del gobierno, porque una de las primeras y más importantes metas a cumplir en el primer trimestre del acuerdo es el aumento de USD 4.800 millones en las reservas brutas del Banco Central.</p><p>Si bien la cosecha aún muestra retraso en relación a la de de hace un año, el volumen de producto enviado a los puertos ya supera en 15% el de igual momento del ciclo pasado, indicaron datos de Agroentregas. La tendencia podría incluso profundizarse: según proyecciones de la Bolsa de Cereales de Buenos Aires (BCBA), la producción total de los 6 principales cultivos sería de 132 millones de toneladas, 4,1% por sobre el ciclo anterior, con un total de exportaciones cercano a los USD 32.500 millones.</p><p>“Si se estabiliza el clima tendremos picos de 6500 o 7000 camiones, con promedios de entre 5500 y 6000 -diarios”, dijo Fernando Turín, presidente de Agroentregas, según consignó la agencia Noticias Argentinas.</p><p>También la Bolsa de Comercio de Rosario señaló que al ceder las lluvias la cosecha avanzó sobre 500.000 hectáreas “En general, se está priorizando la cosecha antes que cuidar el piso de los lotes, pero tampoco se quieren hacer daños que provoquen dolores de cabeza después y más si se trabaja con lotes que pueden ir a la siembra triguera en poco tiempo más. En apenas 3 o 4 días efectivos de labor, el avance de la cosecha fue de 15 puntos porcentuales, alcanzando un 22%. Ya se levantaron 780.000 hectáreas de un total sembrado de 3,55 millones”, señaló un informe de la bolsa rosarina</p><p>Además, precisó, la soja presenta rindes prometedores, que en el caso de la “soja de primera” no baja de los 40 quintales por hectárea. “De hecho, en muchas localidades los promedios están más cerca de los 45 que de los 40 quintales”, dice el reporte. Además, la siembra de maíz de la campaña 2024/25 es ya un 25% superior a lo que se estimaba en precampaña.</p><p>Otro dato alentador, con la vista puesta en la exportación y el ingreso de dólares, es que considerando el crushing por solvente de 40 millones de toneladas, la producción 2024/25 de harina de soja se estima en 30,4 Mt, un 3,6% menos que en la anterior. Pero teniendo en cuenta que en los últimos cinco años cerca del 95% de la harina de soja se vendió al exterior, en la campaña 2024/25 la Argentina recuperaría la condición de primer exportador mundial de harina de soja, posición que había perdido en la campaña 2022/23 a manos de Brasil.</p><p>La bolsa rosarina recordó además que más de un cuarto de las exportaciones del año 2024 fueron destinadas al Sudeste Asiático. Según datos del INDEC, Vietnam acaparó el 15,4% de los despachos argentinos y Malasia e Indonesia absorbieron un 5% cada uno. Otros destinos destacados fueron Arabia Saudita, con el 5,7%; Polonia, con el 5,6%, e Italia, con el 5,3%.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2025/04/19/el-campo-acelera-la-exportacion-buenos-datos-de-cosecha-y-hasta-5500-camiones-diarios-en-puertos-cerealeros/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El campo acelera la exportación: buenos datos de cosecha y hasta 5.500 camiones diarios en puertos cerealeros.', // Opcional, pero recomendado     
+                text: 'El campo acelera la exportación: buenos datos de cosecha y hasta 5.500 camiones diarios en puertos cerealeros.',  // Opcional
+                url: 'https://www.infobae.com/economia/2025/04/19/el-campo-acelera-la-exportacion-buenos-datos-de-cosecha-y-hasta-5500-camiones-diarios-en-puertos-cerealeros/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
