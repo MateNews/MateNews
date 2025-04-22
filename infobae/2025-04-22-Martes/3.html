@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El funeral del papa Francisco será este sábado: su cuerpo será expuesto desde mañana en la basílica de San Pedro.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El funeral del papa Francisco será este sábado: su cuerpo será expuesto desde mañana en la basílica de San Pedro.</h1>
+            <p>El funeral del papa Francisco se celebrará el próximo sábado 26 de abril a las 10:00 horas (8:00 GMT) en la Plaza de San Pedro, según informó el Vaticano.</p><p>La ceremonia estará presidida por el decano del Colegio Cardenalicio, Giovanni Battista Re, y contará con la presencia de jefes de Estado y delegaciones oficiales de todo el mundo.</p><p>Al término de la misa, el féretro será trasladado a la basílica de Santa María la Mayor, en Roma, para ser enterrado según la voluntad del propio pontífice, expresada en su testamento. El cuerpo del Papa se encuentra actualmente en la capilla de la residencia Santa Marta, donde falleció el lunes a los 88 años a causa de un ictus.</p><p>Este miércoles, a partir de las 9:00 horas (07:00 GMT), comenzará la traslación del cuerpo hacia la Basílica de San Pedro. El recorrido será acompañado por una breve ceremonia de oración presidida por el camarlengo, cardenal Kevin Joseph Farrell, y la procesión pasará por la Plaza Santa Marta, la Plaza de los Protomártires Romanos y, a través del Arco de las Campanas, llegará a la plaza central del Vaticano, ingresando al templo por la puerta principal.</p><p>El cuerpo será colocado bajo el baldaquino del Altar de la Confesión, donde el cardenal camarlengo presidirá una Liturgia de la Palabra. Finalizado el rito, comenzará la visita de los fieles en capilla ardiente.</p><p>Según lo dispuesto por el propio Francisco en el Ordo Exsequiarum Romani Pontificis, su cuerpo no será colocado sobre un catafalco ni portará el báculo papal, y descansará en un único féretro de madera, con interior de zinc, abierto a la vista. También se elimina la tradición de los tres ataúdes (ciprés, plomo y roble) que se usaban en entierros papales anteriores.</p><p>En su testamento, el papa dejó instrucciones precisas para su tumulación: “Solicito que mi sepulcro sea preparado en el nicho de la nave lateral entre la Capilla Paulina (Capilla de la Salus Populi Romani) y la Capilla Sforza de la citada Basílica Papal”, escribió.</p><p>La tumba será sencilla, sin ornamentación ni inscripción decorativa, solo su nombre en latín: Franciscus. Con ello, se convertirá en el primer pontífice en más de un siglo en ser enterrado fuera del Vaticano, ante el ícono mariano que veneraba antes y después de cada viaje apostólico.</p><p>La muerte del papa Francisco generó manifestaciones de duelo en distintos países. En Argentina, su tierra natal, el Gobierno decretó una semana de duelo nacional. En India, se establecieron tres días de luto oficial, un gesto inusual tratándose de un líder religioso extranjero.</p><p>Mientras tanto, miles de personas se congregaron en la Plaza de San Pedro, en el Vaticano, llevando flores, velas y mensajes de despedida.</p><p>“Intentó que la gente entendiera que no importa tu orientación sexual ni tu raza. Eso no importa a los ojos de Dios”, expresó Mateo Rey, un estudiante mexicano de 22 años, mientras aguardaba para despedirse del pontífice.</p><p>Por su parte, el presidente de Francia, Emmanuel Macron, expresó su “profundo respeto” por la figura del papa Francisco. En Brasil, el mandatario Luiz Inácio Lula da Silva lo definió como una figura de paz y agradeció su compromiso con los más vulnerables.</p><p>En el ámbito del deporte, Lionel Messi compartió un mensaje en sus redes sociales en el que agradeció al pontífice por “hacer del mundo un lugar mejor”.</p><p>En Buenos Aires, la catedral metropolitana organizó una misa en su memoria y dispuso un espacio para firmar libros de condolencias. También se programaron misas y actos en otras ciudades del país.</p><p>(Con información de AFP)</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/america/mundo/2025/04/22/el-funeral-del-papa-francisco-sera-este-sabado-su-cuerpo-sera-expuesto-desde-manana-en-la-basilica-de-san-pedro/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El funeral del papa Francisco será este sábado: su cuerpo será expuesto desde mañana en la basílica de San Pedro.', // Opcional, pero recomendado     
+                text: 'El funeral del papa Francisco será este sábado: su cuerpo será expuesto desde mañana en la basílica de San Pedro.',  // Opcional
+                url: 'https://www.infobae.com/america/mundo/2025/04/22/el-funeral-del-papa-francisco-sera-este-sabado-su-cuerpo-sera-expuesto-desde-manana-en-la-basilica-de-san-pedro/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
