@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El día que cambió la historia. Se cumplen 50 años de la victoria de Vietnam del Norte en Saigón. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El día que cambió la historia. Se cumplen 50 años de la victoria de Vietnam del Norte en Saigón. </h1>
+            <p>Se cumplen 50 años de la victoria de Vietnam del Norte en Saigón</p><p></p><p>Hace medio siglo, el 30 de abril de 1975, caía Saigón. La imagen del último helicóptero despegando desde la azotea de la embajada estadounidense marcaba el fin de una guerra brutal y el inicio de un nuevo capítulo para Vietnam. Con la victoria del Frente Nacional de Liberación y la retirada definitiva de las tropas norteamericanas, Indochina se convertía en el escenario de la derrota más humillante en la historia militar de los Estados Unidos.</p><p>A diferencia de Europa tras la Segunda Guerra Mundial, Vietnam no contó con un plan de reconstrucción financiado por las potencias vencedoras. Todo lo contrario: fue empujado al aislamiento internacional, bloqueado económica y diplomáticamente por Estados Unidos y sus aliados, mientras enfrentaba amenazas militares en sus fronteras, desde Camboya en el suroeste hasta China en el norte.</p><p>En ese contexto, el Partido Comunista de Vietnam asumió el control absoluto del proceso de reunificación. Con mano firme, pero también con un relato cuidadosamente construido, se propuso consolidar la unidad nacional a través de una narrativa épica. Se exaltó la figura del combatiente revolucionario, se glorificó la resistencia y se impuso una visión de la historia que buscó borrar las diferencias del pasado a favor de una identidad común, marcada por el sacrificio y la lucha.</p><p></p><p>La guerra en Indochina no fue convencional. No hubo frentes claramente definidos, ni campos de batalla clásicos. Los combates se libraron en aldeas, selvas, ciudades y entre la población civil. Fue una guerra de desgaste que el Viet Minh y el Frente Nacional de Liberación supieron aprovechar al máximo, con una estrategia que erosionó lentamente a las fuerzas norteamericanas e inclinó a su favor el apoyo de la opinión pública internacional.</p><p>En Vietnam del Norte, el 70 por ciento de la infraestructura quedó destruida: escuelas, hospitales, fábricas y universidades. En el Sur, las consecuencias recayeron sobre los campos arados, los cursos de agua y las zonas selváticas y montañosas. El uso masivo de agentes químicos, como el tristemente célebre Agente Naranja, obligó a millones de aldeanos a abandonar sus tierras, sus animales y sus costumbres. De hecho, la contaminación y las enfermedades de largo plazo provocadas por las lluvias químicas siguen afectando las memorias colectivas del presente.</p><p>El saldo humano de la guerra también estremece: más de 58 mil estadounidenses muertos, 250.000 survietnamitas y cerca de un millón de soldados de Vietnam del Norte, entre el Vietminh y el Frente Nacional de Liberación, perdieron la vida. A eso hay que sumarle cerca de 2 millones de víctimas civiles.</p><p></p><p>En los años posteriores a la guerra, el Partido Comunista construyó una historia oficial que convirtió al pueblo vietnamita en un sujeto homogéneo de resistencia. La figura del nhân dân, el “pueblo”, fue elevada a categoría histórica: un colectivo heroico, abnegado, capaz de vencer cualquier invasión extranjera. Pero es narrativa no fue suficiente para garantizar la cohesión nacional.</p><p></p><p>Sin aliados poderosos tras la caída del bloque soviético, Vietnam entendió que debía cambiar. A fines de los años 80, lanzó una serie de reformas profundas bajo el programa conocido como Doi Moi (Renovación), que significó un giro respecto de su proyecto ideológico. Si bien mantuvo el control político del partido único, el país abrió sus puertas a la economía de mercado, apostó por la inversión extranjera y comenzó su integración al comercio global.</p><p>El cambio no fue inmediato. Las primeras transformaciones se vieron a comienzo de la década del 90. Hoy, Vietnam se muestra al mundo como una de las economías más dinámicas del Sudeste Asiático. Dejó atrás el estigma del país devastado por la guerra para convertirse en un actor relevante, con vínculos comerciales sólidos con las principales potencias. Supo reconstruirse desde las ruinas y consolidarse como un país soberano y en paz. Vive en calma, integrado a un mundo que no le hace fácil la tarea.</p><p></p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/822167-el-dia-que-cambio-la-historia'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El día que cambió la historia. Se cumplen 50 años de la victoria de Vietnam del Norte en Saigón. ', // Opcional, pero recomendado     
+                text: 'El día que cambió la historia. Se cumplen 50 años de la victoria de Vietnam del Norte en Saigón. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/822167-el-dia-que-cambio-la-historia'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
