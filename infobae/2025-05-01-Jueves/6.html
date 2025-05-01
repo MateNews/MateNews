@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>"Parecía que se te caía la casa encima": el relato de una intendenta riojana tras el sismo.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>"Parecía que se te caía la casa encima": el relato de una intendenta riojana tras el sismo.</h1>
+            <p>Un fuerte sismo de 5.5 puntos de magnitud en la escala de Richter afectó a la provincia de La Rioja este jueves en el mediodía del Día del Trabajador. El temblor se sintió durante varios segundos y se pudo sentir en otras localidades cercanas de Córdoba y Tucumán.</p><p>En ese marco, la intendenta de Famatina, Adriana Oliva, dialogó con TN luego del terremoto que afectó a toda la provincia. “Lo sentimos al último, los primeros eran leves, normales. El último fue terrible, el ruido era impresionante. Parecía que se te caía la casa encima”, señaló.</p><p>En las redes sociales comenzaron a circular diferentes videos del momento del temblor, en la zona de Campana, una ciudad en el departamento de Famatina. Allí se observó como en la zona de los cerros se registraron algunos derrumbes que levantaron polvo y se alcanzaron a ver desde varios metros de distancia.</p><p>“Uno no sabía cuando se paraba en el patio si el movimiento era del mismo temblor o el ruido del derrumbe del cerro, del cordón montañoso. Se sintió más en la zona norte, más cerca de la montaña”, comentó la jefa comunal.</p><p>Oliva señaló que no se registraron víctimas fatales, pero si hay localidades que no tienen suministro eléctrico.</p><p>“En otras localidades hubo derrumbes, en casas que eran de adobe. Demos gracias que no habitaba gente, las utilizaban como depósito. Se cayeron todas las casas de adobe. Se vio en las iglesias de acá, que son muy antiguas, tienen más de 100 años. Muchas tuvieron grietas“, completó.</p><p>El temblor ocurrió cerca del mediodía y fue el tercero registrado en la jornada: durante la mañana, había habido otros dos de menor magnitud.</p><p>Sin embargo, el último fue diferente porque perduró más en el tiempo y logró una profundidad de 7 kilómetros, según informó el Inpres (Instituto Nacional de Prevención Sísmica).</p><p>Las autoridades del Inpres indicaron que el epicentro fue a 108 km al noroeste de La Rioja; 167 km al oeste de San Fernando del Valle de Catamarca y a 37 km al norte de Famatina.</p><p>Según la agencia NA, por ahora no personas heridas producto del sismo, pero sí habría vecinos que se trasladaron a hospitales por el susto.</p><p>Desde esta mañana los vecinos de La Rioja comenzaron a sentir pequeños temblores. El primero fue a las 11.47 con una magnitud de 2.7 y una profundidad de 117 kilómetros. Luego, hubo otro siete minutos después, con una magnitud de 2.8 y a 129 Km.</p><p>Por último, el sismo más fuerte sucedió a las 13.04 y de 5.5, el más fuerte hasta el momento y que en un principio se había considerado en 5.9.</p><p>La indendenta Oliva señaló que el último sismo que recuerda la gente fue el terremoto en San Juan en 1976. “Tan fuerte como esto, no”, aclaró.</p><p>En tanto, el último terremoto que había registrado de mediana intensidad en La Rioja fue en el año 2002, con una magnitud de 6.0 en la escala de Richter. Su epicentro se localizó en la Sierra de Mazán y ocasionó numerosos daños en casas de adobe.</p><p>Producto de la intensidad del tercer sismo, el temblor llegó a otras provincias como Catamarca, San Juan y Córdoba, donde, en este caso puntual, se sintió en la mayoría de sus ciudades.</p><p>El temblor en La Rioja no fue el único que el Inpres registró este 1° de Mayo. También en Neuquén hubo uno de 2.5 de magnitud a 6 kilómetros de profundidad a las 11:37.</p><p>Mientras que en Salta se registraron tres movimientos sísmicos a las 7:24, 2:44 y 0:45 de 4.1, 3.4 y 3.4 de magnitud, respectivamente. En tanto, en San Juan hubo un temblor a las 6:42 de este Día del Trabajador de 3.5 y con una profundidad de 21 kilómetros.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/2025/05/01/parecia-que-se-te-caia-la-casa-encima-el-fuerte-relato-de-una-intendenta-local-tras-el-sismo-de-55-en-la-rioja/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: '"Parecía que se te caía la casa encima": el relato de una intendenta riojana tras el sismo.', // Opcional, pero recomendado     
+                text: '"Parecía que se te caía la casa encima": el relato de una intendenta riojana tras el sismo.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/2025/05/01/parecia-que-se-te-caia-la-casa-encima-el-fuerte-relato-de-una-intendenta-local-tras-el-sismo-de-55-en-la-rioja/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
