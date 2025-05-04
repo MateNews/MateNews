@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encontraron con vida a las dos turistas que estaban desaparecidas en El Bolsón.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Encontraron con vida a las dos turistas que estaban desaparecidas en El Bolsón.</h1>
+            <p>Este domingo por la mañana encontraron a las dos mujeres que desaparecidas desde el viernes en una zona cordillerana, en las afueras de El Bolsón.</p><p>La denuncia por desaparición había sido radicada en la noche del viernes. Las turistas estaban parando en el refugio Cerro Lindo, desde donde salieron de excursión en horas del mediodía. Aunque habían dejado muchas de sus pertenencias en el lugar, nunca volvieron.</p><p>Por este motivo, se las presumió perdidas y se activó el protocolo habitual para casos como este. Las autoridades las encontraron minutos antes del mediodía del domingo, según confirmó el jefe de bomberos de El Bolsón, Juan Carlos Martínez.</p><p>“Estábamos con una preocupación muy alta porque dos noches a la intemperie, con los fríos y la nieve que está cayendo en la montaña es muy complejo de superar. Están vivas, bien de salud”, confirmó el brigadista en diálogo con TN.</p><p>Tras el hallazgo y los primeros auxilios, ambas mujeres fueron trasladadas a caballo hacia un lugar seguro, donde las estabilizaron. Al cierre de esta nota, se aguardaba la llegada de un helicóptero para su derivación a un hospital.</p><p>La zona donde se desarrolló el operativo de búsqueda es conocida por su sistema de refugios de montaña, senderos boscosos y caminos de acceso variable, muchos de los cuales dependen del estado del clima y pueden resultar intransitables en condiciones de lluvia o niebla.</p><p>La búsqueda se desarrolló en conjunto entre efectivos de Bomberos Voluntarios de Lago Puelo, Gendarmería Nacional, la Policía de Río Negro y organismos de Protección Civil. También participaron equipos del Parque Nacional Lago Puelo, que prestaron colaboración logística y conocimiento del terreno. Se usaron drones, perros rastreadores y recursos humanos entrenados en rescate en áreas agrestes.</p><p>Desde primera hora de la mañana, un grupo de al menos 15 agentes empezó con los rastrillajes a pie por toda la zona cordillerana.</p><p>“Las temperaturas y el clima son complicados, está fría la zona, ha nevado arriba. Es una zona complicada, fácil de perderse. Si vos seguís los senderos normales vas y volvés por el mismo lugar, ahora si te metés por alguno alternativo, uno se sale del sendero y cuando pensás que estás regresando, en realidad te estás alejando”, graficó respecto del lugar el jefe de bomberos de El Bolsón.</p><p>Los caminos entre los cerros y las montañas pueden ser peligrosos para turistas con poca experiencia. En la región patagónica la desaparición de personas en contextos de travesía es recurrente, pese a las múltiples advertencias que realizan las autoridades.</p><p>Uno de los casos más resonantes del último tiempo fue el de Ezequiel Matías Vergara, quien fue encontrado sin vida en una zona de difícil acceso en el cerro Belvedere, dentro del Parque Nacional Nahuel Huapi, después de tres semanas de intensa búsqueda. El joven de 28 años había sido reportado como desaparecido el 21 de marzo.</p><p>De acuerdo al informe preliminar de la autopsia, Ezequiel Matías Vergara “falleció como consecuencia de politraumatismos graves”. Una vez realizadas las pericias, el fiscal Adrián De Lillo dispuso la entrega del cuerpo a la familia.</p><p>La identificación del lugar donde se encontraba el cuerpo ocurrió cuando un bombero de Villa La Angostura, parte del operativo de búsqueda, decidió adentrarse más allá del sendero turístico, explorando una zona con vegetación densa y pendientes pronunciadas. En esta área, encontró una mochila y una campera que pertenecían al joven. A partir de allí, siguió las huellas que descendían hacia un desfiladero. Después de un recorrido en bajada, logró avistar el cadáver en el fondo de un barranco.</p><p>El fiscal a cargo del caso explicó que el sitio del hallazgo se encuentra fuera de los senderos habituales y carece de acceso seguro para el personal de rescate. El operativo aéreo posterior, del cual participó el funcionario judicial junto a peritos y rescatistas, permitió tomar imágenes de la escena e identificar el lugar exacto donde se encontraban los restos del joven.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2025/05/04/buscan-en-el-bolson-a-dos-mujeres-que-salieron-de-excursion-y-no-regresaron/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Encontraron con vida a las dos turistas que estaban desaparecidas en El Bolsón.', // Opcional, pero recomendado     
+                text: 'Encontraron con vida a las dos turistas que estaban desaparecidas en El Bolsón.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2025/05/04/buscan-en-el-bolson-a-dos-mujeres-que-salieron-de-excursion-y-no-regresaron/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
