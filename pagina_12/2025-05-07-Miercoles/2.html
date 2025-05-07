@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Oficial: Franco Colapinto volverá a correr en la Fórmula 1. Reemplazará a Jack Doohan en Alpine. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Oficial: Franco Colapinto volverá a correr en la Fórmula 1. Reemplazará a Jack Doohan en Alpine. </h1>
+            <p>Debutará en Imola</p><p>La escudería francesa confirmó que reemplazará a Jack Doohan en el GP de Emilia-Romaña.</p><p>Franco Colapinto en Fórmula 1: cuándo debutará con Alpine</p><p>Alpine confirmó este miércoles que Franco Colapinto volverá a competir en la Fórmula 1 en el Gran Premio de Emilia-Romaña y formará parte del equipo en las siguientes cinco carreras. Ocupará el lugar del australiano Jack Doohan.</p><p>A través de una publicación en sus redes sociales, Alpine dio la noticia más esperada: "Franco Colapinto dará el salto a piloto de carreras para las próximas cinco fechas".</p><p>Asimismo, la escudería marcó que Jack Doohan "seguirá siendo parte integral de nuestro equipo como piloto de reserva".  También  destacó que el piloto es "un verdadero profesional en todo sentido" y agradeció su "arduo trabajo y dedicación".</p><p>Este reemplazo se dio en medio de un conflicto entre los directores de la escudería francesa, en donde Flavio Briatore siempre se mostró a favor de que el piloto argentino sea quien ocupe el puesto para acompañar a Pierre Gasly.</p><p>Por otro lado, Oliver Oakes defendía y acompañaba a Doohan como la persona correcta para correr en Alpine, pero tras los malos resultados en el Gran Premio de Miami -donde no pudo completar la carrera tras chocar en la primera vuelta con el neozelandés Liam Lawson y debió abandonar por una pinchadura en uno de sus neumáticos-, el británico decidió renunciar el pasado martes, según confirmó la propia escudería.</p><p>A esa desafortunada actuación en Estados Unidos se le sumó su mal presente, ya que Doohan no supo sumar puntos en la escudería francesa en ninguno de los seis Grandes Premios disputados hasta el momento.</p><p>De esta forma, en estos últimos días, muchos medios confirmaban que el argentino correría en la próxima carrera en reemplazo del australiano.</p><p>Colapinto volverá a la Fórmula 1 tras su positivo paso por Williams en la temporada pasada, donde consiguió disputar nueve carreras y conseguir finalizar en el dos veces en el duodécimo lugar, octavo (sumando cuatro puntos), undécimo, décimo, décimo cuarto y abandonó en tres ocasiones.</p><p>El debut de Colapinto en Alpine será en Imola, por la séptima fecha del campeonato que lidera el australiano Oscar Piastri. Su regreso será el domingo 18 de mayo a las 10 (hora argentina) en el marco del Gran Premio de Emilia-Romaña.</p><p>Luego dirá presente, al menos, en los GP de Mónaco, España, Canadá y Austria.</p><p>Bajo un periodo de pruebas, tal como lo estuvo Doohan, el argentino deberá demostrar en estas cinco carreras que merece un lugaer en la Fórmula 1, si desea continuar en la Máxima hasta el final de la temporada.</p><p>Colapinto volverá a las pistas en un circuito que conoce muy bien y que le trajo muchas alegrías al ganar dos veces, una en Fórmula 3 y otra en Fórmula 2.</p><p>En 2022, Colapinto logró en Imola su primera victoria internacional en la Fórmula 3, con una definición vibrante.</p><p>En 2024, en el mismo trazado, se impuso en la Sprint Race de la Fórmula 2 con una maniobra memorable en la última vuelta, superando ni más ni menos que a Paul Aron, con quien se disputaba el puesto de Doohan ya que el estonio es uno de los pilotos de reserva de Alpine.</p><p></p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/823670-franco-colapinto-volvera-a-correr-en-la-formula-1-con-alpine'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Oficial: Franco Colapinto volverá a correr en la Fórmula 1. Reemplazará a Jack Doohan en Alpine. ', // Opcional, pero recomendado     
+                text: 'Oficial: Franco Colapinto volverá a correr en la Fórmula 1. Reemplazará a Jack Doohan en Alpine. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/823670-franco-colapinto-volvera-a-correr-en-la-formula-1-con-alpine'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
