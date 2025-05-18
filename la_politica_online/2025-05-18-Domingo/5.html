@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La voracidad del Galicia para sacar dólares del país obligó al Central a apretar el cepo .  Luciana GlezerInicialmente Bausili permitía la jugada porque lo ayudaba a contener el dólar futuro, pero el Galicia explotó al máximo el hueco y el Central apretó el cepo.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>La voracidad del Galicia para sacar dólares del país obligó al Central a apretar el cepo .  Luciana GlezerInicialmente Bausili permitía la jugada porque lo ayudaba a contener el dólar futuro, pero el Galicia explotó al máximo el hueco y el Central apretó el cepo.</h1>
+            <p>La creatividad del equipo que conduce Toto Caputo para armar rulos financieros está fuera de discusión. Pero ahora parece que se les volvió en contra. El Banco Central que conduce Santiago Bausili tuvo que salir a frenar una maniobra que había permitido para contener el dólar futuro, ante la voracidad del Banco Galicia que llevó al máximo la ventana que se abrió para sacar dólares del país.</p><p>Pero este jueves el Central tuvo que apretar más las clavijas y sacó una circular que ajustó aún el cepo cambiario -que sigue existiendo- para clausurar este tipo de operaciones. Para lograrlo, la entidad que conduce Bausili alargó el plazo de acceso al dólar oficial para el repago de deuda corporativa de 6 a 18 meses, para cortar con esa estrategia cambiaria.</p><p>Se trata de una obra de ingeniería financiera. ¿Cómo funciona? Los fondos compran una obligación negociable (ON) del Galicia en dólares, pero que no paga intereses. ¿Por qué lo harían? Porque eso les permite prestarle dólares al banco, con la condición de que se los devuelva afuera, en Nueva York, en diciembre.</p><p>El Banco Galicia cubre el riesgo de que el dólar suba, compra contratos de dólar futuro en el mercado, para asegurarse que en diciembre pueda recomprar los dólares al precio pactado.</p><p>Con los dólares que recibió, el Galicia los vende en el mercado oficial y se queda con los pesos. Esos pesos se invierten en bonos del Tesoro o se prestan a empresas, generando ganancias gracias a la diferencia de tasas entre lo que rinden los instrumentos en pesos y el precio asegurado del dólar en diciembre, explicó a LPO un operador al tanto de la maniobra.</p><p>"El truco es que el Banco Central baja artificialmente la tasa del dólar futuro a diciembre, lo que hace que todo el circuito sea aún más rentable para el Galicia. Luego, libera el precio y el dólar, por ejemplo, se dispara un 5%. El  resultado final es que en diciembre, Galicia le deposita los dólares a los fondos en Nueva York, sin pasar por el mercado de cambios tradicional", agregó la fuente consultada.</p><p>Hay que dejar en claro que la maniobra es técnicamente legal, pero el espíritu de las normas que restringen la salida de fondos está completamente violada. El negocio es redondo para todos, menos para el Estado.</p><p>Lo concreto es que los fondos de inversión están buscando la salida. Los datos son contundentes. El fondo de Stanley Druckenmiller recortó su tenencia en bonos argentinos en un 20%, tras alcanzar un pico máximo en enero.</p><p>Stanley Druckenmiller, uno de los inversores más reconocidos del mundo y titular del fondo Duquesne Capital que comenzó a construir su posición en argentina a principios de 2024, según datos recopilados por Bloomberg.</p><p>"Wall Street advirtió que Milei y su equipo necesitan acumular más reservas de divisas, algo que las autoridades han prometido no hacer hasta que el peso se aprecie a $1.000 por dólar. Actualmente, cotiza a unos 1.145 por dólar", indicó Bloomberg.</p><p>Druckenmiller fue socio de George Soros en Quantum Found durante la famosa apuesta multimillonaria contra la libra esterlina en 1992.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/economia/la-voracidad-del-galicia-para-sacar-dolares-del-pais-obligo-al-central-a-apretar-el-cepo-a-los-bancos/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La voracidad del Galicia para sacar dólares del país obligó al Central a apretar el cepo .  Luciana GlezerInicialmente Bausili permitía la jugada porque lo ayudaba a contener el dólar futuro, pero el Galicia explotó al máximo el hueco y el Central apretó el cepo.', // Opcional, pero recomendado     
+                text: 'La voracidad del Galicia para sacar dólares del país obligó al Central a apretar el cepo .  Luciana GlezerInicialmente Bausili permitía la jugada porque lo ayudaba a contener el dólar futuro, pero el Galicia explotó al máximo el hueco y el Central apretó el cepo.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/economia/la-voracidad-del-galicia-para-sacar-dolares-del-pais-obligo-al-central-a-apretar-el-cepo-a-los-bancos/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Las inundaciones por el temporal ponen en riesgo la cosecha récord .  Fabricio NavoneLos productores del norte y noroeste de la provincia de Buenos Aires fueron los más afectados por las lluvias torrenciales. Desde la Sociedad Rural de Rosario reclamaron obras públicas.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Las inundaciones por el temporal ponen en riesgo la cosecha récord .  Fabricio NavoneLos productores del norte y noroeste de la provincia de Buenos Aires fueron los más afectados por las lluvias torrenciales. Desde la Sociedad Rural de Rosario reclamaron obras públicas.</h1>
+            <p>Todo el corredor de la Ruta 9 que une Rosario - Buenos Aires hacia el oeste quedó bajo el agua luego del tremendo temporal del viernes -y que continuaba este sábado- que inundó los campos más fértiles de la Zona Núcleo. En algunos lugares se registraron más de 300 milímetros de agua caída en pocas horas.</p><p>En consecuencia, quedaron localidades inundadas, caminos completamente intransitables con automovilistas y vehículos varados en medio del agua y familias evacuadas.</p><p>El temporal ya dejó pérdidas multimillonarias, confirmaron productores de la zona afectada que hablaron con LPO. Según la Bolsa de Cereales de Buenos Aires al jueves pasado quedaban más de 500 mil hectáreas de soja sin cosechar y unas 120 mil de maíz en el norte bonaerense. La mayoría de esos granos podrían perderse por los inundaciones.</p><p>Pero además de lo que se tiene que cosechar, está en riesgo que enfrenta el grano almacenado en silo bolsas que pueden echarse a perder si los afecta la humedad. El otro gran problema es el del escurrimiento. Cuando se va a ir el agua y, sobre todo, cuando se va a poder ingresar con máquinas a trabajar los campos que hoy están inundados.</p><p>Soledad Aramendi, presidenta de la Sociedad Rural de Rosario, dijo a LPO que es tan crítica la situación que hay lotes que deberán esperar entre dos y tres años para volver a estar en condiciones para su cultivo. "Necesitamos obras de infraestructura para prevenir los excesos climáticos. Buen escurrimiento y reservas en tiempos de abundante agua para afrontar los momentos de sequía. En definitiva, obras de infraestructura muy necesarias", reflexionó la dirigente agraria.</p><p>El temporal justo afectó en semanas claves para el agro cuando se estaba terminando la cosecha de segunda, como se llama a la soja y el maíz, y se empezaba con el trigo. @Esto atrasa todo", reconoció Aramendi.</p><p>El desastre también deja en evidencia la falta de obras públicas, agravada por la decisión del gobierno de Milei de abandonarlas por completo. "El mundo funciona con infraestructura, las civilizaciones más antiguas funcionaron con infraestructura para afrontar estas situaciones extremas y poder prevenir los inconvenientes", afirmó Aramendi.</p><p>Andrea Passerini, productora de Carlos Casares, oeste de la provincia de Buenos Aires cerca de Pehuajó y de 9 de Julio, explicó porque la situación es crítica: "En febrero llovió 300 milímetros, otros 100 milímetros en marzo y este viernes cayó una barbaridad de agua y la región se quedó sin capacidad de absorción", señaló a LPO.</p><p>Lo que le da bronca a Andrea es que el Plan Maestro Cuenca del Salado que se proyectó en la década del '70 no se completó totalmente y ese déficit explica en gran medida el impacto del agua: "Los distintos gobiernos, nacionales y provinciales, dilataron las obras del Plan Maestro cuando hoy falta terminar solo 30 kilómetros de canal para evitar este problema mayor", contó Passerini a LPO.</p><p>Como sea, este desastre pone la lupa en las reservas del Banco Central porque el gobierno espera con ansias la liquidación de la cosecha para sumar dólares y se pronosticaba para este año una campaña récord después de años de sequía.</p><p>Por otro lado, esta situación es probable que agrave la larvada tensión entre el gobierno y el campo. En su mayoría los productores agrícolas acompañan las ideas libertarias de Milei y creyeron que iba a eliminar las retenciones, pero lejos de ocurrir, el gobierno ya blanqueó que al menos este año eso no ocurrirá.</p><p>Es una publicación de La Política Online S.A.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.lapoliticaonline.com/economia/productores-de-la-zona-mas-rica-del-pais-reportan-perdidas-millonarias-por-el-temporal-y-pone-en-riesgo-la-cosecha-record-que-se-esperaba/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Las inundaciones por el temporal ponen en riesgo la cosecha récord .  Fabricio NavoneLos productores del norte y noroeste de la provincia de Buenos Aires fueron los más afectados por las lluvias torrenciales. Desde la Sociedad Rural de Rosario reclamaron obras públicas.', // Opcional, pero recomendado     
+                text: 'Las inundaciones por el temporal ponen en riesgo la cosecha récord .  Fabricio NavoneLos productores del norte y noroeste de la provincia de Buenos Aires fueron los más afectados por las lluvias torrenciales. Desde la Sociedad Rural de Rosario reclamaron obras públicas.',  // Opcional
+                url: 'https://www.lapoliticaonline.com/economia/productores-de-la-zona-mas-rica-del-pais-reportan-perdidas-millonarias-por-el-temporal-y-pone-en-riesgo-la-cosecha-record-que-se-esperaba/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
