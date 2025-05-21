@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El Presidente habló ante empresarios: "Es una excelente oportunidad de compra porque Argentina está baratísima".</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El Presidente habló ante empresarios: "Es una excelente oportunidad de compra porque Argentina está baratísima".</h1>
+            <p>El presidente Javier Milei cerró este martes la séptima edición del AmCham Summit 2025 que se realizó en el Centro de Convenciones de Buenos Aires. Allí hizo un repaso de su gestión desde su llegada a la Casa Rosada, con críticas a los “gobiernos populistas” y una defensa a las políticas económicas impulsadas en los últimos meses. En ese sentido, buscó convencer a los empresarios a invertir en la Argentina.</p><p>“Estamos frente a un maravilloso caso de crecimiento y es la oportunidad de aprovecharlo porque en estas condiciones, en 30 años, Argentina se podría convertir en una de las primeras potencias mundiales, donde los dos tercios de esa mejora ocurre en los primeros 10 años. Por lo tanto, es una excelente oportunidad de compra porque Argentina está baratísima y Argentina va a subir como pedo de buzo”, cerró su discurso el Presidente.</p><p>En una exposición que combinó referencias teóricas con anuncios de gestión, Milei cuestionó los modelos tradicionales de política económica: “Lo primero es sacarse el chip keynesiano de la cabeza. El crecimiento no se genera por consumo, se genera cuando sube la relación capital-trabajo, y para eso hay que invertir, y para invertir hay que ahorrar. Y para ahorrar, hay que proteger los derechos de propiedad”.</p><p>Además, reivindicó el equilibrio fiscal como eje de su plan económico y destacó el rol del ministro de Economía, Luis Caputo: “Después de 123 años de tener siempre déficit, fue la primera vez que tuvimos equilibrio financiero, el cual lo alcanzamos en un mes de gestión, y vino para quedarse”.</p><p>También mencionó el desmontaje de los pasivos remunerados del Banco Central como una medida central para recuperar la solvencia fiscal y proyectó una baja del riesgo país: “Argentina es uno de los cinco países en el mundo que tienen superávit en la línea financiera. Por ende, más tarde o más temprano, la tasa de interés va a colapsar porque el riesgo país se va a desplomar”.</p><p>El Presidente aseguró que su gobierno logró reducir el gasto público en más de un 30% sin aumentar impuestos. “Nosotros somos el primer gobierno de la historia que hace un ajuste fiscal bajando el gasto, sin devaluar ni subir impuestos. Es más, hasta nos dimos el lujo de bajar más de 19 impuestos”, afirmó. También destacó la continuidad de la baja de retenciones para la cosecha fina hasta marzo de 2026.</p><p>Reforzó su tesis de que el ajuste no frenó la actividad económica: “A pesar de haber hecho el ajuste más grande de la historia de la humanidad, la economía creció 6%. Sacamos a más de 10 millones de personas de la pobreza”, dijo, aludiendo a datos del EMAE desestacionalizado y cifras internas del Gobierno</p><p>Otro de los ejes del discurso fue la importancia del Ministerio de Capital Humano, que Milei definió como clave para fomentar el crecimiento económico a través de mejoras en alimentación, salud, educación y reinserción laboral. “Nuestro Ministerio de Capital Humano no apareció en marzo o abril, existía antes de que llegáramos al gobierno”, subrayó.</p><p>Asimismo, defendió la política de desregulación: “Tenemos desde mitad del año pasado un Ministerio de Desregulación. Lo podríamos llamar el Ministerio de los Rendimientos Crecientes, el ministerio que le simplifica la vida a la gente, el que repotencia el crecimiento”.</p><p>Finalmente, reafirmó su visión ideológica: “Nuestra agenda es ser el país más libre del mundo. Los países más libres son 12 veces más ricos que los reprimidos, tienen 50 veces menos pobres en el formato extremo y crecen el doble”, concluyó.</p><p>Además, proyectó la eliminación total de la inflación para 2026: “La inflación es siempre y en todo lugar un fenómeno monetario y nosotros hemos fijado la cantidad de dinero desde mediados del año pasado. Para mitad del año que viene no existe más la inflación”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2025/05/20/javier-milei-hablo-ante-empresarios-es-una-excelente-oportunidad-de-compra-porque-argentina-esta-baratisima/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El Presidente habló ante empresarios: "Es una excelente oportunidad de compra porque Argentina está baratísima".', // Opcional, pero recomendado     
+                text: 'El Presidente habló ante empresarios: "Es una excelente oportunidad de compra porque Argentina está baratísima".',  // Opcional
+                url: 'https://www.infobae.com/politica/2025/05/20/javier-milei-hablo-ante-empresarios-es-una-excelente-oportunidad-de-compra-porque-argentina-esta-baratisima/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
