@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> El delivery entra en el mundo de las membresías y ahora también se paga por mes: los detalles del nuevo modelo de suscripción de PedidosYa</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> El delivery entra en el mundo de las membresías y ahora también se paga por mes: los detalles del nuevo modelo de suscripción de PedidosYa</h1>
+            <p>
+Desde este lunes, PedidosYa habilitó en Uruguay su nuevo modelo de suscripción: PedidosYa Plus. El servicio, que ya funciona en otros países de la región, implica el pago mensual de $ 349 a cambio de beneficios como envíos sin costo en determinados comercios, descuentos exclusivos en productos y acuerdos con bancos. Según explicó a Café y Negocios el director de las operaciones de PedidosYa en Uruguay, Juan Muxi, el principal beneficio del nuevo programa es la eliminación del costo de envío en una red de restaurantes y comercios adheridos. Estos se identifican dentro de la aplicación con un ícono que indica que forman parte de la propuesta Plus. En el caso de PedidosYa Market, farmacias y supermercados, la exoneración del envío aplica si se cumple con un pedido mínimo de $ 700. El sistema ya opera en mercados como Argentina, Chile y Perú. Los usuarios que sean miembros del nuevo modelo de suscripción, podrán acceder a descuentos especiales en productos seleccionados y a promociones asociadas a ciertas tarjetas bancarias. Sobre ese punto, Muxi detalló que quienes cuenten con tarjetas de crédito del Banco Santander van a acceder a un mes gratis del servicio, seguido por tres meses con un 50% de descuento. También se ofrecen descuentos adicionales en PedidosYa Market con tarjetas Mastercard los martes y jueves. En este caso, serán del 15% para el público general y del 20% para suscriptores de Plus. Según Muxi, estos beneficios tienen un tope “elevado” que, “en algunos casos, puede alcanzar hasta los $ 3.000 por orden”. Consultado sobre quién absorbe el costo de brindar esos beneficios, Muxi indicó que se trata de un “cofondeo” entre PedidosYa y los restaurantes adheridos, lo que implica que no todos los comercios forman parte del programa. “Como restaurante, para vos ser parte de Plus tenés que pagar parte de ese costo de envío”, explicó el vocero. La decisión de incorporarse queda en manos de cada establecimiento, que evalúa si el esquema resulta viable para su estructura o no. Ante la consulta sobre si los comercios más chicos pueden quedar en desventaja frente a aquellos que sí tienen la posibilidad de absorber esos costos y participar del programa, el vocero señaló que la adhesión de las empresas fue “súper uniforme” y que incluye tanto grandes cadenas como pequeños restaurantes. “Si esto no es atractivo para el restaurante, dice: ´no me sumo´. Pero yo no lo veo como un detrimento”, defendió Muxi y aclaró además que, dentro de la plataforma, no se afecta la visibilidad de quienes no participan de este programa de membresías. En relación a la conveniencia del modelo de suscripción, el directivo afirmó que el programa representa “un beneficio económico inmediato” para los usuarios frecuentes. “Si hacés seis o siete pedidos por mes, ya pagás la cuota del Plus, y si además aplicás descuentos en las compras de PedidosYa Market, amortizás mucho más”, indicó. Sobre el objetivo de este programa y al ser consultado acerca de la necesidad de PedidosYa de asegurar una fuente de ingresos más estable, Muxi descartó que esa fuera la razón por la cual desarrollaron el modelo de suscripción. A su entender, PedidosYa Plus se enmarca en una estrategia para ampliar el alcance del servicio, generar un vínculo más recurrente con sus usuarios y bajar barreras económicas al consumo. “Para la gran mayoría (de los usuarios) el bolsillo es una restricción”, señaló el directivo y afirmó que buscarán bajar “ciertas barreras de precios” para acceder a más usuarios. En esa línea, explicó que el programa está dirigido especialmente a usuarios frecuentes, con quienes se busca establecer un hábito de consumo más sostenido. “Es una inversión para la compañía, pero entendemos que es lo correcto”, expresó. Además, Muxi destacó que el contexto actual favorece la aceptación de modelos de suscripción: “hoy la gente se suscribe a Netflix, a diarios, a gimnasios. Ya no hay miedo a poner la tarjeta como sí pasaba hace 15 años”, concluyó.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cafe-y-negocios/el-delivery-entra-el-mundo-las-membresias-y-ahora-tambien-se-paga-mes-los-detalles-del-nuevo-modelo-suscripcion-pedidosya-n6002333'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' El delivery entra en el mundo de las membresías y ahora también se paga por mes: los detalles del nuevo modelo de suscripción de PedidosYa', // Opcional, pero recomendado     
+                text: ' El delivery entra en el mundo de las membresías y ahora también se paga por mes: los detalles del nuevo modelo de suscripción de PedidosYa',  // Opcional
+                url: 'https://www.elobservador.com.uy/cafe-y-negocios/el-delivery-entra-el-mundo-las-membresias-y-ahora-tambien-se-paga-mes-los-detalles-del-nuevo-modelo-suscripcion-pedidosya-n6002333'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

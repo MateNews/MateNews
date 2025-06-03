@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Qué es el Cohousing, la nueva forma de envejecer en comunidad.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Qué es el Cohousing, la nueva forma de envejecer en comunidad.</h1>
+            <p>Vivir en un cohousing es una alternativa que se está volviendo cada vez más popular para personas que buscan envejecer en un entorno donde la independencia y la comunidad coexisten armoniosamente. Este modelo de vivienda colaborativa está diseñado para personas mayores que desean conservar su autonomía mientras disfrutan de la cercanía y el apoyo de una comunidad.</p><p>A diferencia de un edificio tradicional, esta metodología combina espacios privados con áreas comunes donde los residentes interactúan y participan en actividades diseñadas exclusivamente para ellos. Además, los servicios adicionales, como la ayuda tecnológica o el acompañamiento a citas médicas, son parte fundamental del día a día.</p><p>Para ingresar al cohousing Vida Linda, ubicado en el barrio porteño de Belgrano, los postulantes deben superar una evaluación de ingreso que incluye entrevistas y la valoración de sus capacidades en actividades diarias. Es requisito ser mayor de 60 años.</p><p>No se compran ni venden los departamentos; los residentes adquieren un derecho de uso de por vida, con un coste inferior al de propiedades de la zona. Los departamentos oscilan entre 40 y 90 metros cuadrados y las expensas mensuales, que cubren talleres y actividades, varían entre 200 mil y 300 mil pesos.</p><p>Elena López tiene 66 años, decidió redefinir su concepto de hogar y se mudó a Vida Linda. Después de vender su casa en Mercedes, motivada por las recomendaciones de su hija, que es enfermera, cambió su estilo de vida. “Soy profesora de biología. Cuando vine y vi el parque, dije: ‘Quiero estar acá’”, rememoró.</p><p>Con sus amigas, habían discutido la idea de envejecer juntas en un mismo edificio. Sin embargo, el cohousing ofrecía una solución ya establecida donde, a pesar de no conocer a nadie inicialmente, encontró en la comunidad un ambiente más enriquecedor que la soledad. “Esto es mucho mejor que estar solo”, afirmó.</p><p>Su decisión no solo radica en el deseo de compañía, sino en evitar incomodar a sus hijos con demandas cotidianas. “Todos tenemos la necesidad de vivir con compañía, sin molestar a los hijos. Ellos tienen 8.000 cosas que hacer”, analizó.</p><p>El cohousing donde vive Elena cuenta con 15 pisos, cada uno equipado con siete departamentos que permiten a los residentes mantener su independencia. Además, un amplio salón común ubicado en la planta baja se erige como el corazón del edificio donde se realizan las actividades comunitarias.</p><p>Vivir en este tipo de vivienda tiene una serie de beneficios para sus residentes. “Si uno no puede abrir un frasco de mermelada, por ejemplo, los chicos de la conserjería te ayudan”, explicó. Además, brinda la posibilidad de solicitar auxilio con contratiempos de salud, tareas como pedir un auto de aplicación y hasta sacar entradas para el cine, tareas que pueden resultar abrumadoras para algunas personas mayores.</p><p>Uno de los puntos claves del cohousing es la posibilidad de compartir experiencias cotidianas. Elena destaca a las charlas y actividades como algo central para la socialización: “Tenemos por lo menos dos o tres talleres todos los días”.</p><p>El personal del cohousing es una parte integral de la vida comunal que va más allá de colaborar en las simples tareas. Son como una extensión de la familia para los residentes. Esta relación permite que el personal, familiarizado con los hábitos y necesidades de cada uno de los vecinos, puedan identificar potenciales problemas y actuar proactivamente para solucionarlos.</p><p>La tecnología, a menudo suele ser un desafío. “Cuando aparecen cosas raras en el teléfono y nos asustamos, ellos te solucionan todo”, explicó Elena con alivio, ya que la asistencia del personal en estos casos resulta invaluable.</p><p>Las pequeñas interacciones diarias refuerzan la sensación de comunidad, desde charlas en el salón común hasta salir juntos al cine o compartir un café. También para los hijos y nietos es una ayuda extra. “Ellos están tranquilos porque saben que acá no tenemos problemas y si tenemos algún inconveniente cotidiano podemos resolverlo juntos”, concluyó Elena.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/reportajes/2025/06/03/que-es-el-cohousing-la-nueva-forma-de-envejecer-en-comunidad/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Qué es el Cohousing, la nueva forma de envejecer en comunidad.', // Opcional, pero recomendado     
+                text: 'Qué es el Cohousing, la nueva forma de envejecer en comunidad.',  // Opcional
+                url: 'https://www.infobae.com/reportajes/2025/06/03/que-es-el-cohousing-la-nueva-forma-de-envejecer-en-comunidad/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
