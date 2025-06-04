@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Las cuatro grandes ausencias que Marcelo Bielsa tiene para enfrentar con la selección de Uruguay a Paraguay por Eliminatorias</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Las cuatro grandes ausencias que Marcelo Bielsa tiene para enfrentar con la selección de Uruguay a Paraguay por Eliminatorias</h1>
+            <p>
+La selección de Uruguay que dirige Marcelo Bielsa viaja este martes a Asunción donde el jueves jugará en el Defensores del Chaco ante Paraguay, a la hora 20.00, en partido correspondiente a la 14ª fecha de las Eliminatorias para el Mundial de Canadá, Estados Unidos y México 2026. El entrenador Marcelo Bielsa trabajó por primera vez este martes con todo el plantel a disposición. Son 29 los jugadores que están a la orden del director técnico argentino. Las ausencias de Rodrigo Bentancur y Federico Valverde El gran desafío que debe encarar Bielsa es conformar el mediocampo sin Rodrigo Bentancur ni Federico Valverde.   Bentancur está entre los convocados y entrena en el Complejo Celeste pero no puede jugar contra Paraguay por acumulación de amarillas. El volante de Tottenham ya arrastraba una amarilla del partido contra Colombia y vio la segunda en la visita a Bolivia, el pasado 25 de marzo. Federico Valverde fue descartado para esta doble fecha porque en Real Madrid fue diagnosticado con lumbociatalgia, razón por la cual inició un tratamiento en España. Otra importante ausencia en la zona media, por un esguince de rodilla, es Nicolás De La Cruz, volante de Flamengo que en el inicio de la era Bielsa fue uno de los mejores intérpretes del estilo de juego que pretende el DT. Bielsa tiene a disposición a Manuel Ugarte (Manchester United), un titular fijo bajo su égida, Nicolás Fonseca (León), Emiliano Martínez (Palmeiras), Lucas Torreira (Galatasaray) y Rodrigo Zalazar (Sporting Braga). Torreira vuelve a la selección tras jugar por última vez el 23 de setiembre de 2022 en amistoso con Irán, previo al Mundial de Catar, cuando Diego Alonso era el entrenador. Su gran momento en Turquía lo devolvió a la selección y es el jugador que llegó al Complejo con mayor anticipación por lo que Bielsa tiene bastante información como para saber qué le puede aportar al equipo. Zalazar jugó los dos primeros partidos que Bielsa dirigió en Uruguay, amistosos ante Nicaragua y Cuba, pero esta es su primera convocatoria para partidos oficiales. Manu Ugarte es un número puesto en el mediocampo. Si el entrenador juega con su habitual sistema táctico de 4-2-3-1, el DT deberá definir su ladero entre Torreira, Fonseca y Martínez ya que estos dos últimos ya han jugado en las presentes Eliminatorias. La ausencia de Sergio Rochet Sin Sergio Rochet, lesionado, todo apunta a que Santiago Mele vuelve a ocupar el arco de Uruguay tal como lo hizo cuando faltó el golero de Inter. En defensa, Nahitan Nández es el lateral derecho, José María Giménez y Ronald Araujo los centrales habituales con Sebastián Cáceres como primera alternativa. Pero Bielsa siempre gusta de poner un lateral zurdo (Matías Viña primero, luego Mathías Olivera) de modo tal de aprovechar los lanzamientos en largo cruzados desde la salida. Si Olivera va a la zaga, como laterales izquierdos está Joaquín Piquerez y ahora se convocó a Juan Manuel Sanabria que en Atlético San Luis pasó de volante a ocupar ese rol. Por delante del doble cinco los extremos suelen ser Facundo Pellistri y Maximiliano Araújo.  Por delante de esos volantes y detrás del 9, Bielsa suele colocar a De La Cruz y ante su ausencia, a Giorgian De Arrascaeta, de gran presente en Flamengo. El reemplazo para Darwin Núñez La otra gran duda que debe despejar el DT es el reemplazo de Darwin Núñez, quien debe cumplir tres partidos más de suspensión por su sanción por incidentes tras el partido con Colombia por Copa América 2024. No está Federico Viñas, lesionado, que fue titular en el último partido, contra Bolivia. Sí están Rodrigo Aguirre y Agustín Álvarez Martínez, este último en su primera convocatoria en la era Bielsa.  </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/futbol/las-cuatro-grandes-ausencias-que-marcelo-bielsa-tiene-enfrentar-la-seleccion-uruguay-paraguay-eliminatorias-n6002526'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Las cuatro grandes ausencias que Marcelo Bielsa tiene para enfrentar con la selección de Uruguay a Paraguay por Eliminatorias', // Opcional, pero recomendado     
+                text: ' Las cuatro grandes ausencias que Marcelo Bielsa tiene para enfrentar con la selección de Uruguay a Paraguay por Eliminatorias',  // Opcional
+                url: 'https://www.elobservador.com.uy/futbol/las-cuatro-grandes-ausencias-que-marcelo-bielsa-tiene-enfrentar-la-seleccion-uruguay-paraguay-eliminatorias-n6002526'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
