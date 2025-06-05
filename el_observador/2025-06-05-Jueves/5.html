@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Envejecimiento en el Estado: la edad de los funcionarios públicos de Uruguay es de las más altas de América Latina</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Envejecimiento en el Estado: la edad de los funcionarios públicos de Uruguay es de las más altas de América Latina</h1>
+            <p>
+A diciembre del año pasado, el promedio de edad de los funcionarios públicos en Uruguay es de 47,8 años. Si bien la cifra es levemente más baja que la relevada en 2013 (51,3 años), es casi idéntica al promedio de 2019 (47,6 años). A nivel comparativo, la situación de Uruguay se ubica por encima del promedio regional e internacional dado que, mientras que el 30,7% de los funcionarios supera los 55 años, este grupo representa el 21,09% en América Latina y el Caribe y el 25,86% en los países de la Organización para la Cooperación y el Desarrollo Económicos (OCDE).  comparacion con otros paises ONSC.png       Los datos se desprenden de un análisis sobre la estructura etaria de los funcionarios públicos, realizado por la Oficina Nacional de Servicio Civil (ONSC) y tienen en cuenta a los funcionarios civiles de Presidencia de la República y los 14 ministerios, mientras que excluye a militares y policiales. Desde la ONSC argumentaron que conocer la cantidad de personas que entran en edad de retiro durante cada período de gobierno “es importante”, dado que permite “replantear preguntas como cuántas de esas vacantes es deseable reponer, o cuántas es necesario transformar en cargos con nuevos perfiles”. En ese sentido, los datos reflejaron que a diciembre del año pasado, el 18,5% de los funcionarios ya se encontraba en edad de retiro (60 años), mientras que en 2019, ese porcentaje era incluso mayor (19,4%). Si bien el fenómeno del envejecimiento demográfico no es exclusivo del país ni del Estado uruguayo, desde la ONSC manifestaron que la velocidad de envejecimiento de los funcionarios públicos suele ser más acelerada que en el sector privado.  onsc.png       Uno de cada cinco funcionarios se habrá jubilado a fines de 2029 A diferencia del sector privado, donde las dinámicas laborales tienden a una mayor rotación y presencia de perfiles jóvenes, el sector público tiene una estructura más rígida y envejecida, lo que genera tanto desafíos como oportunidades para la planificación del Estado en términos de sus funcionarios. En línea con eso, el estudio de la ONSC constató que hacia finales de este período de gobierno, el 6,7% de los funcionarios públicos debería jubilarse por cumplir con la edad máxima que determina el retiro obligatorio en la administración pública (fijada en 70 años). Sin embargo, en 2023 la edad promedio de retiro de estos funcionarios no fue la mínima ni la máxima, sino que fue de 64,3 años, algo mayor que en 2019 (63,9). Por tanto, la ONSC consideró la hipótesis de que si los próximos funcionarios se retiran a los 64 años, es decir, en línea con la edad promedio de retiro, entonces hacia finales de 2029, “se habrá jubilado más de uno de cada cinco funcionarios públicos del Poder Ejecutivo” (21,1%), un total de 3.702 personas. Es decir que, de mantenerse las actuales condiciones, durante el actual período de gobierno, “la causal jubilatoria plantea la oportunidad de rediscutir el destino de un quinto de los cargos actualmente vigentes en el Poder Ejecutivo”, señaló el informe. Las áreas del Estado con funcionarios más viejos  El ministerio que presentó la plantilla laboral más envejecida a diciembre de 2024 fue el de Educación y Cultura (MEC), con un promedio de edad de 52,4 años; le siguió el Ministerio de Vivienda y Ordenamiento Territorial (MVOT) con un promedio de 51,1 años y Presidencia con un promedio de 50,4 años.    promedio de edad por organismo onsc.png       De forma contraria, el ministerio con funcionarios más jóvenes fue el del Interior (MI), con un promedio de edad de 42,2 años, seguido por el de Desarrollo Social (Mides) con un promedio de 43,6 años y el de Ambiente (MA) con un promedio de 45,9 años. En tanto, según la ONSC, “hay tres incisos que tienen uno de cada cuatro o más de sus funcionarios con 60 años” o inclusive mayores: el Ministerio de Turismo, el de Transporte y Obras Públicas y el MEC.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/economia-y-empresas/envejecimiento-el-estado-la-edad-los-funcionarios-publicos-uruguay-es-las-mas-altas-america-latina-n6002727'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Envejecimiento en el Estado: la edad de los funcionarios públicos de Uruguay es de las más altas de América Latina', // Opcional, pero recomendado     
+                text: ' Envejecimiento en el Estado: la edad de los funcionarios públicos de Uruguay es de las más altas de América Latina',  // Opcional
+                url: 'https://www.elobservador.com.uy/economia-y-empresas/envejecimiento-el-estado-la-edad-los-funcionarios-publicos-uruguay-es-las-mas-altas-america-latina-n6002727'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
