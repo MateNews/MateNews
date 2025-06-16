@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chelsea iguala ante Los Angeles FC en su debut en el Grupo D del Mundial de Clubes.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Chelsea iguala ante Los Angeles FC en su debut en el Grupo D del Mundial de Clubes.</h1>
+            <p>Chelsea y Los Angeles FC se enfrentan en el Mercedes-Benz Stadium, en un duelo que marca la presentación de ambos en la fase de grupos del Mundial de Clubes. El duelo es correspondiente a la zona D, la cual integran con Flamengo (Brasil) y Espérance ST (Túnez). El partido cuenta con la transmisión GRATIS de DAZN (se puede seguir por el sitio o la app).</p><p>El cuadro británico domina las acciones en el terreno de juego: maneja la posesión de la pelota y tiene constantes aproximaciones al área rival. El equipo norteamericano todavía no puede hacer pie en el campo y le cuesta tener el balón. No obstante, el ritmo del encuentro pasados los 15 minutos no es alto. La chance más clara llegó a partir de una buena jugada de Noni Madueke, quien sacó un remate rasante que el arquero Hugo Lloris despejó con el pie.</p><p>Con el reloj marcando los 30 minutos de partido, Chelsea monopoliza la posesión del balón y asedia el arco defendido por el francés. Los dirigidos por Steven Cherundolo resisten en su propia área y no pueden pasar el duelo al campo rival. De hecho, lograron superar la mitad de la cancha con la pelota dominada en pocas oportunidades.</p><p>Partido en desarrollo...</p><p>LA PREVIA</p><p>El elenco de Londres, que llega como uno de los participantes más fuertes del certamen, tiene la presión de comenzar con una victoria. Los Blues no solo cuentan con un plantel repleto de figuras, sino que también viene de una temporada exitosa en la que logró clasificar a la UEFA Champions League y se coronó campeón de la Conference League tras vencer al Betis en la final disputada en el Tarczyński Arena.</p><p>Por su parte, el Los Angeles FC busca aprovechar el hecho de jugar en su país para sorprender en su zona. El conjunto estadounidense aseguró su lugar en el certamen internacional tras superar al América de México en un duelo peleado de los playoffs que terminó 2-1 a su favor a inicios de este mes. Además, viene de una victoria reciente frente al Sporting KC en la MLS, lo que refuerza su confianza de cara al campeonato más codiciado del planeta.</p><p>Chelsea cuenta con un plantel lleno de talento y experiencia. Entre sus principales figuras destacan Cole Palmer, Enzo Fernández, Christopher Nkunku, Pedro Neto, Roméo Lavia, Nicolas Jackson y el ecuatoriano Moisés Caicedo, quien ha demostrado ser una pieza clave en el mediocampo. Este grupo de jugadores posiciona al equipo inglés como uno de los favoritos no solo para avanzar en la fase de grupos, sino también para competir por el título del torneo.</p><p>En el caso de la franquicia americana, el plantel cuenta con jugadores destacados que podrían marcar la diferencia. En el arco, brilla habitualmente el experimentado Hugo Lloris, campeón del mundo con Francia en Rusia 2018, que aporta seguridad y liderazgo. En el ataque, el equipo tiene a Igor Jesus, Denis Bouanga y al veterano Olivier Giroud, quienes buscarán aprovechar cualquier oportunidad para complicar al equipo inglés.</p><p>El Mundial de Clubes representa una oportunidad única para ambos equipos. Mientras que el Chelsea busca reafirmar su estatus como uno de los grandes clubes europeos, el Los Angeles FC intentará demostrar que puede competir al más alto nivel internacional. El duelo en el Mercedes-Benz Stadium promete ser un espectáculo emocionante, con ambos equipos buscando comenzar con el pie derecho en esta prestigiosa competencia.</p><p>Formaciones</p><p>Estadio: Mercedes-Benz Stadium</p><p>Árbitro: Jesús Valenzuela (VEN)</p><p>Hora: 16:00 (hora de Argentina y Uruguay), 15:00 (Chile) y 14:00 (Ecuador, Colombia y Perú)</p><p>TV: DAZN</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/deportes/2025/06/16/el-chelsea-debuta-ante-los-angeles-fc-en-el-grupo-d-del-mundial-de-clubes-hora-tv-y-formaciones/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Chelsea iguala ante Los Angeles FC en su debut en el Grupo D del Mundial de Clubes.', // Opcional, pero recomendado     
+                text: 'Chelsea iguala ante Los Angeles FC en su debut en el Grupo D del Mundial de Clubes.',  // Opcional
+                url: 'https://www.infobae.com/deportes/2025/06/16/el-chelsea-debuta-ante-los-angeles-fc-en-el-grupo-d-del-mundial-de-clubes-hora-tv-y-formaciones/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
