@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Avanza una masa de aire polar desde la Patagonia: qué dice el pronóstico del tiempo para el fin de semana largo.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Avanza una masa de aire polar desde la Patagonia: qué dice el pronóstico del tiempo para el fin de semana largo.</h1>
+            <p>Una masa de aire polar comenzó a avanzar sobre la Patagonia este sábado. Según advirtió el Servicio Meteorológico Nacional (SMN), este fenómeno continuará extendiéndose en el país durante los próximos días y alcanzará incluso a las provincias del norte.</p><p>Las temperaturas en el sur podrían rondar los 10 grados bajo cero este fin de semana, con marcas aún más bajas en algunas regiones y fuertes nevadas en la Patagonia y la meseta.</p><p>Mañana, la masa de aire frío se extenderá hacia las provincias centrales. Este fenómeno estará acompañado por vientos fuertes y valores térmicos muy bajos, intensificándose a lo largo de la mañana del lunes.</p><p>Según informó el organismo, se esperan heladas en distintas provincias del norte entre el lunes y el martes.</p><p>Tras el inicio del invierno astronómico, la Ciudad de Buenos Aires (CABA) prevé una mañana de sábado con neblina, seguida por una tarde y una noche mayormente nubladas. Sin pronóstico de lluvias, las temperaturas oscilarán entre los 8 y los 17 grados.</p><p>Hacia el domingo, aunque el SMN anticipa una jornada mayormente nublada y sin probabilidades significativas de precipitaciones, la atención estará puesta en la intensificación del viento durante la tarde y la noche.</p><p>El informe oficial advierte sobre la posibilidad de ráfagas de viento de hasta 69 kilómetros por hora durante la tarde. Se espera una temperatura mínima de 8 °C y una máxima de 15 °C.</p><p>Ya el lunes 23 de junio, en medio de la avanzada de la masa de aire polar, se producirá un descenso generalizado de los valores térmicos en la región central de la Argentina.</p><p>En ese sentido, en CABA y alrededores las temperaturas oscilarán entre los 6 y los 10 grados, con lluvias aisladas durante la mañana. Las ráfagas de viento oscilarán entre los 42 y los 59 kilómetros por hora a lo largo de la jornada.</p><p>El martes de la próxima semana, en tanto, será una jornada completamente despejada. La mínima alcanzará los 3 grados, mientras que la máxima se mantendrá en 13°, al igual que en la jornada siguiente.</p><p>Ante estas condiciones, el Ministerio de Salud, en conjunto con el SMN, recordó una serie de medidas de precaución para evitar problemas de salud asociados al frío. Entre las recomendaciones figuran evitar la exposición prolongada al aire libre, mantenerse abrigado con varias capas de ropa liviana, generar calor corporal mediante el movimiento, calefaccionar los espacios cerrados de forma segura y no realizar cambios bruscos de temperatura.</p><p>De esta manera, el fin de semana largo en Buenos Aires se presentará sin lluvias importantes, con bajas temperaturas y una transición hacia una semana más fría, marcada por el avance del invierno.</p><p>En qué zonas puede nevar o caer aguanieve</p><p>Este fenómeno de aire frío, se extenderá durante varios días y afectará gran parte del territorio nacional. El impacto más marcado se sentirá en provincias como San Luis, La Pampa y el interior de Buenos Aires, donde las mínimas llegarían a -7 °C o -8 °C en zonas rurales.</p><p>Ante la consulta de Infobae, la vocera del SMN precisó que “la nieve se presentará en ciudades del sur y del oeste de la Patagonia. Se esperan nevadas en toda la provincia de Tierra del Fuego, en Santa Cruz y en el centro y oeste de Chubut, aunque con menor intensidad en el este de esta última provincia".</p><p>Entre las ciudades donde hay posibilidades de nevadas, mencionó Comodoro Rivadavia y Trelew. Además, volverá a nevar en el centro y oeste de Río Negro.</p><p>Fernández también indicó que puede registrarse nieve, aguanieve o graupel en las sierras de Buenos Aires, Córdoba, San Luis y en las sierras del noroeste argentino (NOA).</p><p>En la costa atlántica bonaerense también es probable que pueda caer aguanieve o graupel.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/2025/06/21/avanza-una-masa-de-aire-polar-desde-la-patagonia-que-dice-el-pronostico-del-tiempo-para-el-fin-de-semana-largo/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Avanza una masa de aire polar desde la Patagonia: qué dice el pronóstico del tiempo para el fin de semana largo.', // Opcional, pero recomendado     
+                text: 'Avanza una masa de aire polar desde la Patagonia: qué dice el pronóstico del tiempo para el fin de semana largo.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/2025/06/21/avanza-una-masa-de-aire-polar-desde-la-patagonia-que-dice-el-pronostico-del-tiempo-para-el-fin-de-semana-largo/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
