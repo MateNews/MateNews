@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El control territorial de la Provincia complica el acuerdo entre el PRO y La Libertad Avanza. El enojo de los intendentes, las exigencias libertarias y el optimismo de Francos. </title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El control territorial de la Provincia complica el acuerdo entre el PRO y La Libertad Avanza. El enojo de los intendentes, las exigencias libertarias y el optimismo de Francos. </h1>
+            <p>El enojo de los intendentes, las exigencias libertarias y el optimismo de Francos</p><p>Cristian Ritondo empuja el acuerdo con la Casa Rosada, pero recibe el enojo de los jefes comunales por el armado de listas.</p><p>Finalmente, el encuentro para negociar del PRO y La Libertad Avanza no fue en la Rosada ni con Karina Milei. Fue en las oficinas de Diego Santilli y con el lugarteniente de la hermanísima, Sebastián Pareja. Nadie quiso decir nada al finalizar el encuentro, lo cual no suele ser una buena señal. El día anterior, Ritondo midió la temperatura en un encuentro con los intendentes del PRO: de 13, solo cuatro se mostraron cerca de un acuerdo. El resto le advirtieron que los dirigentes locales de LLA ponen trabas a acordar, piden imposibles cuando no se muestran hostiles en el Concejo Deliberante local. Ajeno a todo esto, el jefe de Gabinete, Guillermo Francos, dijo estar confiado en que habrá un acuerdo entre ambos en la provincia de Buenos Aires.</p><p>Si algún dirigente ponía sus esperanzas en el encuentro con Karina Milei, ya puede ir olvidándose. La secretaria general de la Presidencia no participó de las negociaciones, que tampoco fueron en Casa Rosada como otras veces. Se trasladaron, en este caso, a las oficinas de Diego Santilli, quien recibió junto a Cristian Ritondo y Guillermo Montenegro al enviado de la hermanísima: Sebastián Pareja. Con él, intentaron resolver la espinosa disputa entre los intendentes PRO, que exigen manejar sus territorios, y la orden general que parece haber bajado Karina Milei de tener la lapicera hasta en las listas de concejales. Si bien hacia afuera todos muestran buena voluntad, a la hora del armado concreto de las listas los problemas se multiplican y no parece haber una solución cercana, cuando ya están entrando en tiempo de descuento.</p><p>El encuentro del martes por la tarde se extendió y terminó en un preocupante silencio. Todo indica que seguirán negociando. Como prenda de unidad, en el PRO ya no discuten muchas de las exigencias de Pareja -y de Karina Milei- como que la boleta sea violeta y que el frente se llame La Libertad Avanza, lo que en la práctica es retirar de la competencia la boleta del PRO.</p><p>Esto a los intendentes les gusta poco, pero hay una buena parte que podría ceder esto si se cumplieran algunas condiciones que se conversaron en el encuentro con Ritondo: que el manejo de las listas de concejales esté en manos de los intendentes locales, que haya un reparto más igualitario en las listas provinciales. Y en algunos casos, que LLA deje de atacar al intendente del PRO en el Concejo provincial. "Acá son como en la Ciudad de Buenos Aires: te votan todo en contra. No le podemos regalar lugares en las listas, porque después te arman un desastre", detallaba un allegado a uno de los intendentes PRO que ve difícil la posibilidad de un acuerdo. Hasta hay sospechas de que algunos de los intendentes están en una suerte de lista negra de Karina Milei, como pasó con Jorge Macri.</p><p>Quien ve todo con mucho más optimismo es Guillermo Francos: “Son dos partidos que tuvieron un trabajo en conjunto en el Congreso, ellos apoyaron las medidas. La realidad es que estamos intentando trabajar juntos y armar las propuestas electorales”, comentó sobre las negociaciones, de las que no participa (aunque sí lo vio a Ritondo en el comienzo del Consejo de Mayo que presidió). “Cuando se llega al momento de cierre de listas hay disputa y diferencias, pero no tiene nada que ver con lo que sienta. Siempre tuvimos una relación excelente. Creo que vamos a llegar a entendimientos con el PRO”, auguró.</p><p>Dicen que lo último que se pierde son las esperanzas.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.pagina12.com.ar/836968-el-control-territorial-de-la-provincia-complica-el-acuerdo-e'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El control territorial de la Provincia complica el acuerdo entre el PRO y La Libertad Avanza. El enojo de los intendentes, las exigencias libertarias y el optimismo de Francos. ', // Opcional, pero recomendado     
+                text: 'El control territorial de la Provincia complica el acuerdo entre el PRO y La Libertad Avanza. El enojo de los intendentes, las exigencias libertarias y el optimismo de Francos. ',  // Opcional
+                url: 'https://www.pagina12.com.ar/836968-el-control-territorial-de-la-provincia-complica-el-acuerdo-e'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
