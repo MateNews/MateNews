@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Oddone dijo que el Estado deberá volcar alrededor de US$ 80 millones anuales a la Caja de Profesionales</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Oddone dijo que el Estado deberá volcar alrededor de US$ 80 millones anuales a la Caja de Profesionales</h1>
+            <p>
+El ministro de Economía, Gabriel Oddone, participó este jueves de la Cumbre del Mercosur en Buenos Aires. En rueda de prensa posterior al encuentro, el secretario de Estado se refirió al Mercosur, habló del encuentro con Argentina, opinó de la situación con la Caja de Profesionales y habló también de las pautas salariales. "Fue una jornada muy atractiva, muy productiva, con avances a la velocidad del Mercosur, pero con un progreso en la agenda consistente", comenzó diciendo en rueda de prensa. En cuanto a la reunión bilateral con Argentina, dijo que se trataron "aspectos genéricos", como algunas reformas que se están haciendo en Argentina y que desde Uruguay se miran con "atención". También, se abordaron aspectos en materia de reformas en Uruguay. Con esta reunión, entiende el ministro, quedó establecida la posibilidad de tener un "contacto con fluidez, no solamente entre los ministros, sino también incorporando a los presidentes". Consultado por lo que Uruguay necesita de los argentinos, el ministro planteo que lo que desea es que se mantenga la estabilidad económica en el país, ya que además de ser un "gran amigo", Argentina es un "gran cliente" para el país. "Todo lo que sea mejorar la estabilidad macroeconómica, como también mejorar los fenómenos de distribución de los ingresos para que eso tenga repercusiones sobre el consumo masivo en un país como Uruguay, son aspectos muy importantes", aseveró. En cuanto al acuerdo con la EFTA, sostuvo que "siempre es una buena noticia" que el Mercosur avance en acuerdos comerciales con terceros bloques. "Uruguay necesita de manera imperiosa abrir sus mercados y generar más oportunidades de negocio, por lo tanto, el acceso con aranceles cero a los países de EFTA es algo extraordinariamente positivo", destacó y añadió que si se concreta también a fin de año el acuerdo con la Unión Europea Uruguay será otra "noticia extraordinaria" para el país. "Históricamente, se ha puesto sobre la mesa la necesidad de que el Mercosur se convirtiera en un jugador más activo a nivel global abriendo puertas a sus miembros y eso es lo que yo creo que en esta presidencia de protémpore de Argentina que acaba de terminar y en la presidencia de protémpore de Brasil que se inicia, se está decidiendo dar prioridad, por lo que somos bastante optimistas", sostuvo. Tras esto, se refirió a la aprobación del proyecto de salvataje para la Caja de Profesionales en el Senado y señaló que pese a no ser la ley que hubiera querido, las "dos partes" están "satisfechas" con el acuerdo. Sobre la cantidad de dinero que tendrá que aportar el Estado tras la aprobación de esta ley, Oddone reveló que será "algo así como US$ 80 millones por año". "Nosotros entendimos que las contribuciones del Estado deberían ser menores, pero ese es el acuerdo que está. Estamos hablando de 50 millones más de lo que nosotros teníamos previsto", dijo. Consultado por la necesidad de hacer alguna "reforma" en la caja para que este tipo de circunstancias no vuelvan a pasar, señaló la necesidad de ir a un cambio en la gobernanza. "Creemos que la caja de jubilaciones tiene muchas oportunidades de mejorar su gestión y es algo que los delegados del Poder Ejecutivo va a poner sobre la mesa", afirmó. Sobre el cierre habló de las pautas salariales. Oddone explicó que para ellos era "muy importante" tomar en cuenta una "priorización de los salarios bajos, de manera tal de diferenciar los ajustes de salarios, los aumentos de salarios para los salarios más sumergidos". "Entonces entendimos que esta vez la forma de abordar la discusión salarial, más que por sectores de actividad, más que por sectores con oportunidades buenas u oportunidades malas, tenía que ser por franjas salariales", explicó. Preguntado por si el planteo con respecto a los salarios más altos se acerca la idea de "desindexación" que había proyectado, respondió que él está "conforme", aunque hubiera deseado "avanzar más" de lo que avanzaron.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/oddone-dijo-que-el-estado-debera-volcar-alrededor-us-80-millones-anuales-la-caja-profesionales-n6007024'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Oddone dijo que el Estado deberá volcar alrededor de US$ 80 millones anuales a la Caja de Profesionales', // Opcional, pero recomendado     
+                text: ' Oddone dijo que el Estado deberá volcar alrededor de US$ 80 millones anuales a la Caja de Profesionales',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/oddone-dijo-que-el-estado-debera-volcar-alrededor-us-80-millones-anuales-la-caja-profesionales-n6007024'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> ¿Qué dijo el presidente de Nacional, Ricardo Vairo, sobre la posible salida de Christian Oliva a Athletico Paranaense?</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> ¿Qué dijo el presidente de Nacional, Ricardo Vairo, sobre la posible salida de Christian Oliva a Athletico Paranaense?</h1>
+            <p>
+En la semana previa a la final clásica del Torneo Intermedio, que Peñarol vs Nacional jugarán el domingo en el Estadio Centenario, el presidente tricolor, Ricardo Vairo, se expresó con cautela sobre el partido que definirá el segundo título de la Liga AUF Uruguaya 2025, planteó que no pueden confiarse y respondió ante los rumores de salida de Christian Oliva al fútbol brasileño. “El modo hincha empieza a prevalecer sobre el dirigente”, comenzó explicando Vairo en una entrevista que brindó al programa Grandes de Verdad de Carve Deportiva AM 1010. ¿Nacional llega como favorito? “Los clásicos son clásicos y hay que jugarlos. A nivel de antecedentes sí, tenemos la ventaja en la Tabla Anual, llegamos con 13 partidos con victorias, los antecedentes en estos partidos nos ubican con mayores posibilidades pero los clásicos hay que jugarlos y estos partidos se definen por detalles. Los antecedentes nos dan confianza, pero no hay que confiarse”.   20241217 Ricardo Vairo Cambio de mando en la comisión directiva de Nacional. Foto. Leonardo Carreño (4).jpeg     Ricardo Vairo Foto: Leonardo Carreño Ante la pregunta de si Nacional puede perder jugadores en el mercado de pases que se abrió este mes y permanecerá activo hasta setiembre, dijo: “La idea es que no se vaya nadie, pero si vienen ofertas se van a analizar”. Frente a la consulta de si el club fue consultado desde el fútbol brasileño por Cristian Oliva o si se trataba de una movida de los periodistas, respondió: “Nacional no sabe nada. Como dijiste, es una movida de prensa. No está en los planes de Nacional la salida de Oliva”. Desde Brasil se anuncia que Athletico Paranaense está interesado en el volante titular de Nacional. Cómo ve la situación de Gonzalo Petit, que puede quedar relegado tras el regreso de Gonzalo Carneiro tras una intervención quirúrgica en la rodilla y la contratación de Maximiliano Gómez. ”Esa es una decisión del cuerpo técnico. Hoy Petit se ganó la titularidad. Luego el técnico decidirá. Desde mi punto de vista, como hincha, se ganó la titularidad”.   Nacional Juventud campeonato intermedio 2025/Gonzalo Petit     Foto: Leonardo Carreño Destacó la actuación del golero Ignacio Suárez, quien, ante la ausencia de Luis Mejía en la selección de Panamá, realizó buenas actuaciones en el Torneo Intermedio. “Nos da la tranquilidad que tenemos un arquero suplente a quien cada vez que lo llaman a actuar responde con creces. Está más que claro que Nacional tiene un gran arquero en Nacho Suárez”.   Nacional Juventud campeonato intermedio 2025/Ignacio Suárez     Foto: Leonardo Carreño Dijo que el presupuesto de Nacional no variará para el segundo semestre. El club deja de pagar el segundo salario más alto del plantel a Eduardo Vargas y suma los de Maximiliano Gómez, Nicolás Lodeiro (que firmó un contrato simbólico), Christian Ébere y Matías de los Santos. Finalmente, frente a la pregunta de los trabajos que realizarán en la cancha del Gran Parque Central en este receso, explicó: “Se mejoró una cancha cuyo período útil está vencido. Ahora vamos a tener dos semanas sin uso y se realizará un nuevo maquillaje. Ayer se tapó toda la cancha, con lonas, para que las inclemencias del tiempo no afectaran tanto. Y ya se trabaja en los presupuestos para el cambio final a fin de año”. En diciembre, Nacional parará durante 60 días el Gran Parque Central para reconstruir la cancha de su estadio, y adelantó que “no se descarta que el arranque de la temporada 2026 sea fuera del Parque”.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/futbol/que-dijo-el-presidente-nacional-ricardo-vairo-la-posible-salida-christian-oliva-athletico-paranaense-n6007018'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' ¿Qué dijo el presidente de Nacional, Ricardo Vairo, sobre la posible salida de Christian Oliva a Athletico Paranaense?', // Opcional, pero recomendado     
+                text: ' ¿Qué dijo el presidente de Nacional, Ricardo Vairo, sobre la posible salida de Christian Oliva a Athletico Paranaense?',  // Opcional
+                url: 'https://www.elobservador.com.uy/futbol/que-dijo-el-presidente-nacional-ricardo-vairo-la-posible-salida-christian-oliva-athletico-paranaense-n6007018'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
