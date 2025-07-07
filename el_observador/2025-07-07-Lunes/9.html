@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Mundial 2026: las claves para planificar el viaje y cuándo recomiendan empezar a reservar</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Mundial 2026: las claves para planificar el viaje y cuándo recomiendan empezar a reservar</h1>
+            <p>
+Si bien las agencias de viaje suelen recomendar reservar los paquetes de viajes con entre nueve y 11 meses de antelación a la fecha de viaje, la lógica cambia cuando se trata de un mundial y en especial uno como el que se jugará en 2026, con partidos que se disputarán en 16 ciudades de Canadá, México y Estados Unidos y del que todavía no se conoce el fixture.   No obstante, en las últimas semanas, la FIFA lanzó oficialmente sus paquetes VIP de hospitalidad para el Mundial 2026, con diferentes modalidades que permiten adquirir entradas con antelación y vivir una experiencia premium en los estadios. Las opciones incluyen entradas para todos los partidos en una ciudad determinada, seguir a una selección específica o elegir partidos puntuales durante la fase de grupos.  Una de las alternativas más destacadas es la Serie de Sedes, que permite acceder a entre cuatro y nueve partidos en una misma ciudad, con asientos preferenciales en suites privadas o salones junto al campo. En el caso del estadio de Nueva York–Nueva Jersey, este paquete incluye la final del Mundial, que se disputará el domingo 19 de julio. Los precios para esta modalidad varían según la sede y el nivel de servicio, pero parten desde US$8.300 por persona, según la información publicada en el portal oficial de hospitalidad de FIFA (On Location). Otra opción es la Serie de Cuatro Partidos, que permite seleccionar encuentros de la fase de grupos en distintas sedes de Estados Unidos. Esta alternativa incluye dos partidos disputados entre lunes y jueves (no incluye el inaugural), con acceso a suites privadas, salones junto a la cancha y espacios de hospitalidad compartida. El precio de este paquete se ubica alrededor de los US$5.300 por persona. Por último, la modalidad “Sigue a mi equipo” permite a los aficionados seguir a su selección nacional durante toda la fase de grupos y un partido de dieciseisavos de final, sin importar en qué ciudades juegue. Esta experiencia incluye entrada a asientos premium, acceso al exclusivo FIFA Pavilion, un espacio de hospitalidad con servicios de entretenimiento, comidas y bebidas antes y después de cada encuentro. El precio de este paquete parte desde USD6.750 por persona, y está orientado a las selecciones ya clasificadas. Cabe destacar que estos paquetes no incluyen transporte ni alojamiento, y que la venta está limitada exclusivamente a través de los canales oficiales de FIFA. ¿Qué dicen los operadores turísticos en Uruguay?  En este escenario, operadores turísticos consultados por El Observador recomiendan que quienes estén interesados en asistir, esperen al sorteo de sedes —previsto para diciembre— antes de comenzar a reservar, debido a que todavía no se conocen las ciudades donde podría jugar Uruguay —en caso de que selle su clasificación en Eliminatorias—, ni están disponibles los pasajes aéreos. Esto hace que, a pesar de que falta menos de un año, las agencias de viajes aún no están ofreciendo paquetes para este torneo deportivo.  Una vez realizado el sorteo, la recomendación de los especialistas es comprar los pasajes y asegurar el alojamiento.  En cuanto al presupuesto que puede implicar concurrir a la competencia internacional, los operadores turísticos dijeron a El Observador que es difícil adelantarlo al no saber las distancias que se deberán recorrer, pero mencionaron que Estados Unidos suele ser un destino caro. Además, eventos de este tipo, generan una gran demanda, lo que se ve reflejado directamente en la suba de precios. Durante el actual mundial de clubes de la FIFA, por ejemplo, los operadores detallaron que los precios de los alojamientos en las sedes principales aumentaron entre 30% y 50%. En lo que tiene que ver con los tickets aéreos, los operadores destacaron que "es probable" que las aerolíneas preparen tarifas especiales para este evento, por lo que los precios de los pasajes no deberían sufrir subas importantes, según estiman.  Solo como referencia, viajar desde Uruguay a Qatar en el mundial de 2022 implicaba un presupuesto que oscilaba entre US$7.000 y US$15.000 por persona. </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cafe-y-negocios/mundial-2026-las-claves-planificar-el-viaje-y-cuando-recomiendan-empezar-reservar-n6007202'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Mundial 2026: las claves para planificar el viaje y cuándo recomiendan empezar a reservar', // Opcional, pero recomendado     
+                text: ' Mundial 2026: las claves para planificar el viaje y cuándo recomiendan empezar a reservar',  // Opcional
+                url: 'https://www.elobservador.com.uy/cafe-y-negocios/mundial-2026-las-claves-planificar-el-viaje-y-cuando-recomiendan-empezar-reservar-n6007202'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
