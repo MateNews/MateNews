@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Los futuros bursátiles de Wall Street caen tras los aranceles de Donald Trump a Canadá.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Los futuros bursátiles de Wall Street caen tras los aranceles de Donald Trump a Canadá.</h1>
+            <p>Los futuros de las acciones estadounidenses y europeas caían en Asia este viernes después de que el presidente de Estados Unidos, Donald Trump, intensificara las amenazas arancelarias contra Europa y Canadá, frenando un amplio repunte en los mercados de acciones regionales.</p><p>El dólar ganaba terreno frente al euro y la divisa canadiense, mientras Trump publicó a última hora del jueves una carta en la que anunciaba que se aplicaría una tasa arancelaria del 35% a todas las importaciones procedentes de Canadá a partir del 1 de agosto, y añadió que la Unión Europea recibiría una carta el viernes.</p><p>El presidente de EEUU, cuya ola mundial de aranceles ha trastornado a las empresas y la formulación de políticas, propuso una tasa arancelaria general del 15% o el 20% sobre otros países, un paso adelante desde la tasa de referencia actual del 10%.</p><p>A las 10:30 GMT, los futuros del Nasdaq caen un 0,57%, los del S&P 500 un 0,65% y los del Dow un 0,68%.</p><p>El euro EUR=EBS bajaba un 0,2% a 1,1676 dólares, mientras que el dólar ganaba un 0,3% a 1,3695 dólares canadienses CAD=.</p><p>A principios de semana, Trump retrasó su fecha límite de aranceles del 9 de julio al 1 de agosto para muchos socios comerciales para dar más tiempo a las negociaciones, pero amplió su guerra comercial, estableciendo nuevas tarifas para varios países, incluidos los aliados Japón y Corea del Sur, junto con un arancel del 50% sobre el cobre.</p><p>Joseph Capurso, jefe de economía internacional del Commonwealth Bank of Australia, dijo que la tasa arancelaria del 35% sobre Canadá no es tan mala como se temía porque la mayoría de las importaciones aún están sujetas a exenciones bajo el Tratado entre México, Estados Unidos y Canadá (T-MEC).</p><p>“Ahora bien, la tasa arancelaria sobre las importaciones procedentes de la UE... Eso es lo que no sabemos hasta ahora. La potencial escalada entre la UE y EEUU es un gran asunto para los mercados financieros”, dijo Capurso.</p><p>“Si se produce algo similar (a la guerra comercial entre Estados Unidos y China en abril), eso va a ser muy desestabilizador”.</p><p>Por su parte, el índice MSCI más amplio de acciones de Asia-Pacífico, que no incluye Japón, se tambaleó, pero subía un 0,4% y alcanzó su nivel más alto desde noviembre de 2021. Se vio impulsado por un repunte del 1,7% en el índice Hang Seng de Hong Kong, ayudado por las expectativas de un mayor apoyo político.</p><p>Las acciones chinas avanzaban un 0,9% y alcanzaron su nivel más alto desde diciembre del año pasado, antes de las conversaciones entre el secretario de Estado estadounidense, Marco Rubio, y el ministro de Asuntos Exteriores chino, Wang Yi, en la cumbre de la ASEAN. Por su parte, el Nikkei de Tokio cae un 0,19%.</p><p>En los mercados del Tesoro, los movimientos fueron moderados en Asia. El rendimiento de referencia del Tesoro estadounidense a 10 años US10YT=RR subía 2 puntos básicos, hasta el 4,3637%, tras haber subido un poco durante la noche después de que los datos mostraran que las solicitudes de subsidio por desempleo caían inesperadamente la semana pasada.</p><p>Los precios del petróleo se revalorizaban ligeramente tras perder un 2% durante la noche. Los futuros del crudo Brent LCOc1 avanzaban un 0,2% hasta los 68,77 $ por barril, tras haber perdido un 2,2% un día antes.</p><p>El crudo estadounidense West Texas Intermediate CLc1 se revalorizaba un 0,3% a 66,75 $ el barril.</p><p>El oro al contado XAU= subía un 0,4% hasta 3.337 $ la onza.</p><p>(Con información de Reuters)</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/estados-unidos/2025/07/11/los-futuros-bursatiles-de-wall-street-caen-tras-los-aranceles-de-donald-trump-a-canada/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Los futuros bursátiles de Wall Street caen tras los aranceles de Donald Trump a Canadá.', // Opcional, pero recomendado     
+                text: 'Los futuros bursátiles de Wall Street caen tras los aranceles de Donald Trump a Canadá.',  // Opcional
+                url: 'https://www.infobae.com/estados-unidos/2025/07/11/los-futuros-bursatiles-de-wall-street-caen-tras-los-aranceles-de-donald-trump-a-canada/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
