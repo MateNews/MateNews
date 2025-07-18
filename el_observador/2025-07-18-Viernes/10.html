@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Organización del torneo de LAlcudia anunció posibles acciones legales contra la Asociación Uruguaya de Fútbol por bajarse del certamen</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Organización del torneo de LAlcudia anunció posibles acciones legales contra la Asociación Uruguaya de Fútbol por bajarse del certamen</h1>
+            <p>
+El Comité Organizador del Torneo Internacional de Fútbol Cotif de L'Alcudia emitió este jueves un comunicado anunciando que se reserva el derecho civil de iniciar acciones legales contra la Asociación Uruguaya de Fútbol (AUF) por el anuncio realizado por esta el miércoles de declinar su participación en el evento donde en 2024 se había consagrado campeona por primera vez en su historia.  A tres días del inicio del torneo y a uno para viajar, la AUF decidió cancelar el viaje de la selección sub 18 dirigida por Diego Pérez.  Según se dijo de la AUF a Referí, se generaron a último momento diferencias a lo pactado con la organización. "Fue un acuerdo no respetado en materia de derechos de televisión", expresaron.  Poco después, la AUF emitió este comunicado, sin dar demasiados detalles:   GwANPNzW0AAw_PF       Los organizadores del evento reaccionaron al otro día con este comunicado.  En el mismo expresan que, además de reservarse el derecho a iniciar acciones legales, el diferendo se dio porque un dirigente de Uruguay, al que no nombran, exigió contar con los derechos de transmisión del evento en forma exclusiva para la AUF y calificó a esa voluntad como "innegociable".  "Legalmente, los derechos de transmisión de un torneo pertenecen al organizador, salvo que exista un contrato firmado que diga lo contrario", dice el comunicado que remarca que ese contrato no existe entre la organización y la AUF. De todas formas, al final del comunicado se deja la puerta abierta para que Uruguay pueda viajar, si cambia de parecer, y se anuncia que los días y horarios de sus partidos se pueden modificar ante esa eventualidad.  El comunicado completo de los organizadores del Torneo de L'Alcudia "La Asociación Uruguaya de Fútbol ha decidido no participar en el COTIF 2025 que empieza el día 19 de julio. Lo ha comunicado tres días antes del torneo, según alegan por 'cambios de último momento en los acuerdos establecidos por la organización'. El Comité Organizador del Torneo Internacional de Fútbol sub-20 de l’Alcúdia, el COTIF, se reserva el derecho civil de emprender acciones legales para la defensa de los intereses del COTIF por el incumplimiento unilateral de los compromisos adquiridos por parte de la Asociación Uruguaya de Fútbol para la participación en el COTIF 2025. No ha existido cambio alguno en los acuerdos establecidos por ambas partes. A pesar de los compromisos por escritos existentes, un dirigente de la AUF mostró la voluntad innegociable (a una semana del inicio del torneo) de contar con los derechos televisivos exclusivos, algo que nunca se ha producido y no puede producirse. El COTIF, organizador del torneo, es el poseedor de los derechos televisivos del campeonato, como establece la FIFA, UEFA y la OMPI (Organización Mundial de la Propiedad Intelectual). Legalmente, los derechos de transmisión de un torneo pertenecen al organizador, salvo que exista un contrato firmado que diga lo contrario. En este caso, no hay ningún acuerdo escrito entre la AUF y el COTIF que transfiriese esos derechos. El COTIF ha comercializado los derechos televisivos del torneo para poder seguir (más si cabe tras los efectos de la devastadora DANA) con la costosa organización de un campeonato en el que este año participan selecciones como Argentina, Arabia Saudí, Mauritania, Venezuela o Chile. Por tanto, la exclusividad de los derechos no se puede ofrecer a la AUF. A pesar de la situación creada unilateralmente por la AUF, el COTIF quiere mostrar su buena fe y tiende la mano a los responsables federativos de Uruguay para lograr una solución inmediata. Se compromete con la AUF a modificar el programa de partidos para facilitar la participación si Uruguay decide corregir la situación y viajar estos días".</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/futbol/organizacion-del-torneo-lalcudia-anuncio-posibles-acciones-legales-contra-la-asociacion-uruguaya-futbol-bajarse-del-certamen-n6009024'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Organización del torneo de LAlcudia anunció posibles acciones legales contra la Asociación Uruguaya de Fútbol por bajarse del certamen', // Opcional, pero recomendado     
+                text: ' Organización del torneo de LAlcudia anunció posibles acciones legales contra la Asociación Uruguaya de Fútbol por bajarse del certamen',  // Opcional
+                url: 'https://www.elobservador.com.uy/futbol/organizacion-del-torneo-lalcudia-anuncio-posibles-acciones-legales-contra-la-asociacion-uruguaya-futbol-bajarse-del-certamen-n6009024'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
