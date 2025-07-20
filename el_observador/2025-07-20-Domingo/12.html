@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Japón se suma a las advertencias de Alemania y Francia por nuevos pasaportes uruguayos: Es altamente probable que les sea negado el ingreso al país</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Japón se suma a las advertencias de Alemania y Francia por nuevos pasaportes uruguayos: Es altamente probable que les sea negado el ingreso al país</h1>
+            <p>
+La Embajada de Japón en Uruguay emitió un comunicado en su página web en el que advierte a los uruguayos que tengan pasaportes emitidos luego del 16 de abril de 2025 que es "altamente probable que les sea negado el ingreso al país".  image       La comunicación de la embajada indica a los uruguayos que deben consultar "sin excepción" a la sección consular de la representación diplomática "antes de realizar el viaje independientemente de si poseen nacionalidad uruguaya o ciudadanía legal". De esta manera, Japón se sumó a las advertencias de Alemania y de Francia sobre problemas con los nuevos pasaportes uruguayos, que fueron adaptados en abril de este año para incluir el país de ciudadanía del documento y no el de nacimiento, algo que permitió a ciudadanos legales acceder al pasaporte uruguayo.  Tokio, Japón     Tokio, ola de calor.  EFE/EPA/FRANCK ROBICHON Esto se hizo, además, para que el país se adecuara a las recomendaciones de la Organización de Aviación Civil Internacional(OACI), ya que hasta antes de este cambio Uruguay anotaba en el documento como "nacionalidad" el país de nacimiento o dejaba el campo vacío cuando la persona había perdido su nacionalidad de origen. Primero fue el embajador alemán en Uruguay el que advirtió por los efectos de este cambio. En un tuit, el embajador Stefan Duppel advirtió que los documentos emitidos "luego del 23 de abril de 2025" que no indicaban el lugar de nacimiento "no permiten el ingreso al territorio alemán". Y aclaró que esto rige incluso para "estancias cortas". Más recientemente, el embajador de Francia en Uruguay, Jean-Paul Seytre, señaló que su país no estaba aceptando solicitudes de visa con estos nuevos documentos. Sin embargo, consideró en diálogo con Subrayado que era un tema que su país esperaba resolver "muy rápidamente" y dijo estar en "estrecho contacto" con las autoridades uruguayas. Aclaró también que la sede diplomática francesa ya había transmitido a Fancia el pasaporte para que fuera analizado y eso era lo que estaba en curso. Una vez que se conocieron los problemas –y luego de que la Cancillería llamara a consulta a los embajadores de Alemania y Francia–, el presidente Yamandú Orsi se mostró abierto a resolver el tema. "Si hay algo que haya que corregir, siempre estamos dispuestos", afirmó Orsi, quien agregó: "Siempre estamos dispuestos a cambiar si complica la cosa (...) Lo resolveremos", aseguró. En la misma línea se expresó el canciller Mario Lubetkin en una entrevista con El Observador publicada esta semana, aunque pidió no hacer "campaña chica" con el tema porque podía tratarse de un "error" pero no de "corrupción". En la entrevista publicada el pasado 16 de julio, el canciller uruguayo aseguró que la única indicación que tenía el gobierno era de la embajada alemana y que la francesa solo había manifestado "alguna señalación en relación a autorización de residencia para procesos de más de tres meses". "No hay detectado caso alguno, salvo que aparezca, de problemas de algún tipo con ningún tipo de versión de pasaportes nuestro. Con ninguno. Y no es que no haya uruguayos que no hayan atravesado Alemania y Francia", dijo entonces (cuando todavía no se conocía la alerta de Japón). Agregó que los cambios que se habían implementado venían del "gobierno anterior" y que fueron hechos en base a la normativa internacional. "No hay víctimas de ningún tipo, hemos hecho un estudio de pasaportes de otros países del mundo y les puedo asegurar que hay pasaportes asiáticos, africanos, inclusive norteamericanos y del golfo que son exactamente iguales a los nuestros y no tienen ningún tipo de problema, ni tuvieron ningún tipo de problema", argumentó. Lubetkin aseguró que desde mayo Uruguay estaba comunicando a las embajadas los cambios del pasaporte y que se volvería a hacer con Alemania.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/japon-se-suma-las-advertencias-alemania-y-francia-nuevos-pasaportes-uruguayos-es-altamente-probable-que-les-sea-negado-el-ingreso-al-pais-n6009138'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Japón se suma a las advertencias de Alemania y Francia por nuevos pasaportes uruguayos: Es altamente probable que les sea negado el ingreso al país', // Opcional, pero recomendado     
+                text: ' Japón se suma a las advertencias de Alemania y Francia por nuevos pasaportes uruguayos: Es altamente probable que les sea negado el ingreso al país',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/japon-se-suma-las-advertencias-alemania-y-francia-nuevos-pasaportes-uruguayos-es-altamente-probable-que-les-sea-negado-el-ingreso-al-pais-n6009138'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
