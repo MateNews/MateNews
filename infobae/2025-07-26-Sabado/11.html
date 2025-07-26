@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El Ministerio de Salud oficializó las fechas del nuevo examen de residencias: cuándo y cómo será.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El Ministerio de Salud oficializó las fechas del nuevo examen de residencias: cuándo y cómo será.</h1>
+            <p>El Ministerio de Salud de la Nación confirmó este viernes la realización de una nueva instancia de evaluación para los aspirantes a residencias médicas que en el examen del 1° de julio obtuvieron una calificación igual o superior a 86 puntos. La medida, motivada por sospechas de fraude académico, alcanzará a 268 postulantes y se llevará a cabo entre el 4 y el 7 de agosto, según lo estipulado por la cartera sanitaria.</p><p>El anuncio fue oficializado luego de detectarse irregularidades significativas en el Examen Único de Residencias Médicas. Un análisis estadístico preliminar reveló un número inusual de calificaciones elevadas, particularmente entre postulantes provenientes de universidades extranjeras, cuyos antecedentes académicos no reflejaban históricamente ese nivel de rendimiento.</p><p>Esta situación, que podría haber alterado sustancialmente el orden de mérito, por el cual se asignan los cupos para residencias, derivó en una decisión que, sin anular la evaluación inicial, introduce una nueva etapa destinada a revalidar los conocimientos de quienes alcanzaron los puntajes más altos.</p><p>Según indicó el Ministerio en el comunicado, la evaluación complementaria no afectará el cronograma de adjudicación de cargos. Las residencias comenzarán, como cada año, el 1° de septiembre, sin modificaciones en la fecha.</p><p>Sin embargo, el puntaje que defina el ranking final podrá cambiar en función de los resultados que se obtengan en esta nueva instancia.</p><p>Para implementar este proceso de forma equitativa y transparente, se resolvió la conformación de un comité de expertos integrado por representantes de los ministerios de Salud de la Nación, la Ciudad Autónoma de Buenos Aires y la Provincia de Buenos Aires.</p><p>Esta delegación de expertos analizará la correspondencia entre los antecedentes académicos y los resultados obtenidos. En los casos en que exista alta coherencia, los aspirantes serán convocados a una evaluación oral que confirme el puntaje original. Por el contrario, quienes no acrediten esa consistencia deberán rendir un nuevo examen escrito.</p><p>En paralelo, se estableció que los aspirantes que logren en la revisión oral una nota que no difiera en más de un 10% respecto a la calificación original conservarán su puntaje. En caso contrario, se tomará como válida la nueva nota, que será incorporada al orden definitivo de mérito.</p><p>Durante su habitual conferencia en la Casa Rosada, el vocero presidencial Manuel Adorni fue quien inicialmente comunicó la medida el jueves, aunque sin las especificaciones que confirmó este viernes el Ministerio de Salud.</p><p>“Ha habido una investigación que relevó resultados sospechosos en el examen de aspirantes a residencias médicas, incongruentes con los antecedentes académicos de sus universidades y con sus promedios de carrera”, explicó.</p><p>Como ejemplo, Adorni mencionó que se observaron calificaciones superiores a 90 y 85 puntos en aspirantes egresados de casas de estudio extranjeras que históricamente no figuraban entre los primeros 500 puestos del ranking.</p><p>Uno de los datos que más llamaron la atención de las autoridades fue la destacada performance de egresados de la Universidad Técnica de Manabí, ubicada en Ecuador. Nueve de sus graduados se ubicaron entre los primeros 27 lugares, un desempeño sin antecedentes en convocatorias anteriores.</p><p>La decisión gubernamental generó un inmediato impacto en el ámbito médico. Algunos de los postulantes alcanzados por la medida manifestaron su descontento ante la posibilidad de tener que repetir el examen pese a haber obtenido calificaciones elevadas.</p><p>El caso de Santiago M., un médico que obtuvo 89 puntos tras prepararse durante ocho meses con simulacros y cursos, fue uno de los testimonios recogidos por Infobae. Tanto él como otros médicos creen que esta medida es injusta para quienes se esforzaron y rindieron de manera legítima.</p><p>Desde el Ministerio de Salud, se confirmó además que se promoverán sumarios internos y se impulsarán acciones judiciales en coordinación con otros organismos del Estado. La decisión, indicaron, apunta a ratificar el compromiso con el mérito, la transparencia y la calidad del sistema nacional de residencias médicas.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/salud/2025/07/26/el-ministerio-de-salud-oficializo-las-fechas-del-nuevo-examen-de-residencias-cuando-y-como-sera/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El Ministerio de Salud oficializó las fechas del nuevo examen de residencias: cuándo y cómo será.', // Opcional, pero recomendado     
+                text: 'El Ministerio de Salud oficializó las fechas del nuevo examen de residencias: cuándo y cómo será.',  // Opcional
+                url: 'https://www.infobae.com/salud/2025/07/26/el-ministerio-de-salud-oficializo-las-fechas-del-nuevo-examen-de-residencias-cuando-y-como-sera/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
