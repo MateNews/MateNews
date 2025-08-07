@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Se mudó a Montevideo para estudiar contaduría, fue campeón de básquetbol con un equipo local y terminó creando una empresa que factura millones</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Se mudó a Montevideo para estudiar contaduría, fue campeón de básquetbol con un equipo local y terminó creando una empresa que factura millones</h1>
+            <p>
+Mudarse de su Mercedes natal a los 18 años para estudiar en Montevideo y haber jugado al básquetbol de forma profesional en Trouville, fueron dos experiencias que marcaron profundamente la vida de Santiago Zabala, hoy CEO de Trafilea, una empresa uruguaya de e-commerce y tecnología con foco en el mercado estadounidense. Años más tarde, y a pesar de que estudió para ser contador en la Universidad de la República y soñó en algún momento con ser gerente general de un banco, se convirtió en emprendedor. En ese camino, tanto el deporte como Mercedes siempre estuvieron muy presentes y más ahora en el tiempo, también la meditación como estrategia para manejar la indertidumbre, según contó en el marco del ciclo Más allá del éxito, una coproducción de Endeavor y El Observador.  Embed - Santiago Zabala: "La incertidumbre genera estrés y lo manejo con meditación" | #MásAlláDelÉxito      En el primer episodio de este ciclo de entrevistas —en el que destacados actores del ecosistema emprendedor desafían la idea de que el éxito es la única cara del emprendimiento y se animan a hablar de sus inicios, miedos, fracasos, y de quiénes son más allá de su rol profesional— Zabala relató qué lo motivó a elegir este camino hace más de 10 años y cómo fueron los inicios de la empresa. “Como emprendedor uno tiene que cargar con muchas responsabilidades que no son para cualquiera, hay personas y familias que dependen de esa compañía y del éxito que tenga”, sostuvo. A nivel personal, también compartió cómo logra combinar una profesión tan demandante con su rol de padre, narró el momento en su trayectoria en el que aprendió la importancia de cuidarse a sí mismo y reveló cómo maneja la responsabilidad de liderar una empresa. “Creo que uno para poder construir hacia afuera tiene que construir hacia adentro. Una de las cosas que más me ayuda a manejar la incertidumbre es la meditación", reflexionó. ¿Qué hace Trafilea y cómo ha sido su crecimiento? Trafilea es una empresa uruguaya de e-commerce y tecnología fundada en 2014 en Montevideo. Nació como una agencia de marketing digital y rápidamente evolucionó hacia la creación de marcas propias, como Shapermint, Truekind y, más recientemente, The Spa Dr., orientadas principalmente al mercado estadounidense. Actualmente, la compañía opera bajo un modelo 100% remoto, con cientos de colaboradores distribuidos globalmente. Aunque su base está en Uruguay, cerca del 80% de su facturación proviene de Estados Unidos, y recientemente, inició su expansión hacia Canadá, Reino Unido y Australia. En términos financieros, Trafilea ha mantenido un crecimiento acelerado. Pasó de facturar US$104 millones en 2019 a más de US$323millones en 2023, impulsada por su enfoque en datos, automatización y experiencia directa con el consumidor. La empresa apunta a superar los US$ 1.000 millones en los próximos años, consolidándose como uno de los casos más destacados del emprendimiento tecnológico uruguayo a nivel global. Lo que sigue en Más allá del éxito  El ciclo Más allá del éxito se emitirá todos los martes hasta el 9 de setiembre, con la participación de destacados actores del ecosistema emprendedor y podrá verse en el canal de youtube de El Observador.   El próximo episodio tendrá como protagonista a Alejandro Esperanza, cofundador de Vopero, la startup uruguaya de moda circular recientemente adquirida por la multinacional chilena Cencosud. En la entrevista, el emprendedor -que ha sabido moverse con soltura entre industrias tan diversas como la logística, la moda, los pagos y el turismo- comparte cómo fue dar el salto al mundo emprendedor, las diferencias que percibe con respecto al ámbito corporativo, y los momentos más felices y más difíciles de su trayectoria. Además, reflexiona sobre cómo vivió emocionalmente la venta de la compañía y sobre qué entiende hoy como éxito.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cafe-y-negocios/se-mudo-montevideo-estudiar-contaduria-fue-campeon-basquetbol-un-equipo-local-y-termino-creando-una-empresa-que-factura-millones-n6011407'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Se mudó a Montevideo para estudiar contaduría, fue campeón de básquetbol con un equipo local y terminó creando una empresa que factura millones', // Opcional, pero recomendado     
+                text: ' Se mudó a Montevideo para estudiar contaduría, fue campeón de básquetbol con un equipo local y terminó creando una empresa que factura millones',  // Opcional
+                url: 'https://www.elobservador.com.uy/cafe-y-negocios/se-mudo-montevideo-estudiar-contaduria-fue-campeon-basquetbol-un-equipo-local-y-termino-creando-una-empresa-que-factura-millones-n6011407'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
