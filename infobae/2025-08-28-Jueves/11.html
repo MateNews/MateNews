@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La tasas de los plazos fijos no paran de subir y ya hay entidades que pagan 55%: detalles, banco por banco.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>La tasas de los plazos fijos no paran de subir y ya hay entidades que pagan 55%: detalles, banco por banco.</h1>
+            <p>Son las entidades más chicas, es verdad, pero grandes bancos, de capitales locales y extranjeros también registraron fuertes subas, por sobre el 50 por ciento para sus depósitos a plazo.</p><p>Según la página de Banco Central, donde se informan de manera oficial las tasas, el Banco CMF encabeza la lista con 55%. De cerca lo siguen entidades como Banco Meridian, con 54,25%; Banco Tierra del Fuego, Banco Bica, Reba y Voii (recientemente comprado por Cocos), con 54%, y Banco Mariva con 53 por ciento.</p><p>Entre los grandes se destaca Banco Macro, con 53,5% anual. Además, la entidad le paga 56% a sus clientes Selecta y Preferencial.</p><p>En el resto de los bancos privados líderes, las tasas para depósitos a 30 días se ubican holgadamente por encima del 50%. Es el caso del Galicia (58%), Supervielle (51%), BBVA del (48%) y Santander (41%), aunque todos ellos no actualizaron los datos que le envían al BCRA y en la entidad muestran cifras menores.</p><p>Entre los bancos públicos, el Nación acaba de subir su tasa al 47% y el Provincia a 48%. El Banco Ciudad se mantiene bajo, en 35 por ciento, según lo informado.</p><p>En tres semanas, más de 60.000 personas invirtieron $150.000 millones en depósitos a plazo fijo directamente desde Cuenta DNI. La billetera digital ofrece una tasa promocional de 52 por ciento.</p><p>La operatoria de constitución de plazo fijo se abrió a cualquier persona desde los 13 años, ampliando el alcance habitual de este instrumento. La tasa anual subió de 48 a 52%, lo que posiciona a la billetera como una de las opciones más atractivas del sistema financiero argentino para este producto.</p><p>El 40% de quienes utilizaron la nueva función no tenían relación previa con productos tradicionales del banco, fuera de su vínculo con la propia aplicación. Un segmento mayoritario, cercano al 70%, debutó en depósitos a plazo fijo a través de la plataforma, sin registrar antecedentes recientes de uso de esta herramienta de inversión bancaria.</p><p>Cuenta DNI no renovó automáticamente los depósitos hechos por los usuarios, con el objetivo de ofrecerles mayor control y flexibilidad sobre los ahorros. Para graficar el rendimiento: una inversión de $1.000.000 a 30 días, al final del período, genera un saldo de $1.042.739,73 de acuerdo con los cálculos oficiales difundidos por la entidad. La opción de plazo fijo admite colocaciones a 30, 60 y 90 días, partiendo de un monto mínimo de $1.000.</p><p>Juan Cuattromo, presidente del Bapro, afirmó: “Cuenta DNI es una herramienta innovadora e inclusiva. Con esta funcionalidad estamos acercando una opción de inversión segura a todas las personas mayores de 13 años, con el respaldo de un banco con más de 200 años de trayectoria”.</p><p>La decisión del Banco Central de Argentina de aumentar los encajes bancarios ha llevado a los bancos a mantener tasas elevadas para los ahorristas, lo que, según Infobae, provocará un mayor encarecimiento del crédito tanto para empresas como para particulares.</p><p>El cambio más reciente en la normativa, que exige a las entidades financieras calcular los encajes de forma diaria en vez de mensual, ha dificultado la gestión de la liquidez, ya que antes se utilizaban las Lefi, actualmente desactivadas. Esta modificación, sumada al incremento de los encajes, obliga a los bancos a captar más depósitos, lo que, de acuerdo con fuentes del sector, los llevará a aumentar aún más el rendimiento de los plazos fijos y, en consecuencia, a elevar las tasas de todos los préstamos.</p><p>El último dato oficial, correspondiente al viernes 22, indica que el promedio pagado por un plazo fijo a 30 días alcanzó el 51,3%, mientras que diez días antes era del 43% y un mes atrás apenas llegaba al 33 por ciento. En varias entidades anticipan que esta tendencia continuará y que el acceso al crédito sufrirá un freno mayor al observado en el último mes.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2025/08/28/la-tasas-de-los-plazos-fijos-no-paran-de-subir-y-ya-hay-entidades-que-pagan-55-todos-los-detalles-banco-por-banco/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La tasas de los plazos fijos no paran de subir y ya hay entidades que pagan 55%: detalles, banco por banco.', // Opcional, pero recomendado     
+                text: 'La tasas de los plazos fijos no paran de subir y ya hay entidades que pagan 55%: detalles, banco por banco.',  // Opcional
+                url: 'https://www.infobae.com/economia/2025/08/28/la-tasas-de-los-plazos-fijos-no-paran-de-subir-y-ya-hay-entidades-que-pagan-55-todos-los-detalles-banco-por-banco/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
