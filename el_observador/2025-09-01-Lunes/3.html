@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Presupuesto: documento que circula entre ministros y FA dice que programa es un rumbo y que cumplirán compromisos asumidos en Colonia</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Presupuesto: documento que circula entre ministros y FA dice que programa es un rumbo y que cumplirán compromisos asumidos en Colonia</h1>
+            <p>
+Un documento político elaborado por el gobierno –y que circula en el gabinete y a la interna del Frente Amplio– defiende el proyecto de Presupuesto entregado este domingo al Parlamento y asegura que que los compromisos asumidos en la última campaña electoral serán cumplidos para el final del período (en 2029), pese a que el déficit fiscal es el "más elevado para un primer año de gestión en las últimas tres décadas".  Según el texto al que accedió El Observador, el proyecto se enmarca en un "desafío fiscal significativo", dado que la administración de Luis Lacalle Pou había anunciado un déficit fiscal de 2,8% del PBI, pero para agosto de este año se situó en 4,2%.  "Son aproximadamente 900 millones de dólares menos en caja", argumentó el gobierno en el documento al que accedió El Observador. E insistió que "a pesar de esto" el gobierno de Orsi cumplirá con los compromisos para 2029.  El énfasis en los compromisos de campaña no es fortuito. El documento define al programa del Frente Amplio –tildado de "impagable" en los últimos días por el subsecretario de Economía, Martín Vallcorba– como un "rumbo" o "un trazo". Y se compromete a cumplir con los compromisos asumidos en campaña, más precisamente en Colonia, donde se presentaron 48 medidas, que una vez asumido el gobierno fueron ampliadas a 63.  La base del Presupuesto elaborado por la administración de Orsi gira en torno a "cinco grandes sensibilidades políticas", que incluyen la "responsabilidad y sostenibilidad fiscal", el "desarrollo económico", la "justicia tributaria y distributiva", el "combate a la desigualdad social" y la "apuesta a la convivencia pacífica". Respecto a los ajustes tributarios que incluye el Presupuesto –como el Impuesto Mínimo Global para las multinacionales que facturan más de US$ 750 millones al año, el gravamen a las ganancias de capital en el exterior y cambios al régimen de franquicias–, el documento político del gobierno sostiene que el fundamento está en "que pague más el que tiene más". Además, asegura que se trata de "tributos al capital" y "no al trabajo". Para el gobierno hay "seis faros" que regirán las políticas públicas en el período. Esos "faros" incluyen la prioridad en la primera infancia, la salud, la educación para generar oportunidades, la seguridad, el transporte y el foco en el "Uruguay productivo". Sobre la primera infancia se incluyen medidas como el aumento del 50% al Bono Crianza (creado en 2022 y destinado a hogares vulnerables con mujeres embarazadas y/o niños de 0 a 3 años), la creación de un programa para "combatir la precariedad infantil", refuerzo presupuestal para programas de atención a personas en situación de calle y también el Bono Escolar de $2.500 por niño que ya se implementa. También se propone extender la cobertura en escuelas de tiempo completo y extendido. Todo esto "envía una señal de esperanza a las familias" y da cuenta de un gobierno que "está del lado de quienes más lo necesitan", asegura el documento. En el Presupuesto también se incluyen recursos para montar un sistem de "monitoreo y gestión" que permita disminuir los tiempos de espera en el sistema de salud con el objetivo de que, al final del período, ninguna persona espere más de 30 días por una consulta con especialista. Sobre la seguridad, el documento del gobierno asegura que los ejes estratégicos durante el período serán la reducción de los homicidios, la lucha contra el crimen organizado, la reforma penitenciaria, la profesionalización policial, la prevención de la violencia de género y delitos sexuales y el fortalecimiento de la investigación criminal. "El Presupuesto prevé la contratación de más personal policial y técnico (analistas de inteligencia, peritos forenses), la adquisición de equipamiento moderno (cámaras de videovigilancia adicionales, drones, sistemas de detección de disparos ShotSpotter en zonas críticas)", señala el texto. </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/presupuesto-documento-que-circula-ministros-y-frente-amplio-dice-que-programa-es-un-rumbo-y-que-cumpliran-compromisos-asumidos-colonia-n6015080'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Presupuesto: documento que circula entre ministros y FA dice que programa es un rumbo y que cumplirán compromisos asumidos en Colonia', // Opcional, pero recomendado     
+                text: ' Presupuesto: documento que circula entre ministros y FA dice que programa es un rumbo y que cumplirán compromisos asumidos en Colonia',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/presupuesto-documento-que-circula-ministros-y-frente-amplio-dice-que-programa-es-un-rumbo-y-que-cumpliran-compromisos-asumidos-colonia-n6015080'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
