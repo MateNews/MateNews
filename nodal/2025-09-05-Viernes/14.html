@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tras protestas contra el gobierno, Karina Milei tuvo que ser evacuada de una caravana en la provincia de Corrientes</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Tras protestas contra el gobierno, Karina Milei tuvo que ser evacuada de una caravana en la provincia de Corrientes</h1>
+            <p>Por otra protesta contra el gobierno, tuvieron que evacuar a Karina Milei durante una caravana en Corrientes</p><p>No solo sucede en el conurbano. En la tarde de este jueves se repitió en la ciudad de Corrientes lo que 24 horas antes ocurrió en Lomas de Zamora. Durante una caravana que integraban la secretaria general de la Presidencia, Karina Milei, y el presidente de la Cámara de Diputados, Martín Menem, ambos debieron ser evacuados en una camioneta por una protesta de repudio al gobierno nacional por el caso de corrupción en la Agencia Nacional de Discapacidad.</p><p>Karina Milei y Martín Menem se habían trasladado a la capital de esa provincia del Litoral para respaldar al candidato a gobernador de La Libertad Avanza (LLA), Lisandro Almirón, en el cierre de campaña provincial ante las elecciones que se desarrollarán el próximo domingo.</p><p>Esta vez no incidentes ni enfrentamientos entre simpatizantes de libertarios y opositores. El grupo nutrido de personas que repudiaron a la hermana del presidente y los demás funcionarios de la comitiva llevaban banderas violetas con leyendas como «Karina alta coimera» y «Dejen de robarle a los discapacitados», entre otras.</p><p>Solo hubo algunos empujones sobre todo de efectivos de seguridad de los funcionarios en el momento de subirlos a una camioneta en la que huyeron del lugar.</p><p>Una elección clave</p><p>La provincia de Corrientes celebrará el domingo próximo las elecciones para definir la gobernación y parte de la Legislatura provincial, además de autoridades municipales en 73 distritos.</p><p>Más de 950 mil correntinos están habilitados para votar en una jornada en la que, además de la sucesión del gobernador Gustavo Valdés, se renovarán 15 bancas en la Cámara de Diputados y 5 en el Senado provincial.</p><p>En los comicios correntinos competirán siete fórmulas por la gobernación: Valdés impulsa la figura de su hermano Juan Pablo, acompañado en el frente oficialista Vamos Corrientes por Néstor Pedro Braillard Poccard, actual vicegobernador.</p><p>El mandatario correntino no puede ir por la reelección, ya que fue electo en ese cargo por dos períodos consecutivos, pero participará en la elección como cabeza de lista en la categoría de senadores provinciales. El cierre de campaña de la alianza oficialista ccontó con el respaldo de los gobernadores de Santa Fe, Maximiliano Pullaro, y el candidato a diputado nacional por Córdoba Juan Schiaretti. Ambos se mostraron hoy junto a Valdés en clave electoral, con el objetivo de apuntalar la agenda federal por la que pujan desde el flamante espacio de centro Provincias Unidas.</p><p>En la vereda de enfrente, el peronismo espera recuperar terreno en tierras correntinas con la figura de Martín “Tincho” Ascúa, intendente de Paso de los Libres y quien estará secundado por César Daniel Lezcano.</p><p>El candidato del PJ llega con el respaldo de la ex presidenta Cristina Kirchner, quien formó parte de la presentación de la candidatura de Ascúa, en lo que fue su último acto partidario antes de la sentencia por la causa Vialidad.</p><p>Por su parte, La Libertad Avanza (LLA) apostó por presentar candidato propio en esa provincia e impulsa la figura del diputado Claudio Lisandro Almirón junto a Evelyn Karsten; mientras que Encuentro por Corrientes (ECO), promueve al ex gobernador Ricardo Colombi y Martín Barrionuevo.</p><p>El escenario se mantiene competitivo en la categoría gobernador: la mayoría de los sondeos refleja una disputa estrecha entre el candidato oficialista y el opositor del peronismo, con un electorado sensible al deseo de cambio y un porcentaje importante de votantes indecisos.</p><p>Tiempo Argentino</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.nodal.am/2025/08/argentina-tras-protestas-contra-el-gobierno-karina-milei-tuvo-que-ser-evacuada-de-una-caravana-en-la-provincia-de-corrientes/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Tras protestas contra el gobierno, Karina Milei tuvo que ser evacuada de una caravana en la provincia de Corrientes', // Opcional, pero recomendado     
+                text: 'Tras protestas contra el gobierno, Karina Milei tuvo que ser evacuada de una caravana en la provincia de Corrientes',  // Opcional
+                url: 'https://www.nodal.am/2025/08/argentina-tras-protestas-contra-el-gobierno-karina-milei-tuvo-que-ser-evacuada-de-una-caravana-en-la-provincia-de-corrientes/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
