@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>México| Tejer soberanía desde abajo: a un año de la llegada de Claudia Sheinbaum – Por Susana Ochoa</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>México| Tejer soberanía desde abajo: a un año de la llegada de Claudia Sheinbaum – Por Susana Ochoa</h1>
+            <p>Tejer soberanía desde abajo: a un año de la llegada de Claudia Sheinbaum – Por Susana Ochoa</p><p>A un año de la llegada de Claudia Sheinbaum a la Presidencia de México, el mayor logro de su gobierno ha sido mantener el rumbo sin pausas ni concesiones, en medio de un escenario geopolítico complejo. Su apuesta es clara: cooperación sin subordinación, soberanía sin aislamiento.</p><p>En el frente internacional, México ha dado pasos firmes para equilibrar nuestra posición frente a nuestros vecinos del norte. No se trata de romper con Estados Unidos —algo indeseable si pensamos en los millones de mexicanos y familias que viven ahí—, sino de construir márgenes de autonomía que nos permitan enfrentar mejor el declive de una potencia que nos sigue condicionando y que utiliza a nuestro país y el tema de seguridad como pretexto para agudizar sus políticas de seguridad y de autoritarismo. El sur se puede convertir en nuestro norte. Ahí están las alianzas con Brasil para garantizar investigación en medicina, con Centroamérica para defender el Corredor Biocultural de la Gran Selva Maya y con América Latina para afirmar un horizonte compartido de soberanía y dignidad regional.</p><p>Al interior, el sello de este primer año ha sido un estilo de gobernar que busca involucrar a las comunidades, no solo administrarlas. El presupuesto histórico destinado a los pueblos indígenas es un ejemplo. A lo largo del año se realizaron asambleas en las que las comunidades decidieron directamente cómo invertir los recursos del FAISPI (Fondo de Aportaciones para la Infraestructura Social), es decir, sobre el poder real de transformar su propia infraestructura. En cada asamblea, además, se designó a mujeres como tesoreras: uno de los sectores históricamente más discriminados quedó encargado de administrar el dinero público. Un mensaje claro de emancipación en un año que fue nombrado como el Año de las Mujeres Indígenas.</p><p>Este estilo de gobierno atraviesa todas las estrategias que la presidenta presenta en la ahora llamada “Mañanera del Pueblo”. Siempre priorizando a los más pobres, Claudia Sheinbaum busca una soberanía no entendida solo en términos de un Estado frente a otro, sino como soberanía del pueblo de México sobre sus derechos más elementales. Ejemplo de ello son los proyectos de turismo comunitario o iniciativas aparentemente sencillas como las carreras y maratones México Imparable, donde son las comunidades quienes organizan los eventos deportivos. No se trata únicamente de generar turismo, sino de abrir espacios para que la gente se organice. Lo mismo ocurre en el terreno económico: sin apostar por cambios abruptos, se siembran semillas de un nuevo sentido común. Programas como Alimentación para el Bienestar y las Tiendas del Bienestar marcan el rumbo: ¿para qué depender de un Walmart o de supermercados extranjeros que concentran ganancias, si el Estado puede comprar directamente a los productores y vender sin intermediarios a la población?</p><p>El desafío es enorme. Los próximos cinco años exigirán inteligencia, determinación y responsabilidad para profundizar este camino. No se trata solo de sostener un proyecto desde el gobierno, sino de tejer soberanía desde abajo: en las comunidades, en las redes de solidaridad, en la militancia cotidiana de quienes creemos en la Cuarta Transformación. En próximas columnas trataré de exponer las políticas que quizá no son tan visibles o taquilleras, pero que están profundizando un proyecto de nación realmente emancipatorio.</p><p>“Por nuestro pueblo, por nuestra patria vale la pena dar cada hora, cada minuto y cada aliento de nuestros días”. Claudia Sheinbaum, 1 de septiembre. Primer Informe de Gobierno.</p><p>*Susana Ochoa, militante de la 4ta transformación en la Secretaría de las Mujeres</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.nodal.am/2025/09/mexico-tejer-soberania-desde-abajo-a-un-ano-de-la-llegada-de-claudia-sheinbaum-por-susana-ochoa/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'México| Tejer soberanía desde abajo: a un año de la llegada de Claudia Sheinbaum – Por Susana Ochoa', // Opcional, pero recomendado     
+                text: 'México| Tejer soberanía desde abajo: a un año de la llegada de Claudia Sheinbaum – Por Susana Ochoa',  // Opcional
+                url: 'https://www.nodal.am/2025/09/mexico-tejer-soberania-desde-abajo-a-un-ano-de-la-llegada-de-claudia-sheinbaum-por-susana-ochoa/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
