@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>"Es para Axel, la conducción": el cántico de los militantes en el búnker bonaerense de Fuerza Patria.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>"Es para Axel, la conducción": el cántico de los militantes en el búnker bonaerense de Fuerza Patria.</h1>
+            <p>Luego de la difusión de los resultados electorales en la provincia de Buenos Aires, el gobernador bonaerense Axel Kicillof se subió al escenario con todos los integrantes del Poder Ejecutivo, como también a los intendentes y los principales candidatos que participaron en las secciones.</p><p>En ese marco, el cántico que resonó en las puertas del escenario fue: "Es para Axel, la conducción“. Todo esto se da luego de la fuerte interna que atravesó al peronismo no solo para el armado de las listas, sino que viene desde la pelea por las elecciones para la presidencia del Partido Justicialista que enfrentó a Kicillof con la propia Cristina Kirchner.</p><p>El mandatario bonaerense se erigió como el gran ganador de la jornada después de sacar una diferencia amplia en el acumulado de las ocho secciones electorales. De acuerdo a los resultados oficiales, Fuerza Patria ganó con holgura la primera y la tercera sección electoral. Entre ambas, aglutinan a casi el 60% de los 14 millones de electores que estaban habilitados para sufragar en la jornada de hoy.</p><p>Justamente triunfó en la segunda, en la cuarta, en la séptima y en la octava sección electoral.</p><p>Al sumar los votos de toda la provincia de Buenos Aires (en cuatro secciones se eligieron senadores y en los otros cuatro diputados), Fuerza Patria obtiene casi 47% de los sufragios y le saca más de 13 puntos de ventaja a La Libertad Avanza, que se impone solamente en las secciones quinta y sexta.</p><p>Así las cosas, Kicillof es el gran ganador de la jornada electoral. Desafió a la dirigencia política y especialmente a la resistencia interna del kirchnerismo con su idea de desdoblar la elección y los resultados le dieron la razón. La victoria ratifica su liderazgo como gobernador de la provincia más grande del país, lo posiciona como el principal referente de la oposición y, especialmente, lo pone en carrera como candidato a Presidente en 2027.</p><p>Tras cantar el himno, Kicillof le habló a la militancia que se concentró en el búnker a cielo abierto que Fuerza Patria armó en la ciudad de La Plata y se volvió a sentir un cántico por parte de los presentes: “Se siente, se siente, Axel presidente“.</p><p>“Hoy Fuerza Patria terminó con una victoria aplastante en toda la provincia de Buenos Aires. Gracias Sergio (Massa), gracias Cristina (Kirchner), injustamente condenada que debería estar en este escenario”, dijo el gobernador de la provincia de Buenos Aires.</p><p>En ese plano, fue la ex presidenta Cristina Kirchner quien envió un audio para también dejarle su mensaje a la militancia y señaló: “Quiero enviar un saludo, en primer término, al pueblo de mi querida provincia de Buenos Aires. A todos y cada uno de los ciudadanos y ciudadanas que participaron en esta jornada realmente histórica, en la que, con muchísima responsabilidad democrática, decidieron ponerle un límite a un presidente que no parece comprender que debe gobernar para todos, para los que lo votaron y para los que no lo hicieron también”.</p><p>“Espero que este pronunciamiento popular le permita comprender que no se puede ejercer la primera magistratura en la forma que lo hace. Es una elección de medio término y el presidente tiene la responsabilidad de escuchar al pueblo de la provincia, que representa casi el 40 % del electorado nacional”, agregó.</p><p>Y completó: “Quiero felicitar a todos y cada uno de los candidatos de Fuerza Patria, a sus militantes y a quienes hoy fiscalizaron y participaron de todo el acto electoral durante toda esta jornada. También a todos los intendentes e intendentas, a Axel, a Sergio (Massa), a Juan (Grabois) y también a Máximo (Kirchner), que me está acompañando acá en San José 1111. Quiero decirles que este es un triunfo que nos llena de orgullo, pero también de una inmensa responsabilidad por los destinos de esta patria que tanto, tanto amamos. Un fuerte abrazo para todos y para todas. Los quiero mucho”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2025/09/08/es-para-axel-la-conduccion-el-cantico-de-los-militantes-peronistas-en-el-bunker-bonaerense-de-fuerza-patria/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: '"Es para Axel, la conducción": el cántico de los militantes en el búnker bonaerense de Fuerza Patria.', // Opcional, pero recomendado     
+                text: '"Es para Axel, la conducción": el cántico de los militantes en el búnker bonaerense de Fuerza Patria.',  // Opcional
+                url: 'https://www.infobae.com/politica/2025/09/08/es-para-axel-la-conduccion-el-cantico-de-los-militantes-peronistas-en-el-bunker-bonaerense-de-fuerza-patria/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
