@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Un periodista reveló el pedido que le hizo Messi para entrevistarlo en su casa tras ganar el Balón de Oro.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Un periodista reveló el pedido que le hizo Messi para entrevistarlo en su casa tras ganar el Balón de Oro.</h1>
+            <p>El Balón de Oro logrado por Lionel Messi en 2021 no fue uno más en su carrera, ya que significó el primero obtenido lejos del Barcelona. Su polémica salida al París Saint-Germain (PSG) lo catapultó como la máxima cara de la Ligue 1 de Francia y la revista France Football, que creó el galardón para premiar al mejor jugador de cada temporada, condecoró al hombre que había roto la pared meses antes con la consagración en la Copa América con la selección argentina. Días después, se sometió a un reportaje y uno de los presentes en esa charla reveló un singular pedido del 10 antes de ser entrevistado.</p><p>Franck Seguin, jefe de edición del diario L’Équipe, que pertenece al mismo grupo empresario que France Football, se refirió a esa producción en un documental inédito subido a YouTube bajo el título de “Balón de Oro 2025: entre bastidores de un secreto”. Al minuto 16 del video que se extiende por 26′, el recuerdo de esa entrega inunda la pantalla y el periodista rememoró el diálogo mantenido con él antes de encender la cámara: “Cuando fuimos a su casa en París, nos dijo que teníamos que llevar medias. Él mismo llevaba medias”.</p><p>La sorpresa invadió a los invitados, luego de pedirles que se saquen los zapatos para ingresar a su morada: “De repente, el mito se desmoronó un poco. Seguía siendo el mejor futbolista del planeta. Pero, de repente, nos encontrábamos en casa de nuestra abuela, que nos pedía sacarnos las zapatillas. Sonreímos un poco y eso relajó el ambiente”.</p><p>A continuación, brindó detalles sobre cómo se planificó la fotografía de Leo con los siete Balones de Oro ganados hasta ese momento: “Le habíamos pedido que trajera todos sus Balones de Oro. La idea de tener a Messi con siete Balones de Oro en ese momento era una idea un poco loca que, de repente, se hizo realidad”. Se quedó con el octavo en 2023.</p><p>En este sentido, afirmó que el campeón del mundo en Qatar 2022 con la selección argentina dio lo mejor de si mismo y reveló algunos de sus secretos, como su frase frente a la cuestión de cómo es ser Lionel Messi todos los días: “Estoy contento de todo lo que ha pasado, aunque a veces tengo que admitir que me gustaría pasar desapercibido, disfrutar de mi familia sin que la gente me reconozca”.</p><p>Por otro lado, Seguin eligió su imagen predilecta de esa producción, en la que se lo observa a Messi en una pose pensativa mirando uno de los galardones ganados en su carrera: “Esa foto es una de mis favoritas. Creo que está pensando en todo lo que ha vivido hasta ese momento. Por este enésimo trofeo, el séptimo en ese momento. Es muy, muy sincero”.</p><p>En esa nota periodística, una de las frases más salientes del emblema de Inter Miami estuvo vinculada a si se considera el mejor jugador de la historia de este deporte: “Nunca dije que lo soy ni intento hacerme esa idea. Para mí ser considerado uno de los mejores de la historia es más que suficiente. Es algo que jamás me hubiera imaginado. Es algo que no me interesa, no cambia nada ser considerado el mejor o no. Y nunca busqué serlo”.</p><p>Además, fue consultado sobre la sensación de ser un modelo a seguir por el constante sacrificio desde muy pequeño que lo llevó a la cúspide del fútbol a nivel clubes y selección: “No sé si soy un modelo para el resto, nunca me gustó ser un modelo o dar consejos. Luché por mis sueños. Al principio era ser jugador profesional, después luché para superarme y alcanzar cada año nuevos objetivos. En esos momentos hay un poco de suerte. Creo que Dios eligió que me llegara todo”.</p><p>Por otro lado, las eternas comparaciones con Diego Armando Maradona también estuvieron presentes en la conversación: “Sinceramente nunca me he comparado con Diego, absolutamente nunca. Nunca presté atención a esas comparaciones”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/deportes/2025/09/12/un-periodista-frances-revelo-el-particular-pedido-que-le-hizo-messi-para-entrevistarlo-en-su-casa-tras-ganar-el-balon-de-oro/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Un periodista reveló el pedido que le hizo Messi para entrevistarlo en su casa tras ganar el Balón de Oro.', // Opcional, pero recomendado     
+                text: 'Un periodista reveló el pedido que le hizo Messi para entrevistarlo en su casa tras ganar el Balón de Oro.',  // Opcional
+                url: 'https://www.infobae.com/deportes/2025/09/12/un-periodista-frances-revelo-el-particular-pedido-que-le-hizo-messi-para-entrevistarlo-en-su-casa-tras-ganar-el-balon-de-oro/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
