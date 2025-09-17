@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>En medio de un cruce en redes con Caputo, Yacobitti reveló cuánto gana como vicerrector de la UBA.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>En medio de un cruce en redes con Caputo, Yacobitti reveló cuánto gana como vicerrector de la UBA.</h1>
+            <p>En la previa a la marcha federal universitaria, el ministro de Economía, Luis “Toto” Caputo, y el vicerrector de la Universidad de Buenos Aires (UBA), Emiliano Yacobitti, protagonizaron un cruce en redes sociales por el salario que recibe el dirigente radical como autoridad de la casa de altos estudios. El enfrentamiento se da en medio de la pelea con la gestión libertaria por el financiamiento de la educación pública y el veto que impuso Javier Milei, que hoy tratará el Congreso.</p><p>“Gana 6 veces más que yo y que cualquier ministro del Poder Ejecutivo, que cobramos el mismo sueldo desde que asumimos. Pero los que no tenemos empatía somos nosotros…”, escribió Caputo en su cuenta de X al compartir un fragmento de una entrevista en la que Yacobitti analizaba el Presupuesto 2026 que envió el Gobierno de Javier Milei al Congreso.</p><p>En respuesta, Yacobitti publicó sus recibos de sueldo correspondientes a agosto de 2025. “Lo que dice Caputo es falso. Por el cargo que ocupa tiene toda la información para averiguarlo. Ahora no solo ratifico que no tiene empatía sino que además es mala persona. Acá le dejo mi recibo de sueldo y le recomiendo ver la nota completa, no editada”, señaló el vicerrector de la UBA.</p><p>El recibo difundido mostró que por su cargo de profesor Titular con dedicación exclusiva en el Rectorado y Consejo Superior, Yacobitti percibió un total de haberes de $2.509.395,39. Tras los descuentos, el monto neto a cobrar ascendió a $1.817.751,34.</p><p>Otro recibo publicado correspondió a su función como Profesor Titular de la Facultad de Ciencias Económicas con dedicación parcial, en el que figuró un total de haberes de $627.322,01 y un neto de $461.090,95. En conjunto, los haberes brutos sumaron $3.136.717,40, con un total de descuentos de $857.875,11, lo que dejó un neto de $2.278.842,29.</p><p>El Gobierno enfrentará esta tarde en la Cámara de Diputados un duro desafío que podría tener un fuerte impacto económico y político en la previa de las elecciones legislativas de octubre. En una nueva mega sesión, que incluye una amplia batería de proyectos resistidos por la Casa Rosada, la oposición intentará revertir los vetos presidenciales para avanzar con un aumento del financiamiento universitario y con la declaración de emergencia en pediatría (por la crisis en el Hospital Garrahan).</p><p>El Presidente vetó ambas iniciativas argumentando que su alto impacto fiscal pondría en riesgo el superávit, es decir, la base de todo el programa económico. De hecho, es el mismo argumento que utilizó para rechazar la ley que declaraba la emergencia en discapacidad, que generó un impacto muy negativo para el oficialismo en la opinión pública y cuyo veto terminó siendo rechazado hace dos semanas.</p><p>Esa primera victoria de la oposición, que por otro lado en la misma sesión perdió la votación para aumentar las jubilaciones, fue la primera señal de alarma que recibió el Gobierno respecto a la tolerancia social al ajuste, ya que incluso algunos aliados habituales se negaron a acompañar a los libertarios.</p><p>Luego llegaría otra clara señal con la contundente derrota electoral por 14 puntos en la provincia de Buenos Aires a manos del peronismo. Y la respuesta de los marcados fue casi instantánea con fuertes caídas de acciones y bonos, y un incremento del dólar hasta rozar el tope de la banda establecida por el Ministerio de Economía.</p><p>El gobierno nacional acusó el duro golpe y a partir del día siguiente buscó retomar la iniciativa política con gestos de diálogo hacia los gobernadores y algunos aumentos en áreas sensibles -como salud y educación- en el proyecto de Presupuesto 2026. Sin embargo, desde la oposición calificaron los anuncios como insuficientes y “engañosos”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/politica/2025/09/17/en-medio-de-un-cruce-en-redes-sociales-con-caputo-emiliano-yacobitti-revelo-cuanto-gana-como-vicerrector-de-la-uba/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'En medio de un cruce en redes con Caputo, Yacobitti reveló cuánto gana como vicerrector de la UBA.', // Opcional, pero recomendado     
+                text: 'En medio de un cruce en redes con Caputo, Yacobitti reveló cuánto gana como vicerrector de la UBA.',  // Opcional
+                url: 'https://www.infobae.com/politica/2025/09/17/en-medio-de-un-cruce-en-redes-sociales-con-caputo-emiliano-yacobitti-revelo-cuanto-gana-como-vicerrector-de-la-uba/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
