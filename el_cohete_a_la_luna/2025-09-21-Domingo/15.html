@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Defender lo nuestro. Con la posible privatización de Nucleoeléctrica Argentina, se ponen en riesgo la soberanía energética, las tarifas justas y el desarrollo para todos y todas. Por Secretariado Nacional de la APCNEAN.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Defender lo nuestro. Con la posible privatización de Nucleoeléctrica Argentina, se ponen en riesgo la soberanía energética, las tarifas justas y el desarrollo para todos y todas. Por Secretariado Nacional de la APCNEAN.</h1>
+            <p></p><p>En estos últimos días circularon noticias sobre un potencial decreto que, en el marco de la ley de Bases, sometería a Nucleoeléctrica Argentina Sociedad Anónima (NA-SA) a una privatización parcial.</p><p>NA-SA es una empresa del pueblo argentino. Garantiza, con estándares internacionales de seguridad, cerca del 9% de la electricidad que consumimos a un precio accesible. Es superavitaria y estratégica: sostiene trabajo calificado, industria nacional, ciencia, tecnología y capacidades de ingeniería únicas en la región y en el mundo. La tecnología nuclear no es un privilegio, es una política de Estado que hace más de 70 años mejora la calidad de vida de las familias e impulsa a la industria argentina con energía segura y siempre disponible.</p><p>Actualmente, las tarifas de NA-SA son de las más bajas del mercado, lo que redunda en un beneficio para la sociedad en su conjunto, ya que reduce la tarifa de energía eléctrica en general, permitiendo una mejor competitividad energética de nuestro sector productivo. Privatizar NA-SA no va a mejorar la vida de la gente, sino que incentivará un incremento de la tarifa hasta igualar la del mercado, y los ciudadanos pagarán esta diferencia para acrecentar la rentabilidad de un privado.</p><p>Este gobierno ya concretó la privatización de IMPSA, entregando a manos extranjeras una metalúrgica nacional centenaria y protagonista de los desafíos del sector nuclear. Su venta no benefició en ningún aspecto al pueblo argentino.</p><p>El gobierno de Javier Milei pretende convertir la infraestructura nuclear, con sus grandes obras de ingeniería y su personal al servicio de los argentinos, en un negocio donde se blindan rentas privadas y se socializan riesgos y pasivos de largo plazo. Las centrales nucleares requieren planificación, inversión sostenida y un activo control estatal para garantizar su seguridad y la previsibilidad en el suministro de energía eléctrica.</p><p>Este intento de privatización se da en el marco de una reducción sostenida en los salarios del sector, desfinanciamiento de proyectos y una incesante reducción de la planta altamente especializada mediante despidos injustificados de personal de carrera o por migración hacia actividades mejor remuneradas.</p><p>Simultáneamente, el subsecretario de Reforma del Estado, Alejandro Tamer, funcionario de Sturzenegger, desembarcó en la Autoridad Regulatoria Nuclear (ARN) y en la Comisión Nacional de Energía Atómica (CNEA) para auditar las dotaciones de ambas instituciones. Su paso por otros organismos concluyó con una reducción de estructura organizativa y de personal.</p><p>Desde la Asociación de Profesionales de la Comisión Nacional de Energía Atómica y la Actividad Nuclear (APCNEAN ) repudiamos este intento de cercenar las capacidades estatales en materia nuclear. No vamos a tolerar que se entregue el patrimonio estratégico de la nación por un apuro fiscal. Además, alertamos que no hay precisiones sobre el destino de las acciones en poder de la CNEA, dueña original de toda la infraestructura nuclear, que podría perder su participación en las decisiones sobre las centrales.</p><p>NA-SA es una empresa estatal modelo, con capacidad de operar y mantener las tres centrales nucleares argentinas, de finalizar exitosamente la construcción de la Central Nuclear Atucha II y la extensión de vida de la Central Nuclear Embalse, y de ejecutar actualmente el proyecto de extensión de vida de la Central Nuclear Atucha I. Además, la alta calificación de su personal ha motivado que grandes compañías internacionales de ingeniería soliciten su asistencia técnica, lo que permitió diversificar los ingresos de la empresa.</p><p>Defender a Nucleoeléctrica Argentina es defender a quienes trabajan y producen y es apostar por una Argentina con soberanía energética, tarifas justas y desarrollo para todos y todas.</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elcohetealaluna.com/defender-lo-nuestro/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Defender lo nuestro. Con la posible privatización de Nucleoeléctrica Argentina, se ponen en riesgo la soberanía energética, las tarifas justas y el desarrollo para todos y todas. Por Secretariado Nacional de la APCNEAN.', // Opcional, pero recomendado     
+                text: 'Defender lo nuestro. Con la posible privatización de Nucleoeléctrica Argentina, se ponen en riesgo la soberanía energética, las tarifas justas y el desarrollo para todos y todas. Por Secretariado Nacional de la APCNEAN.',  // Opcional
+                url: 'https://www.elcohetealaluna.com/defender-lo-nuestro/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
