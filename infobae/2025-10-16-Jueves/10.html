@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La ceremonia íntima en La Bombonera donde se cumplió uno de los últimos deseos de Miguel Russo.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>La ceremonia íntima en La Bombonera donde se cumplió uno de los últimos deseos de Miguel Russo.</h1>
+            <p>El mundo del fútbol todavía está saliendo de la conmoción que provocó la pérdida física de Miguel Ángel Russo la semana pasada. Por su fallecimiento, Barracas Central y Boca Juniors postergaron su partido válido por el Torneo Clausura, que seguramente sea disputado la próxima semana. Luego del multitudinario adiós que el emblemático entrenador recibió en el hall central de la Bombonera, la familia participó de una ceremonia íntima en el estadio Alberto J. Armando.</p><p>Según revelaron en TyC Sports, la última voluntad de Russo fue que esparcieran sus cenizas en las canchas de los clubes con los que más se identificó a lo largo de su carrera como futbolista y entrenador. Fue por eso que parte de sus restos descansan ahora en la Bombonera, así como también sucederá lo mismo en los próximos días en el Gigante de Arroyito (Rosario Central), la Fortaleza (Lanús) y Uno (Estudiantes de La Plata). Además, se informó que Leandro Paredes, tras su gira con la selección, pudo darle su pésame personalmente a la familia.</p><p>Hay que recordar que, antes de su muerte, Russo le había pedido a su círculo íntimo que lo vistieran con la ropa de entrenamiento de Boca para sentirse entrenador hasta último momento. Esto ocurrió cuando había desistido de internarse en una clínica y optó por pasar sus horas finales en su hogar, habiéndose ausentado en los últimos dos partidos oficiales del Xeneize (en los que fue suplido por sus ayudantes Claudio Úbeda y Juvenal Rodríguez).</p><p>Ignacio Russo, presente el día del velatorio abierto para los fanáticos en la Bombonera, no pudo contener las lágrimas al ver la movilización. Al día siguiente, viajó a Rosario para jugar para Tigre ante Newell’s, convirtió el tanto que le sirvió al Matador para llevarse un punto y se lo dedicó mostrando una frase que lleva tatuada en su cuerpo: “Todo se cura con amor”.</p><p>En las últimas horas, el colombiano Juvenal Rodríguez reveló sobre sus últimos contactos con Miguel: “Lo último que le dije fue que lo amaba. Fue el último día. Estoy seguro de que habrá dicho ‘pelotudo, dale’. Para mí es un antes y un después. Es el final de algo y el inicio de algo. Es como partir mi vida a la mitad. ¿Qué me gustaría regalarle? Sonrisas. ¿El título con Boca? Sería una de las mayores sonrisas”.</p><p>Russo, que disputó todos sus años de carrera como jugador en Estudiantes de La Plata y fue cortado en la lista previa del Mundial de México 86, inició su trayectoria como entrenador en Lanús, donde dirigió en Primera y Segunda División. Luego de ascender al Granate, hizo lo propio con el Pincha a mediados de los 90. Y la historia la repitió con Central en 2013 (con el Canalla ganó su último título como DT, la Copa de la Liga 2023). Sin lugar a dudas, su máximo trofeo fue con el buzo de técnico de Boca: la Libertadores 2007. En la Ribera consiguió además el campeonato 2019/2020 y la Copa de la Liga 2020, durante su segundo ciclo.</p><p>Gonzalo Belloso, presidente de Rosario Central, había adelantado que el deseo de Miguel era que parte de sus cenizas fueran depositadas en el estadio canalla. “Fue un tipo que siempre dio todo para los demás. Y, evidentemente, esas energías que necesitaba, no se las guardó para él. No sé cómo nos vamos a morir nosotros, pero el día que me pase me gustaría irme con el respeto que consiguió él”, expresó.</p><p>Tanto Juan Sebastián Verón como Nicolás Russo, autoridades del Pincha y el Granate, también fueron notificados sobre el deseo de Miguel Russo y abrirán sus puertas en ceremonias íntimas que se llevarán a cabo en los próximos días.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/deportes/2025/10/16/la-ceremonia-intima-en-la-bombonera-donde-se-cumplio-uno-de-los-ultimos-deseos-de-miguel-russo-tras-su-paso-por-boca-juniors/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La ceremonia íntima en La Bombonera donde se cumplió uno de los últimos deseos de Miguel Russo.', // Opcional, pero recomendado     
+                text: 'La ceremonia íntima en La Bombonera donde se cumplió uno de los últimos deseos de Miguel Russo.',  // Opcional
+                url: 'https://www.infobae.com/deportes/2025/10/16/la-ceremonia-intima-en-la-bombonera-donde-se-cumplio-uno-de-los-ultimos-deseos-de-miguel-russo-tras-su-paso-por-boca-juniors/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
