@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Pasamos un momento de mierda: el duro mensaje de la pareja de Giorgian De Arrascaeta, quien está embarazada, tras el intento de robo a la salida del Maracaná</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Pasamos un momento de mierda: el duro mensaje de la pareja de Giorgian De Arrascaeta, quien está embarazada, tras el intento de robo a la salida del Maracaná</h1>
+            <p>
+El mediapunta uruguayo del Flamengo Giorgian de Arrascaeta reveló este domingo que fue víctima, junto con su familia, de un intento de robo a la salida del estadio Maracaná de Río de Janeiro, tras vencer por 3-2 al Palmeiras en el Campeonato Brasileño. "7 años en el Flamengo (y) primer intento de robo saliendo del Maracaná ¡Qué momento tan desagradable hemos pasado en familia! Gracias a Dios estamos todos bien", relató el internacional con la celeste en sus redes sociales.  Embed - https://publish.x.com/oembed?url=https://x.com/GiorgiandeA/status/1980043395125874727&partner=&hide_thread=false   7 anos no Flamengo 1era tentativa de asalto saindo do Maracanã Que momento desagradável pasamos com a família Graças a Deus estamos todos bem — GiorgiandeArrascaeta (@GiorgiandeA) October 19, 2025    Lo que dijo Camilia Bastiani, pareja de Girogian De Arrascaeta Camilia Bastiani, la pareja de Girogian De Arrascaeta, quien se encuentra cursando un embarazo, también se manifestó tras el hecho que pasaron este domingo. “Lamentablemente los ciudadanos en Rio de Janeiro intentamos ‘mantenernos vivos’ cuando salimos de nuestras casas y digo eso porque día a día salimos a la calle pero con miedo. Porque la vida acá no vale nada, porque hay más armas que personas, porque te encontrás con un fusil a cada vuelta de la esquina y porque si te matan sos 1 más”, comentó en sus redes. de-arrascaetaa-jpg..webp      Camila Bastiani y Giorgian de Arrascaeta   Luego, contó lo que pasaron. “Lamentablemente hoy intentaron asaltarnos saliendo del Maracaná, apuntaron a nuestro auto con dos armas, nos salvó que nuestro auto es blindado y que intentamos mantener la calma". “Pese a que pasamos un momento de mierda damos las gracias a Dios que sólo fue un susto y llegamos bien a nuestro hogar”, agregó.  El mensaje de Camila Bastiani     El mensaje de Camila Bastiani   Flamengo le ganó a Palmeiras De Arrascaeta fue una de las grandes figuras del duelo de gigantes disputado este domingo en el Maracaná, donde el Flamengo doblegó al Palmeiras y lo igualó en puntos en el liderato de la Liga brasileña. El 10 del 'Fla' abrió la lata en el minuto 10 y dio la asistencia del tercer gol rojinegro, que transformó Pedro antes del descanso. Titular indiscutible para el técnico Filipe Luis, el enganche uruguayo es actualmente el máximo goleador del campeonato nacional, con 15 tantos, los mismos que el brasileño Kaio Jorge, delantero del Cruzeiro. A menos de dos meses del final de la Liga, Flamengo y Palmeiras lideran la clasificación, con 61 puntos cada uno. Cariocas y paulistas también tienen la posibilidad de enfrentarse en la final de la Copa Libertadores de este año, en caso de que en 'semis' eliminen a Racing Club y Liga de Quito, respectivamente. Con base en EFE</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/futbol-internacional/pasamos-un-momento-mierda-el-duro-mensaje-la-pareja-giorgian-arrascaeta-quien-esta-embarazada-el-intento-robo-la-salida-del-maracana-n6021459'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Pasamos un momento de mierda: el duro mensaje de la pareja de Giorgian De Arrascaeta, quien está embarazada, tras el intento de robo a la salida del Maracaná', // Opcional, pero recomendado     
+                text: ' Pasamos un momento de mierda: el duro mensaje de la pareja de Giorgian De Arrascaeta, quien está embarazada, tras el intento de robo a la salida del Maracaná',  // Opcional
+                url: 'https://www.elobservador.com.uy/futbol-internacional/pasamos-un-momento-mierda-el-duro-mensaje-la-pareja-giorgian-arrascaeta-quien-esta-embarazada-el-intento-robo-la-salida-del-maracana-n6021459'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

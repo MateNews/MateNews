@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boris Johnson insta a hundir la denominada 'flota en la sombra' rusa</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Boris Johnson insta a hundir la denominada 'flota en la sombra' rusa</h1>
+            <p>El ex primer ministro británico Boris Johnson instó a los gobiernos occidentales a hundir los barcos sospechosos de transportar crudo ruso y de pertenecer a la denominada 'flota en la sombra' de Rusia. "Creo que necesitamos hacer más para reprimir a la flota en la sombra ", declaró en una entrevista concedida a Al Arabiya English.</p><p>En este contexto, Johnson, sin presentar prueba alguna, acusó al presidente ruso, Vladímir Putin, de tener "todos estos petroleros que están violando las sanciones" y llamó a pasar a la acción.</p><p>"¡Húndanlos! Debería ocurrirles algo para que esto se detenga", instó .</p><p>Al proponer una medida tan drástica, el ex primer ministro británico estimó que era posible realizar esas acciones dentro de la legalidad. " Me mantendría dentro de la ley ", propuso. "Se les dice a las personas a bordo de los barcos: 'Su tiempo se acabó, deben desembarcar '", señaló. "Pero debemos poner fin a esto", concluyó.</p><p>El ex primer ministro británico Boris Johnson ofreció estas declaraciones poco después de que salieran a la luz documentos filtrados de su oficina privada que pusieron al descubierto los posibles motivos detrás de su férreo apoyo al régimen de Kiev : habría recibido sobornos millonarios por promover la continuación del conflicto en Ucrania.</p><p>Según estos documentos, conocidos como 'Archivos de Boris', Johnson recibió este dinero de Christopher Harborne, multimillonario empresario que posee importantes participaciones en empresas británicas vinculadas a la industria de defensa , entre ellas QinetiQ, que desarrolla tecnologías de drones y sistemas electrónicos empleados en el conflicto ucraniano .</p><p>Ambos viajaron en septiembre del 2023 a Kiev, donde, entre otras cosas, mantuvieron una "reunión a puerta cerrada en un centro de I+D de tecnología militar", un ámbito estrechamente vinculado a los intereses comerciales de Harborne. En abril del 2025, el Ministerio de Defensa del Reino Unido anunció que la empresa QinetiQ ayudaría al Ejército ucraniano a fabricar equipos con impresoras 3D.</p><p>Desde Moscú en repetidas ocasiones han tachado las sanciones impuestas por países occidentales de " ilegales y hostiles " y han destacado que estas medidas no pueden influir en la política de Rusia, que "continuará defendiendo sus intereses nacionales y protegiendo un nuevo orden mundial justo".</p><p>En lo que respecta a los intentos de los países europeos de bloquear los petroleros con crudo procedente de Rusia son consideradas " piratería del siglo XXI en Europa " y pueden tener consecuencias impredecibles para los mercados mundiales , especialmente para los energéticos, afirmó a principios de octubre el portavoz del Kremlin, Dmitri Peskov.</p><p>De este modo, comentó el llamado del presidente francés, Emmanuel Macron, a aumentar la presión sobre la denominada 'flota en la sombra' del país euroasiático para interrumpir el suministro del hidrocarburo ruso. Macron hizo esta declaración después de que las fuerzas navales francesas detuvieran el petrolero Boracay, con bandera de Benín , sospechoso de transportar crudo ruso y de pertenecer a la denominada 'flota en la sombra' de Rusia.</p><p>Por su parte, el presidente ruso, Vladímir Putin, destacó que el petrolero "fue detenido en aguas neutrales, sin ningún motivo ". "Bueno, esto es piratería , porque, sí, conozco el caso. [...] Y allí, al parecer, buscaban algún tipo de carga militar, drones o algo parecido. No hay nada de eso allí. No había nada y no puede haber nada", aseguró.</p><p>Además, el líder ruso afirmó que, con estas acciones, París busca desviar la atención de la propia población de la complicada situación política interna y provocar a Rusia para que tome medidas de respuesta.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://actualidad.rt.com/actualidad/569518-boris-johnson-insta-hundir-flota-sombra-rusa'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Boris Johnson insta a hundir la denominada 'flota en la sombra' rusa', // Opcional, pero recomendado     
+                text: 'Boris Johnson insta a hundir la denominada 'flota en la sombra' rusa',  // Opcional
+                url: 'https://actualidad.rt.com/actualidad/569518-boris-johnson-insta-hundir-flota-sombra-rusa'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
