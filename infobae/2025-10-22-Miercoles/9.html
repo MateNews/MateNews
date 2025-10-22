@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El momento en el que un drone ruso asesina a un soldado de su ejército que intentaba rendirse en Ucrania.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>El momento en el que un drone ruso asesina a un soldado de su ejército que intentaba rendirse en Ucrania.</h1>
+            <p>Un soldado ruso murió en un ataque de un drone de su propio país cuando intentaba rendirse en el sur de Ucrania, según imágenes y reportes difundidos por fuentes ucranianas y recogidos por Daily Mail. La crudeza de las imágenes y la naturaleza del ataque revela la represión interna en las filas rusas y el uso deliverado de tecnología militar para frenar la deserción en el conflicto con Ucrania.</p><p>El brutal episodio quedó registrado en un video compartido en Telegram, donde se observa a un soldado ruso caminando solo por una carretera, aparentemente bajo la mira de una cámara de vigilancia aérea.</p><p>En un momento, el militar levanta las manos y parece dejar su arma, en señal de rendición. Segundos después, un artefacto impacta directamente sobre él, provocando una explosión.</p><p>Tras disiparse el fuego, el cuerpo del soldado permanece inmóvil, envuelto en humo.</p><p>Las Fuerzas de Defensa de Ucrania en el sur afirmaron que el soldado “había comprendido la inutilidad de seguir combatiendo y estaba entregando su arma cuando un drone ruso lanzó explosivos sobre él, acabando con su vida de inmediato”.</p><p>En un comunicado, el mando ucraniano sostuvo: “En lugar de permitir que su militar sobreviviera, el operador del drone enemigo arrojó un explosivo sobre él, terminando instantáneamente con la vida del soldado que intentaba rendirse”. El mensaje añadió que este hecho “demuestra que el enemigo no valora ni la vida de sus propios soldados y está dispuesto a tomar medidas crueles para ocultar la falta de voluntad de luchar entre su personal”.</p><p>Según reportes de medios ucranianos, no se trata de un caso aislado. Se han documentado incidentes similares en los que drones rusos se emplean para impedir la deserción de sus propios efectivos. La inteligencia militar ucraniana estima que más de 25.000 soldados rusos han desertado desde finales de 2024, una cifra que refleja el descontento y la presión interna en las filas rusas.</p><p>A principios de este año, se informó que un comandante ruso ordenó a sus tropas disparar contra cualquier compañero que intentara huir del frente. De acuerdo con la inteligencia ucraniana, se interceptó una llamada telefónica en la que el oficial instruía: “¡No hay forma de retirarse, no hay forma! Nadie se retira a ningún lado; todos mantienen su posición. Si alguien huye, dispárenle”. El mismo comandante insistió: “Lo repito, si alguien huye, simplemente dispárenle”.</p><p>Esta conversación, según la fuente, tuvo lugar en la región de Donetsk. Autoridades estadounidenses también han advertido que unidades enteras reciben amenazas de muerte si intentan retroceder.</p><p>El maltrato a los soldados rusos que se niegan a combatir o buscan desertar ha sido señalado por fuentes ucranianas como una de las causas de las rendiciones masivas. La semana pasada, fuerzas ucranianas hallaron a cuatro soldados rusos esposados a un árbol y abandonados cerca de Lyman, tras negarse a cumplir órdenes.</p><p>Según los reportes, estos militares fueron dejados sin comida ni agua después de que su unidad sufriera bajas al intentar tomar territorio. Imágenes previas mostraron a personal ruso atado y azotado, y se ha denunciado la existencia de “escuadrones de castigo” encargados de identificar y castigar a quienes desobedecen o abusan del alcohol, sometiéndolos a golpizas y confinamiento en fosas.</p><p>El fenómeno de la deserción ha ido en aumento desde 2024. En agosto del año pasado, el ejército ucraniano aceptó la rendición de 102 soldados rusos en un solo grupo, la mayor cifra desde el inicio de la guerra en Ucrania en 2022. Además, se ha reportado el uso de “tropas de barrera” para impedir que los soldados abandonen las líneas del frente.</p><p>En junio, un grupo de combatientes rusos en Kursk se entregó a paracaidistas ucranianos, asegurando que “el abuso en las unidades es peor que el cautiverio”.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/america/mundo/2025/10/22/el-impactante-momento-en-el-que-un-drone-ruso-asesina-a-un-soldado-de-su-propio-ejercito-que-intentaba-rendirse-en-ucrania/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'El momento en el que un drone ruso asesina a un soldado de su ejército que intentaba rendirse en Ucrania.', // Opcional, pero recomendado     
+                text: 'El momento en el que un drone ruso asesina a un soldado de su ejército que intentaba rendirse en Ucrania.',  // Opcional
+                url: 'https://www.infobae.com/america/mundo/2025/10/22/el-impactante-momento-en-el-que-un-drone-ruso-asesina-a-un-soldado-de-su-propio-ejercito-que-intentaba-rendirse-en-ucrania/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
