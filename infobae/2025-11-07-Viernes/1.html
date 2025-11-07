@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Milei avisó que sostendrá las bandas cambiarias pero la presión para levantar el cepo a las empresas irá en aumento.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Milei avisó que sostendrá las bandas cambiarias pero la presión para levantar el cepo a las empresas irá en aumento.</h1>
+            <p>El Gobierno no quiere sorpresas con el tipo de cambio y Javier Milei avisó que las bandas cambiarias continuarán hasta el 2027. En el mismo sentido ya se había manifestado el titular del Tesoro norteamericano, Scott Bessent. Sin embargo, los controles cambiarios que aún persisten, en particular para las empresas, podrían seguir un camino distinto.</p><p>La expectativa de los inversores es que se sigan levantando de forma gradual, posiblemente a partir del segundo trimestre, cuando ingresan los dólares de la cosecha gruesa. Este año fue la liberación del cepo para las personas físicas, pero para las empresas se mantuvieron prácticamente todas las restricciones cambiarias del último gobierno.</p><p>Incluso en medio de las presiones sobre el tipo de cambio en la previa electoral, el Gobierno reimpuso algunas trabas para el público, como la “restricción cruzada”. Se trata de la prohibición de comprar dólares a través del MEP y el contado con liquidación (CCL) para quienes ya acudieron al mercado oficial. Según estimaciones privadas, las empresas habrían comprado cerca de USD 12.000 millones hasta septiembre mediante este mecanismo, pero a través de los dueños de las firmas.</p><p>Mantener el cepo sin flexibilizarlo presenta una serie de inconvenientes. El primero es que le impediría a la Argentina volver a la categoría de mercado emergente. Según estimó el JP Morgan en un informe reciente, esta recategorización generaría nuevos flujos al mercado de acciones por USD 2.600 millones de manera casi automática. Sucede que los grandes fondos de inversión internacionales deberían replicar en sus carteras la participación que el merado local tendría en el índice MSCI emergentes (0,5% del total) o bien en el MSCI Latinoamérica (con un peso de 6,3%).</p><p>Pero más allá de las inversiones financieras, también se apunta a que la liberación del cepo es un paso necesario hacia una mayor normalización de la economía argentina. En ese sentido, el gobierno de Milei eligió otro orden que la experiencia de Mauricio Macri.</p><p>En la gestión que arrancó en 2015 se liberaron todas las restricciones cambiarias de la noche a la mañana. Sin embargo, nunca se pudo alcanzar el superávit fiscal. Esta vez fue exactamente al revés. Desde el primer mes de gestión que las cuentas públicas están en equilibrio, pero el cepo se va levantando con lentitud e incluso con algunos retrocesos en el camino.</p><p>Un dato importante es que mantener el esquema de bandas no es incompatible con seguir liberando las restricciones para el acceso al mercado cambiario. El Gobierno se mantiene firme en la idea de dar previsibilidad respecto a la cotización de dólar. No obstante, muchos analistas creen que sostener un ajuste de las bandas al 1% mensual conspira contra otro de los objetivos centrales que hay para el 2026, que es la acumulación de reservas.</p><p>Con este escenario y la necesidad de captar más inversiones, todo indica que el camino para seguir flexibilizando los controles cambiarios continuará aunque no está claro a qué ritmo.</p><p>Otra de las incógnitas es cómo caerá entre los inversores el anuncio de Milei respecto a la decisión de mantener las bandas cambiarias al menos por otros dos años. En los mercados existe un convencimiento bastante generalizado de que la mejor manera de acumular reservas que tiene el Gobierno es liberando el cepo y, al mismo tiempo, eliminar las bandas, que son percibidas como una transición para ir hacia un esquema de mayor flotación.</p><p>Lo que sí resulta ineludible es la necesidad de incrementar la compra de reservas para fortalecer al Central. Los críticos del esquema de bandas insisten en que se trata de un corset para que se produzca esa compra de dólares, que debería ser por montos significativos en 2026. El peligro es que si el Tesoro compra por grandes cantidades se verifique mayor presión sobre el tipo de cambio. La cotización oficial quedaría siempre al borde de superar el techo, que actualmente se ubica en unos $ 1.500 para el tipo de cambio mayorista.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2025/11/07/milei-aviso-que-sostendra-las-bandas-cambiarias-pero-la-presion-para-levantar-el-cepo-a-las-empresas-ira-en-aumento/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Milei avisó que sostendrá las bandas cambiarias pero la presión para levantar el cepo a las empresas irá en aumento.', // Opcional, pero recomendado     
+                text: 'Milei avisó que sostendrá las bandas cambiarias pero la presión para levantar el cepo a las empresas irá en aumento.',  // Opcional
+                url: 'https://www.infobae.com/economia/2025/11/07/milei-aviso-que-sostendra-las-bandas-cambiarias-pero-la-presion-para-levantar-el-cepo-a-las-empresas-ira-en-aumento/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
