@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Orsi participó de la asunción del presidente de Bolivia, quien prometió un país nunca más sometido a ideologías fracasadas</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Orsi participó de la asunción del presidente de Bolivia, quien prometió un país nunca más sometido a ideologías fracasadas</h1>
+            <p>
+El presidente de la República, Yamandú Orsi, participó este sábado de la asunción de su par boliviano, Rodrigo Paz.   En su discurso de investidura, el nuevo presidente de Bolivia prometió que su país "nunca más" estará aislado de la comunidad internacional.  Su llegada al poder puso fin a 20 años de gobiernos socialistas que tuvieron como principales aliados a Cuba y Venezuela. El mandatario también inició las últimas semanas un acercamiento con Estados Unidos, sin relaciones diplomáticas desde 2008. El economista de 58 años e hijo del expresidente Jaime Paz (1989-1993) fue recibido entre aplausos en el palacio legislativo boliviano, en el centro de La Paz, por los asambleístas y más de 70 delegaciones internacionales.  20251108 El nuevo presidente de Bolivia, Rodrigo Paz, da un discurso durante su asunción     Rodrigo Paz da un discurso tras asumir como presidente de Bolivia Foto: AFP  "Nunca más una Bolivia aislada, sometida a ideologías fracasadas, ni mucho menos una Bolivia de espalda al mundo", dijo el mandatario de centroderecha en medio de un discurso que marcó distancia de sus predecesores, los izquierdistas Evo Morales y Luis Arce. Un torrencial aguacero caía en los exteriores del parlamento, que Paz interpretó como "una limpia" que la "Pachamama" (madre tierra) hacía sobre el país. Paz, que ganó el balotaje de octubre al frente del Partido Demócrata Cristiano (PDC), recibe un país con una aguda crisis económica por escasez de dólares y combustibles.  El gobierno saliente de Luis Arce agotó casi todas sus reservas de divisas para sostener una política de subsidios universales a la gasolina y el diésel. La inflación interanual a octubre fue de 19%, después de alcanzar un pico de 25% en julio. "El país tiene que volver a producir. Vamos a abrir la economía, atraer inversiones, reducir los aranceles para bienes que no fabricamos y modernizar el sistema energético y digital", dijo Paz.  20251108 El nuevo vicepresidente de Bolivia, Edman Lara, y el nuevo presidente, Rodrigo Paz, durante su asunción     El nuevo vicepresidente de Bolivia, Edman Lara, y el nuevo presidente, Rodrigo Paz, durante su asunción Foto: AFP También prometió un "gobierno de la innovación, de la ciencia, de la tecnología y del futuro verde". "El desarrollo económico irá de la mano del respeto del medio ambiente", aseguró. En la década anterior, Bolivia vivió un boom económico impulsado por sus exportaciones de gas, pero hoy con su caída no consigue sostener sus principales políticas asistencialistas. "¿Qué carajo nos hicieron con tanta bonanza? ¿Por qué hay gente, familias que no tienen que comer el día de hoy si éramos tan ricos con tanto gas y con el litio como futuro?", cuestionó. Paz ha prometido recortar más de la mitad de los subsidios a los combustibles, aplicar una ambiciosa descentralización y un programa de "capitalismo para todos", que pone el foco en la formalización de la economía, la eliminación de trabas burocráticas y una reducción de impuestos.  20251107 El presidente de Uruguay, Yamandú Orsi, llegó a Bolivia para la asunción presidencial y fue recibido por la canciller Celinda Sosa Lunda     Foto: AFP Orsi viajó a Bolivia este viernes en un Hércules de la Fuerza Aérea Uruguaya (FAU) y fue recibido por la canciller boliviana Celinda Sosa Lunda. Además del presidente uruguayo, entre los principales asistentes a la investidura de Paz, estuvieron el subsecretario de Estado de Estados Unidos Christopher Landau y los presidentes Gabriel Boric de Chile y Javier Milei de Argentina. Con información de AFP </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/orsi-estuvo-la-asuncion-del-nuevo-presidente-bolivia-quien-prometio-nunca-mas-un-pais-sometido-ideologias-fracasadas-n6023959'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Orsi participó de la asunción del presidente de Bolivia, quien prometió un país nunca más sometido a ideologías fracasadas', // Opcional, pero recomendado     
+                text: ' Orsi participó de la asunción del presidente de Bolivia, quien prometió un país nunca más sometido a ideologías fracasadas',  // Opcional
+                url: 'https://www.elobservador.com.uy/orsi-estuvo-la-asuncion-del-nuevo-presidente-bolivia-quien-prometio-nunca-mas-un-pais-sometido-ideologias-fracasadas-n6023959'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
