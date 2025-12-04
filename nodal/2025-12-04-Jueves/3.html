@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>México| El titular de la Secretaría del Trabajo y Previsión Social presentó proyecto de reforma laboral de 40 horas semanales</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>México| El titular de la Secretaría del Trabajo y Previsión Social presentó proyecto de reforma laboral de 40 horas semanales</h1>
+            <p>STPS presenta proyecto para la reducción de la jornada laboral a 40 horas; «es una transformación histórica», dice</p><p>Por Eduardo Dina, Salvador Corona</p><p>Marath Bolaños, titular de la Secretaría del Trabajo y Previsión Social (STPS), presentó el proyecto de reforma para la implementación de la semana laboral de las 40 horas.</p><p>En la conferencia mañanera de la presidenta Claudia Sheinbaum Pardo de este miércoles 3 de diciembre en Palacio Nacional, Bolaños reconoció a las personas trabajadoras que lucharon para esta propuesta y los diálogos con distintos sectores, pero aclaró que “no puede ser de un momento a otro”.</p><p>El titular de la STPS indicó que se trata de “una transformación histórica del mundo del trabajo” y destacó que la semana laboral trae beneficios no solo para las y los trabajadores, sino también para las unidades económicas y para la economía.</p><p>“Para garantizar los derechos de las y los trabajadores, se establecerá a nivel constitucional, así como también en la Ley Federal de Trabajo, una jornada laboral de 40 horas semanales. Esta reducción de 40 a 48 horas no podrá implicar reducción de sueldos ni de salarios ni de prestaciones.</p><p>“Asimismo, por primera vez establece la prohibición de que los menores de edad trabajen horas extras, así como una implementación gradual y paulatina. Hacer una reforma legal y sobre todo constitucional desde su presentación y durante el transcurso del año 2026, esta propuesta de cambio tendrá que ser analizada y aprobada en primera instancia por el Congreso de la Unión, y en el caso de las modificaciones constitucionales por los congresos de las entidades federativas”, explicó Bolaños.</p><p>“Esta reducción no puede ser de un momento a otro, además atendiendo con ello las recomendaciones del convenio 116 de la OIT, en donde se puedan hacer de manera paulatina estos cambios, integrándolos de manera también progresiva. Esto nos da oportunidad de que avancemos, año con año, en una reducción de dos horas a partir del año 2027, para alcanzar las 40 horas en enero del año 2030”, agregó.</p><p>Dijo que 2026 y los meses posteriores a la aprobación legislativa, influirán como un periodo de adecuación para que las y los empleadores, y las personas trabajadoras, organicen, planeen, adapten, y de manera conjunta, puedan consolidar procesos productivos en la nueva disponibilidad de tiempo.</p><p>Resaltó que con estas adecuaciones se tendrá mayor disposición de tiempo, descanso, actividades de recreación, condiciones de trabajo dignas y también mejora en la productividad.</p><p>Se establece un límite para que la suma entre las horas ordinarias de trabajo en las extraordinarias no puedan superar en ninguno de los casos las 12 en un día.</p><p>“Le devuelve tiempo de vida las de los trabajadores, para que decidan libremente qué hacer con él, y de esta manera tengan condiciones para alcanzar tanto el bienestar material como espiritual, porque no debemos olvidar que el tiempo es un recurso finito e irrecuperable”, expresó el secretario del Trabajo.</p><p>La Reforma para la implementación de la jornada laboral de #40Horas surge del diálogo entre las y los trabajadores, el sector empresarial y el @GobiernoMX para mejorar la calidad de vida de quienes sostienen a 🇲🇽 con su esfuerzo. 👷🏾‍♀️👷🏾</p><p>¡Un verdadero acto de justicia social! 👏🏾 pic.twitter.com/gqkIcdNncG</p><p>— STPS México (@STPS_mx) December 4, 2025</p><p>La presidenta Sheinbaum Pardo informó que la iniciativa para disminuir la jornada laboral sería enviada este miércoles al Senado de la República.</p><p>El Universal</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.nodal.am/2025/12/mexico-el-titular-de-la-secretaria-del-trabajo-y-prevision-social-presento-proyecto-de-reforma-laboral-de-40-horas-semanales/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'México| El titular de la Secretaría del Trabajo y Previsión Social presentó proyecto de reforma laboral de 40 horas semanales', // Opcional, pero recomendado     
+                text: 'México| El titular de la Secretaría del Trabajo y Previsión Social presentó proyecto de reforma laboral de 40 horas semanales',  // Opcional
+                url: 'https://www.nodal.am/2025/12/mexico-el-titular-de-la-secretaria-del-trabajo-y-prevision-social-presento-proyecto-de-reforma-laboral-de-40-horas-semanales/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
