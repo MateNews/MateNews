@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Más de 1,4 millones de turistas extranjeros y un aumento del gasto: las proyecciones de Ceres para la temporada de verano</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Más de 1,4 millones de turistas extranjeros y un aumento del gasto: las proyecciones de Ceres para la temporada de verano</h1>
+            <p>
+Uruguay se encamina a vivir una de las mejores temporadas de su historia, según recoge un estudio del Centro de Estudios de la Realidad Económica y Social (CERES) elaborado a partir de indicadores del Ministerio de Turismo, la Dirección Nacional de Migración, el Instituto Nacional de Estadísticas, el Instituto Nacional de Estadística y Censos de la República Argentina y los bancos centrales de Uruguay, Argentina y Brasil- De acuerdo con las proyecciones del centro, entre diciembre de 2025 y febrero de 2026 ingresarían a Uruguay más de 1,4 millones de turistas extranjeros no residentes. Esto representaría la segunda mejor temporada de verano de la historia en términos de ingresos de personas, con un crecimiento cercano al 5% respecto a la temporada anterior. El mayor aumento estaría relacionado con la llegada de argentinos y brasileños.  El gasto turístico también mostraría una recuperación progresiva, con un aumento proyectado del gasto en términos reales cercano al 4% respecto a la temporada anterior, retornando a niveles similares a los de la temporada 2019-2020. No obstante, ya que los costos de establecimientos están en pesos y se ajustan por inflación, el gasto todavía se ubicaría aproximadamente 25% por debajo del máximo histórico de la temporada 2016 -2017. “Esto refleja que, si bien la cantidad de turistas se recupera con fuerza, los márgenes del sector continúan presionados por el aumento de los costos y la menor capacidad de gasto real por visitante”, señalaron. El 2025, repasa el estudio presentado en conjunto con la Cámara Uruguaya de Turismo (Camtur), se cerraría con 3,3 millones de turistas extranjeros, más de 20% respecto a 2024, y por encima de un muy buen año como 2018. Para 2026, se espera un nuevo incremento, alcanzando nuevamente el segundo mejor año histórico en ingreso de turistas extranjeros no residentes. La mirada de los protagonistas En el marco de la realización del estudio se llevó a cabo una encuesta a operadores turísticos de todo el país, que arrojó como resultado un optimismo generalizado para la actualidad y el futuro del sector.  El 85% de los operadores turísticos afirmó que el flujo turístico en su establecimiento fue igual o mejor que en un “año promedio” durante los últimos 12 meses; dentro de ellos, 45% indicó que fue mejor o mucho mejor. A nivel territorial, más del 80% de los operadores considera que el flujo turístico en su zona fue igual o mejor que el del año anterior. La encuesta, que recoge la opinión de casi 70 operadores de 12 departamentos y abarca actividades como alojamiento, gastronomía, agencias de viaje, transporte, inmobiliarias, bodegas y turismo rural, “confirma que el turismo cuenta con condiciones para seguir expandiéndose y aportar de forma significativa al crecimiento económico y al empleo en todo el país”, sostuvieron desde Ceres. Sin embargo, desde la voz del sector se identifican también los principales cuellos de botella para continuar creciendo. En este sentido, el 82% de los operadores consultados identifica los costos laborales como un factor negativo central, seguido por los costos de los servicios públicos (60%), la carga impositiva (57%) y el tipo de cambio (52%). En este contexto, los operadores señalan como prioridades para impulsar la actividad los cambios impositivos que alivien costos, los incentivos fiscales a la inversión, una mayor conectividad aérea y el refuerzo de la promoción internacional. A su vez, el informe advierte que uno de cada cuatro operadores no conoce ninguna herramienta pública de apoyo empresarial o de inversión, y que un tercio nunca utilizó ninguna, lo que pone de relieve la necesidad de mejorar la difusión y el acceso a estos instrumentos. En este escenario, desde Ceres señalaron que para aprovechar plenamente el potencial del sector es necesario apostar a una agenda más ambiciosa que combine promoción internacional, mayor conectividad y mejores condiciones de rentabilidad, para consolidar al turismo como un pilar del desarrollo económico y social del país.  </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cafe-y-negocios/mas-14-millones-turistas-extranjeros-y-un-aumento-del-gasto-las-proyecciones-ceres-la-temporada-verano-n6028604'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Más de 1,4 millones de turistas extranjeros y un aumento del gasto: las proyecciones de Ceres para la temporada de verano', // Opcional, pero recomendado     
+                text: ' Más de 1,4 millones de turistas extranjeros y un aumento del gasto: las proyecciones de Ceres para la temporada de verano',  // Opcional
+                url: 'https://www.elobservador.com.uy/cafe-y-negocios/mas-14-millones-turistas-extranjeros-y-un-aumento-del-gasto-las-proyecciones-ceres-la-temporada-verano-n6028604'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
