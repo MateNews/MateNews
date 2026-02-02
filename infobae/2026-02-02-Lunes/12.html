@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cayó “El Negro Tony”,  el famoso estafador que ocupaba mansiones en Punta del Este.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Cayó “El Negro Tony”,  el famoso estafador que ocupaba mansiones en Punta del Este.</h1>
+            <p>La maniobra del “Negro Tony” en Punta de Este se había hecho conocida y generaba temor en los propietarios de viviendas en el destino estrella del turismo uruguayo. Junto a su familia, Antonio Romano se dedicaba a alquilar grandes casas en la zona, en las que se quedaba durante varios meses. Incluso con órdenes de desalojo era difícil sacarlo de la casa porque el ocupa presentaba recursos judiciales argumentando que vivía con menores.</p><p>Pero finalmente a fines de la semana pasada “El Negro Tony” cayó y fue condenado por la Justicia este sábado por un delito continuado de estafa y por reiterados delitos de usurpación agravada, en régimen de reiteración real. Se le impuso una pena de 24 meses, pero no irá a prisión: la cumplirá bajo un régimen de libertad a prueba.</p><p>Su esposa también fue condenada por los mismos delitos.</p><p>Durante años este delincuente y su familia realizaron la misma maniobra, de la que dio cuenta el diario El País. Romano alquilaba grandes y valiosas viviendas, hacía un pago inicial, se instalaba con sus familiares y nunca se iba. Los propietarios debían pedir su desalojo, pero este proceso era largo y tedioso porque implicaba otros recursos presentados por el acusado.</p><p>El jueves de la semana pasada finalmente cayeron, luego de que la propietaria de una vivienda lo volviera a denunciar. La Fiscalía dispuso que se notificara a la familia ocupa que debían irse de la vivienda y les dio plazo hasta el 29 de enero. Pero, como no lo hicieron, la fiscal solicitó la orden de allanamiento del inmueble y detuvo a cinco personas.</p><p>En un comunicado policial, se detalló que el hombre no actuaba de forma aislada sino en colaboración con su familia, que eran quienes ocupaban conjuntamente los inmuebles y reforzaban su permanencia allí obstaculizando el ingreso a la propiedad.</p><p>El nombre del “Negro Tony” se hizo conocido en Uruguay porque en 2023 el programa Santo y seña de Canal 4 realizó un informe basado en el testimonio de dos propietarios, que dijeron haber sido perjudicados por Romano y sus familiares.</p><p>Uno de los afectados era Mario Core, que mostró en el informe el mal estado en el que Romano dejó la propiedad. Inicialmente le dijo que se iba a quedar un mes, pero su estadía en la casa se extendió durante 14 meses.</p><p>El propietario detalló que la piscina había quedado en mal estado y que el ocupa se había llevado libros y cuadros que tenían un valor sentimental porque habían sido pintados por su madre. Los libros, en tanto, eran de su fallecida hermana y el robo le había generado un perjuicio de miles de dólares.</p><p>Una mujer –que en ese informe periodístico prefirió no ser identificada– narró que los vecinos se quejaron de que Romano organizaba fiestas ruidosas.</p><p>La semana pasada, la maniobra del “Negro Tony” volvió a tener dimensión pública cuando una vecina del barrio Cantegril relató por primera vez lo que vivió en el programa La Mañana de la radio local Cadena del Mar. Describió que, por esta situación, quedó prácticamente viviendo en la calle junto a sus cuatro hijos.</p><p>Explicó que, en su caso, arrendó su vivienda por apenas 10 días a una persona que luego resultó ser la pareja de Romano. El pago inicial se efectuó, pero la garantía nunca se concretó. La mujer le reclamó y fue hasta el domicilio, pero fue allí que comenzó a advertir movimientos irregulares. Detalló que la maniobra que se extendió durante años fue la de hacer un contacto breve para obtener la llave del inmueble de manera legal, hacer la mudanza con sus pertenencias y un posterior blanqueo de accesos mediante cadenas y candados.</p><p>Romano incluso impidió al jardinero retirar sus herramientas de trabajo, los documentos personales y los equipos profesionales que permanecían dentro del inmueble.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/america/america-latina/2026/02/02/cayo-el-negro-tony-en-punta-del-este-famoso-estafador-que-ocupaba-mansiones-con-una-maniobra-financiera/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Cayó “El Negro Tony”,  el famoso estafador que ocupaba mansiones en Punta del Este.', // Opcional, pero recomendado     
+                text: 'Cayó “El Negro Tony”,  el famoso estafador que ocupaba mansiones en Punta del Este.',  // Opcional
+                url: 'https://www.infobae.com/america/america-latina/2026/02/02/cayo-el-negro-tony-en-punta-del-este-famoso-estafador-que-ocupaba-mansiones-con-una-maniobra-financiera/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
