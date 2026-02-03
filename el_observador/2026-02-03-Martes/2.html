@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Comunidad de Gregorio Aznárez en alerta por cambio en trazado de la ruta 9 que puede dejar al pueblo sin estación de servicio</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Comunidad de Gregorio Aznárez en alerta por cambio en trazado de la ruta 9 que puede dejar al pueblo sin estación de servicio</h1>
+            <p>
+La decisión del Ministerio de Transporte y Obras Públicas (MTOP) de revisar los proyectos y las obras que están en ejecución tiene en alerta y movilizada a la comunidad de Gregorio Aznárez en Maldonado debido a una posible modificación en el trazado de la futura doble vía de la ruta 9 en el tramo que nace en la ruta 8 hasta empalmarse con la Interbalnearia. El asunto viene desde 2024 cuando la cartera, entonces a cargo de José Luis Falero, firmó un acuerdo con un consorcio privado para hacer estas obras, que se extenderán por unos 30 kilómetros y costarán US$ 90 millones. El proyecto, que lleva un avance del 43% de acuerdo a la última auditoría, incluye la construcción de un pasaje a desnivel entre las rutas 8 y 9 y dos nuevos puentes sobre los arroyos Solís Grande y Sarandí. La fecha estimada de finalización es abril de 2027. La nueva doble vía atravesará Capilla de Celia, Solís, Cerros Azules y Gregorio Aznárez. En este último pueblo, el trazado original proyectaba una “isla” en medio de la doble vía que iba a funcionar como área de servicios y estacionamiento de unos 30 camiones, y también un pasaje debajo de la ruta como los que hay en la Interbalnearia, pero el proyecto fue modificado y la intención actual del MTOP es no hacer estas construcciones, lo que disparó las alertas.  Los cambios fueron informados y discutidos el viernes 30 en el concejo de Solís Grande –el municipio del que forma parte Gregorio Aznárez– en una reunión en la que fueron invitados senadores y los cinco diputados del departamento (2 del PN, 2 del FA y 1 del PC), entre otros. En el encuentro, la alcaldesa Patricia Martínez manifestó su “preocupación” ya que los cambios podrían generar inconvenientes en los accesos de ingreso y salida al pueblo, afectando tanto a los vecinos como a la ciudadanía en general y a los colonos de la zona. Pero a su vez, se transmitió que la no construcción de la isla traería como consecuencia el cierre de la estación de servicio que está en Gregorio Aznárez debido a la inconveniencia del negocio, lo que obligaría a los pobladores a tener que hacer mínimo veinte kilómetros para cargar combustible. Tras la reunión, se resolvió convocar a una asamblea general abierta a toda la población con el objetivo de informar sobre el nuevo proyecto y, a su vez, solicitar un encuentro con autoridades del Ministerio para “buscar soluciones que contemplen las necesidades de la comunidad”. El diputado nacionalista Federico Casaretto, uno de los que estuvo en la reunión, dijo a El Observador que la decisión perjudicaba “notoriamente” a la sociedad de Gregorio Aznárez y contó que había hablado con la ministra Lucía Etcheverry para que revieran la decisión. Si bien no estuvo por estar enfermo, el legislador frenteamplista Joaquín Garlo señaló que se había comunicado con el director nacional de Vialidad del MTOP, Federico Magnone, quien a su vez habló con la alcaldesa para fijar el encuentro. Las razones del MTOP La ministra Lucía Etcheverry, en tanto, dijo a El Observador que en esta doble vía habían identificado “algunos aspectos que podrían tener modificaciones manteniendo niveles de servicio, acceso a la localidad y seguridad vial”. “Esperaremos las preocupaciones que ha manifestado la alcaldesa y una vez analizadas se fijará reunión en la localidad. A partir de esto se tomarán decisiones”, agregó. Etcheverry planteó que hubo algunas “conclusiones erróneas” de las modificaciones –en referencia a comentarios de que los accesos a la localidad se corrían dos kilómetros– y que la prioridad era “informar a la gente con mucha claridad” para luego resolver. “Estimo que en unas semanas tendremos decisiones. Lo que me parece importante es analizar si solo esa es la solución técnica más adecuada, razonable y factible en virtud del interés comercial”, sentenció respecto a la estación de servicio, que actualmente está ubicada en la ruta del lado que está el pueblo y camino al este.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/comunidad-gregorio-aznarez-alerta-cambio-trazado-la-ruta-9-que-puede-dejar-al-pueblo-estacion-servicio-n6033133'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Comunidad de Gregorio Aznárez en alerta por cambio en trazado de la ruta 9 que puede dejar al pueblo sin estación de servicio', // Opcional, pero recomendado     
+                text: ' Comunidad de Gregorio Aznárez en alerta por cambio en trazado de la ruta 9 que puede dejar al pueblo sin estación de servicio',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/comunidad-gregorio-aznarez-alerta-cambio-trazado-la-ruta-9-que-puede-dejar-al-pueblo-estacion-servicio-n6033133'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
