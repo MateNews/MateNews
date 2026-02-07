@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plazo fijo: cuánto hay que depositar para ganar $100.000 por mes tras el movimiento de tasas.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Plazo fijo: cuánto hay que depositar para ganar $100.000 por mes tras el movimiento de tasas.</h1>
+            <p>En los primeros meses de 2026, el debate sobre las tasas de interés para plazos fijos en pesos tomó protagonismo en el sistema financiero argentino. Durante las últimas semanas, los bancos actualizaron los intereses pagados por depósitos a plazo, alterando las opciones disponibles para quienes buscan proteger sus ahorros en moneda local, aunque, en los últimos días, algunas de las entidades más relevantes ajustaron los rendimientos a la baja.</p><p>La rivalidad bancaria se observa en las tasas informadas diariamente al Banco Central de la República Argentina (BCRA), lo que genera diferencias notorias entre la banca tradicional y aquellas plataformas que permiten abrir plazos fijos de forma digital. Mientras los grandes bancos ajustan sus tasas de manera más conservadora, las entidades online presentan incrementos más marcados, lo que impacta en los rendimientos mensuales.</p><p>En este contexto, muchos ahorristas se preguntan qué suma es necesaria para recibir $100.000 al mes en intereses únicamente. La respuesta varía y depende de la tasa nominal anual (TNA) ofrecida por cada institución. Con los valores actuales, el monto requerido para alcanzar esa renta mensual se ubica entre $3,5 millones y $5,7 millones, de acuerdo a la entidad escogida.</p><p>Entre las entidades tradicionales, las tasas se distribuyen en niveles más moderados. El Banco Macro ofrece la TNA más alta, con 27%, seguido por el Banco de la Nación Argentina con 26% y el Banco Credicoop y el Banco Provincia con 25 por ciento. Más abajo se ubica el el ICBC con 23,5%, mientras que tanto el Banco Santander como el Banco Ciudad, el Banco Galicia y el BBVA ofrecen una tasa del 23 por ciento anual.</p><p>Con estos porcentajes, el cálculo muestra que para obtener $200.000 en intereses mensuales es necesario inmovilizar montos elevados. En los bancos con tasas más bajas, como el BBVA o Santander, el capital necesario para obtener una ganancia $100.000 en un mes es de 5,2 millones de pesos.</p><p>Analizando otras posibilidades del mercado, se encuentran opciones con diferencias más marcas entre los bancos que permiten constituir plazos fijos online sin necesidad de ser cliente. Allí, la competencia por captar depósitos empujó las tasas por encima del 30% anual. Banco VOII y Banco de Comercio y Banco CMF encabezan el ranking con 33,5%, seguidos por Banco Meridian, con 33,25%, mientras que el Banco Provincia de Tierra del Fuego ofrece 25%.</p><p>Con estas tasas más elevadas, el capital necesario para alcanzar los $100.000 mensuales se reduce de forma significativa. En los bancos que pagan alrededor del 33,5% anual, alcanza con poco más de $3,5 millones, mientras que con tasas cercanas 25% el monto requerido se ubica en torno a los 4,6 millones de pesos. De este modo, la brecha entre los plazos fijos tradicionales y los online puede superar los $1,1 millones para un mismo objetivo de renta.</p><p>La dinámica reciente del mercado muestra que varias entidades comenzaron a tomar niveles cercanos al 30% anual como un nuevo piso de referencia para los depósitos en pesos. Este comportamiento responde, por un lado, a la necesidad de los bancos de sostener la liquidez en un escenario de mayor competencia entre entidades y, por otro, al interés de los ahorristas por mejorar el rendimiento de su dinero en un contexto de inflación más contenida. Si bien el ritmo de suba de los precios se desaceleró, en los últimos meses se mantuvo en torno a un promedio cercano al 2% mensual, un factor que sigue influyendo en las decisiones de ahorro de corto plazo.</p><p>En este marco, si bien los plazos fijos permiten acceder a un ingreso mensual previsible, su atractivo debe analizarse en términos reales. La rentabilidad final dependerá de si las tasas ofrecidas logran acompañar la evolución de los precios y de los ajustes que puedan aplicar los bancos en los próximos meses. Así, ingresos mensuales como los $100.000 pueden funcionar como un complemento de corto plazo, aunque no aseguran, por sí solos, una mejora sostenida del poder adquisitivo.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2026/02/07/plazo-fijo-cuanto-hay-que-depositar-para-ganar-100000-por-mes-tras-el-movimiento-de-tasas/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Plazo fijo: cuánto hay que depositar para ganar $100.000 por mes tras el movimiento de tasas.', // Opcional, pero recomendado     
+                text: 'Plazo fijo: cuánto hay que depositar para ganar $100.000 por mes tras el movimiento de tasas.',  // Opcional
+                url: 'https://www.infobae.com/economia/2026/02/07/plazo-fijo-cuanto-hay-que-depositar-para-ganar-100000-por-mes-tras-el-movimiento-de-tasas/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
