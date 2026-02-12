@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YPF, Eni y XRG firmaron el acuerdo para avanzar con el proyecto de GNL en la Argentina.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>YPF, Eni y XRG firmaron el acuerdo para avanzar con el proyecto de GNL en la Argentina.</h1>
+            <p>La petrolera nacional YPF, la italiana Eni y XRG, brazo internacional de inversiones energéticas de la Compañía Nacional de Petróleo de Abu Dhabi (Adnoc), finalmente firmaron este jueves un acuerdo de desarrollo conjunto (Joint Development Agreement, JDA) para avanzar en el proyecto Argentina LNG, enfocado en la producción y licuefacción de gas natural con destino a la exportación, informó YPF mediante un comunicado de prensa.</p><p>Según el parte, “Argentina LNG prevé una capacidad de producción de 12 millones de toneladas anuales (MTPA) de GNL, a través de dos unidades flotantes de licuefacción (FLNG), cada una con una capacidad de 6 MTPA. El proyecto está diseñado para integrar las etapas de producción, procesamiento, transporte y exportación de GNL”.</p><p>Además, remarca que la firma del JDA representa un nuevo hito para el proyecto, ya que establece el plan de trabajo que permitirá a las partes avanzar hacia la siguiente etapa de desarrollo. En este marco, los socios llevarán adelante la Ingeniería Básica (Front-End Engineering Design – FEED) y otras actividades asociadas, incluyendo tareas de ingeniería, estructuración técnica y los principales frentes de trabajo comerciales y de financiamiento, precisó el comunicado de YPF.</p><p>Horacio Marín, presidente y CEO de YPF, remarcó que la incorporación de XRG fortalece el proyecto y posiciona a Argentina LNG como una de las iniciativas más relevantes a nivel global. “Este nuevo paso marca la incorporación formal de XRG al proyecto que venimos desarrollando junto con Eni. Contar con dos jugadores de clase mundial nos permite posicionar a Argentina LNG como uno de los proyectos más relevantes a nivel global. A partir de ahora, continuaremos trabajando de manera muy intensiva para alcanzar la Decisión Final de Inversión durante la segunda mitad de 2026”, remarcó.</p><p>Por su parte, Guido Brusco, Chief Operating Officer de Global Natural Resources de Eni, comentó que “con la firma del Acuerdo de Desarrollo Conjunto se suma un nuevo socio – XRG – a Argentina LNG” y que el proyecto “se perfila como una de las oportunidades más prometedoras del escenario global del gas. El proyecto avanza reflejando liderazgo tecnológico y una visión estratégica de largo plazo”.</p><p>Finalmente, Mohamed Al Aryani, presidente de International Gas de XRG, afirmó: “El potencial de Argentina LNG es significativo, y este acuerdo marca un hito importante en el desarrollo del proyecto. YPF, Eni y XRG comparten la ambición de avanzar en un proyecto de GNL de gran escala que contribuya a un suministro energético confiable y flexible para los mercados internacionales, al tiempo que genera valor de largo plazo para los socios y las comunidades locales”.</p><p>YPF y Eni habían anunciado, en noviembre pasado en Abu Dhabi, Emiratos Arabes, la firma de un acuerdo preliminar con XRG para sumar al gigante árabe al proyecto de GNL. El anuncio se había realizado en el marco de la ADIPEC Exhibition and Conference 2025, uno de los eventos más importantes del sector energético global. En aquella oportunidad, Horacio Marín participó de paneles y mesas de discusión junto a referentes de la industria, donde remarcó el atractivo del nuevo contexto argentino para atraer inversiones internacionales y la relevancia del Régimen de Incentivo para Grandes Inversiones (RIGI) como herramienta para aportar previsibilidad y reglas claras.</p><p>El ingreso de XRG —brazo internacional de Adnoc— al proyecto refuerza el perfil internacional de Argentina LNG. XRG cuenta con inversiones en África, Asia y América del Norte, y su participación fortalece la competitividad del proyecto y la capacidad de acceso a mercados clave.</p><p>El proyecto Argentina LNG se inscribe en la estrategia de YPF para transformar el potencial de Vaca Muerta en divisas y empleo, y diversificar la matriz exportadora argentina. La empresa busca consolidarse como operadora shale de clase mundial y gran exportadora de hidrocarburos hacia 2031, combinando producción nacional con tecnología de licuefacción de última generación.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2026/02/12/ypf-eni-y-xrg-firmaron-el-acuerdo-para-avanzar-con-el-proyecto-de-gnl-en-la-argentina/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'YPF, Eni y XRG firmaron el acuerdo para avanzar con el proyecto de GNL en la Argentina.', // Opcional, pero recomendado     
+                text: 'YPF, Eni y XRG firmaron el acuerdo para avanzar con el proyecto de GNL en la Argentina.',  // Opcional
+                url: 'https://www.infobae.com/economia/2026/02/12/ypf-eni-y-xrg-firmaron-el-acuerdo-para-avanzar-con-el-proyecto-de-gnl-en-la-argentina/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
