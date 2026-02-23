@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Venezuela| La Corte de Nueva York pospone la audiencia del presidente Nicolás Maduro y Cilia Flores, secuestrados en EEUU</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Venezuela| La Corte de Nueva York pospone la audiencia del presidente Nicolás Maduro y Cilia Flores, secuestrados en EEUU</h1>
+            <p>Posponen audiencia del presidente Nicolás Maduro y Cilia Flores, secuestrados en EE.UU.</p><p>El secuestro de un Presidente en ejercicio y su traslado a un tribunal extranjero constituye una violación flagrante del derecho internacional, contraria a los principios de soberanía y no injerencia.</p><p>La corte federal de Nueva York reprogramó para el 26 de marzo de 2026 la segunda audiencia del presidente venezolano Nicolás Maduro y su esposa y primera combatiente, diputada Cilia Flores, tras un acuerdo entre la Fiscalía y la defensa.</p><p>El presidente legítimo de Venezuela y Flores se encuentran secuestrados tras la agresión militar de EE.UU. contra Venezuela, el 3 de enero, que dejó más de cien personas asesinadas y significativos daños materiales.</p><p>El cambio de fecha, originalmente prevista para el 17 de marzo, fue autorizado por el juez Alvin K. Hellerstein debido a “problemas de planificación y logística”, según consta en el documento oficial.</p><p>El jefe de Estado y su esposa deberán presentarse ante el Tribunal Federal del Distrito Sur de Manhattan, donde se espera que el juez establezca el calendario de diligencias y resuelva mociones previas al juicio.</p><p>La comparecencia inicial ante ese tribunal se celebró el 5 de enero de 2026, apenas dos días después de que fuerzas estadounidenses secuestraran al líder venezolano en Caracas.</p><p>En aquella ocasión, el Presidente bolivariano se declaró “no culpable” de los cargos imputados, rechazó las acusaciones y se proclamó “prisionero de guerra” y jefe legítimo del Estado venezolano, mientras que su defensa también desestimó las imputaciones presentadas por la Fiscalía estadounidense, que impulsa un juicio sin sustentación y políticamente motivado.</p><p>Estados Unidos ha formulado cargos que incluyen supuestos delitos relacionados con narcotráfico y tráfico de armas, acusaciones que las autoridades venezolanas tildan de infundadas y parte de una campaña para justificar la intervención contra el país sudamericano.</p><p>Caracas ha cuestionado la legitimidad de estas imputaciones, recordando que una acusación original contra Maduro por liderar el denominado “Cártel de los Soles” fue retirada por falta de evidencia concreta.</p><p>El caso se produce en un contexto de prolongada hostilidad de Washington contra Caracas, en el que la Casa Blanca ha recurrido frecuentemente a la caracterización de amenazas a su “seguridad nacional” para imponer presión política o intervenir militarmente.</p><p>Esta postura ha servido históricamente como pretexto para vulnerar la soberanía de naciones, intervenir en sus asuntos internos o acceder a sus recursos naturales a través de sanciones, operaciones militares o presiones económicas.</p><p>El secuestro de un Presidente en ejercicio y su traslado a un tribunal extranjero constituye una violación flagrante del derecho internacional, que atenta contra los principios de soberanía y no injerencia en los asuntos internos de otros Estados.</p><p>Por otra parte, trascendió que el Presidente Maduro y Cilia Flores tuvieron visita consular con un representante de Venezuela. Mediante una comunicación, la Fiscalía del Distrito Sur de Nueva York informó al juez Hellerstein que el pasado 30 de enero de 2026 ambos sostuvieron una visita consular con un funcionario en representación de la República Bolivariana de Venezuela.</p><p>El documento, fechado el 17 de febrero de 2026, da cumplimiento a la orden judicial emitida durante la presentación y lectura de cargos del 5 de enero, cuando Hellerstein instruyó al Gobierno estadounidense facilitar el acceso de los acusados a servicios consulares y a informar al tribunal una vez concretado.</p><p>La comunicación está firmada por el fiscal federal Jay Clayton y sus adjuntos, y confirma que el Estado venezolano ha podido ejercer su derecho de protección consular sobre el presidente constitucional y la primera dama, secuestrados el 3 de enero pasado.</p><p>TELESUR</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.nodal.am/2026/02/venezuela-la-corte-de-nueva-york-pospone-la-audiencia-del-presidente-nicolas-maduro-y-cilia-flores-secuestrados-en-eeuu/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Venezuela| La Corte de Nueva York pospone la audiencia del presidente Nicolás Maduro y Cilia Flores, secuestrados en EEUU', // Opcional, pero recomendado     
+                text: 'Venezuela| La Corte de Nueva York pospone la audiencia del presidente Nicolás Maduro y Cilia Flores, secuestrados en EEUU',  // Opcional
+                url: 'https://www.nodal.am/2026/02/venezuela-la-corte-de-nueva-york-pospone-la-audiencia-del-presidente-nicolas-maduro-y-cilia-flores-secuestrados-en-eeuu/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
