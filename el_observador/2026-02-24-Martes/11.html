@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Ahorro jubilatorio: la pulseada entre bajar costos o potenciar inversiones</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Ahorro jubilatorio: la pulseada entre bajar costos o potenciar inversiones</h1>
+            <p>
+El gobierno quiere mantener el pilar de ahorro individual, pero introducir cambios relevantes para mejorar su funcionamiento y reducir costos para los afiliados. Entre las opciones que se evalúan está la idea de centralizar algunas funciones que hoy realizan las AFAP. Esa eventual reorganización podría implicar que el Estado —a través del Banco de Previsión Social (BPS) u otro organismo— sea quien pase a administrar las cuentas individuales. Y que las AFAP se concentren únicamente en invertir y rentabilizar los fondos, según adelantó el coordinador del Diálogo Social, Hugo Bai, en entrevista con El Observador. Bajo este esquema, las administradoras privadas competirían únicamente para lograr inversiones eficientes. El modelo británico National Employment Savings Trust (NEST), es uno de los ejemplos que se están considerando. Se trata de un sistema de ahorro con administración centralizada y de bajo costo. El trabajador cuenta con una afiliación automática y sus ahorros se gestionan en un "fondo por defecto" con comisiones mínimas. Para las AFAP la clave está en las inversiones, no en la administración En un documento presentado al Diálogo Social a fines del año pasado, la Asociación Nacional de AFAP (Anafap) afirma que el margen de mejora del sistema no está principalmente en cambios en la administración de las cuentas, sino en incrementar la rentabilidad de las inversiones y el ahorro acumulado, a través de modificaciones en el régimen de activos. Según plantea, el impacto de reducir costos administrativos o de centralizar la gestión de las cuentas sería acotado: inferior al 2% sobre el pilar de ahorro individual y menor al 1% en la jubilación total. En ese sentido, relativiza que la reorganización institucional del sistema sea el factor determinante para mejorar las futuras pasividades. En cambio, la gremial señala que existen oportunidades relevantes en materia de diversificación de inversiones. Afirma que una mayor apertura de los portafolios hacia renta variable global, junto con cambios regulatorios en los activos habilitados, podría elevar la prestación promedio del pilar de ahorro en torno al 21%, y que ese debería ser uno de los ejes centrales del análisis. Sobre la etapa de desacumulación —la fase en que los ahorros acumulados durante la vida laboral se transforman en ingresos jubilatorios—, Anafap propone ampliar las opciones más allá de la renta vitalicia, incorporando alternativas como retiros programados, rentas temporales o fondos mutuos previsionales. Sostiene que una mayor competencia y más variedad de productos podrían mejorar las prestaciones del pilar de ahorro individual. El planteo de República AFAP En esa misma línea, República AFAP también relativizó que una eventual centralización de funciones tenga un impacto significativo en las jubilaciones. En un documento publicado por el Diálogo Social, estimó que si se eliminaran los costos asociados al asesoramiento y la administración de cuentas individuales y se trasladara íntegramente ese ahorro a una menor comisión, la mejora en la prestación sería de 2,4% respecto al esquema vigente. La administradora además simuló un escenario con una estructura de costos similar a la del NEST del Reino Unido. En ese caso -bajo las reglas de aportación y desacumulación vigentes-, la jubilación resultaría 4,3% superior a la actual, aunque el propio documento advierte que no se trata de una comparación plenamente equivalente al marco uruguayo, ya que el esquema local incluye la cobertura de invalidez y fallecimiento financiada mediante una prima específica. Según sus cálculos, la incidencia más relevante estaría en otros componentes del sistema. La ampliación del régimen de inversiones en el exterior y la incorporación de renta variable podrían elevar la prestación en torno al 16,9% comparado a la alcanzada con la regulación de inversiones permitidas actualmente. También advierte que los costos en la etapa de desacumulación —particularmente el margen aplicado en las rentas vitalicias— inciden más en el resultado final que los gastos administrativos. En ese contexto, sostiene que los costos de administración ya se ubican en niveles comparables a modelos internacionales de bajo costo y que no hay evidencia concluyente de que una centralización total genere economías de escala significativas. Además, advierte que un cambio estructural en las reglas de juego podría introducir nuevos actores y procesos en el sistema, con implicancias significativas en términos de gobernanza, operación y riesgos financieros.  </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/economia-y-empresas/ahorro-jubilatorio-la-pulseada-bajar-costos-o-potenciar-inversiones-n6035338'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Ahorro jubilatorio: la pulseada entre bajar costos o potenciar inversiones', // Opcional, pero recomendado     
+                text: ' Ahorro jubilatorio: la pulseada entre bajar costos o potenciar inversiones',  // Opcional
+                url: 'https://www.elobservador.com.uy/economia-y-empresas/ahorro-jubilatorio-la-pulseada-bajar-costos-o-potenciar-inversiones-n6035338'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
