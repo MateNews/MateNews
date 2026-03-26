@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Matrículas adulteradas: casi la mitad de las multas que se detectan en rutas no se pueden aplicar porque no se puede identificar el vehículo</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Matrículas adulteradas: casi la mitad de las multas que se detectan en rutas no se pueden aplicar porque no se puede identificar el vehículo</h1>
+            <p>
+El Ministerio de Transporte informó en el Parlamento que casi la mitad de multas que detecta en rutas nacionales no se pueden aplicar porque la matrícula está adulterada, tapada o no existía. En el marco del tratamiento del proyecto que buscar reducir a la mitad el monto de las multas por exceso de velocidad –salvo si se supera el límite por el doble o más–, el Ministerio concurrió a la comisión de Hacienda integrada con Transporte de Diputados “La mitad de las infracciones que constatamos en la red nacional no podemos validarlas porque la matrícula está adulterada; no se puede identificar la matrícula, no se puede identificar el vehículo y no se puede notificar ni seguir con el proceso de multa”, dijo en la comisión el director nacional de Vialidad, Federico Magnone, según consta en la versión taquigráfica. La semana pasada  el Ministerio del Interior había advertido por este mismo problema en la comisión y había reclamado una ley que “prevea expresamente que la adulteración es una falta en sí misma” además de una sanción mucho mayor. Actualmente la multa que existe es por la falta de matrícula o por su “ilegibilidad” y es de 4 unidades reajustables ($7.664). Magnone coincidió que se trata de un problema de “seguridad pública” pero también un problema para el Ministerio de Transporte porque “es alguien que está cometiendo una infracción y no se lo puede identificar”.   “Además, el valor de la multa por tener una matrícula adulterada es cinco veces menor que el valor de la multa por exceso de velocidad. Entonces, indirectamente, estamos dando un incentivo a adulterar la matrícula en vez de cumplir con la velocidad”, dijo en la comisión que estudia el proyecto para la reducción de los montos de las multas. El director nacional de Vialidad presentó cifras que evidencian este fenómeno. En 2025 se detectaron 684.375 incidentes sancionables. Esos incidentes luego son depurados –se eliminan, por ejemplo, las ambulancias en emergencias o los patrulleros en operativos– y a partir de esos números el Ministerio de Transporte aplicó unas 113 mil multas a vehículos nacionales y más de 105 mil a extranjeros. Sin embargo, en 2025 hubo 330 mil multas que no se pudieron aplicar porque la matrícula estaba adulterada, tapada o no existía. Es decir, casi la mitad de los incidentes que se registran no se pueden sancionar por ese motivo. En ese marco, Magnone planteó la necesidad de facultar al Ministerio para que pueda aplicar las multas a quienes circulen con matrículas adulteradas (hoy solo puede aplicarlas la Policía Caminera). “Entendemos que es correcto subir el monto de la multa por matrícula adulterada, pero tampoco alcanzaría solo con eso. Por ejemplo, tenemos que diferenciar las matrículas que tienen desgaste normal, porque pasó el tiempo o porque quizá la chapa no era de buena calidad. Hoy, la persona que voluntariamente quiere sustituir su matrícula por una en buen estado no tiene un trámite fácil para hacerlo. De hecho, le sale más de $ 5000 y tiene que cambiar la matrícula, no mantiene el número, tiene que hacer una libreta nueva; implica días, con suerte, hacer el trámite en la intendencia que le toque”, lamentó Magnone y planteó la necesidad de buscar “algún mecanismo” con el Congreso de Intendentes para que las matrículas estén en buen estado. A partir de los planteos de Transporte e Interior, la comisión evalúa cuál es el mejor camino para abordar este tema. Una posibilidad es incluir el asunto en este mismo proyecto de ley sobre multas de tránsito mientras que otra posibilidad es avanzar con un proyecto presentado por el blanco Pedro Jisdonián que modifica el Código Penal.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/matriculas-adulteradas-casi-la-mitad-las-multas-que-se-detectan-rutas-no-se-pueden-aplicar-porque-no-se-puede-identificar-el-vehiculo-n6038830'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Matrículas adulteradas: casi la mitad de las multas que se detectan en rutas no se pueden aplicar porque no se puede identificar el vehículo', // Opcional, pero recomendado     
+                text: ' Matrículas adulteradas: casi la mitad de las multas que se detectan en rutas no se pueden aplicar porque no se puede identificar el vehículo',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/matriculas-adulteradas-casi-la-mitad-las-multas-que-se-detectan-rutas-no-se-pueden-aplicar-porque-no-se-puede-identificar-el-vehiculo-n6038830'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>

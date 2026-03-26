@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> ¿Cuáles son las 10 carreras con mejor salida laboral en Uruguay?</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> ¿Cuáles son las 10 carreras con mejor salida laboral en Uruguay?</h1>
+            <p>
+El trabajo para toda la vida parece ser cosa del pasado. Las nuevas tendencias del mercado de trabajo apuntan a que el aprendizaje continuo y la capacidad de reinventarse son las grandes cualidades que cobran protagonismo en la nueva trayectoria laboral. “En un contexto donde el mercado de trabajo se transforma de manera constante y el avance tecnológico acelera los cambios, los conocimientos y las habilidades laborales requieren actualizarse de forma permanente”, sostiene la CEO de Randstad para Uruguay, Argentina, Chile y México, Andrea Ávila. En el marco de un estudio elaborado por la consultora que presenta las 10 carreras con mejores perspectivas laborales en Uruguay, la CEO destaca que la carrera de grado representa “apenas el punto de partida de un proceso de aprendizaje continuo, hoy necesario para sostener la empleabilidad y construir una trayectoria profesional”. Las 10 carreras con mejor proyección de demanda laboral Según el estudio elaborado por los especialistas en reclutamiento y gestión de talento de Randstad, estas carreras y disciplinas tienen buena proyección de demanda laboral en Uruguay para 2026: Ingeniería Todas las ramas de la ingeniería presentan alta empleabilidad en organizaciones de distintos sectores. Más allá de la especialización, los ingenieros son particularmente demandados por su aporte para la mejora de la eficiencia, la reducción de costos, la gestión de proyectos y la optimización de recursos, lo que les da una gran versatilidad en el mercado laboral. Economía y finanzas En un contexto de alta volatilidad económica en el sector financiero, la gestión eficiente de riesgos, inversiones y estrategias económico-financieras es clave para la sostenibilidad y rentabilidad de las empresas. Además, la digitalización del sector está impulsando la búsqueda de perfiles con conocimientos en tecnología financiera (Fintech), blockchain y automatización de procesos contables y financieros, afirman desde la consultora. Marketing digital La transformación digital consolidó la necesidad de profesionales capaces de diseñar estrategias de posicionamiento en el canal online, integrando creatividad y análisis de datos para potenciar la visibilidad, el impacto y la performance de las marcas en entornos digitales. Programación Las carreras relacionadas con el desarrollo de software y programación continúan liderando la demanda en perfiles de tecnología. El descalce entre la oferta y demanda de este tipo de perfiles, en especial con seniority, siguen posicionando a esta disciplina como una de las más atractivas y estratégicas para el desarrollo profesional, subrayan desde Randstad. Data Science y Analítica de Datos La interpretación de grandes volúmenes de información es cada vez más relevante en las empresas, a partir del rol que tienen hoy los datos en la toma de decisiones estratégicas y para optimizar la implementación de inteligencia artificial de las empresas. Es por eso que profesionales en Data Science, Business Intelligence y analítica avanzada son cada vez más requeridos en empresas y organizaciones de diferentes sectores y tamaños. Logística y Supply chain La expansión del comercio electrónico y el rol central de la logística en la economía digital hacen que la formación en gestión de procesos de almacenamiento, despacho y distribución sea un campo de desarrollo profesional cada vez más demandado por empresas de todos los sectores. Ciencias de la Computación Abarcando una variedad de campos, desde la inteligencia artificial hasta la ciberseguridad y la analítica de datos, esta disciplina de base está impulsada por el crecimiento de la digitalización y la automatización en todos los sectores, traccionando la demanda de especialistas con buena formación. Negocios digitales Esta nueva disciplina impulsa la formación de profesionales que integran conocimientos tecnológicos con visión estratégica y gestión empresarial, capaces de impulsar la innovación y optimizar procesos de negocio en entornos digitales en diversos sectores y mercados verticales. Biotecnología Con aplicaciones en salud, industria, agricultura y pharma, esta disciplina requiere profesionales con formación en Biología, Química, Ingeniería y Biomedicina, reparados para responder a nuevas demandas de habilidades laborales que cruzan el campo científico con el tecnológico. Ecología y ciencias ambientales Con foco en el análisis de la relación entre los organismos y su ambiente, estas áreas de estudios están ganando protagonismo a partir de las iniciativas de conservación y sostenibilidad.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cafe-y-negocios/cuales-son-las-10-carreras-mejor-salida-laboral-uruguay-n6038704'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' ¿Cuáles son las 10 carreras con mejor salida laboral en Uruguay?', // Opcional, pero recomendado     
+                text: ' ¿Cuáles son las 10 carreras con mejor salida laboral en Uruguay?',  // Opcional
+                url: 'https://www.elobservador.com.uy/cafe-y-negocios/cuales-son-las-10-carreras-mejor-salida-laboral-uruguay-n6038704'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
