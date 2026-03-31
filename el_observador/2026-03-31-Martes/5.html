@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Ministerio de Justicia: gobierno plantea enviar el proyecto de ley en mayo o dentro de la Rendición de Cuentas</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Ministerio de Justicia: gobierno plantea enviar el proyecto de ley en mayo o dentro de la Rendición de Cuentas</h1>
+            <p>
+El proyecto de ley para crear el Ministerio de Justicia y Derechos Humanos ingresará al Parlamento “posiblemente” en mayo o dentro de la Rendición de Cuentas, según informó en conversaciones políticas el prosecretario de la Presidencia, Jorge Díaz, y confirmó  El Observador. Como parte de una ronda de reuniones con sectores del Frente Amplio, el exfiscal de Corte se reunió la semana pasada con el Ejecutivo del  Partido Socialista para defender la creación de la cartera en consonancia con el compromiso del presidente Yamandú Orsi. Díaz subrayó que la iniciativa se tratará en el Parlamento aún cuando no haya consensos asegurados: “Tenemos un compromiso y tenemos que cumplir con nuestros votantes. Si no sale, ellos tendrán que explicar”, sostuvo ante los socialistas en referencia a las resistencias planteadas desde la oposición.  El prosecretario de la Presidencia detalló que están manteniendo conversaciones con el Ministerio de Economía y Finanzas (MEF), la Oficina de Planeamiento y Presupuesto (OPP) y la Oficina Nacional de Servicio Civil (ONSC), dado que el proceso deberá iniciar con una negociación colectiva con la Confederación de Organizaciones de Funcionarios del Estado (COFE) para acordar los términos de los eventuales traslados de reparticiones. Díaz también marcó que un Ministerio de Justicia implicará “sinergias positivas” que pueden significar algunos ahorros por tareas que hoy están desperdigadas en el Estado. El jerarca ha insistido en que el Ministerio del Interior, tal cual está en la actualidad, “es un Estado dentro del Estado” a la vez que hay muchísimas otras oficinas que podrían estar coordinadas bajo una misma cartera.  20250731 Jorge Díaz. Seminario internacional, La Creación del Ministerio de Justicia y DD.HH. en Uruguay     El prosecretario de la Presidencia, Jorge Díaz Foto: Inés Guimaraens  El ministro de Economía, Gabriel Oddone, había adelantado en entrevista con Búsqueda que la Rendición de Cuentas no incluirá un incremento del gasto, e incluso planteó semanas más tarde a La Diaria que deberán "revisar" las proyecciones para el quinquenio ante un escenario más restrictivo de lo esperado. En este sentido, resta definirse dentro del Poder Ejecutivo cuál será la asignación presupuestal para el nuevo ministerio en caso de crearse. Fuentes del Partido Socialista aseguraron que el sector respaldará el proyecto tal cual está establecido en el programa de gobierno. Tras el discurso de Orsi en la Asamblea General, dirigentes del MPP como el senador Daniel Caggiani y la ex vicepresidenta Lucía Topolansky deslizaron que para ellos no es el tema más prioritario. En ese sentido, Díaz ha insistido en que los votos oficialistas están asegurados porque el Ministerio de Justicia es un compromiso del Poder Ejecutivo. La mayor incertidumbre, por otro lado, está en lograr los votos de la oposición en Diputados. Los colorados Andrés Ojeda y Pedro Bordaberry –a menudo enfrentados por la interna del partido– cerraron filas en que no apoyarán la creación de un Ministerio de Justicia, al igual que nacionalistas como Javier García y Sebastián Da Silva han sido firmes en su oposición, incluso cuando el Partido Nacional lo incluyó como propuesta dentro del programa de la candidatura de Álvaro Delgado, hoy presidente del Directorio blanco. Blancos, colorados e independientes se amparan a menudo en su desconfianza en la figura de Díaz, cómo posible futuro ministro, para rechazar su respaldo a un Ministerio de Justicia. La creación de esta nueva cartera estaba prevista para el Presupuesto durante el primer año de gobierno, pero Orsi terminó por descartarlo tras sondear que no están dadas las condiciones con la oposición. Tal como informó Búsqueda, Díaz maneja que hay un “escenario de máxima” y otro “de mínima” según cómo avancen las negociaciones en procura de la mayoría absoluta.</p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/nacional/ministerio-justicia-gobierno-plantea-enviar-el-proyecto-ley-mayo-o-dentro-la-rendicion-cuentas-n6039238'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Ministerio de Justicia: gobierno plantea enviar el proyecto de ley en mayo o dentro de la Rendición de Cuentas', // Opcional, pero recomendado     
+                text: ' Ministerio de Justicia: gobierno plantea enviar el proyecto de ley en mayo o dentro de la Rendición de Cuentas',  // Opcional
+                url: 'https://www.elobservador.com.uy/nacional/ministerio-justicia-gobierno-plantea-enviar-el-proyecto-ley-mayo-o-dentro-la-rendicion-cuentas-n6039238'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
