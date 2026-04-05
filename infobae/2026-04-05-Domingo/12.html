@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Qué reveló la autopsia del rapero Mike Dee, a quien encontraron muerto en un pozo ciego en Morón.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>Qué reveló la autopsia del rapero Mike Dee, a quien encontraron muerto en un pozo ciego en Morón.</h1>
+            <p>El cuerpo del rapero argentino Mike Dee, cuyo nombre real era Roberto Alleruzzo, fue hallado el jueves pasado en un pozo ciego de su vivienda en Morón. La autopsia preliminar estableció que la causa del fallecimiento fue un traumatismo encéfalo craneal grave, una conclusión que ha reforzado la hipótesis de homicidio y motivó la detención de dos sospechosos, uno de los cuales fue aprehendido este sábado tras pactar su entrega a la policía.</p><p>La secuencia de hechos comenzó el 5 de marzo, día de cumpleaños de la víctima, cuando su esposa lo vio por última vez. Los vecinos notaron su ausencia recién al día siguiente y algunos recordaban haberlo visto en malas condiciones. Un testigo declaró que el martes previo, vio a Alleruzzo ensangrentado y habría señalado a su agresor y agregado: "Éste me pegó y me robó el celular“, en referencia a Joel Ramses Baladán, de 29 años.</p><p>El hallazgo del cuerpo de Alleruzzo, de 58 años, ocurrió el jueves luego de múltiples incidencias que involucraron a vecinos, familiares y comerciantes de la zona. Tras dos días de intensa búsqueda, el cadáver fue encontrado por personal policial dentro de una cámara séptica, bajo solo 15 centímetros de tierra en el patio de la vivienda, luego de que se removiera un lavarropas que no solía estar allí.</p><p>La investigación judicial, a cargo del fiscal Claudio Oviedo de la UFI N° 5 de Morón, determinó a partir del informe forense que los restos presentaban además heridas menores. Según informaron en Primer Plano Online, algunas de ellas fueron infringidas antes y otras después de la muerte.</p><p>El segundo detenido, identificado como Pablo García, de 33 años, fue trasladado a la comisaría tras entregarse voluntariamente en la intersección de Mitre y Belgrano. Ambos detenidos serán indagados por la justicia, que les imputa la acusación de robo seguido de homicidio criminis causae, una figura penal que prevé prisión perpetua.</p><p>La hipótesis que prevalece en la investigación apunta a que Baladán y García buscaron apoderarse de la propiedad de Alleruzzo, un músico con una trayectoria artística marcada por sus presentaciones bajo el nombre de Mike Dee y recordado no solo por sus discos, sino también por su aparición televisiva en su juventud en el programa de Susana Giménez.</p><p>Baladán aceptó declarar y, aunque sus respuestas fueron evasivas, negó su participación en el homicidio. Sin embargo, reconoció estar en la escena del crimen junto a García, alegando que ambos frecuentaban la casa de Alleruzzo para consumir drogas. El propio Baladán había recuperado su libertad apenas veinte días atrás, tras permanecer cinco meses detenido por un robo a una panadería ocurrido en octubre del año anterior.</p><p>En su testimonio, Baladán afirmó: "Yo no lo maté. Cuando llegué, Tito ya estaba golpeado. Fui para drogarme y ya estaba Pablo, que había llegado antes que yo. Después me fui, y al otro día volví, pero ya no vi a Tito. Nos quedamos hasta las cinco de la tarde".</p><p>Esta versión se contradice con la declaración de una kiosquera del barrio, quien relató haber visto a Baladán la noche del martes pidiéndole un producto para quitar manchas de sangre de su ropa y conversando sobre cómo habían golpeado a la víctima. “El asesino vino al kiosco y me dijo: ‘¿Qué jabón es mejor para sacar la sangre de la ropa?’”, declaró la comerciante.</p><p>La municipalidad de Morón desarrollará un operativo de limpieza tanto en la vivienda como en la cuadra donde residía Alleruzzo, conocido popularmente como ‘Tito’ o Mike Dee. Entre los aspectos pendientes en la investigación judicial, figura el interrogante sobre el origen de la droga consumida por los involucrados, todos en situación de vulnerabilidad social.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/sociedad/policiales/2026/04/05/que-revelo-la-autopsia-del-rapero-mike-dee-a-quien-encontraron-muerto-en-un-pozo-ciego-en-moron/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'Qué reveló la autopsia del rapero Mike Dee, a quien encontraron muerto en un pozo ciego en Morón.', // Opcional, pero recomendado     
+                text: 'Qué reveló la autopsia del rapero Mike Dee, a quien encontraron muerto en un pozo ciego en Morón.',  // Opcional
+                url: 'https://www.infobae.com/sociedad/policiales/2026/04/05/que-revelo-la-autopsia-del-rapero-mike-dee-a-quien-encontraron-muerto-en-un-pozo-ciego-en-moron/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
