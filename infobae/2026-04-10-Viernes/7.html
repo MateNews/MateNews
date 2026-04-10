@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La cadena de ropa sueca H&M pone el foco en la Argentina y negocia abrir locales en varios shoppings.</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1>La cadena de ropa sueca H&M pone el foco en la Argentina y negocia abrir locales en varios shoppings.</h1>
+            <p>La marca sueca de fast fashion H&M avanza en su plan para desembarcar en la Argentina con tiendas propias en centros comerciales. En un contexto de apertura de importaciones y llegada de marcas internacionales, la compañía retomó su interés por el mercado local y mantuvo negociaciones con operadores del sector para definir su ingreso.</p><p>Si bien la cadena de supermercados Coto ya vende prendas de la marca desde fines del año pasado, la idea ahora sería que lleguen directamente con locales propios. Según pudo reconstruir Infobae a partir de fuentes de IRSA, la firma apunta a instalarse en shoppings de alto tránsito y con capacidad para albergar locales de gran superficie. En ese esquema, distintos centros comerciales aparecen como candidatos dentro del radar de la compañía, tanto en la Ciudad de Buenos Aires como en el conurbano y el interior.</p><p>De acuerdo con lo que indicaron fuentes vinculadas a las conversaciones, la empresa mantiene negociaciones avanzadas para concretar su llegada, aunque hasta el momento no hay nada cerrado. Alto Palermo sería el primer desembarco (ya habría algo firmado en este caso), mientras que los próximos estarían ubicados en Dot y Abasto. La llegada a Alto Avellaneda también está en tratativas pero con menos avance, dijeron las fuentes. Desde IRSA confirmaron que existieron encuentros con representantes de la firma. “Estuvieron en Buenos Aires antes de fin de año, recorrieron las locaciones y hubo reuniones”, precisaron.</p><p>En todos los casos, sería con características acordes al formato de tienda que maneja la marca a nivel global. La necesidad de contar con amplias superficies comerciales surge como un requisito central, ya que el concepto incluye líneas para hombre, mujer y niños, además de otros productos.</p><p>En paralelo, trascendió que la compañía apunta a operar de forma directa en el país, sin intermediarios ni socios locales. “La idea es que vengan directo ellos”, indicaron desde el entorno de las tratativas. En esa línea, agregaron que la empresa no busca incorporar un operador local para su desembarco, una decisión que se alinea con el esquema que prioriza en otros mercados. “No quieren a nadie local”, explicaron.</p><p>El cronograma de llegada también se encuentra en evaluación. De acuerdo con lo que indicaron fuentes involucradas, la expectativa apunta al segundo semestre de 2026, aunque aclararon que ese plazo no es definitivo. “Tampoco es certero 100%”, señalaron, en referencia a los tiempos del proyecto.</p><p>La compañía, fundada en 1947, cuenta con cerca de 4.000 tiendas en más de 79 países y presencia online en 60 mercados. Su propuesta comercial combina moda y calidad a precios accesibles, con un enfoque que en los últimos años incorporó iniciativas vinculadas a la sostenibilidad.</p><p>En términos de negocio, la firma registró ingresos por USD 22.100 millones, de acuerdo con el ranking de Forbes 2025. Su portafolio incluye indumentaria, accesorios, calzado, cosméticos y productos para el hogar, bajo distintas marcas que integran el grupo. Entre ellas, se encuentran H&M, COS, Monki, Weekday, & Other Stories, Cheap Monday, H&M Home y ARKET. En ese sentido, el desembarco en la Argentina podría abrir la puerta a una expansión más amplia del grupo, con la posible llegada de algunas de esas etiquetas en una etapa posterior.</p><p>La empresa ya cuenta con presencia en la región, con operaciones en países como Uruguay y Chile. Ese antecedente refuerza el interés por el mercado argentino, en un escenario que vuelve a resultar atractivo para las compañías internacionales del sector.</p><p>Este posible desembarco de H&M se suma a las ya varias marcas internacionales que llegaron y llegarán en los próximos meses. En la mayoría de los casos, son traídas por empresarios argentinos que obtienen las licencias para operar en la Argentina, pero en el caso de la firma sueca llegaría de forma directa.</p><p>Temas Relacionados</p><p></p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.infobae.com/economia/2026/04/10/la-cadena-de-ropa-sueca-hm-pone-el-foco-en-la-argentina-y-negocia-abrir-locales-en-distintos-shoppings-portenos/'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: 'La cadena de ropa sueca H&M pone el foco en la Argentina y negocia abrir locales en varios shoppings.', // Opcional, pero recomendado     
+                text: 'La cadena de ropa sueca H&M pone el foco en la Argentina y negocia abrir locales en varios shoppings.',  // Opcional
+                url: 'https://www.infobae.com/economia/2026/04/10/la-cadena-de-ropa-sueca-hm-pone-el-foco-en-la-argentina-y-negocia-abrir-locales-en-distintos-shoppings-portenos/'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
