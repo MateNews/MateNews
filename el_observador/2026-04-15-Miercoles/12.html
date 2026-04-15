@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Proyectos: la funcionalidad que cambia cómo trabajamos con inteligencia artificial</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> Proyectos: la funcionalidad que cambia cómo trabajamos con inteligencia artificial</h1>
+            <p>
+Más de una vez te preguntaste cómo sacarle todo el provecho que tienen Gemini, ChatGPT o Claude. La respuesta está más cerca de lo que creés, pero probablemente nunca la viste. En esta newsletter te quiero contar sobre una funcionalidad que parece invisible pero tiene mucho poderío: los proyectos (en ChatGPT y Claude) y los Cuadernos (su equivalente en Gemini, recientemente lanzados). Es lo que marca la diferencia entre usar una herramienta de IA y construir un asistente especializado que entiende exactamente lo que necesitás. ¿Qué son los proyectos de IA? Los proyectos son espacios personalizados dentro de una herramienta de IA donde podés reunir toda la información sobre un tema específico –documentos, datos, contexto– para que la inteligencia artificial siempre tenga en cuenta esa información cuando dialogues con ella. Es como tener carpetas a las que le enviás tus chats sobre un mismo tema. Pero con funcionalidades adicionales. A mi juicio, las skills, los GPTs o las Gems son herramientas que sirven para tareas hiperrepetitivas, pero los proyectos son útiles para un mismo tema. Por ejemplo, si tenés que preparar una tesis, una presentación, o en mi caso una charla de IA, los proyectos son útiles. Al proyecto le podés poner información: por ejemplo, le podés subir datos de la charla, una encuesta sobre usos de IA de tus futuros oyentes. Esas fuentes siempre las va a tener en consideración cuando preguntes algo a futuro.Si le pregunto: "¿cómo puedo explicar la IA para los oyentes de la charla?", la respuesta se va a adaptar a ese contexto. Ahí ya estás usando a la IA como copiloto de verdad. Qué tienen en común las herramientas de IA sobre los proyectos Instrucciones. Podés decirle que siempre se comporte de una manera. Si creo un proyecto sobre un taller de IA, puedo pedirle que las respuestas contemplen el uso de metáforas para explicar conceptos tecnológicos. O algo más sencillo: que siempre hable en español o que conteste en un párrafo. Memoria. Los proyectos tienen memoria específica. Todo lo que dialogues siempre sabrá de qué se trata. Transcripciones de reuniones. Podés subir transcripciones. Si querés saber qué dijo una persona en determinada fecha, solo tenés que preguntárselo al proyecto. Es como tener un "taquígrafo" que sabe todo sobre un tema. También está el asistente de voz. Hablar con un proyecto es conversacional y contextualizado. Salvo en Claude, en todos podés crear imágenes referidas al proyecto. Y en todas podés hacer investigaciones profundas. Lo que tienen de específico cada herramientaEn Gemini se llaman "Cuadernos" y no proyectos. Hay una razón: se pueden vincular con NotebookLM, una herramienta sofisticada para visualizar conocimientos. Si tenés un PDF extenso de un fallo judicial, podés verlo como mapa mental, pedirle que te haga un podcast o te formule preguntas. Es muy útil para aprender. Dentro del proyecto tenés acceso a conectores. Podés referirte a tu correo (mandar un mail desde el proyecto) o al calendario: con poner @calendar, lo agregás instantáneamente. Lo que realmente es un uso avanzado es que en Claude y ChatGPT podés invocar a los asistentes personalizados (GPTs en ChatGPT, Skills en Claude). Gemini no permite invocar Gems dentro de los Cuadernos. Básicamente, son una función que permite crear tareas hiperrepetitivas. Si todos los días redactás mails con determinada estructura, probablemente necesites crear un GPT o una Skill. Por ejemplo, si tengo un proyecto sobre una futura charla de IA (con información sobre el auditorio, la fecha, los temas), podría invocar un GPT personalizado o una Skill que me cree un posteo para redes sociales. Ese asistente está previamente entrenado con el estilo que le invoco. Esta es la forma de usar todos los recursos que provee la IA.    Soy Juan Pablo De Marco, escribo de tecnología, y por cualquier comentario, inquietud o si tenés ganas de que hable sobre algún tema podés escribir a esta dirección.   </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/ciencia-y-tecnologia/proyectos-la-funcionalidad-que-cambia-como-trabajamos-inteligencia-artificial-n6040733'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' Proyectos: la funcionalidad que cambia cómo trabajamos con inteligencia artificial', // Opcional, pero recomendado     
+                text: ' Proyectos: la funcionalidad que cambia cómo trabajamos con inteligencia artificial',  // Opcional
+                url: 'https://www.elobservador.com.uy/ciencia-y-tecnologia/proyectos-la-funcionalidad-que-cambia-como-trabajamos-inteligencia-artificial-n6040733'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
