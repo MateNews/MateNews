@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> El Observador lanza su canal de streaming, con Alejandro Fantino como figura central</title>
+        <style>
+            body {
+                max-width: 800px;
+                margin: auto;
+                padding: 5%;
+            }
+            .btnL {
+                background: #d1d1d1;
+                border-radius: 7px;
+                padding: 18px;
+                min-width: 100%;
+                color: #000000;
+                font-size: medium;
+                min-height: 70px;
+            }
+            button {
+                background-color: #d1d1d1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            button:disabled {
+                background-color: #d1d1d1;
+                cursor: not-available;
+            }
+            button:hover:not(:disabled) {
+                background-color: #d1d1d1;
+            }
+            #voiceSelect {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .controls {
+                margin: 10px 0;
+            }
+
+            #fullscreenButton {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            #fullscreenIcon {
+                width: 24px;
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="fullscreenButton">
+        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>
+        </svg>
+        </button>
+
+        <div id="texto">
+            <h1> El Observador lanza su canal de streaming, con Alejandro Fantino como figura central</h1>
+            <p>
+ El Observador da un paso más en su transformación digital con el lanzamiento de su nuevo canal de streaming, una plataforma de contenidos audiovisuales que busca conectar con nuevas audiencias a través de una propuesta multiplataforma que combina información, entretenimiento y deportes. Con una programación diseñada para las audiencias del siglo XXI, El Observador, el medio digital de noticias con mayor cantidad de suscriptores en YouTube, ofrecerá contenidos en vivo y on demand, con cinco programas originales que se emitirán semanalmente. El domingo 19 de abril comenzará la programación con un programa especial conducido por Alejandro Fantino de 20:00 a 22:00 horas. En este espacio inaugural, Fantino estará acompañado por los conductores de los diferentes programas que integran la grilla de El Observador. Una programación pensada para un público diverso Con una combinación de figuras consagradas y nuevos talentos, la grilla del streaming de El Observador está diseñada para captar la atención de una amplia audiencia, con una fuerte preferencia por contenidos ágiles, análisis en profundidad y debate pero en un formato dinámico y que combine información con entretenimiento.  Llenos de Mística (domingo de 20:00 a 22:00 hs): Un ciclo de entrevistas y entretenimiento conducido por Alejandro Fantino, con la participación de Ana Inés Martínez, Rafa Cotelo y Sofía Romano. Este espacio combinará análisis y actualidad con un enfoque en deportes, cultura y tendencias. Todo un Tema (lunes, miércoles y viernes de 18:00 a 20:00 hs): Un espacio de análisis de actualidad, política y sociedad uruguaya, con la conducción de Diego Cayota, Carolina Delisa y Leo Pereyra. Este programa se caracteriza por su enfoque directo, con un estilo sin filtro, que busca desentrañar los temas más relevantes de la realidad nacional. Quedó Picando (lunes y jueves de 20:00 a 22:00 hs): Un debate de alto voltaje sobre fútbol uruguayo, el mercado de pases y la Selección Nacional, con especial cobertura del Mundial 2026. Conducido por Ana Inés Martínez, Emiliano Hernández Pereyra, Luis Inzaurralde y Joaquín Pisa, el programa busca captar la pasión futbolera de la audiencia. Radar IA (martes de 20:00 a 21 hs): Este programa se enfocará en el análisis de las últimas novedades en inteligencia artificial, tecnología y startups, con entrevistas a emprendedores y expertos en el campo. Se explorarán temas globales y locales, con especial atención a los desarrollos que están marcando el futuro de la tecnología. Federica Bordaberry, Juan Pablo De Marco y Naara Pérez estarán a cargo de la conducción. La Playlist (miércoles de 20:00 a 21:30 hs): Dedicado a la música y la cultura joven, será el espacio ideal para los amantes de la música en vivo, las entrevistas con artistas locales y regionales, y las tendencias de la cultura millennial. Además, se presentarán lanzamientos de discos y promociones de shows en Uruguay y Argentina. El programa contará con la conducción de Nicolás Tabárez, Carla Colman y Emanuel Bremermann, y la participación de Luis Lacalle Ponce de León.  Una plataforma innovadora para el mercado uruguayo El streaming representa la evolución de  El Observador en el ecosistema digital. La plataforma no solo ofrecerá programación original, sino también interacción directa con la audiencia a través de redes sociales y contenidos viralizables. La integración comercial será un pilar clave, con opciones como branded content, product placement, publicidad no tradicional y segmentos patrocinados, ofreciendo a los anunciantes la oportunidad de llegar a una audiencia digital comprometida. Un medio que no se detiene La plataforma no se limita a la emisión de programas desde un estudio central. Gracias a su capacidad de cobertura móvil, El Observador podrá transmitir en vivo desde distintos puntos del país, cubriendo eventos en tiempo real y generando contenido exclusivo desde locaciones especiales, tal como la reciente cobertura de la 59a. Semana de la Cerveza, en Paysandú. Esto le permitirá al medio mantenerse conectado con la audiencia y las tendencias, con una visión que trasciende lo estático. La llegada del streaming de El Observador refleja el compromiso del medio con la innovación, sin perder de vista su legado de credibilidad y rigor informativo. Con esta apuesta, El Observador se posiciona como un referente de la nueva era del contenido digital en Uruguay.  </p>
+        </div>
+        <br><br><br>
+            <div style="display: none;">
+                <label for="voiceSelect">Seleccionar voz:</label>
+                <select id="voiceSelect"></select>
+            </div>
+            <div class="controls">
+                <button onclick="startReading()" id="playButton">
+                    🔊 Leer
+                </button>
+                <button onclick="pauseReading()" id="pauseButton" disabled style="display: none;">
+                    ⏸️ Pausar
+                </button>
+                <button onclick="resumeReading()" id="resumeButton" disabled style="display: none;">
+                    ▶️ Continuar
+                </button>
+                <button onclick="stopReading()" id="stopButton" disabled>
+                    ⏹️ Detener
+                </button>
+            </div>
+            <div id="progress" style="display: none;"></div>
+        <br><br><br>
+        <button class="btnL" onclick="compartir()">Compartir</button>
+        <br><br><br>
+        <button class="btnL" onclick="window.location.href='https://www.elobservador.com.uy/cultura-y-espectaculos/el-observador-lanza-su-canal-streaming-alejandro-fantino-como-figura-central-n6041023'">Ver en web original</button>
+        <br><br><br>
+        <!-- <button class="btnL" onclick="window.location.href='https://matenews.github.io/MateNews/'">Volver a la página principal</button>
+        <br><br><br> -->
+
+
+        <script>
+            function compartir() {
+            if (navigator.share) {
+                navigator.share({
+                title: ' El Observador lanza su canal de streaming, con Alejandro Fantino como figura central', // Opcional, pero recomendado     
+                text: ' El Observador lanza su canal de streaming, con Alejandro Fantino como figura central',  // Opcional
+                url: 'https://www.elobservador.com.uy/cultura-y-espectaculos/el-observador-lanza-su-canal-streaming-alejandro-fantino-como-figura-central-n6041023'
+                })
+                .then(() => console.log('Contenido compartido exitosamente'))
+                .catch((error) => console.error('Error al compartir:', error));
+            } else {
+                // Código alternativo si la API Web Share no está disponible
+                console.log("Web Share API no soportada");
+                // Puedes usar aquí la opción 2 (botones personalizados con JavaScript) de mi respuesta anterior
+            }
+            }
+        </script>
+
+
+        <script>
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPaused = false;
+            let isReading = false;
+            let textBlocks = [];
+            let currentBlockIndex = 0;
+            let lastSpokenIndex = 0;
+            const BLOCK_SIZE = 800;
+
+            function updateButtons(speaking) {
+                document.getElementById('playButton').disabled = speaking;
+                document.getElementById('pauseButton').disabled = !speaking;
+                document.getElementById('resumeButton').disabled = !isPaused;
+                document.getElementById('stopButton').disabled = !speaking;
+            }
+
+            function updateProgress() {
+                const progressDiv = document.getElementById('progress');
+                if (isReading) {
+                    progressDiv.textContent = `Leyendo bloque ${currentBlockIndex + 1} de ${textBlocks.length}`;
+                } else {
+                    progressDiv.textContent = '';
+                }
+            }
+
+            function splitIntoBlocks(text) {
+                // Dividir el texto en oraciones usando puntuación común
+                const sentences = text.replace(/([.!?])\s+/g, "$1|").split("|");
+
+                let blocks = [];
+                let currentBlock = '';
+
+                sentences.forEach(sentence => {
+                    // Si la oración es muy larga, dividirla en la coma más cercana al BLOCK_SIZE
+                    if (sentence.length > BLOCK_SIZE) {
+                        let subSentences = sentence.replace(/,\s+/g, ",|").split("|");
+                        subSentences.forEach(subSentence => {
+                            if (currentBlock.length + subSentence.length > BLOCK_SIZE) {
+                                if (currentBlock) blocks.push(currentBlock.trim());
+                                currentBlock = subSentence;
+                            } else {
+                                currentBlock += (currentBlock ? ' ' : '') + subSentence;
+                            }
+                        });
+                    } else {
+                        if (currentBlock.length + sentence.length > BLOCK_SIZE) {
+                            blocks.push(currentBlock.trim());
+                            currentBlock = sentence;
+                        } else {
+                            currentBlock += (currentBlock ? ' ' : '') + sentence;
+                        }
+                    }
+                });
+
+                if (currentBlock) blocks.push(currentBlock.trim());
+                return blocks;
+            }
+
+            function speakBlock(index) {
+                if (index >= textBlocks.length) {
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                    return;
+                }
+
+                currentUtterance = new SpeechSynthesisUtterance(textBlocks[index]);
+                currentUtterance.rate = parseFloat(1.3);
+                lastSpokenIndex = index;
+
+
+                currentUtterance.onend = function() {
+                    if (isReading && !isPaused) {
+                        currentBlockIndex++;
+                        updateProgress();
+                        speakBlock(currentBlockIndex);
+                    }
+                };
+
+                currentUtterance.onerror = function(event) {
+                    console.error('Error en la lectura:', event);
+                    isReading = false;
+                    updateButtons(false);
+                    updateProgress();
+                };
+
+                speechSynthesis.speak(currentUtterance);
+            }
+
+            function startReading() {
+                const text = document.getElementById('texto').innerText;
+                if (!text) return;
+
+                // Detener cualquier lectura previa
+                stop();
+
+                // Preparar nueva lectura
+                textBlocks = splitIntoBlocks(text);
+                currentBlockIndex = 0;
+                isReading = true;
+                isPaused = false;
+
+                updateButtons(true);
+                updateProgress();
+                speakBlock(currentBlockIndex);
+            }
+
+            function pause() {
+                speechSynthesis.pause();
+                isPaused = true;
+                updateButtons(true);
+            }
+
+            function resume() {
+                speechSynthesis.resume();
+                isPaused = false;
+                updateButtons(true);
+            }
+
+            function stop() {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                updateButtons(false);
+                updateProgress();
+            }
+
+            function pauseReading() {
+                if (!isReading) return;
+
+                speechSynthesis.pause();
+                isPaused = true;
+                isReading = false;
+                updateButtons(true);
+                updateProgress();
+            }
+
+            function resumeReading() {
+                if (!isPaused) return;
+
+                isPaused = false;
+                isReading = true;
+
+                // Si el utterance actual ya terminó, comenzar con el siguiente bloque
+                if (lastSpokenIndex === currentBlockIndex) {
+                    currentBlockIndex++;
+                }
+
+                updateButtons(true);
+                updateProgress();
+
+                // Si hay un utterance pausado, resumirlo
+                if (speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                } else {
+                    // Si no hay utterance pausado, comenzar desde el bloque actual
+                    speakBlock(currentBlockIndex);
+                }
+            }
+
+            function stopReading() {
+                speechSynthesis.cancel();
+                finishReading();
+            }
+
+            function finishReading() {
+                isReading = false;
+                isPaused = false;
+                currentBlockIndex = 0;
+                lastSpokenIndex = -1;
+                currentUtterance = null;
+                updateButtons(false);
+                updateProgress();
+            }
+
+        </script>        
+
+        <script>
+
+            var elem = document.documentElement;
+            var fullscreenButton = document.getElementById("fullscreenButton");
+            var fullscreenIcon = document.getElementById("fullscreenIcon");
+
+            fullscreenButton.addEventListener("click", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+                }
+            } else {
+                if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+                }
+            }
+            });
+
+            document.addEventListener('fullscreenchange', (event) => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.innerHTML = '<path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/>';
+            } else {
+                fullscreenIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+            });
+        </script>
+
+    </body>
+    </html>
